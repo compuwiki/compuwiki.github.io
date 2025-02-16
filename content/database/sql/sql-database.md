@@ -43,13 +43,13 @@ Although using foreign keys is standard for defining table relationships, there 
 
 7. Database Creation and SQL: Execute SQL statements to create the database based on the physical design, including table creation, indexes, views, and query/stored procedure definitions.
 
-
 ## Installing an SQL Database
 
 To use an SQL database on a computer, you only need to install 2 things:
+
 - **database server**
-    - database server: SQL-Server instance
-    - web server: apache-http-server, nginx, IIS-windows-server
+  - database server: SQL-Server instance
+  - web server: apache-http-server, nginx, IIS-windows-server
 - **database client**: phpMyAdmin, DBeaver, Navicat, SQL-Server-Management-Studio
 
 Here are some examples of the complete infrastructure of an SQL Database

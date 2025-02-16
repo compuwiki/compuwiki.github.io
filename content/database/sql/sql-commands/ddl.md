@@ -1,9 +1,7 @@
 ---
-title: DDL
+title: DDL (Data Definition Language)
 ---
 
-
-# DDL (Data Definition Language)
 
 - [CREATE](DDL.md#create) (DATABASE, TABLE, FUNCTION, INDEX, VIEW, PROCEDURE, TRIGGER)
 - [ALTER](DDL.md#alter) (DATABASE, TABLE, CONSTRAINT)
@@ -11,6 +9,7 @@ title: DDL
 - [DDL non standard](DDL.md#ddl-non-standard)
 
 ## Start and configure server and DBMS
+
 ```SQL
 -- Firstly you need to start the server (Apache, nginx, etc) and Database management system  (MariaDB, PostgresSQL, SQLserver) via GUI o CLI
 
@@ -22,12 +21,14 @@ PS C:\> ./mysql -u root -p
 ## CREATE
 
 - DATABASE
+
 ```sql
 CREATE DATABASE test
 CREATE DATABASE databasename;
 ```
 
 - TABLE
+
 ```sql
 CREATE TABLE IF NOT EXISTS Persons (
     ID INT AUTO_INCREMENT,
@@ -44,6 +45,7 @@ SHOW CREATE TABLE Orders;
 ```
 
 - FUNCTION
+
 ```sql
 CREATE FUNCTION NombreFuncion
     (@Parametro TipoDato)
@@ -59,6 +61,7 @@ SELECT dbo.NombreFuncion(Valor);
 ```
 
 - INDEX
+
 ```sql
 CREATE INDEX IX_NombreIndice
 ON Tabla(Columna);
@@ -69,6 +72,7 @@ WHERE Columna = Valor;
 ```
 
 - VIEW
+
 ```sql
 CREATE VIEW VistaCliente AS
 SELECT NombreCliente, NombreContacto
@@ -77,6 +81,7 @@ WHERE Country = "Brasil";
 ```
 
 - PROCEDURE
+
 ```sql
 CREATE PROCEDURE NombreProcedimiento
     @Parametro1 TipoDato,
@@ -95,9 +100,11 @@ EXEC sp_columns peliculas
 DESCRIBE empleados;
 SHOW COLUMNS FROM empleados;
 ```
+
 > [!note] In MySQL you need to use Delimiters to CREATE PROCEDURE "DELIMITER $"
 
 - TRIGGER
+
 ```sql
 DELIMITER $$
 
@@ -117,11 +124,13 @@ $$
 ## ALTER
 
 - Database
+
 ```sql
 ALTER DATABASE comp SET DEFAULT CHARACTER SET LATIN9;
 ```
 
 - Table
+
 ```sql
 ALTER DATABASE comp SET DEFAULT CHARACTER SET LATIN9;
 
@@ -147,43 +156,45 @@ ALTER COLUMN Country int(13);
 ```
 
 - [CONSTRAINT](https://www.w3schools.com/mysql/mysql_constraints.asp):
-	- [NOT NULL](https://www.w3schools.com/mysql/mysql_notnull.asp) - Ensures that a column cannot have a NULL value
-	- [UNIQUE](https://www.w3schools.com/mysql/mysql_unique.asp) - Ensures that all values in a column are different
-	- [PRIMARY KEY](https://www.w3schools.com/mysql/mysql_primarykey.asp) - A combination of a `NOT NULL` and `UNIQUE`. Uniquely identifies each row in a table
-	- [FOREIGN KEY](https://www.w3schools.com/mysql/mysql_foreignkey.asp) - Prevents actions that would destroy links between tables
-	- [CHECK](https://www.w3schools.com/mysql/mysql_check.asp) - Ensures that the values in a column satisfies a specific condition
-	- [DEFAULT](https://www.w3schools.com/mysql/mysql_default.asp) - Sets a default value for a column if no value is specified
-	- [CREATE INDEX](https://www.w3schools.com/mysql/mysql_create_index.asp) - Used to create and retrieve data from the database very quickly
+  - [NOT NULL](https://www.w3schools.com/mysql/mysql_notnull.asp) - Ensures that a column cannot have a NULL value
+  - [UNIQUE](https://www.w3schools.com/mysql/mysql_unique.asp) - Ensures that all values in a column are different
+  - [PRIMARY KEY](https://www.w3schools.com/mysql/mysql_primarykey.asp) - A combination of a `NOT NULL` and `UNIQUE`. Uniquely identifies each row in a table
+  - [FOREIGN KEY](https://www.w3schools.com/mysql/mysql_foreignkey.asp) - Prevents actions that would destroy links between tables
+  - [CHECK](https://www.w3schools.com/mysql/mysql_check.asp) - Ensures that the values in a column satisfies a specific condition
+  - [DEFAULT](https://www.w3schools.com/mysql/mysql_default.asp) - Sets a default value for a column if no value is specified
+  - [CREATE INDEX](https://www.w3schools.com/mysql/mysql_create_index.asp) - Used to create and retrieve data from the database very quickly
 
 - The CONSTRAINT constraint can be added:
+
 ```sql
 -- 1. at the column definition
-	CREATE TABLE Persons (  
-	    ID int NOT NULL,  
-	    LastName varchar(255) NOT NULL,  
-	    FirstName varchar(255),  
-	    Age int,  
-	    PRIMARY KEY (ID)  
-	);
+ CREATE TABLE Persons (
+     ID int NOT NULL,
+     LastName varchar(255) NOT NULL,
+     FirstName varchar(255),
+     Age int,
+     PRIMARY KEY (ID)
+ );
 
 -- 2. at the end of table creation
-	CREATE TABLE Persons (  
-	    ID int NOT NULL,  
-	    LastName varchar(255) NOT NULL,  
-	    FirstName varchar(255),  
-	    Age int,  
-	    CONSTRAINT PK_Person PRIMARY KEY (ID,LastName)  
-	);
+ CREATE TABLE Persons (
+     ID int NOT NULL,
+     LastName varchar(255) NOT NULL,
+     FirstName varchar(255),
+     Age int,
+     CONSTRAINT PK_Person PRIMARY KEY (ID,LastName)
+ );
 
 -- 3. outside the table with an ALTER TABLE (does not matter the order in which the tables were created, e.g. a FK referencing a PK).
-	ALTER TABLE Persons  
-		ADD PRIMARY KEY (ID);
+ ALTER TABLE Persons
+  ADD PRIMARY KEY (ID);
 
-	ALTER TABLE Persons  
-		ADD CONSTRAINT PK_Person PRIMARY KEY (ID,LastName);
-	```
+ ALTER TABLE Persons
+  ADD CONSTRAINT PK_Person PRIMARY KEY (ID,LastName);
+ ```
 
 ## DROP
+
 ```sql
 DROP DATABASE databasename;
 
@@ -194,19 +205,19 @@ DROP COLUMN 'columna';
 DROP TRIGGER IF EXISTS tr_change_price;
 ```
 
-
 ---
 
 ## DDL-non-standard
 
 - RENAME
+
 ```sql
 RENAME TABLE products
 TO products_old, products_new TO products;
 ```
 
 - TRUNCATE
- ```sql
-TRUNCATE TABLE Categories; 
-```
 
+ ```sql
+TRUNCATE TABLE Categories;
+```

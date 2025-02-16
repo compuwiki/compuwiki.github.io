@@ -2,8 +2,6 @@
 title: SQL database
 ---
 
-# Database SQL
-
 ## Relational databases
 
 In a relational database, primary keys and foreign keys play a crucial role in structuring tables and establishing relationships between them.

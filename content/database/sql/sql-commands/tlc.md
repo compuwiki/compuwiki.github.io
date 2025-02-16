@@ -1,16 +1,14 @@
 ---
-title: TCL
+title: TCL (Transaction Control Language)
 ---
 
-
-# TCL (Transaction Control Language)
-
- - [COMMIT](TCL.md#commit)
-	- [Autocommit](TCL.md#commit)
+- [COMMIT](TCL.md#commit)
+  - [Autocommit](TCL.md#commit)
 - [ROLLBACK](TCL.md#commit)
 - [SAVEPOINT](TCL.md#)
 
 - To start a transaction
+
 ```sql
 START TRANSACTION;
 

@@ -1,9 +1,6 @@
 ---
-tit: PLC
+tit: PLC (Procedure Language Construct)
 ---
-
-
-# PLC (Procedure Language Construct)
 
 - DECLARE
 - SET
@@ -12,7 +9,7 @@ tit: PLC
 - WHILE
 - FOR
 - LOOP
-- EXIT 
+- EXIT
 - CASE
 - GOTO
 

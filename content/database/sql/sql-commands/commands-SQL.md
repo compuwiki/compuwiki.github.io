@@ -3,8 +3,6 @@ title: SQL commands
 ---
 
 
-# SQL commands
-
 SQL, which stands for Structured Query Language, encompasses various types of commands for interacting with databases. The key categories include:
 
 - [[DCL]]. Data Control Language

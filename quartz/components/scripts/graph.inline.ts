@@ -8,6 +8,7 @@ import {
   forceCenter,
   forceLink,
   forceCollide,
+  forceRadial,
   zoomIdentity,
   select,
   drag,
@@ -87,6 +88,7 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
     removeTags,
     showTags,
     focusOnHover,
+    enableRadial,
   } = JSON.parse(graph.dataset["cfg"]!) as D3Config
 
   const data: Map<SimpleSlug, ContentDetails> = new Map(
@@ -161,15 +163,20 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
       })),
   }
 
+  const width = graph.offsetWidth
+  const height = Math.max(graph.offsetHeight, 250)
+
   // we virtualize the simulation and use pixi to actually render it
+  // Calculate the radius of the container circle
+  const radius = Math.min(width, height) / 2 - 40 // 40px padding
   const simulation: Simulation<NodeData, LinkData> = forceSimulation<NodeData>(graphData.nodes)
     .force("charge", forceManyBody().strength(-100 * repelForce))
     .force("center", forceCenter().strength(centerForce))
     .force("link", forceLink(graphData.links).distance(linkDistance))
     .force("collide", forceCollide<NodeData>((n) => nodeRadius(n)).iterations(3))
 
-  const width = graph.offsetWidth
-  const height = Math.max(graph.offsetHeight, 250)
+  if (enableRadial)
+    simulation.force("radial", forceRadial(radius * 0.8, width / 2, height / 2).strength(0.3))
 
   // precompute style prop strings as pixi doesn't support css variables
   const cssVars = [
@@ -550,6 +557,19 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
   addToVisited(simplifySlug(slug))
   await renderGraph("graph-container", slug)
 
+  // Function to re-render the graph when the theme changes
+  const handleThemeChange = () => {
+    renderGraph("graph-container", slug)
+  }
+
+  // event listener for theme change
+  document.addEventListener("themechange", handleThemeChange)
+
+  // cleanup for the event listener
+  window.addCleanup(() => {
+    document.removeEventListener("themechange", handleThemeChange)
+  })
+
   const container = document.getElementById("global-graph-outer")
   const sidebar = container?.closest(".sidebar") as HTMLElement
 
@@ -567,7 +587,7 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
   function hideGlobalGraph() {
     container?.classList.remove("active")
     if (sidebar) {
-      sidebar.style.zIndex = "unset"
+      sidebar.style.zIndex = ""
     }
   }
 

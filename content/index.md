@@ -5,9 +5,8 @@ tags: [wiki, índice]
 
 Bienvenido a "CompuWiki"  la wiki sobre desarrollo web, bases de datos, despliegue y programación. Usa los siguientes enlaces para navegar entre las secciones:
 
-## Desarrollo Web
+## [Desarrollo Web](./web-dev/)
 
-- [Desarrollo Web](./web-dev/web-dev.md)
 - **Frontend**
   - [Marcado](./web-dev/frontend/markup/)
   - [Programación](./web-dev/frontend/programming/)
@@ -15,7 +14,7 @@ Bienvenido a "CompuWiki"  la wiki sobre desarrollo web, bases de datos, desplieg
 - **Backend**
   - [Java Spring](./web-dev/backend/java-spring.md)
 
-## Bases de Datos
+## [Bases de Datos](./database/sql/)
 
 - **SQL**
   - [Joins](./database/sql/joins/)
@@ -26,14 +25,14 @@ Bienvenido a "CompuWiki"  la wiki sobre desarrollo web, bases de datos, desplieg
 - **NoSQL**
   - [Bases de Datos NoSQL](./database/no-sql/)
 
-## Despliegue
+## [Despliegue](./deploy/)
 
 - [DNS](./deploy/dns.md)
 - [Docker](./deploy/docker.md)
 - [Kubernetes](./deploy/kubernetes.md)
 - [Servidor Web](./deploy/servidor-web.md)
 
-## Programación
+## [Programación](./programming/)
 
 - **C#**
   - [Apuntes sobre .NET](./programming/cs/apuntes-dotnet/)

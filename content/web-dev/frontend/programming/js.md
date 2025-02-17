@@ -1,9 +1,9 @@
 ---
-title: JavaScript (JS)
+title: JS
 tags: [javascript, programming, frontend]
 ---
 
-JavaScript es un lenguaje de programación ampliamente utilizado para el desarrollo web, permitiendo agregar interactividad y dinamismo a las páginas web.
+JS (JavaScript) es un lenguaje de programación ampliamente utilizado para el desarrollo web, permitiendo agregar interactividad y dinamismo a las páginas web.
 
 ## Características Principales
 

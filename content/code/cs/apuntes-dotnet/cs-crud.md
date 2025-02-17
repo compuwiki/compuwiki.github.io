@@ -6,31 +6,33 @@
 - Delete = Borrar, Eliminar
 
 > El CRUD puede ser tanto:
->    DDL (CREATE, ALTER, DROP)
->    DML (SELECT, INSERT, UPDATE, DELETE)
+> DDL (CREATE, ALTER, DROP)
+> DML (SELECT, INSERT, UPDATE, DELETE)
 
 En C# usamos DML ya que previamente hemos creado la estructura de la base de datos con DDL.
 
 - Leer datos con SELECT
+
 ```cs
 private void btnMostrarPaciente(object sender, RoutedEventArgs e)
 {
-	eleccion = "Paciente";
-	string consulta = "SELECT Id, CONCAT(ID, ' - ' ,Nombre, ' ' ,Apellido1, ' ' ,Apellido2)"
-	+ " AS infoPaciente FROM Paciente";
-	SqlDataAdapter miAdaptadorSql = new SqlDataAdapter(consulta, miConexionSql);
-	using (miAdaptadorSql)
-	{
-		DataTable pacientesTabla = new DataTable();
-		miAdaptadorSql.Fill(pacientesTabla);
-		lstboxPacienteDoctor.DisplayMemberPath = "infoPaciente";
-		lstboxPacienteDoctor.SelectedValuePath = "Id";
-		lstboxPacienteDoctor.ItemsSource = pacientesTabla.DefaultView;
-	}
+ eleccion = "Paciente";
+ string consulta = "SELECT Id, CONCAT(ID, ' - ' ,Nombre, ' ' ,Apellido1, ' ' ,Apellido2)"
+ + " AS infoPaciente FROM Paciente";
+ SqlDataAdapter miAdaptadorSql = new SqlDataAdapter(consulta, miConexionSql);
+ using (miAdaptadorSql)
+ {
+  DataTable pacientesTabla = new DataTable();
+  miAdaptadorSql.Fill(pacientesTabla);
+  lstboxPacienteDoctor.DisplayMemberPath = "infoPaciente";
+  lstboxPacienteDoctor.SelectedValuePath = "Id";
+  lstboxPacienteDoctor.ItemsSource = pacientesTabla.DefaultView;
+ }
 }
 ```
 
 - Crear registro con INSERT
+
 ```cs
 private void btnRegistrar(object sender, RoutedEventArgs e)
 {
@@ -55,7 +57,8 @@ private void btnRegistrar(object sender, RoutedEventArgs e)
 }
 ```
 
-- Borrar registro con DELETE 
+- Borrar registro con DELETE
+
 ```cs
 private void btnEliminar(object sender, RoutedEventArgs e)
 {
@@ -74,10 +77,11 @@ private void btnEliminar(object sender, RoutedEventArgs e)
 - Actualizar registro con UPDATE, pero se puede rellenar los listboxes y usar btnRegistrar
 
 - Primero se han de rellenar los datos en los campos
+
 ```cs
 public void RellenarDatos()
 {
-	string consulta = "SELECT Nombre, Apellido1, Fecha_Nacimiento, Telefono FROM Paciente WHERE ID=@relleno;";
+ string consulta = "SELECT Nombre, Apellido1, Fecha_Nacimiento, Telefono FROM Paciente WHERE ID=@relleno;";
 
     SqlCommand comandoSQL = new SqlCommand(consulta, miConexionSql);
 
@@ -88,7 +92,7 @@ public void RellenarDatos()
     {
         comandoSQL.Parameters.AddWithValue("@relleno", lstPacientes.SelectedValue);
         DataTable pacientesTabla = new DataTable();
-		miAdaptadorSql.Fill(pacientesTabla);
+  miAdaptadorSql.Fill(pacientesTabla);
 
         txtNombre.Text = pacientesTabla.Rows[0]["Nombre"].ToString();
         txtPrimerApellido.Text = pacientesTabla.Rows[0]["Apellido1"].ToString();
@@ -98,33 +102,34 @@ public void RellenarDatos()
         txtTelefono.Text = pacientesTabla.Rows[0]["Telefono"].ToString();
         txtEmail.Text = pacientesTabla.Rows[0]["Email"].ToString();
     }
-	miConexionSql.Close();
+ miConexionSql.Close();
 }
 ```
 
 - Luego podemos actualizar el registro modificando los datos anteriores
+
 ```cs
  private void Modificar()
  {
-	 try
-	{
-		string nombre = txtNombre.Text;
-		string apellido1 = txtApellido1.Text;
-		string apellido2 = txtApellido2.Text;
-		string consulta = $"UPDATE Doctor SET Nombre='{nombre}', Apellido1='{apellido1}', Apellido2='{apellido2}' WHERE ID = @idDoctor;";
-	using (SqlCommand command = new SqlCommand(consulta, miConexionSql))
-	{
-		miConexionSql.Open();
-		command.Parameters.AddWithValue("@idDoctor", lstDoctores.SelectedValue);
-		command.ExecuteNonQuery();
-		miConexionSql.Close();    
-	}
-		MessageBox.Show("Doctor modificado.");
-	}
-	catch (Exception ex)
-	{
-		MessageBox.Show("Error al modificar el doctor: " + ex.Message);
-	}
+  try
+ {
+  string nombre = txtNombre.Text;
+  string apellido1 = txtApellido1.Text;
+  string apellido2 = txtApellido2.Text;
+  string consulta = $"UPDATE Doctor SET Nombre='{nombre}', Apellido1='{apellido1}', Apellido2='{apellido2}' WHERE ID = @idDoctor;";
+ using (SqlCommand command = new SqlCommand(consulta, miConexionSql))
+ {
+  miConexionSql.Open();
+  command.Parameters.AddWithValue("@idDoctor", lstDoctores.SelectedValue);
+  command.ExecuteNonQuery();
+  miConexionSql.Close();
+ }
+  MessageBox.Show("Doctor modificado.");
+ }
+ catch (Exception ex)
+ {
+  MessageBox.Show("Error al modificar el doctor: " + ex.Message);
+ }
 }
 
 // Opción de chatGPT
@@ -143,8 +148,8 @@ private void btnModificar(object sender, RoutedEventArgs e)
         connection.Open();
         command.ExecuteNonQuery();
     }
-    
-	MessageBox.Show("Tabla modificada!");
+
+ MessageBox.Show("Tabla modificada!");
 }
 
 private void lstboxPacienteDoctor_SelectionChanged(object sender, SelectionChangedEventArgs e)

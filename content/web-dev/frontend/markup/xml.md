@@ -1,9 +1,9 @@
 ---
-title: XML (Extensible Markup Language)
+title: XML
 tags: [xml, markup, frontend]
 ---
 
-XML es un lenguaje de marcado que se utiliza para almacenar y transportar datos de manera estructurada. Es ampliamente utilizado en configuraciones, intercambio de datos y documentos.
+XML (Extensible Markup Language) es un lenguaje de marcado que se utiliza para almacenar y transportar datos de manera estructurada. Es ampliamente utilizado en configuraciones, intercambio de datos y documentos.
 
 ## Características Principales
 

@@ -1,5 +1,5 @@
 ---
-title: Lenguajes de Programación
+title: Programación
 tags: [coding, programming, desarrollo]
 ---
 

@@ -1,9 +1,9 @@
 ---
-title: CSS (Cascading Style Sheets)
+title: CSS
 tags: [css, styles, frontend]
 ---
 
-CSS es el lenguaje utilizado para describir la apariencia y el diseño de una página web. Permite aplicar estilos a los elementos HTML y mejorar la experiencia del usuario.
+CSS (Cascading Style Sheets) es el lenguaje utilizado para describir la apariencia y el diseño de una página web. Permite aplicar estilos a los elementos HTML y mejorar la experiencia del usuario.
 
 ## Características Principales
 

@@ -1,5 +1,5 @@
 ---
-title: Índice de la Wiki
+title: Index
 tags: [wiki, índice]
 ---
 

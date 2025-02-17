@@ -1,9 +1,9 @@
 ---
-title: HTML (HyperText Markup Language)
+title: HTML
 tags: [html, markup, frontend]
 ---
 
-HTML es el lenguaje estándar de marcado utilizado para crear páginas web. Define la estructura y el contenido de una página mediante etiquetas.
+HTML (HyperText Markup Language) es el lenguaje estándar de marcado utilizado para crear páginas web. Define la estructura y el contenido de una página mediante etiquetas.
 
 ## Características Principales
 

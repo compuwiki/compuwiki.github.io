@@ -1,9 +1,9 @@
 ---
-title: Markdown (MD)
+title: Markdown
 tags: [markdown, markup, frontend]
 ---
 
-Markdown es un lenguaje de marcado ligero utilizado para formatear texto de manera sencilla y legible. Es ampliamente usado en documentación, blogs y archivos README.
+MD (Markdown) es un lenguaje de marcado ligero utilizado para formatear texto de manera sencilla y legible. Es ampliamente usado en documentación, blogs y archivos README.
 
 ## Características Principales
 

@@ -13,21 +13,21 @@ El desarrollo web se divide en varias áreas clave, cada una con tecnologías es
 
 El marcado define la estructura de una página web.
 
-- [HTML (HyperText Markup Language)](./frontend/markup/html.md): Lenguaje estándar para la estructura de páginas web.
-- [Markdown (MD)](./frontend/markup/md.md): Sintaxis ligera de marcado, comúnmente usada para documentación.
-- [XML (Extensible Markup Language)](./frontend/markup/xml.md): Lenguaje de marcado usado para estructurar datos de manera jerárquica.
+- [HTML (HyperText Markup Language)](/frontend/markup/html.md): Lenguaje estándar para la estructura de páginas web.
+- [Markdown (MD)](/frontend/markup/md.md): Sintaxis ligera de marcado, comúnmente usada para documentación.
+- [XML (Extensible Markup Language)](/frontend/markup/xml.md): Lenguaje de marcado usado para estructurar datos de manera jerárquica.
 
 ### 2. Estilos y Diseño
 
 Los estilos dan formato y apariencia a las páginas web.
 
-- [CSS (Cascading Style Sheets)](./frontend/styles/css.md): Lenguaje de estilos utilizado para definir el diseño y la presentación de las páginas web.
+- [CSS (Cascading Style Sheets)](/frontend/styles/css.md): Lenguaje de estilos utilizado para definir el diseño y la presentación de las páginas web.
 
 ### 3. Programación e Interactividad
 
 La programación permite la creación de experiencias dinámicas e interactivas.
 
-- [JavaScript (JS)](./frontend/programming/js.md): Lenguaje de programación principal en la web para agregar interactividad y funcionalidad.
+- [JavaScript (JS)](/frontend/programming/js.md): Lenguaje de programación principal en la web para agregar interactividad y funcionalidad.
 
 ## Recursos Adicionales
 

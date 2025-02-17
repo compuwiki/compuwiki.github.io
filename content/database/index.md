@@ -1,5 +1,5 @@
 ---
-title: Bases de Datosss
+title: Bases de Datos
 tags: [database, sql, no-sql]
 ---
 

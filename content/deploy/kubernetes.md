@@ -27,6 +27,8 @@ kubectl delete pod mi-pod # Eliminar un pod específico
 kubectl apply -f app.yaml # Aplicar cambios a una configuración
 ```
 
+![k8s-easy](./img/k8s-easy.png)
+
 ## Recursos Adicionales
 
 - [Documentación Oficial de Kubernetes](https://kubernetes.io/docs/)

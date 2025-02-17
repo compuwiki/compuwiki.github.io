@@ -1,68 +1,68 @@
 ---
-title: SQL database
+title: Bases de datos relacionales
 ---
 
-## Relational databases
+## Bases de datos relacionales
 
-In a relational database, primary keys and foreign keys play a crucial role in structuring tables and establishing relationships between them.
+En una base de datos relacional, las claves primarias y las claves externas desempeñan un papel crucial en la estructuración de las tablas y el establecimiento de relaciones entre ellas.
 
-- **Primary Key:** A primary key is a field or set of fields that uniquely identifies each record in a table. Its use ensures data integrity and facilitates efficient querying.
-- **Foreign Key:** A foreign key is a field or set of fields in a table that establishes a relationship with the primary key of another table. This allows for linking between tables and performing relational operations.
+- Clave primaria:** Una clave primaria es un campo o conjunto de campos que identifica de forma única cada registro de una tabla. Su uso garantiza la integridad de los datos y facilita una consulta eficiente.
+- **Clave externa:** Una clave externa es un campo o conjunto de campos de una tabla que establece una relación con la clave primaria de otra tabla. Esto permite enlazar entre tablas y realizar operaciones relacionales.
 
-### Importance of Primary and Foreign Keys
+### Importancia de las Claves Primaria y Foránea
 
-While not mandatory, it's recommended that each table has a primary key to ensure record uniqueness. Foreign keys are used to establish relationships between tables, enabling efficient querying and maintaining referential integrity in the database.
+Aunque no es obligatorio, se recomienda que cada tabla tenga una clave primaria para garantizar la unicidad de los registros. Las claves foráneas se utilizan para establecer relaciones entre tablas, permitiendo realizar consultas eficientes y mantener la integridad referencial en la base de datos.
 
-### Concept of tables
+### Concepto de tablas
 
-- Column: Attribute or Field / (Columna = atributo = campo)
-- Row: Record or Tuple / (Fila = Registro = Tupla)
-_Cell = value of a field_
+- Columna: Atributo o campo / (Columna = atributo = campo)
+- Fila: Registro o tupla / (Fila = Registro = Tupla)
+Celda = valor de un campo
 
-### Establishing Relationships Without Foreign Keys
+### Establecimiento de Relaciones sin Claves Foráneas
 
-Although using foreign keys is standard for defining table relationships, there are alternative methods to relate data:
+Aunque el uso de claves foráneas es estándar para definir relaciones entre tablas, existen métodos alternativos para relacionar datos:
 
-1. **Manual Column Matching:** Relating data based on comparing values in specific columns, although this requires careful management to maintain integrity.
+1. **Coincidencia Manual de Columnas:** Relacionar datos basándose en la comparación de valores en columnas específicas, aunque esto requiere una gestión cuidadosa para mantener la integridad.
 
-2. **Joining Tables Using Queries (JOIN):** It's possible to relate tables in SQL queries using JOIN clauses, without explicit foreign keys.
+2. **Joining Tables Using Queries (JOIN):** Es posible relacionar tablas en consultas SQL utilizando cláusulas JOIN, sin claves foráneas explícitas.
 
-## Steps to Designing and Creating a Database
+## Pasos para diseñar y crear una base de datos
 
-1. Defining the Discourse Universe: Identify the scope and requirements of the database, including the type of information to store and end-users.
+1. Definir el universo del discurso: Identificar el alcance y los requisitos de la base de datos, incluyendo el tipo de información a almacenar y los usuarios finales.
 
-2. Entity-Relationship (ER) Model Design: Create an ER diagram representing entities, attributes, and key relationships.
+2. Diseño del Modelo Entidad-Relación (ER): Crear un diagrama ER que represente entidades, atributos y relaciones clave.
 
-3. Normalization: Ensure the ER model is in a normalized form to reduce redundancy and improve data structure.
+3. Normalización: Asegurarse de que el modelo ER está en una forma normalizada para reducir la redundancia y mejorar la estructura de datos.
 
-4. Relational Model Design: Transform the ER design into relational tables that comply with referential integrity rules.
+4. Diseño del modelo relacional: Transformar el diseño ER en tablas relacionales que cumplan con las reglas de integridad referencial.
 
-5. Logical Model: Define the data structure with data types, primary keys, foreign keys, and constraints.
+5. Modelo lógico: Definir la estructura de datos con tipos de datos, claves primarias, claves foráneas y restricciones.
 
-6. Physical Model: Decide how the database will be implemented in a specific database management system (DBMS), considering storage, performance, and indexing.
+6. Modelo físico: Decidir cómo se implementará la base de datos en un sistema de gestión de bases de datos (SGBD) específico, teniendo en cuenta el almacenamiento, el rendimiento y la indexación.
 
-7. Database Creation and SQL: Execute SQL statements to create the database based on the physical design, including table creation, indexes, views, and query/stored procedure definitions.
+7. Creación de la base de datos y SQL: Ejecutar sentencias SQL para crear la base de datos basada en el diseño físico, incluyendo la creación de tablas, índices, vistas y definiciones de consultas/procedimientos almacenados.
 
-## Installing an SQL Database
+## Instalación de una base de datos SQL
 
-To use an SQL database on a computer, you only need to install 2 things:
+Para utilizar una base de datos SQL en un ordenador, sólo es necesario instalar 2 cosas:
 
-- **database server**
-  - database server: SQL-Server instance
-  - web server: apache-http-server, nginx, IIS-windows-server
-- **database client**: phpMyAdmin, DBeaver, Navicat, SQL-Server-Management-Studio
+- **servidor de base de datos**
+  - servidor de base de datos: instancia de SQL-Server
+  - servidor web: apache-http-server, nginx, IIS-windows-server
+- **cliente de base de datos**: phpMyAdmin, DBeaver, Navicat, SQL-Server-Management-Studio
 
-Here are some examples of the complete infrastructure of an SQL Database
-    - MySQL with Apache HTTP Server via XAMPP: MySQL + Apache HTTP Server
-    - SQL Server with Microsoft IIS: SQL Server + Microsoft IIS
-    - PostgreSQL with Nginx: PostgreSQL + Nginx
-    - Oracle Database with Oracle HTTP Server: Oracle Database + Oracle HTTP Server
+He aquí algunos ejemplos de la infraestructura completa de una base de datos SQL
+    - MySQL con Apache HTTP Server vía XAMPP: MySQL + Apache HTTP Server
+    - SQL Server con Microsoft IIS: SQL Server + Microsoft IIS
+    - PostgreSQL con Nginx: PostgreSQL + Nginx
+    - Oracle Database con Oracle HTTP Server: Base de datos Oracle + Servidor HTTP Oracle
 
-### Using an SQL Database
+### Utilización de una base de datos SQL
 
-- **GUI Application (e.g., XAMPP with PHPMyAdmin)**: Launch a graphical interface to manage the web server and connect to the database client for executing queries.
+- **AplicaciónGUI (por ejemplo, XAMPP con PHPMyAdmin)**: Lanza una interfaz gráfica para gestionar el servidor web y conectar con el cliente de base de datos para ejecutar consultas.
 
-- **Command Line Interface (CLI)**: Start the web server and the database client and interact with the database directly from the terminal (cmd, PowerShell, or bash) using the following commands. This is useful for computer servers. To interact with MySQL you can do `mysql -h localhost -u root -p` or for SQL-server `sc start MSSQLSERVER`. Here are two scripts, one for CMD and the other for bash.
+- Interfaz de línea de comandos (CLI)**: Inicie el servidor web y el cliente de base de datos e interactúe con la base de datos directamente desde el terminal (cmd, PowerShell o bash) utilizando los siguientes comandos. Esto es útil para servidores informáticos. Para interactuar con MySQL puedes hacer `mysql -h localhost -u root -p` o para SQL-server `sc start MSSQLSERVER`. Aquí hay dos scripts, uno para CMD y el otro para bash.
 
 ```batch
 @echo off
@@ -79,6 +79,7 @@ echo Servicios de Apache y MySQL iniciados correctamente.
 
 ```sh
 #!/bin/bash
+
 # Función para verificar la existencia de un directorio
 check_directory() {
     if [ -d "$1" ]; then
@@ -89,6 +90,7 @@ check_directory() {
         return 1
     fi
 }
+
 # Verificar la existencia de directorios de configuración de Apache
 if check_directory "/etc/httpd"; then
     APACHE_CMD="httpd"
@@ -106,3 +108,5 @@ echo "Iniciando MySQL (mariadb)..."
 sudo systemctl start mariadb
 echo "Servicios de Apache ($APACHE_CMD) y MySQL iniciados correctamente."
 ```
+
+![sql-diagram](./img/sql-diagram.webp)

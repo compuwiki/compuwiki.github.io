@@ -1,8 +1,8 @@
 ---
-title: SQL Types
+title: Tipos SQL
 ---
 
-SQL, which stands for Structured Query Language, encompasses various types of commands for interacting with databases. These are the key categories:
+SQL, acrónimo de Structured Query Language (lenguaje de consulta estructurado), engloba varios tipos de comandos para interactuar con las bases de datos. Estas son las categorías principales:
 
 ---
 
@@ -33,26 +33,26 @@ REVOKE privileges ON object FROM user;
 - [DROP](#drop) (DATABASE, TABLE, COLUMN, TRIGGER)
 - [DDL Non-standard](#ddl-non-standard)
 
-### Starting and Configuring the Server and DBMS
+### Inicio y configuración del servidor y del DBMS
 
 ```sql
--- Start the server (Apache, Nginx, etc.) and DBMS (MariaDB, PostgreSQL, SQL Server) via GUI or CLI
+-- Iniciar el servidor (Apache, Nginx, etc.) y DBMS (MariaDB, PostgreSQL, SQL Server) a través de GUI o CLI
 
--- XAMPP on Windows
+-- XAMPP en Windows
 PS C:\> cd C:\xampp\mysql\bin\  # On Linux: /opt/lampp/mysql/bin
 PS C:\> ./mysql -u root -p
 ```
 
 ### CREATE
 
-#### Database
+- Database
 
 ```sql
 CREATE DATABASE test;
 CREATE DATABASE databasename;
 ```
 
-#### Table
+- Table
 
 ```sql
 CREATE TABLE IF NOT EXISTS Persons (
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS Persons (
 SHOW CREATE TABLE Orders;
 ```
 
-#### Function
+- Function
 
 ```sql
 CREATE FUNCTION NombreFuncion(@Parametro TipoDato)
@@ -84,14 +84,14 @@ END;
 SELECT dbo.NombreFuncion(Valor);
 ```
 
-#### Index
+- Index
 
 ```sql
 CREATE INDEX IX_NombreIndice
 ON Tabla(Columna);
 ```
 
-#### View
+- View
 
 ```sql
 CREATE VIEW VistaCliente AS
@@ -100,7 +100,7 @@ FROM Cliente
 WHERE Country = 'Brasil';
 ```
 
-#### Procedure
+- Procedure
 
 ```sql
 CREATE PROCEDURE NombreProcedimiento
@@ -116,7 +116,7 @@ END;
 
 > **Note:** In MySQL, use `DELIMITER $` to create a procedure.
 
-#### Trigger
+- Trigger
 
 ```sql
 DELIMITER $$
@@ -136,15 +136,9 @@ $$
 
 ### ALTER
 
-#### Database
-
 ```sql
 ALTER DATABASE comp SET DEFAULT CHARACTER SET LATIN9;
-```
 
-#### Table
-
-```sql
 ALTER TABLE Persons
 ADD FOREIGN KEY (Country) REFERENCES Country(ID);
 ```
@@ -166,7 +160,6 @@ DROP TRIGGER IF EXISTS tr_change_price;
 - [INSERT](#insert)
 - [UPDATE](#update)
 - [DELETE](#delete)
-- [DML Non-standard](#dml-non-standard)
 
 ### SELECT
 
@@ -221,7 +214,7 @@ ROLLBACK TO SAVEPOINT savepoint_name;
 
 ---
 
-## Utility Commands
+## Comandos útiles
 
 ### SHOW
 
@@ -261,7 +254,7 @@ DELIMITER $$
 
 This document provides a structured overview of SQL commands categorized under DCL, DDL, DML, DQL, and TCL for easy reference.
 
-## References
+## Referencias
 
 - [SQL - W3School](https://www.w3schools.com/sql/default.asp)
 - [MySQL - W3School](https://www.w3schools.com/mysql/)

@@ -1,5 +1,5 @@
 ---
-title: Despliegue de Aplicaciones
+title: Despliegue de Apps
 tags: [deploy, infraestructura, devops]
 ---
 

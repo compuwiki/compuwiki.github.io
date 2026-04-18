@@ -1,62 +1,35 @@
-# Quartz Wiki
+# Compuwiki
 
-Quartz es un generardor de sitios estáticos que sirve para crear wikis personales con archivos Markdown.
+Wiki personal de tecnologia construido con Quartz.
 
-## Instalación y Configuración
+## Requisitos
 
-### 1. Clonar el repositorio de Quartz
+- Node.js 20 o superior
+- npm 9 o superior
 
-```sh
-git clone https://github.com/jackyzha0/quartz.git my-wiki
-cd my-wiki
+## Uso rapido
+
+1. Instalar dependencias:
+
+```bash
+npm install
 ```
 
-### 2. Instalar dependencias
+2. Levantar servidor local:
 
-```sh
-yarn install
+```bash
+npx quartz build --serve
 ```
 
-### 3. Iniciar el servidor local
+3. Editar contenidos dentro de la carpeta content.
 
-```sh
-yarn dev
-```
+## Scripts utiles
 
-El servidor se ejecutará en `http://localhost:8080`.
+- Desarrollo con salida en docs: npm run docs
+- Revisar tipos y formato: npm run check
+- Formatear codigo: npm run format
+- Ejecutar tests: npm run test
 
-### 4. Desplegar en GitHub Pages
+## Licencia
 
-```sh
-git add .
-git commit -m "Deploy Quartz Wiki"
-git push origin main
-```
-
-## Estructura del Proyecto
-
-```
-my-wiki/
-│── content/          # Archivos Markdown de la wiki
-│── assets/           # Recursos estáticos (imágenes, estilos, etc.)
-│── layouts/          # Plantillas HTML personalizadas
-│── quartz.config.ts  # Configuración de Quartz
-│── README.md         # Este archivo
-│── package.json      # Dependencias del proyecto
-```
-
-## Personalización
-
-- Modificar `quartz.config.ts` para cambiar la configuración.
-- Editar archivos en `content/` para agregar nuevos artículos.
-- Personalizar estilos en `assets/`.
-
-## Comandos Útiles
-
-| Comando | Descripción |
-|---------|------------|
-| `yarn dev` | Inicia el servidor de desarrollo |
-| `yarn build` | Genera los archivos estáticos |
-| `yarn deploy` | Publica la wiki en GitHub Pages |
-
-Para más detalles, consulta la [documentación oficial](https://quartz.jzhao.xyz/).
+MIT

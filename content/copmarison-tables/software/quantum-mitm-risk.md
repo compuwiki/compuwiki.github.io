@@ -1,5 +1,5 @@
 ---
-title: Quantum Threat Assessment: MITM Risk vs Cryptographic Defenses
+title: "Quantum Threat Assessment: MITM Risk vs Cryptographic Defenses"
 ---
 
 # Quantum Threat Assessment: MITM Risk vs Cryptographic Defenses

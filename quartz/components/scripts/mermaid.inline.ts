@@ -144,8 +144,10 @@ const cssVars = [
 ] as const
 
 let mermaidImport = undefined
-document.addEventListener("nav", async () => {
-  const center = document.querySelector(".center") as HTMLElement
+const renderMermaidDiagrams = async () => {
+  const center = document.querySelector(".center") as HTMLElement | null
+  if (!center) return
+
   const nodes = center.querySelectorAll("code.mermaid") as NodeListOf<HTMLElement>
   if (nodes.length === 0) return
 
@@ -245,4 +247,10 @@ document.addEventListener("nav", async () => {
       document.removeEventListener("keydown", handleEscape)
     })
   }
+}
+
+document.addEventListener("nav", () => {
+  void renderMermaidDiagrams()
 })
+
+void renderMermaidDiagrams()

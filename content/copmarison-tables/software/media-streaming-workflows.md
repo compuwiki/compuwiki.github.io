@@ -2,8 +2,6 @@
 title: Media Streaming Diagrams
 ---
 
-# Media Streaming Diagrams
-
 Below are Mermaid diagrams that illustrate different Video Streaming Workflows.
 
 ## Self-Hosted Library (Usenet/Torrent)

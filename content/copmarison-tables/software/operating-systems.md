@@ -2,7 +2,7 @@
 title: Operating Systems
 ---
 
-# Operating Systems
+# Operating Systems Table
 
 :sparkles:
 

@@ -2,8 +2,6 @@
 title: Development Stack
 ---
 
-# Development Stack
-
 ## Table of Content
 
 - [Complete Development Stack (All Approaches)](#complete-development-stack-all-approaches)

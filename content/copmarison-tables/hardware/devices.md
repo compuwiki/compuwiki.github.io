@@ -2,8 +2,6 @@
 title: Devices
 ---
 
-# Comparative Table of Smartphones
-
 ## High-End Flagship Smartphone Models
 
 | Model / Brand               | iPhone 17 Pro                                                          | Samsung Galaxy S25 Ultra                                                | OPPO Find X9 Pro                                                         | OnePlus 15                                                       | Google Pixel 10 Pro                                              | Xiaomi 17 Pro                                                       |

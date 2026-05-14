@@ -2,8 +2,6 @@
 title: "Quantum Threat Assessment: MITM Risk vs Cryptographic Defenses"
 ---
 
-# Quantum Threat Assessment: MITM Risk vs Cryptographic Defenses
-
 ## Expanded Summary Table: Quantum MITM Risk vs Cryptographic Defenses
 
 | System / Cryptosystem                  | Key Size     | Logical Qubits Needed (Shor) | Estimated Attack Time (Optimistic) | Quantum MITM Risk   | Notes                                                                                                               |

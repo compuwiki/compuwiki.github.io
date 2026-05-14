@@ -2,7 +2,7 @@
 title: Media Streaming
 ---
 
-# Media Streaming
+## Media Streaming Table
 
 | Category               | Top 5 apps / platforms                                                   | Who controls   | Distribution        | Decentralization   | Catalog  | Core technology       | Cost        |
 |------------------------|--------------------------------------------------------------------------|----------------|---------------------|--------------------|----------|-----------------------|-------------|

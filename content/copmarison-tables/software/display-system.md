@@ -2,10 +2,6 @@
 title: Display System Architecture Diagrams
 ---
 
-# Display System Architecture Diagrams
-
----
-
 ## Android Display Stack
 
 ```mermaid

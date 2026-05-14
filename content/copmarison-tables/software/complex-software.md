@@ -2,8 +2,6 @@
 title: Vault of Complex Software – Productivity Atlas
 ---
 
-# **Vault of Complex Software – Productivity Atlas**
-
 ## Apps
 
 | Category              | App                      | Typical Device   | Hidden Power | Primary Interaction Type | Shortcut / Command Sources                                                                                                                                                                                                                                                                                                                                                                                                       |

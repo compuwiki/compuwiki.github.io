@@ -2,8 +2,6 @@
 title: Casting & Wireless Content Transmission Methods
 ---
 
-# Technical Overview: Casting & Wireless Content Transmission Methods
-
 ## Comparison Table
 
 | Protocol / Method | Type of Transmission              | Compatible Apps / OS                                                                    | Compatible Receiver Devices / OS                       | Network / Signal Used |

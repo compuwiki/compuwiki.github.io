@@ -3,7 +3,7 @@ import { PluggableList } from "unified"
 import { SKIP, visit } from "unist-util-visit"
 import { ReplaceFunction, findAndReplace as mdastFindReplace } from "mdast-util-find-and-replace"
 import { Root, Html, Paragraph, Text, Link, Parent } from "mdast"
-import { Node } from "unist"
+import type { Node } from "unist"
 import { VFile } from "vfile"
 import { BuildVisitor } from "unist-util-visit"
 

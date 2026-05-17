@@ -11,7 +11,7 @@ on:
 
 jobs:
   build-and-test:
-    if: ${{ github.repository == 'jackyzha0/quartz' }}
+    if: ${{ github.repository == 'compuwiki/compuwiki.github.io' }}
     strategy:
       matrix:
         os: [windows-latest, macos-latest, ubuntu-latest]
@@ -27,28 +27,26 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: pnpm
 
-      - name: Cache dependencies
-        uses: actions/cache@v4
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          version: 11.1.1
 
-      - run: npm ci
+      - run: pnpm install --frozen-lockfile
 
       - name: Check types and style
-        run: npm run check
+        run: pnpm run check
 
       - name: Test
-        run: npm test
+        run: pnpm run test
 
       - name: Ensure Quartz builds, check bundle info
-        run: npx quartz build --bundleInfo
+        run: pnpm run quartz -- build --bundleInfo
 
   publish-tag:
-    if: ${{ github.repository == 'jackyzha0/quartz' && github.ref == 'refs/heads/v4' }}
+    if: ${{ github.repository == 'compuwiki/compuwiki.github.io' && github.ref == 'refs/heads/v4' }}
     runs-on: ubuntu-latest
     permissions:
       contents: write

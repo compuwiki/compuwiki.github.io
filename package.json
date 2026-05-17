@@ -4,6 +4,7 @@
   "private": true,
   "version": "4.4.0",
   "type": "module",
+  "packageManager": "pnpm@11.1.1",
   "author": "jackyzha0 <j.zhao2k19@gmail.com>",
   "license": "MIT",
   "homepage": "https://quartz.jzhao.xyz",
@@ -12,16 +13,16 @@
     "url": "https://github.com/jackyzha0/quartz.git"
   },
   "scripts": {
-    "quartz": "./quartz/bootstrap-cli.mjs",
-    "docs": "npx quartz build --serve -d docs",
-    "check": "tsc --noEmit && npx prettier . --check",
-    "format": "npx prettier . --write",
+    "quartz": "node ./quartz/bootstrap-cli.mjs",
+    "docs": "node ./quartz/bootstrap-cli.mjs build --serve -d docs",
+    "check": "tsc --noEmit && pnpm exec prettier . --check",
+    "format": "pnpm exec prettier . --write",
     "test": "tsx ./quartz/util/path.test.ts && tsx ./quartz/depgraph.test.ts",
-    "profile": "0x -D prof ./quartz/bootstrap-cli.mjs build --concurrency=1"
+    "profile": "0x -D prof node ./quartz/bootstrap-cli.mjs build --concurrency=1"
   },
   "engines": {
-    "npm": ">=9.3.1",
-    "node": "20 || >=22"
+    "node": "20 || >=22",
+    "pnpm": ">=11"
   },
   "keywords": [
     "site generator",

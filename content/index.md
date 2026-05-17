@@ -1,40 +1,20 @@
 ---
 title: Index
-tags: [wiki, índice]
+tags: [wiki, index]
 ---
 
-Bienvenido a "CompuWiki"  la wiki sobre desarrollo web, bases de datos, despliegue y programación. Usa los siguientes enlaces para navegar entre las secciones:
+Welcome to **CompuWiki** — a personal knowledge base on web development, databases, deployment, and computer science concepts. For language and tool quick-references, see the [cheatsheets repo](https://github.com/David7ce-user/dev-hub) (learnxinyminutes-style syntax sheets); this wiki focuses on concepts, comparisons, and tutorials instead.
 
-## [Desarrollo Web](./web-dev/)
+## Sections
 
-- **Frontend**
-  - [Marcado](./web-dev/frontend/markup/)
-  - [Programación](./web-dev/frontend/programming/)
-  - [Estilos](./web-dev/frontend/styles/)
-- **Backend**
-  - [Java Spring](./web-dev/backend/java-spring.md)
+- [Concepts](./concepts/) — CS fundamentals, OOP, data structures, exercises.
+- [Web](./web/) — concepts, best practices, history, and backend tutorials.
+- [Databases](./databases/) — SQL and NoSQL.
+- [Deployment](./deployment/) — DNS, Docker, Kubernetes, web servers.
+- [Comparisons](./comparisons/) — hardware and software comparison tables.
+- [Meta](./meta/) — agent/skill configs, project prompts.
 
-## [Bases de Datos](./database/sql/)
+## Loose pages
 
-- **SQL**
-  - [Joins](./database/sql/joins/)
-  - [Comandos SQL](./database/sql/sql-commands/)
-  - [Bases de Datos SQL](./database/sql/sql-database.md)
-  - [Subconsultas SQL](./database/sql/sql-subquery.md)
-  - [Resumen de T-SQL](./database/sql/t-sql-resumen.md)
-- **NoSQL**
-  - [Bases de Datos NoSQL](./database/no-sql/)
-
-## [Despliegue](./deploy/)
-
-- [DNS](./deploy/dns.md)
-- [Docker](./deploy/docker.md)
-- [Kubernetes](./deploy/kubernetes.md)
-- [Servidor Web](./deploy/servidor-web.md)
-
-## [Programación](./programming/)
-
-- **C#**
-  - [Apuntes sobre .NET](./programming/cs/apuntes-dotnet/)
-  - [Conceptos Claves](./programming/cs/conceptos/)
-  - [Ejercicios Prácticos](./programming/cs/ejercicios/)
+- [Bookmarks](./bookmarks.md)
+- [Notes](./notes.md)

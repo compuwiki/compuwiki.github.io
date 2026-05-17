@@ -24,10 +24,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: pnpm
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.1.1
       - name: Install Dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
       - name: Build Quartz
-        run: npx quartz build
+        run: pnpm run quartz -- build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

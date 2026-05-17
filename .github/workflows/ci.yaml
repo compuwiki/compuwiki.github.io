@@ -68,7 +68,7 @@ jobs:
         run: pnpm run test
 
       - name: Ensure Quartz builds
-        run: pnpm run quartz -- build --bundleInfo
+        run: node ./quartz/bootstrap-cli.mjs build --bundleInfo
 
   publish-tag:
     if: ${{ github.repository == 'compuwiki/compuwiki.github.io' && github.ref == 'refs/heads/v4' }}

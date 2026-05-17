@@ -56,7 +56,15 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build Quartz
-        run: pnpm run quartz -- build
+        run: node ./quartz/bootstrap-cli.mjs build
+
+      - name: Verify build output
+        run: |
+          if [ ! -d public ]; then
+            echo "Expected output directory 'public' was not created"
+            exit 1
+          fi
+          ls -la public | head -n 20
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

@@ -5,6 +5,9 @@ on:
     branches:
       - v4
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 permissions:
   contents: read
   pages: write
@@ -28,6 +31,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22.13.1
+
+      - name: Update Corepack
+        run: npm install -g corepack@latest
 
       - name: Enable Corepack
         run: corepack enable

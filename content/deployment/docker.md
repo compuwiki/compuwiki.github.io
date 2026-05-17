@@ -43,7 +43,7 @@ docker rm ID    # Eliminar un contenedor
 Ejemplo de `docker-compose.yml`:
 
 ```yaml
-version: '3'
+version: "3"
 services:
   web:
     image: nginx

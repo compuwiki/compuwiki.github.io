@@ -23,7 +23,7 @@ title: ASP.NET MVC con Auth y DbFirst
 Install-Package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore -Version 8.0.10; Install-Package Microsoft.AspNetCore.Identity.EntityFrameworkCore -Version 8.0.10; Install-Package Microsoft.AspNetCore.Identity.UI -Version 8.0.10; Install-Package Microsoft.EntityFrameworkCore.SqlServer -Version 8.0.10; Install-Package Microsoft.EntityFrameworkCore.Tools -Version 8.0.10; Install-Package Microsoft.VisualStudio.Web.CodeGeneration.Design -Version 8.0.7;
 ```
 
-- B. Edita el archivo `.csproj` para incluir las dependencias de los paquetes nuget necesarios. (recomendado*)
+- B. Edita el archivo `.csproj` para incluir las dependencias de los paquetes nuget necesarios. (recomendado\*)
 
 ```xml
   <ItemGroup>
@@ -191,8 +191,8 @@ if (!roleResult.Succeeded)
 
 ```html
 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
- <ul class="navbar-nav flex-grow-1"></ul>
-    <partial name="_LoginPartial" />
+  <ul class="navbar-nav flex-grow-1"></ul>
+  <partial name="_LoginPartial" />
 </div>
 ```
 
@@ -226,7 +226,10 @@ public class AdminNombreController : Controller
 
 ```html
 <div>
-    <a asp-action="Create" asp-controller="Series" asp-route-genreId="ViewData.GenreId">Crear nueva X</a>
+     
+  <a asp-action="Create" asp-controller="Series" asp-route-genreId="ViewData.GenreId"
+    >Crear nueva X</a
+  >
 </div>
 ```
 

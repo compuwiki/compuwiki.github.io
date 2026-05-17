@@ -22,16 +22,15 @@ Web servers can be categorized based on the software they use to serve web pages
 
 7. Apache Tomcat: Apache Tomcat is a Java-based web server and servlet container. It is commonly used to deploy Java-based web applications and is often used in enterprise environments.
 
-8. [Caddyserver](https://caddyserver.com/): Caddy 2 is a powerful, enterprise-ready, open source web server with automatic HTTPS written in Go 
-
+8. [Caddyserver](https://caddyserver.com/): Caddy 2 is a powerful, enterprise-ready, open source web server with automatic HTTPS written in Go
 
 ## Configure your a web server
 
 Configuring your own web server involves setting up and configuring the necessary software, configuring the server and network settings, and uploading your website files to the server. Here are some general steps to follow:
 
-0. First you need a dedicated computer machine locally or remotely, with a hardware and a Operating System. 
-    - Hardware: (CPU, GPU, cooling, box, etc)
-    - Operating System: FreeBSD, Linux (Ubuntu server, CentOS, Clear OS, Debian Server, Fedora Server, SUSE Server), Windows Server
+0. First you need a dedicated computer machine locally or remotely, with a hardware and a Operating System.
+   - Hardware: (CPU, GPU, cooling, box, etc)
+   - Operating System: FreeBSD, Linux (Ubuntu server, CentOS, Clear OS, Debian Server, Fedora Server, SUSE Server), Windows Server
 
 1. Choose your web server software: Decide on the web server software you want to use. Apache and Nginx are two popular open-source options.
 
@@ -53,14 +52,12 @@ Configuring your own web server involves setting up and configuring the necessar
 
 Note: The exact steps for configuring your own web server may vary depending on your server's operating system, the web server software you choose, and your specific needs and requirements. It is important to follow best practices for security and to keep your software up-to-date to ensure a secure and stable web server.
 
-
 ## Use a web hosting service
 
 If you choose a web hosting service you can directly go to step 5, because the web server and the machine is already preconfigured. There are many options available, including shared hosting, VPS hosting, cloud hosting, and dedicated hosting. Choose a hosting service that fits your needs and budget.
 
 - For version control system (with Git): [GitHub](https://github.com/), [GitLab](https://about.gitlab.com/), [Bitbucket](https://bitbucket.com/)
 - Platform web service: [Amazon Web Service (AWS)](https://aws.amazon.com/), [Google Cloud](https://cloud.google.com/)
-
 
 ### SSG Deoploy
 
@@ -76,7 +73,6 @@ Most websites require a server fee, however, websites that do not require a data
 - [Netlify](https://app.netlify.com/signup)
 - [Surge](https://surge.sh/)
 - [TIiny](https://tiiny.host/)
-
 
 ## Delpying in Machines
 

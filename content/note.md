@@ -4,15 +4,15 @@
 
 | Emoji | Shortcode            | Name                 |
 | ----- | -------------------- | -------------------- |
-| ✨     | `:sparkles:`         | Sparkles/Recommended |
+| ✨    | `:sparkles:`         | Sparkles/Recommended |
 | 🍎    | `:apple:`            | macOS/Apple          |
 | 🐧    | `:penguin:`          | Linux/Penguin        |
 | 👹    | `:imp:`              | BSD/Demon            |
 | 👿    | `:smiling_imp:`      | Solaris/Devil        |
 | 🪟    | `:window:`           | Windows              |
 | ☁️    | `:cloud:`            | Cloud/HarmonyOS      |
-| ❌     | `:x:`                | Failure/Not Working  |
-| ✅     | `:white_check_mark:` | Success/Working      |
+| ❌    | `:x:`                | Failure/Not Working  |
+| ✅    | `:white_check_mark:` | Success/Working      |
 | ☀️    | `:sunny:`            | SunOS/Sun            |
 | 🔧    | `:wrench:`           | Tools/Config         |
 | ⚙️    | `:gear:`             | Settings/Components  |

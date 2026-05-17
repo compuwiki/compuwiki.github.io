@@ -120,7 +120,7 @@ title: SQL resumen
 ## Language elements
 
 - **General**
-  - [x] Comment (-- or /**/)
+  - [x] Comment (-- or /\*\*/)
   - [x] EXECUTE
   - [x] PRINT
   - [x] RAISERROR
@@ -158,7 +158,7 @@ title: SQL resumen
   - **Arithmetic**
     - [x] +, +=
     - [x] -. -=
-    - [x] *,*=
+    - [x] _,_=
     - [x] /, /=
     - [x] %, %=
   - **Bit**
@@ -168,7 +168,7 @@ title: SQL resumen
     - [x] ~
   - **Comparator**
     - [x] =
-    - [x] >, >=
+    - [x] > , >=
     - [x] <, <=
     - [x] != or <>
   - **Logical**
@@ -193,12 +193,12 @@ title: SQL resumen
     - [ ] STRING_SPLIT
   - **String**
     - [x] =
-    - [x] +
+    - [x] -
     - [x] +=
     - [x] %
     - [x] [ ]
     - [x] [^]
-    - [x] _
+    - [x] \_
 - **Transactions**
   - [ ] BEGIN DISTRIBUTED TRANSACTION
   - [x] BEGIN TRANSACTION

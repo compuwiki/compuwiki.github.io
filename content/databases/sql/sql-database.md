@@ -6,7 +6,7 @@ title: Bases de datos relacionales
 
 En una base de datos relacional, las claves primarias y las claves externas desempeñan un papel crucial en la estructuración de las tablas y el establecimiento de relaciones entre ellas.
 
-- Clave primaria:** Una clave primaria es un campo o conjunto de campos que identifica de forma única cada registro de una tabla. Su uso garantiza la integridad de los datos y facilita una consulta eficiente.
+- Clave primaria:\*\* Una clave primaria es un campo o conjunto de campos que identifica de forma única cada registro de una tabla. Su uso garantiza la integridad de los datos y facilita una consulta eficiente.
 - **Clave externa:** Una clave externa es un campo o conjunto de campos de una tabla que establece una relación con la clave primaria de otra tabla. Esto permite enlazar entre tablas y realizar operaciones relacionales.
 
 ### Importancia de las Claves Primaria y Foránea
@@ -17,7 +17,7 @@ Aunque no es obligatorio, se recomienda que cada tabla tenga una clave primaria 
 
 - Columna: Atributo o campo / (Columna = atributo = campo)
 - Fila: Registro o tupla / (Fila = Registro = Tupla)
-Celda = valor de un campo
+  Celda = valor de un campo
 
 ### Establecimiento de Relaciones sin Claves Foráneas
 
@@ -52,17 +52,13 @@ Para utilizar una base de datos SQL en un ordenador, sólo es necesario instalar
   - servidor web: apache-http-server, nginx, IIS-windows-server
 - **cliente de base de datos**: phpMyAdmin, DBeaver, Navicat, SQL-Server-Management-Studio
 
-He aquí algunos ejemplos de la infraestructura completa de una base de datos SQL
-    - MySQL con Apache HTTP Server vía XAMPP: MySQL + Apache HTTP Server
-    - SQL Server con Microsoft IIS: SQL Server + Microsoft IIS
-    - PostgreSQL con Nginx: PostgreSQL + Nginx
-    - Oracle Database con Oracle HTTP Server: Base de datos Oracle + Servidor HTTP Oracle
+He aquí algunos ejemplos de la infraestructura completa de una base de datos SQL - MySQL con Apache HTTP Server vía XAMPP: MySQL + Apache HTTP Server - SQL Server con Microsoft IIS: SQL Server + Microsoft IIS - PostgreSQL con Nginx: PostgreSQL + Nginx - Oracle Database con Oracle HTTP Server: Base de datos Oracle + Servidor HTTP Oracle
 
 ### Utilización de una base de datos SQL
 
 - **AplicaciónGUI (por ejemplo, XAMPP con PHPMyAdmin)**: Lanza una interfaz gráfica para gestionar el servidor web y conectar con el cliente de base de datos para ejecutar consultas.
 
-- Interfaz de línea de comandos (CLI)**: Inicie el servidor web y el cliente de base de datos e interactúe con la base de datos directamente desde el terminal (cmd, PowerShell o bash) utilizando los siguientes comandos. Esto es útil para servidores informáticos. Para interactuar con MySQL puedes hacer `mysql -h localhost -u root -p` o para SQL-server `sc start MSSQLSERVER`. Aquí hay dos scripts, uno para CMD y el otro para bash.
+- Interfaz de línea de comandos (CLI)\*\*: Inicie el servidor web y el cliente de base de datos e interactúe con la base de datos directamente desde el terminal (cmd, PowerShell o bash) utilizando los siguientes comandos. Esto es útil para servidores informáticos. Para interactuar con MySQL puedes hacer `mysql -h localhost -u root -p` o para SQL-server `sc start MSSQLSERVER`. Aquí hay dos scripts, uno para CMD y el otro para bash.
 
 ```batch
 @echo off

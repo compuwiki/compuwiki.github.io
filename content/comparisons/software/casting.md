@@ -5,7 +5,7 @@ title: Casting & Wireless Content Transmission Methods
 ## Comparison Table
 
 | Protocol / Method | Type of Transmission              | Compatible Apps / OS                                                                    | Compatible Receiver Devices / OS                       | Network / Signal Used |
-|-------------------|-----------------------------------|-----------------------------------------------------------------------------------------|--------------------------------------------------------|-----------------------|
+| ----------------- | --------------------------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------ | --------------------- |
 | Google Cast       | Media streaming, screen mirroring | YouTube, Netflix, Chrome, VLC, Spotify (Android, iOS, Windows, macOS, Linux)            | Chromecast, Google TV, Android TV, Smart TVs, speakers | Wi-Fi (LAN)           |
 | Miracast          | Screen mirroring                  | Windows (native), Android (native/apps), Linux (limited), macOS (limited)               | Smart TVs, Windows PCs, Miracast dongles               | Wi-Fi Direct          |
 | DLNA/UPnP         | Media streaming, file sharing     | Windows Media Player, VLC, BubbleUPnP, AllConnect (Windows, macOS, Linux, Android, iOS) | Smart TVs, media players, Windows, macOS, Linux        | Wi-Fi, LAN            |

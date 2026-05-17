@@ -76,7 +76,7 @@ flowchart LR
 ## Pros and Cons by Workflow
 
 | Workflow                             | Sample Apps                         | Pros                                               | Cons                                            |
-|--------------------------------------|-------------------------------------|----------------------------------------------------|-------------------------------------------------|
+| ------------------------------------ | ----------------------------------- | -------------------------------------------------- | ----------------------------------------------- |
 | Self-Hosted Library (Usenet/Torrent) | Plex, Emby, Jellyfin                | Full library control; automation friendly          | More services and setup; storage required       |
 | Addon-Based Streaming                | Stremio, P-Stream, PlayTorrio       | Simple app UX; broad catalogs; fast cached streams | Addon churn; third-party risk; uneven metadata  |
 | IPTV                                 | IPTV Smarters, VLC                  | Live channels; simple client setup                 | Provider quality varies; unstable lineups       |

@@ -18,9 +18,9 @@ flowchart TD
 
 **Notes**
 
-* SurfaceFlinger is the system compositor.
-* Hardware Composer (HWC) offloads composition to GPU or dedicated display hardware.
-* Android moved fully away from X long ago; it is a purpose-built stack.
+- SurfaceFlinger is the system compositor.
+- Hardware Composer (HWC) offloads composition to GPU or dedicated display hardware.
+- Android moved fully away from X long ago; it is a purpose-built stack.
 
 ---
 
@@ -39,9 +39,9 @@ flowchart TD
 
 **Notes**
 
-* Core Animation handles compositing.
-* Metal is the primary modern graphics API.
-* WindowServer coordinates surface composition across apps.
+- Core Animation handles compositing.
+- Metal is the primary modern graphics API.
+- WindowServer coordinates surface composition across apps.
 
 ---
 
@@ -60,8 +60,8 @@ flowchart TD
 
 **Notes**
 
-* Since Windows Vista, DWM always composites (no true “direct-to-front-buffer” GDI path anymore).
-* WDDM virtualizes GPU access.
+- Since Windows Vista, DWM always composites (no true “direct-to-front-buffer” GDI path anymore).
+- WDDM virtualizes GPU access.
 
 ---
 
@@ -80,8 +80,8 @@ flowchart TD
 
 **Notes**
 
-* Quartz Compositor handles compositing.
-* Metal is the preferred API; OpenGL is deprecated.
+- Quartz Compositor handles compositing.
+- Metal is the preferred API; OpenGL is deprecated.
 
 ---
 
@@ -101,9 +101,9 @@ flowchart TD
 
 **Notes**
 
-* Xorg acts as both display server and compositor (unless using a compositing WM).
-* Protocol is network-transparent by design.
-* GLX bridges OpenGL and X11.
+- Xorg acts as both display server and compositor (unless using a compositing WM).
+- Protocol is network-transparent by design.
+- GLX bridges OpenGL and X11.
 
 ---
 
@@ -123,16 +123,16 @@ flowchart TD
 
 **Notes**
 
-* No central “display server” like Xorg.
-* Compositor (e.g., Mutter, KWin, wlroots-based) owns display control.
-* Clients cannot directly inspect other windows (security improvement over X11).
+- No central “display server” like Xorg.
+- Compositor (e.g., Mutter, KWin, wlroots-based) owns display control.
+- Clients cannot directly inspect other windows (security improvement over X11).
 
 ---
 
 ## Comparative Tables
 
 | System                 | Display Server / Compositor            | Graphics API Focus | Network Transparency          | Window Isolation                                | Rendering Path Model                               | Kernel Interface |
-|------------------------|----------------------------------------|--------------------|-------------------------------|-------------------------------------------------|----------------------------------------------------|------------------|
+| ---------------------- | -------------------------------------- | ------------------ | ----------------------------- | ----------------------------------------------- | -------------------------------------------------- | ---------------- |
 | Android                | SurfaceFlinger                         | Vulkan / OpenGL ES | No                            | Strong (sandboxed apps)                         | BufferQueue + hardware composition (HWC)           | Linux DRM / KMS  |
 | iOS                    | WindowServer + Core Animation          | Metal              | No                            | Strong (strict sandbox)                         | Layer-based compositing                            | IOKit            |
 | Windows                | Desktop Window Manager (DWM)           | Direct3D 11/12     | No (RDP separate)             | Strong                                          | Always composited, WDDM GPU virtualization         | WDDM             |

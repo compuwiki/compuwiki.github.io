@@ -5,7 +5,7 @@ title: Media Streaming
 ## Media Streaming Table
 
 | Category               | Top 5 apps / platforms                                                   | Who controls   | Distribution        | Decentralization   | Catalog  | Core technology       | Cost        |
-|------------------------|--------------------------------------------------------------------------|----------------|---------------------|--------------------|----------|-----------------------|-------------|
+| ---------------------- | ------------------------------------------------------------------------ | -------------- | ------------------- | ------------------ | -------- | --------------------- | ----------- |
 | Streaming VOD          | Netflix, Prime Video, Disney+, Max, Apple TV+                            | Platform       | Unicast HTTP        | Centralized        | Closed   | CDN, HLS/DASH, DRM    | Medium–High |
 | Live TV OTT            | Movistar Plus+, YouTube TV, Hulu Live, fuboTV, Orange TV                 | Platform       | Unicast HTTP        | Centralized        | Closed   | HLS/DASH              | Medium      |
 | Operator IPTV          | Movistar IPTV, Orange IPTV, Vodafone TV, Telekom Entertain, AT&T U-verse | ISP / Telco    | Multicast + Unicast | Centralized        | Closed   | IPTV, MPEG-TS         | High        |
@@ -18,7 +18,7 @@ title: Media Streaming
 ## Pros and Cons by Workflow
 
 | Workflow               | Pros                                                                | Cons                                                                |
-|------------------------|---------------------------------------------------------------------|---------------------------------------------------------------------|
+| ---------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | Streaming VOD          | Large catalogs, high video quality, broad device support.           | Higher cost, DRM limits use and sharing, geo restrictions.          |
 | Live TV OTT            | Live channels without cable, flexible bundles, multi device access. | Regional blackouts, higher latency than broadcast, rising prices.   |
 | Operator IPTV          | Reliable QoS, low latency, integrated set top boxes.                | Locked to ISP, limited portability, expensive packages.             |

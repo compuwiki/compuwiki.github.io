@@ -15,6 +15,7 @@ Esta es una guía para configurar la conexión entre un proyecto Maven con Sprin
 1. Abre **XAMPP Control Panel** (`xampp-control.exe`). E inicia **Apache** y luego **MySQL**.
 
 2. Abre **phpMyAdmin** (`http://localhost/phpmyadmin`).
+
 - Crea el usuario "2dawb", host-name "%" con contraseña "2daw2425" y otorga todos los privilegios.
 
 ```sql
@@ -138,9 +139,10 @@ Se puede hacer `Alt+Insert` para mostrar el "buscador de artefactos de Maven", a
 - Abre `View -> Tool Windows -> Database`. ![img|400](view-ultimate.jpg)
 - Usa la siguiente URL de conexión:
 
-    ```
-    jdbc:mysql://localhost:3306/animaldb
-el caso, SmartTomcat debe estar mal configurado.
+      ```
+      jdbc:mysql://localhost:3306/animaldb
+
+  el caso, SmartTomcat debe estar mal configurado.
 
 - Configura los drivers en la pestaña de `database`. ![img|550](data-source-drivers-ultimate.jpg)
 - En el panel **Database**, verás la conexión activa con las tablas. ![img|300](database-view-ultimate.jpg)
@@ -174,10 +176,10 @@ Clicamos botón derecho sobre el nombre del proyecto y hacer `New generate JPA E
 ![[setup-db-connection.png]]
 
 ![[auto-generation-settings.png]]
+
 ### **Modelo (Entity)**
 
 > [!NOTE] El modelo se puede auto-generar mediante botón derecho sobre controller "Add new controller"
-
 
 ```java
 @Entity
@@ -243,15 +245,15 @@ public class AnimalController {
 ```html
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+  <head>
     <title>Lista de Animales</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Lista de Animales</h1>
     <ul>
-        <li th:each="animal : ${animales}" th:text="${animal.nombre}"></li>
+      <li th:each="animal : ${animales}" th:text="${animal.nombre}"></li>
     </ul>
-</body>
+  </body>
 </html>
 ```
 

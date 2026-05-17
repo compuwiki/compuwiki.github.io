@@ -18,7 +18,7 @@ title: Development Stack
 **Legend**: :sparkles: = Recommended choice for modern development (best balance of productivity, ecosystem, and performance)
 
 | Category                          | Target Platform(s)        | Stack                          | Languages                   | Programming Style        | UI/Framework / APIs                | Examples                           |
-|-----------------------------------|---------------------------|--------------------------------|-----------------------------|--------------------------|------------------------------------|------------------------------------|
+| --------------------------------- | ------------------------- | ------------------------------ | --------------------------- | ------------------------ | ---------------------------------- | ---------------------------------- |
 | **DESKTOP**                       | ------------------------- | ------------------------------ | --------------------------- | ------------------------ | ---------------------------------- | ---------------------------------- |
 | Native macOS                      | macOS                     | Xcode + Swift                  | Swift, Objective-C          | OOP, declarative         | SwiftUI, AppKit                    | Final Cut Pro, professional apps   |
 | Native Windows                    | Windows                   | Visual Studio + .NET           | C#, C++, VB.NET             | OOP, MVVM, WPF/WinUI     | WPF, WinUI, MAUI                   | MS Office, enterprise apps         |
@@ -41,7 +41,7 @@ title: Development Stack
 | Cross-Platform General            | Multiple (abstracted)     | C++/Rust + abstraction layer   | C++, Rust, C#               | OOP, modular             | Qt, GTK, Unity, Unreal             | Blender, Unity, Unreal Engine      |
 | Web Application                   | Browser                   | Browser + HTML/CSS/JS          | JS, TS, WASM                | Declarative, reactive    | React, Vue, Svelte, WASM           | Figma, Google Docs, Notion         |
 
-> **Summary**: * marks indicate recommended modern stacks with best balance of productivity, ecosystem maturity, and performance.
+> **Summary**: \* marks indicate recommended modern stacks with best balance of productivity, ecosystem maturity, and performance.
 > Choose **Native** for max performance + platform integration (trade-off: code duplication).
 > Choose **Cross-Platform** for code reuse (trade-off: some overhead).
 > Choose **Web/Hybrid** for rapid iteration + maximum reach (trade-off: less native feel).
@@ -51,7 +51,7 @@ title: Development Stack
 ---
 
 | Category              | Stack                        | Languages                  | Programming Style           | UI                    | Frameworks / APIs      | Examples                   |
-|-----------------------|------------------------------|----------------------------|-----------------------------|-----------------------|------------------------|----------------------------|
+| --------------------- | ---------------------------- | -------------------------- | --------------------------- | --------------------- | ---------------------- | -------------------------- |
 | OS-Native Desktop     | Native OS + graphics libs    | C, C++, Swift, Objective-C | OOP, imperative             | Native, OS-consistent | Cocoa, Win32, WPF      | Final Cut Pro, MS Office   |
 | Native Games AAA      | Native engine + hardware     | C++, HLSL, Metal           | OOP, ECS, performance-first | Native 3D             | DirectX, Metal, Vulkan | Halo, X-Plane              |
 | Cross-Platform Native | C++/Rust + abstraction layer | C++, Rust, C#              | OOP, modular                | Qt/GTK widgets        | Qt, GTK, Unity, Unreal | Blender, Unity, Unreal     |
@@ -66,7 +66,7 @@ title: Development Stack
 ### **Desktop Development Stack**
 
 | Category              | Stack                      | Languages             | Programming Style    | UI Framework          | Target OS      | Examples                       |
-|-----------------------|----------------------------|-----------------------|----------------------|-----------------------|----------------|--------------------------------|
+| --------------------- | -------------------------- | --------------------- | -------------------- | --------------------- | -------------- | ------------------------------ |
 | Native macOS          | Xcode + Swift              | Swift, Objective-C    | OOP, declarative     | SwiftUI, AppKit       | macOS          | Xcode, professional apps       |
 | Native Windows        | Visual Studio + .NET       | C#, C++, Visual Basic | OOP, MVVM, WPF/WinUI | WPF, WinUI, MAUI      | Windows        | Visual Studio, enterprise apps |
 | Native Linux          | Compiler + GUI toolkit     | C, C++, Rust, Python  | OOP, modular         | GTK, Qt               | Linux          | GNOME Builder, KDE             |
@@ -81,7 +81,7 @@ title: Development Stack
 ### **Mobile Development Stack**
 
 | Category            | Stack                   | Languages           | Programming Style      | UI/Framework         | Platforms     | Examples                        |
-|---------------------|-------------------------|---------------------|------------------------|----------------------|---------------|---------------------------------|
+| ------------------- | ----------------------- | ------------------- | ---------------------- | -------------------- | ------------- | ------------------------------- |
 | Native iOS          | Xcode + Swift           | Swift, Objective-C  | OOP, declarative       | SwiftUI, UIKit       | iOS, iPadOS   | Xcode, iOS frameworks           |
 | Native Android      | Android Studio + Kotlin | Kotlin, Java        | OOP, functional-style  | Jetpack Compose, XML | Android       | Android Studio, Material Design |
 | Cross-Platform      | Framework + compilation | Dart, JS/TS, C#     | Declarative, reactive  | Native widgets       | iOS + Android | Flutter, React Native, Xamarin  |
@@ -95,7 +95,7 @@ title: Development Stack
 ### **Web Development Stack**
 
 | Category     | Stack               | Languages                 | Programming Style            | UI/Interface    | Frameworks / APIs               | Examples                        |
-|--------------|---------------------|---------------------------|------------------------------|-----------------|---------------------------------|---------------------------------|
+| ------------ | ------------------- | ------------------------- | ---------------------------- | --------------- | ------------------------------- | ------------------------------- |
 | Frontend     | Node.js + bundler   | JS, TS, JSX               | Declarative, component-based | Browser         | React, Vue, Angular, Svelte     | Vite, Next.js, Create React App |
 | Backend      | Runtime + framework | Node.js, Python, Go, Rust | OOP, functional, REST APIs   | HTTP API        | Express, FastAPI, Django        | Express.js, FastAPI, NestJS     |
 | Full-Stack   | SSR/SSG + framework | JS, TS                    | Convention over config       | Universal (SSR) | Next.js, Nuxt, SvelteKit, Remix | Next.js, Remix, Astro           |
@@ -108,7 +108,7 @@ title: Development Stack
 ### **Infrastructure & Tools**
 
 | Category               | Stack                    | Languages/Config     | Style       | Interface       | Technologies            | Examples                          |
-|------------------------|--------------------------|----------------------|-------------|-----------------|-------------------------|-----------------------------------|
+| ---------------------- | ------------------------ | -------------------- | ----------- | --------------- | ----------------------- | --------------------------------- |
 | IDEs & Editors         | Cross-platform + plugins | Any (via extensions) | Modular     | Native/Electron | IntelliJ, Eclipse, LSP  | VS Code, IntelliJ, Neovim         |
 | Version Control        | Distributed VCS          | N/A                  | Distributed | CLI/GUI         | Git                     | GitHub, GitLab, Git CLI           |
 | Databases (SQL)        | RDBMS + ACID             | SQL                  | Declarative | CLI/GUI         | PostgreSQL, MySQL       | PostgreSQL, MySQL, SQLite         |
@@ -125,7 +125,7 @@ title: Development Stack
 ### **Libraries, Utilities & CLI Tools Stack**
 
 | Category                | Purpose                         | Languages               | Distribution      | Package Managers           | Examples                       |
-|-------------------------|---------------------------------|-------------------------|-------------------|----------------------------|--------------------------------|
+| ----------------------- | ------------------------------- | ----------------------- | ----------------- | -------------------------- | ------------------------------ |
 | System Libraries        | Core OS functionality           | C, C++, Rust            | System package    | apt, brew, yum, chocolatey | glibc, OpenSSL, zlib           |
 | Data Processing         | Data manipulation & analysis    | Python, Rust, Go        | pip, cargo, brew  | pip, npm, cargo            | NumPy, Pandas, Polars          |
 | Testing Frameworks      | Unit, integration, E2E testing  | Language-specific       | Package manager   | npm, pip, Maven, Cargo     | Jest, pytest, Vitest, Go test  |
@@ -142,7 +142,7 @@ title: Development Stack
 ### **Key Insights**
 
 | Category                               | Approach                  | Characteristics                                  |
-|----------------------------------------|---------------------------|--------------------------------------------------|
+| -------------------------------------- | ------------------------- | ------------------------------------------------ |
 | **Abstraction vs Performance**         | Native                    | Max efficiency, min portability                  |
 |                                        | Cross-platform compiled   | Balanced performance + portability               |
 |                                        | Web/containerized         | Max portability, runtime-dependent efficiency    |

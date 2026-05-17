@@ -5,7 +5,7 @@ title: "Quantum Threat Assessment: MITM Risk vs Cryptographic Defenses"
 ## Expanded Summary Table: Quantum MITM Risk vs Cryptographic Defenses
 
 | System / Cryptosystem                  | Key Size     | Logical Qubits Needed (Shor) | Estimated Attack Time (Optimistic) | Quantum MITM Risk   | Notes                                                                                                               |
-|----------------------------------------|--------------|------------------------------|------------------------------------|---------------------|---------------------------------------------------------------------------------------------------------------------|
+| -------------------------------------- | ------------ | ---------------------------- | ---------------------------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | **RSA-2048 without PFS**               | 2048 bits    | 4,000–6,000                  | Hours–Days                         | High / indefensible | MITM can capture session now and decrypt later once quantum resources are available.                                |
 | **RSA-2048 with PFS (ECDHE)**          | 2048 bits    | 4,000–6,000                  | Hours–Days                         | Low / mitigated     | Ephemeral key exchange ensures captured sessions cannot be decrypted retroactively.                                 |
 | **ECC-256 with ECDHE (ephemeral key)** | 256 bits     | 1,500–2,000                  | Hours                              | Low                 | Forward secrecy protects past sessions; ECC key compromise affects future sessions only.                            |
@@ -18,7 +18,7 @@ title: "Quantum Threat Assessment: MITM Risk vs Cryptographic Defenses"
 ### Acronyms and Abbreviations
 
 | Acronym / Abbreviation | Full Form                               | Brief Description                                                                                |
-|------------------------|-----------------------------------------|--------------------------------------------------------------------------------------------------|
+| ---------------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------ |
 | **RSA**                | Rivest–Shamir–Adleman                   | Public-key cryptography based on integer factorization.                                          |
 | **ECC**                | Elliptic Curve Cryptography             | Public-key cryptography using elliptic curves for smaller keys with equivalent security.         |
 | **ECDHE**              | Elliptic Curve Diffie–Hellman Ephemeral | Ephemeral ECC-based key exchange; provides PFS.                                                  |

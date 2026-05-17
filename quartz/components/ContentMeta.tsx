@@ -33,7 +33,7 @@ export default ((opts?: Partial<ContentMetaOptions>) => {
       if (fileData.dates) {
         // For backward compatibility, just in case this is used somewhere else by the original author
         const cfgDefaultDataType = cfg.defaultDateType
-        
+
         if (fileData.dates.created) {
           cfg.defaultDateType = "created"
           createdSegment = formatDate(getDate(cfg, fileData)!)
@@ -43,9 +43,9 @@ export default ((opts?: Partial<ContentMetaOptions>) => {
           cfg.defaultDateType = "modified"
           modifiedSegment = formatDate(getDate(cfg, fileData)!)
         }
-        
+
         cfg.defaultDateType = cfgDefaultDataType
-        
+
         // segments.push(<Date date={getDate(cfg, fileData)!} locale={cfg.locale} />)
       }
 
@@ -68,18 +68,28 @@ export default ((opts?: Partial<ContentMetaOptions>) => {
         <p class={classNames(displayClass, "content-meta")}>
           {readingTimeStr} <br />
           Última modificación {modifiedSegment} <br />
-          🌟 <a href={`https://github.com/wiki-docs/compuwiki/blame/v4/${fileRelativePath}`} class={classNames(displayClass, "external")} target={"_blank"} style={"font-weight:400"}>
+          🌟{" "}
+          <a
+            href={`https://github.com/wiki-docs/compuwiki/blame/v4/${fileRelativePath}`}
+            class={classNames(displayClass, "external")}
+            target={"_blank"}
+            style={"font-weight:400"}
+          >
             Edita esta página
             <svg class="external-icon" viewBox="0 0 512 512">
-              <path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z">
-              </path>
+              <path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path>
             </svg>
-          </a> &nbsp;
-          🗓️ <a href={`https://github.com/wiki-docs/compuwiki/commits/v4/${fileRelativePath}`} class={classNames(displayClass, "external")} target={"_blank"} style={"font-weight:400"}>
+          </a>{" "}
+          &nbsp; 🗓️{" "}
+          <a
+            href={`https://github.com/wiki-docs/compuwiki/commits/v4/${fileRelativePath}`}
+            class={classNames(displayClass, "external")}
+            target={"_blank"}
+            style={"font-weight:400"}
+          >
             Historial
             <svg class="external-icon" viewBox="0 0 512 512">
-              <path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z">
-              </path>
+              <path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path>
             </svg>
           </a>
         </p>

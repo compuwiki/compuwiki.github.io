@@ -4,6 +4,7 @@ import { registerEscapeHandler, removeAllChildren } from "./util"
 import { FullSlug, normalizeRelativeURLs, resolveRelative } from "../../util/path"
 
 interface Item {
+  [key: string]: string | number | boolean | string[]
   id: number
   slug: FullSlug
   title: string
@@ -37,7 +38,7 @@ let index = new FlexSearch.Document<Item>({
       },
     ],
   },
-})
+} as any)
 
 const p = new DOMParser()
 const fetchContentCache: Map<FullSlug, Element[]> = new Map()
@@ -406,7 +407,7 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
     searchLayout.classList.toggle("display-results", currentSearchTerm !== "")
     searchType = currentSearchTerm.startsWith("#") ? "tags" : "basic"
 
-    let searchResults: FlexSearch.SimpleDocumentSearchResultSetUnit[]
+    let searchResults: { field: string; result: unknown[] }[]
     if (searchType === "tags") {
       currentSearchTerm = currentSearchTerm.substring(1).trim()
       const separatorIndex = currentSearchTerm.indexOf(" ")
@@ -414,7 +415,7 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
         // search by title and content index and then filter by tag (implemented in flexsearch)
         const tag = currentSearchTerm.substring(0, separatorIndex)
         const query = currentSearchTerm.substring(separatorIndex + 1).trim()
-        searchResults = await index.searchAsync({
+        searchResults = await (index as any).searchAsync({
           query: query,
           // return at least 10000 documents, so it is enough to filter them by tag (implemented in flexsearch)
           limit: Math.max(numSearchResults, 10000),
@@ -429,14 +430,14 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
         currentSearchTerm = query
       } else {
         // default search by tags index
-        searchResults = await index.searchAsync({
+        searchResults = await (index as any).searchAsync({
           query: currentSearchTerm,
           limit: numSearchResults,
           index: ["tags"],
         })
       }
     } else if (searchType === "basic") {
-      searchResults = await index.searchAsync({
+      searchResults = await (index as any).searchAsync({
         query: currentSearchTerm,
         limit: numSearchResults,
         index: ["title", "content"],

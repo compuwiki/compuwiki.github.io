@@ -27,5 +27,5 @@ Typical operations:
 
 ## References
 
-- [Stack (Wikipedia)](https://en.wikipedia.org/wiki/Stack_(abstract_data_type))
-- [Queue (Wikipedia)](https://en.wikipedia.org/wiki/Queue_(abstract_data_type))
+- [Stack (Wikipedia)](<https://en.wikipedia.org/wiki/Stack_(abstract_data_type)>)
+- [Queue (Wikipedia)](<https://en.wikipedia.org/wiki/Queue_(abstract_data_type)>)

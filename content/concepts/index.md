@@ -9,6 +9,7 @@ Conceptual notes on computer science fundamentals, object-oriented design, and s
 
 - [UML Class Diagrams](./uml-class-diagrams.md)
 - [Stack and Queue](./stack-and-queue.md)
+- [OSI Model](./osi-model.md)
 
 ## Exercises
 

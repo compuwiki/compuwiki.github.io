@@ -1,3 +1,7 @@
+---
+draft: true
+---
+
 # Notes
 
 ## Emoji Shortcodes Reference

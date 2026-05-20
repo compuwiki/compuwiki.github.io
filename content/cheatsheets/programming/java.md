@@ -117,7 +117,7 @@ public class LearnJava {
         int barInt1, barInt2, barInt3;
         barInt1 = barInt2 = barInt3 = 1;
         // Shorthand for multiple declarations
-        int barInt4 = 1, barInt5 = 2; 
+        int barInt4 = 1, barInt5 = 2;
 
         /*
         *  Variable types
@@ -212,7 +212,7 @@ public class LearnJava {
 
         // Text blocks
         var textBlock = """
-                        This is a <Text Block> in Java 
+                        This is a <Text Block> in Java
                         """;
 
         // \n is an escaped character that starts a new line
@@ -529,57 +529,57 @@ public class LearnJava {
            COUNTRIES.add("FINLAND");
         }
 
-        // There's a nifty way to achieve the same thing, 
+        // There's a nifty way to achieve the same thing,
         // by using something that is called Double Brace Initialization.
-        private static final Set<String> COUNTRIES_DOUBLE_BRACE = 
+        private static final Set<String> COUNTRIES_DOUBLE_BRACE =
         new HashSet<String>() {{
             add("DENMARK");
             add("SWEDEN");
             add("FINLAND");
         }}
 
-        // The first brace creates a new AnonymousInnerClass and the second 
-        // one declares an instance initializer block. This block is called 
-        // when the anonymous inner class is created. 
-        // However, this is considered an anti-pattern: it creates a new class 
-        // for every instance, increasing memory overhead (Metaspace) 
-        // and potentially causing memory leaks by holding an implicit 
+        // The first brace creates a new AnonymousInnerClass and the second
+        // one declares an instance initializer block. This block is called
+        // when the anonymous inner class is created.
+        // However, this is considered an anti-pattern: it creates a new class
+        // for every instance, increasing memory overhead (Metaspace)
+        // and potentially causing memory leaks by holding an implicit
         // reference to the enclosing class. Use Set.of() in Java 9+.
 
         // Another option was to initialize the Collection from an array,
         // using Arrays.asList() method:
-        private static final List<String> COUNTRIES_AS_LIST = 
+        private static final List<String> COUNTRIES_AS_LIST =
                         Arrays.asList("SWEDEN", "DENMARK", "NORWAY");
         // This has one catch: the list we get is internally backed by the array,
         // and since arrays can't change their size, the list backed by the array
-        // is not resizeable, which means we can't add new elements to it: 
+        // is not resizeable, which means we can't add new elements to it:
         public static void main(String[] args) {
             COUNTRIES.add("FINLAND"); // throws UnsupportedOperationException!
-            // However, we can replace elements by index, just like in array: 
+            // However, we can replace elements by index, just like in array:
             COUNTRIES.set(1, "FINLAND");
             System.out.println(COUNTRIES); // prints [SWEDEN, FINLAND, NORWAY]
         }
-        // The resizing problem can be circumvented 
+        // The resizing problem can be circumvented
         // by creating another Collection from the List:
-         private static final Set<String> COUNTRIES_SET = 
+         private static final Set<String> COUNTRIES_SET =
                 new HashSet<>(Arrays.asList("SWEDEN", "DENMARK", "NORWAY"));
-        // It's perfectly fine to add anything to the Set of COUNTRIES now. 
+        // It's perfectly fine to add anything to the Set of COUNTRIES now.
     } // End TestInitialization class
 
     private static class TestJava11Initialization {
         // Since Java 11, there is a convenient option to initialize Collections:
-        // Set.of() and List.of() methods. 
-        private static final Set<String> COUNTRIES = 
+        // Set.of() and List.of() methods.
+        private static final Set<String> COUNTRIES =
                 Set.of("SWEDEN", "DENMARK", "NORWAY");
-        // There is a massive catch, though: Lists and Sets initialized like this 
-        // 1) are immutable 
+        // There is a massive catch, though: Lists and Sets initialized like this
+        // 1) are immutable
         // 2) can't contain null elements (even check for null elements fails)!
         public static void main(String[] args) {
             COUNTRIES.add("FINLAND"); // throws UnsupportedOperationException
-            COUNTRIES.remove("NORWAY"); // throws UnsupportedOperationException 
+            COUNTRIES.remove("NORWAY"); // throws UnsupportedOperationException
             COUNTRIES.contains(null); // throws NullPointerException
         }
-        private static final Set<String> COUNTRIES_WITH_NULL = 
+        private static final Set<String> COUNTRIES_WITH_NULL =
                     Set.of("SWEDEN", null, "NORWAY"); // throws NullPointerException
 
     } // End TestJava11Initialization class
@@ -1024,16 +1024,16 @@ The links provided here below are just to get an understanding of the topic, fee
 - [Java Tutorial Trail from Sun / Oracle](https://docs.oracle.com/javase/tutorial/index.html)
 - [Java Access level modifiers](https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html)
 - [Object-Oriented Programming Concepts](https://docs.oracle.com/javase/tutorial/java/concepts/index.html):
-	- [Inheritance](https://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html)
-		- [Polymorphism](https://docs.oracle.com/javase/tutorial/java/IandI/polymorphism.html)
-		- [Abstraction](https://docs.oracle.com/javase/tutorial/java/IandI/abstract.html)
+  - [Inheritance](https://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html)
+    - [Polymorphism](https://docs.oracle.com/javase/tutorial/java/IandI/polymorphism.html)
+    - [Abstraction](https://docs.oracle.com/javase/tutorial/java/IandI/abstract.html)
 - [Exceptions](https://docs.oracle.com/javase/tutorial/essential/exceptions/index.html)
 - [Interfaces](https://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html)
 - [Generics](https://docs.oracle.com/javase/tutorial/java/generics/index.html)
 - [Java Code Conventions](https://www.oracle.com/technetwork/java/codeconvtoc-136057.html)
 - New features in Java 8:
-	- [Lambda expressions (functional programming)](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)
-		- [Date and time API (java.time package)](http://www.oracle.com/technetwork/articles/java/jf14-date-time-2125367.html)
+  - [Lambda expressions (functional programming)](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)
+    - [Date and time API (java.time package)](http://www.oracle.com/technetwork/articles/java/jf14-date-time-2125367.html)
 
 ### Online Practice and Tutorials
 

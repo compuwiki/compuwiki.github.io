@@ -663,7 +663,7 @@ A PARTICULAR PURPOSE.
 Reporting Bugs
     Email bug reports to the bug-reporting address ⟨bug-grep@gnu.org⟩.
     An email archive ⟨https://lists.gnu.org/mailman/listinfo/bug-grep⟩
-    and a bug tracker 
+    and a bug tracker
     ⟨https://debbugs.gnu.org/cgi/pkgreport.cgi?package=grep⟩ are
     available.
 
@@ -717,7 +717,7 @@ Full Documentation
 
 ```
 This page is part of the GNU grep (regular expression file search
-       tool) project.  Information about the project can be found at 
+       tool) project.  Information about the project can be found at
        ⟨https://www.gnu.org/software/grep/⟩.  If you have a bug report for
        this manual page, send it to bug-grep@gnu.org.  This page was
        obtained from the project's upstream Git repository

@@ -9,7 +9,7 @@ YAML is a data serialisation language designed to be directly writable and reada
 It's a strict superset of JSON, with the addition of syntactically significant newlines and indentation, like Python. Unlike Python, however, YAML doesn't allow literal tab characters for indentation.
 
 ```yaml
----  # document start
+--- # document start
 
 # Comments in YAML look like this.
 # YAML supports single-line comments.
@@ -24,28 +24,28 @@ key: value
 another_key: Another value goes here.
 a_number_value: 100
 scientific_notation: 1e+12
-hex_notation: 0x123  # evaluates to 291
+hex_notation: 0x123 # evaluates to 291
 octal_notation: 0123 # evaluates to 83
 
-# The number 1 will be interpreted as a number, not a boolean. 
+# The number 1 will be interpreted as a number, not a boolean.
 # If you want it to be interpreted as a boolean, use true.
 boolean: true
 null_value: null
 another_null_value: ~
 key with spaces: value
 
-# Yes and No (doesn't matter the case) will be evaluated to boolean 
+# Yes and No (doesn't matter the case) will be evaluated to boolean
 # true and false values respectively.
 # To use the actual value use single or double quotes.
-no: no            # evaluates to "no": false
-yes: No           # evaluates to "yes": false
+no: no # evaluates to "no": false
+yes: No # evaluates to "yes": false
 not_enclosed: yes # evaluates to "not_enclosed": true
-enclosed: "yes"   # evaluates to "enclosed": yes
+enclosed: "yes" # evaluates to "enclosed": yes
 
 # Notice that strings don't need to be quoted. However, they can be.
-however: 'A string, enclosed in quotes.'
-'Keys can be quoted too.': "Useful if you want to put a ':' in your key."
-single quotes: 'have ''one'' escape pattern'
+however: "A string, enclosed in quotes."
+"Keys can be quoted too.": "Useful if you want to put a ':' in your key."
+single quotes: "have 'one' escape pattern"
 double quotes: "have many: \", \0, \t, \u263A, \x0d\x0a == \r\n, and more."
 # UTF-8/16/32 characters need to be encoded
 Superscript two: \u00B2
@@ -53,7 +53,7 @@ Superscript two: \u00B2
 # Special characters must be enclosed in single or double quotes
 special_characters: "[ John ] & { Jane } - <Doe>"
 
-# Multiple-line strings can be written either as a 'literal block' (using |), 
+# Multiple-line strings can be written either as a 'literal block' (using |),
 # or a 'folded block' (using '>').
 # Literal block turn every newline within the string into a literal newline (\n).
 # Folded block removes newlines within the string.
@@ -120,14 +120,14 @@ a_nested_map:
 # An example
 ? - Manchester United
   - Real Madrid
-: [ 2001-01-01, 2002-02-02 ]
+: [2001-01-01, 2002-02-02]
 
 # Sequences (equivalent to lists or arrays) look like this
 # (note that the '-' counts as indentation):
 a_sequence:
   - Item 1
   - Item 2
-  - 0.5  # sequences can contain disparate types.
+  - 0.5 # sequences can contain disparate types.
   - Item 4
   - key: value
     another_key: another_value
@@ -139,8 +139,8 @@ a_sequence:
 # Since YAML is a superset of JSON, you can also write JSON-style maps and
 # sequences:
 json_map: { "key": "value" }
-json_seq: [ 3, 2, 1, "takeoff" ]
-and quotes are optional: { key: [ 3, 2, 1, takeoff ] }
+json_seq: [3, 2, 1, "takeoff"]
+and quotes are optional: { key: [3, 2, 1, takeoff] }
 
 #######################
 # EXTRA YAML FEATURES #
@@ -186,8 +186,7 @@ explicit_null: !!null null
 python_complex_number: !!python/complex 1+2j
 
 # We can also use yaml complex keys with language specific tags
-? !!python/tuple [ 5, 7 ]
-: Fifty Seven
+!!python/tuple [5, 7]: Fifty Seven
 # Would be {(5, 7): 'Fifty Seven'} in Python
 
 ####################
@@ -211,9 +210,9 @@ gif_file: !!binary |
 
 # YAML also has a set type, which looks like this:
 set:
-  ? item1
-  ? item2
-  ? item3
+  item1:
+  item2:
+  item3:
 or: { item1, item2, item3 }
 
 # Sets are just maps with null values; the above is equivalent to:
@@ -221,8 +220,7 @@ set2:
   item1: null
   item2: null
   item3: null
-
-...  # document end
+... # document end
 ```
 
 ### More Resources

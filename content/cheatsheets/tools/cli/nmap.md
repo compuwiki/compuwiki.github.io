@@ -22,7 +22,7 @@ Nmap is an open-source network scanning tool built by Gordon Lyon. Designed to h
 - **Vulnerability Detection**: Spotting potentially risky services.
 - **Network Security**: Evaluate exposed ports.
 
-**When *Not* to Use It**
+**When _Not_ to Use It**
 
 - **Public Networks**: Scanning Starbucks WiFi might land you in hot tea.
 - **Corporate Networks**: Scanning your corporate network without permission, is potentially not allowed.
@@ -45,41 +45,44 @@ Installation is straightforward, thoroughly explained on [nmap.org - install](ht
 These are low-key scans that safe to use since they don’t do deep probing.
 
 - **Ping Scan**:  
-	A low-impact scan just to check if devices are online. Typically fine on trusted networks.
-	- Scan a single device
-		```
-		nmap -sn 192.168.1.1
-		```
-		- Scan a range of devices
-		```
-		nmap -sn 192.168.1.1-100
-		```
-		- Scan a CIDR range of devices
-		```
-		nmap -sn 192.168.1.0/24   # Range 192.168.1.0 to 192.168.1.255
-		nmap -sn 192.168.0.0/16   # Range 192.168.0.0 to 192.168.255.255
-		nmap -sn 192.0.0.0/8      # Range 192.0.0.0 to 192.255.255.255
-		```
+  A low-impact scan just to check if devices are online. Typically fine on trusted networks.
+  - Scan a single device
+    ```
+    nmap -sn 192.168.1.1
+    ```
+
+    - Scan a range of devices
+    ```
+    nmap -sn 192.168.1.1-100
+    ```
+
+    - Scan a CIDR range of devices
+    ```
+    nmap -sn 192.168.1.0/24   # Range 192.168.1.0 to 192.168.1.255
+    nmap -sn 192.168.0.0/16   # Range 192.168.0.0 to 192.168.255.255
+    nmap -sn 192.0.0.0/8      # Range 192.0.0.0 to 192.255.255.255
+    ```
 - **Fast Scan**:  
-	Quickly checks the 100 most common ports. Great for a quick peek without probing all 65,535 ports.
-	```
-	nmap -F 192.168.1.1
-	```
+  Quickly checks the 100 most common ports. Great for a quick peek without probing all 65,535 ports.
+  ```
+  nmap -F 192.168.1.1
+  ```
 - **Operating System Detection**:  
-	OS detection requires some extra probing, which might be detectable by Intrusion Detection Systems (IDS).
-	```
-	nmap -O 192.168.1.1
-	```
+  OS detection requires some extra probing, which might be detectable by Intrusion Detection Systems (IDS).
+  ```
+  nmap -O 192.168.1.1
+  ```
 - **Output to File**  
-	Specific scanning and saving the output to a file, enables you to scan more thorough without overloading your network.
-	- Plain text
-		```
-		nmap -oN output.txt 192.168.1.1
-		```
-		- XML, handy for using elsewhere
-		```
-		nmap -oX output.xml 192.168.1.1
-		```
+  Specific scanning and saving the output to a file, enables you to scan more thorough without overloading your network.
+  - Plain text
+    ```
+    nmap -oN output.txt 192.168.1.1
+    ```
+
+    - XML, handy for using elsewhere
+    ```
+    nmap -oX output.xml 192.168.1.1
+    ```
 
 ---
 
@@ -88,25 +91,26 @@ These are low-key scans that safe to use since they don’t do deep probing.
 These scans dig a bit deeper, so they may trigger alarms on security systems. Use these only on networks where you have explicit permission to scan.
 
 - **Service Version Detection**:  
-	Tries to identify versions of services on open ports. Useful but more invasive.
-	```
-	nmap -sV 192.168.1.1
-	```
+  Tries to identify versions of services on open ports. Useful but more invasive.
+  ```
+  nmap -sV 192.168.1.1
+  ```
 - **Aggressive Scan**:  
-	The aggressive scan mode (`-A`) combines multiple checks, like OS detection, version detection and traceroute. This is likely to be flagged on any network and can be considered illegal on networks you don’t own.
-	```
-	nmap -A 192.168.1.1
-	```
+  The aggressive scan mode (`-A`) combines multiple checks, like OS detection, version detection and traceroute. This is likely to be flagged on any network and can be considered illegal on networks you don’t own.
+  ```
+  nmap -A 192.168.1.1
+  ```
 - **Scanning Specific Ports**:  
-	Narrowing scans to specific ports is generally fine.
-	- Scan a specific port
-		```
-		nmap -p 80 192.168.1.1
-		```
-		- Scan a range of ports
-		```
-		nmap -p 1-100 192.168.1.1
-		```
+  Narrowing scans to specific ports is generally fine.
+  - Scan a specific port
+    ```
+    nmap -p 80 192.168.1.1
+    ```
+
+    - Scan a range of ports
+    ```
+    nmap -p 1-100 192.168.1.1
+    ```
 
 ---
 
@@ -115,25 +119,25 @@ These scans dig a bit deeper, so they may trigger alarms on security systems. Us
 So, you’re getting into the advanced stuff—maybe testing your own firewall or finding rogue services. The following scans are loud and intrusive that definitely trigger security defenses.
 
 - **Scripted Scans (NSE)**  
-	Nmap’s script engine is like a toolbox of plugins. Need to check for a specific vulnerability? There’s likely an NSE script for it.
-	```
-	nmap --script=http-vuln-cve2021-12345 192.168.1.1
-	```
+  Nmap’s script engine is like a toolbox of plugins. Need to check for a specific vulnerability? There’s likely an NSE script for it.
+  ```
+  nmap --script=http-vuln-cve2021-12345 192.168.1.1
+  ```
 - **Aggressive and fastest Scans**: `-T5` turns up to knob to 11. `-A` scans all ports. Use it sparse and only if you really need full visibility.
-	```
-	nmap -T5 -A 192.168.1.1
-	```
+  ```
+  nmap -T5 -A 192.168.1.1
+  ```
 - **TCP and UDP Combined Scans**:  
-	Combining TCP and UDP scans (`-sS` for SYN scans and `-sU` for UDP) gives complete coverage but increases the scan’s footprint, making it detectable.
-	```
-	nmap -sS -sU 192.168.1.1
-	```
+  Combining TCP and UDP scans (`-sS` for SYN scans and `-sU` for UDP) gives complete coverage but increases the scan’s footprint, making it detectable.
+  ```
+  nmap -sS -sU 192.168.1.1
+  ```
 - **Spoofing and Decoy Scans**:  
-	Using decoys (`-D`) or spoofed IP addresses to hide your real IP can be seen as deceptive. These scans are easily flagged by IDS and could lead to legal repercussions if you’re not authorized.
-	```
-	# 10 random IP decoys
-	nmap -D RND:10 192.168.1.1
-	```
+  Using decoys (`-D`) or spoofed IP addresses to hide your real IP can be seen as deceptive. These scans are easily flagged by IDS and could lead to legal repercussions if you’re not authorized.
+  ```
+  # 10 random IP decoys
+  nmap -D RND:10 192.168.1.1
+  ```
 
 ---
 

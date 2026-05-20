@@ -1306,14 +1306,14 @@ namespace Csharp7
 - Attributes
 - Asynchronous Programming
 - Web Development
-	- ASP.NET Core ✨
+  - ASP.NET Core ✨
 - Desktop Development
-	- Windows Presentation Foundation 👍 🎈 🎁
-		- Universal Windows Platform ✨ 🎁
-		- Uno Platform 🔥 ✨
-		- WinForms 👍 🎈 🎁
-		- Avalonia 🔥 ✨
-		- WinUI ✨ 🎁
+  - Windows Presentation Foundation 👍 🎈 🎁
+    - Universal Windows Platform ✨ 🎁
+    - Uno Platform 🔥 ✨
+    - WinForms 👍 🎈 🎁
+    - Avalonia 🔥 ✨
+    - WinUI ✨ 🎁
 - Cross-platform Development
 
 ## Further Reading

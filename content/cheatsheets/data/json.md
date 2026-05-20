@@ -33,7 +33,7 @@ Supported data types:
   "has bools?": true,
   "nothingness": null,
 
-  "big number": 1.2e+100,
+  "big number": 1.2e100,
 
   "objects": {
     "comment": "Most of your structure will come from objects.",
@@ -58,9 +58,9 @@ Supported data types:
   ],
 
   "alternative style": {
-    "comment": "check this out!"
-  , "comma position": "doesn't matter, if it's before the next key, it's valid"
-  , "another comment": "how nice"
+    "comment": "check this out!",
+    "comma position": "doesn't matter, if it's before the next key, it's valid",
+    "another comment": "how nice"
   },
 
   "whitespace": "Does not matter.",

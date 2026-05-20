@@ -329,6 +329,7 @@ end
 --[[ I'm commenting out this section so the rest of
 --   this script remains runnable.
 ```
+
 ```
 -- Suppose the file mod.lua looks like this:
 local M = {}

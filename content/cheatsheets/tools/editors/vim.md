@@ -92,6 +92,7 @@ Vim is based on the concept on **modes**.
 - Insert Mode - used to make changes in your file
 - Visual Mode - used to highlight text and do operations to them
 - Ex Mode - used to drop down to the bottom with the ':' prompt to enter commands
+
 ```sh
 i                 # Puts vim into insert mode, before the cursor position
 a                 # Puts vim into insert mode, after the cursor position

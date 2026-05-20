@@ -6,7 +6,7 @@ Get the code: [learncss.css](https://learnxinyminutes.com/files/learncss.css)
 
 Web pages are built with HTML, which specifies the content of a page. CSS (Cascading Style Sheets) is a separate language which specifies a page's **appearance**.
 
-CSS code is made of static *rules*. Each rule takes one or more *selectors* and gives specific *values* to a number of visual *properties*. Those properties are then applied to the page elements indicated by the selectors.
+CSS code is made of static _rules_. Each rule takes one or more _selectors_ and gives specific _values_ to a number of visual _properties_. Those properties are then applied to the page elements indicated by the selectors.
 
 This guide has been written with CSS 2 in mind, which is extended by the new features of CSS 3.
 
@@ -23,7 +23,9 @@ This guide has been written with CSS 2 in mind, which is extended by the new fea
    #################### */
 
 /* the selector is used to target an element on a page. */
-selector { property: value; /* more properties...*/ }
+selector {
+  property: value; /* more properties...*/
+}
 
 /*
 Here is an example element:
@@ -32,113 +34,151 @@ Here is an example element:
 */
 
 /* You can target it using one of its CSS classes */
-.class1 { }
+.class1 {
+}
 
 /* or both classes! */
-.class1.class2 { }
+.class1.class2 {
+}
 
 /* or its name */
-div { }
+div {
+}
 
 /* or its id */
-#anID { }
+#anID {
+}
 
 /* or using the fact that it has an attribute! */
-[attr] { font-size:smaller; }
+[attr] {
+  font-size: smaller;
+}
 
 /* or that the attribute has a specific value */
-[attr='value'] { font-size:smaller; }
+[attr="value"] {
+  font-size: smaller;
+}
 
 /* starts with a value (CSS 3) */
-[attr^='val'] { font-size:smaller; }
+[attr^="val"] {
+  font-size: smaller;
+}
 
 /* or ends with a value (CSS 3) */
-[attr$='ue'] { font-size:smaller; }
+[attr$="ue"] {
+  font-size: smaller;
+}
 
 /* or contains a value (CSS 3) */
-[attr*='foo'] { }
+[attr*="foo"] {
+}
 
 /* or contains a value in a space-separated list */
-[otherAttr~='foo'] { }
-[otherAttr~='bar'] { }
+[otherAttr~="foo"] {
+}
+[otherAttr~="bar"] {
+}
 
 /* or contains a value in a dash-separated list, e.g., "-" (U+002D) */
-[otherAttr|='en'] { font-size:smaller; }
+[otherAttr|="en"] {
+  font-size: smaller;
+}
 
 /* You can combine different selectors to create a more focused selector. Don't
    put spaces between them. */
-div.some-class[attr$='ue'] { }
+div.some-class[attr$="ue"] {
+}
 
 /* You can select an element which is a child of another element */
-div.some-parent > .class-name { }
+div.some-parent > .class-name {
+}
 
 /* or a descendant of another element. Children are the direct descendants of
    their parent element, only one level down the tree. Descendants can be any
    level down the tree. */
-div.some-parent .class-name { }
+div.some-parent .class-name {
+}
 
 /* Warning: the same selector without a space has another meaning.
    Can you guess what? */
-div.some-parent.class-name { }
+div.some-parent.class-name {
+}
 
 /* You may also select an element based on its adjacent sibling */
-.i-am-just-before + .this-element { }
+.i-am-just-before + .this-element {
+}
 
 /* or any sibling preceding it */
-.i-am-any-element-before ~ .this-element { }
+.i-am-any-element-before ~ .this-element {
+}
 
 /* There are some selectors called pseudo classes that can be used to select an
    element only when it is in a particular state */
 
 /* for example, when a link hasn't been visited */
-selected:link { }
+selected:link {
+}
 
 /* or a link has been visited */
-selector:visited { }
+selector:visited {
+}
 
 /* or an element is in focus */
-selected:focus { }
+selected:focus {
+}
 
 /* or when the cursor hovers over an element */
-selector:hover { }
+selector:hover {
+}
 
 /* or when a link is clicked on */
-selector:active { }
+selector:active {
+}
 
 /* These pseudo classes regarding links should always be written in the above order or the code might not work as expected */
 
 /* Any element that is the first child of its parent */
-selector:first-child {}
+selector:first-child {
+}
 
 /* any element that is the last child of its parent */
-selector:last-child {}
+selector:last-child {
+}
 
 /* Select the nth child of selector parent (CSS 3) */
-selector:nth-child(n) { }
+selector:nth-child(n) {
+}
 
 /* Just like pseudo classes, pseudo elements allow you to style certain parts of
     a document  */
 
 /* matches a virtual first child of the selected element */
-selector::before {}
+selector::before {
+}
 
 /* matches a virtual last child of the selected element */
-selector::after {}
+selector::after {
+}
 
 /* At appropriate places, an asterisk may be used as a wildcard to select every
    element */
-* { } /* all elements */
-.parent * { } /* all descendants */
-.parent > * { } /* all children */
+* {
+} /* all elements */
+.parent * {
+} /* all descendants */
+.parent > * {
+} /* all children */
 
 /* Group any number of selectors to define styles that affect all selectors
    in the group */
-selector1, selector2 { }
+selector1,
+selector2 {
+}
 
 /* Select elements that do not have a certain state (CSS 3) */
 /* Here, we select div with no id attribute. */
 div:not([id]) {
-   background-color: red;
+  background-color: red;
 }
 
 /* ####################
@@ -146,87 +186,89 @@ div:not([id]) {
    #################### */
 
 selector {
+  /* Units of length can be absolute or relative. */
 
-    /* Units of length can be absolute or relative. */
+  /* Relative units */
+  width: 50%; /* percentage of parent element width */
+  font-size: 2em; /* multiples of element's original font-size */
+  font-size: 2rem; /* or the root element's font-size */
+  font-size: 2vw; /* multiples of 1% of the viewport's width (CSS 3) */
+  font-size: 2vh; /* or its height */
+  font-size: 2vmin; /* whichever of a vh or a vw is smaller */
+  font-size: 2vmax; /* or greater */
 
-    /* Relative units */
-    width: 50%;       /* percentage of parent element width */
-    font-size: 2em;   /* multiples of element's original font-size */
-    font-size: 2rem;  /* or the root element's font-size */
-    font-size: 2vw;   /* multiples of 1% of the viewport's width (CSS 3) */
-    font-size: 2vh;   /* or its height */
-    font-size: 2vmin; /* whichever of a vh or a vw is smaller */
-    font-size: 2vmax; /* or greater */
+  /* Absolute units */
+  width: 200px; /* pixels */
+  font-size: 20pt; /* points */
+  width: 5cm; /* centimeters */
+  min-width: 50mm; /* millimeters */
+  max-width: 5in; /* inches */
 
-    /* Absolute units */
-    width: 200px;     /* pixels */
-    font-size: 20pt;  /* points */
-    width: 5cm;       /* centimeters */
-    min-width: 50mm;  /* millimeters */
-    max-width: 5in;   /* inches */
+  /* Colors */
+  color: #f6e; /* short hex format */
+  color: #ff66ee; /* long hex format */
+  color: tomato; /* a named color */
+  color: rgb(255, 255, 255); /* as rgb values */
+  color: rgb(10%, 20%, 50%); /* as rgb percentages */
+  color: rgba(255, 0, 0, 0.3); /* as rgba values (CSS 3) Note: 0 <= a <= 1 */
+  color: transparent; /* equivalent to setting the alpha to 0 */
+  color: hsl(0, 100%, 50%); /* as hsl percentages (CSS 3) */
+  color: hsla(0, 100%, 50%, 0.3); /* as hsl percentages with alpha */
 
-    /* Colors */
-    color: #F6E;                    /* short hex format */
-    color: #FF66EE;                 /* long hex format */
-    color: tomato;                  /* a named color */
-    color: rgb(255, 255, 255);      /* as rgb values */
-    color: rgb(10%, 20%, 50%);      /* as rgb percentages */
-    color: rgba(255, 0, 0, 0.3);    /* as rgba values (CSS 3) Note: 0 <= a <= 1 */
-    color: transparent;             /* equivalent to setting the alpha to 0 */
-    color: hsl(0, 100%, 50%);       /* as hsl percentages (CSS 3) */
-    color: hsla(0, 100%, 50%, 0.3); /* as hsl percentages with alpha */
+  /* Borders */
+  border-width: 5px;
+  border-style: solid;
+  border-color: red; /* similar to how background-color is set */
+  border: 5px solid red; /* this is a short hand approach for the same */
+  border-radius: 20px; /* this is a CSS3 property */
 
-    /* Borders */
-    border-width:5px;
-    border-style:solid;
-    border-color:red;      /* similar to how background-color is set */
-    border: 5px solid red; /* this is a short hand approach for the same */
-    border-radius:20px;    /* this is a CSS3 property */
+  /* Images as backgrounds of elements */
+  background-image: url(/img-path/img.jpg); /* quotes inside url() optional */
 
-    /* Images as backgrounds of elements */
-    background-image: url(/img-path/img.jpg); /* quotes inside url() optional */
-
-    /* Fonts */
-    font-family: Arial;
-    /* if the font family name has a space, it must be quoted */
-    font-family: "Courier New";
-    /* if the first one is not found, the browser uses the next, and so on */
-    font-family: "Courier New", Trebuchet, Arial, sans-serif;
+  /* Fonts */
+  font-family: Arial;
+  /* if the font family name has a space, it must be quoted */
+  font-family: "Courier New";
+  /* if the first one is not found, the browser uses the next, and so on */
+  font-family: "Courier New", Trebuchet, Arial, sans-serif;
 }
 
 /* Custom CSS properties using variables (CSS 3) */
 :root {
-   --main-bg-color: whitesmoke;
+  --main-bg-color: whitesmoke;
 }
 body {
-   background-color: var(--main-bg-color)
+  background-color: var(--main-bg-color);
 }
 
 /* Perform a calculation (CSS 3) */
 body {
-   width: calc(100vw - 100px)
+  width: calc(100vw - 100px);
 }
 
 /* Nest style rule inside another (CSS 3) */
 .main {
-   .bgred { /* same as: .main .bgred { } */
-      background: red;
-   }
-   & .bggreen { /* same as: .main .bggreen { } */
-      background: green;
-   }
-   &.bgblue { /* (without space) same as: .main.bgblue { } */
-      background: blue;
-   }
+  .bgred {
+    /* same as: .main .bgred { } */
+    background: red;
+  }
+  & .bggreen {
+    /* same as: .main .bggreen { } */
+    background: green;
+  }
+  &.bgblue {
+    /* (without space) same as: .main.bgblue { } */
+    background: blue;
+  }
 }
 
 /* Design responsive layout using flexbox (CSS 3) */
 .container {
-   display: flex;
-   flex-direction: row;      /* in which direction stack the flex items */
-   flex-wrap: wrap;          /* whether or not flex items should wrap */
-   justify-content: center;  /* how to align flex items horizontally */
-   align-items: center;      /* how to align flex items vertically */
+  display: flex;
+  flex-direction: row; /* in which direction stack the flex items */
+  flex-wrap: wrap; /* whether or not flex items should wrap */
+  justify-content: center; /* how to align flex items horizontally */
+  align-items: center; /* how to align flex items vertically */
 }
 ```
 

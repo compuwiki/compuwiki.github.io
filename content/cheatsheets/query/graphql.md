@@ -22,7 +22,7 @@ Sent as JSON:
 
 ```json
 {
-  "query":     "query GetUser($id: ID!) { user(id: $id) { id name email } }",
+  "query": "query GetUser($id: ID!) { user(id: $id) { id name email } }",
   "variables": { "id": "42" },
   "operationName": "GetUser"
 }
@@ -33,11 +33,17 @@ Sent as JSON:
 ```graphql
 {
   # Argument
-  user(id: "42") { name }
+  user(id: "42") {
+    name
+  }
 
   # Alias — rename a field in the response
-  admin: user(id: "1") { name }
-  guest: user(id: "2") { name }
+  admin: user(id: "1") {
+    name
+  }
+  guest: user(id: "2") {
+    name
+  }
 }
 ```
 
@@ -51,8 +57,14 @@ fragment UserCore on User {
 }
 
 query {
-  me   { ...UserCore }
-  team { members { ...UserCore } }
+  me {
+    ...UserCore
+  }
+  team {
+    members {
+      ...UserCore
+    }
+  }
 }
 ```
 
@@ -62,9 +74,15 @@ query {
 {
   search(text: "foo") {
     __typename
-    ... on User    { name }
-    ... on Post    { title }
-    ... on Comment { body }
+    ... on User {
+      name
+    }
+    ... on Post {
+      title
+    }
+    ... on Comment {
+      body
+    }
   }
 }
 ```
@@ -76,8 +94,10 @@ query Posts($limit: Int = 10, $withAuthor: Boolean!) {
   posts(limit: $limit) {
     id
     title
-    author @include(if: $withAuthor) { name }
-    draft  @skip(if: $withAuthor)
+    author @include(if: $withAuthor) {
+      name
+    }
+    draft @skip(if: $withAuthor)
   }
 }
 ```
@@ -89,8 +109,14 @@ Built-in directives: `@include(if:)`, `@skip(if:)`, `@deprecated(reason:)`.
 ```graphql
 mutation CreatePost($input: CreatePostInput!) {
   createPost(input: $input) {
-    post   { id slug }
-    errors { field message }
+    post {
+      id
+      slug
+    }
+    errors {
+      field
+      message
+    }
   }
 }
 ```
@@ -104,7 +130,9 @@ subscription OnMessage($roomId: ID!) {
   messageAdded(roomId: $roomId) {
     id
     text
-    sender { name }
+    sender {
+      name
+    }
   }
 }
 ```
@@ -116,23 +144,29 @@ Transport: WebSocket (`graphql-ws` protocol) or SSE.
 ```graphql
 "User of the system."
 type User implements Node {
-  id:      ID!
-  name:    String!
-  email:   String
+  id: ID!
+  name: String!
+  email: String
   posts(first: Int = 10, after: String): PostConnection!
-  role:    Role!
+  role: Role!
 }
 
-interface Node { id: ID! }
+interface Node {
+  id: ID!
+}
 
 union SearchResult = User | Post | Comment
 
-enum Role { ADMIN EDITOR VIEWER }
+enum Role {
+  ADMIN
+  EDITOR
+  VIEWER
+}
 
 input CreatePostInput {
   title: String!
-  body:  String!
-  tags:  [String!] = []
+  body: String!
+  tags: [String!] = []
 }
 
 type Mutation {
@@ -149,8 +183,8 @@ type Subscription {
 }
 
 schema {
-  query:        Query
-  mutation:     Mutation
+  query: Query
+  mutation: Mutation
   subscription: Subscription
 }
 ```
@@ -161,14 +195,14 @@ Built-in: `Int`, `Float`, `String`, `Boolean`, `ID`. Custom scalars (e.g. `DateT
 
 Type modifiers:
 
-| Notation   | Meaning                              |
-|------------|--------------------------------------|
-| `String`   | nullable string                      |
-| `String!`  | non-null string                      |
-| `[String]` | nullable list of nullable strings    |
-| `[String!]`| nullable list of non-null strings    |
-| `[String]!`| non-null list of nullable strings    |
-| `[String!]!` | non-null list of non-null strings  |
+| Notation     | Meaning                           |
+| ------------ | --------------------------------- |
+| `String`     | nullable string                   |
+| `String!`    | non-null string                   |
+| `[String]`   | nullable list of nullable strings |
+| `[String!]`  | nullable list of non-null strings |
+| `[String]!`  | non-null list of nullable strings |
+| `[String!]!` | non-null list of non-null strings |
 
 ## Pagination (Relay-style cursors)
 
@@ -177,9 +211,15 @@ Type modifiers:
   posts(first: 10, after: "cursor") {
     edges {
       cursor
-      node { id title }
+      node {
+        id
+        title
+      }
     }
-    pageInfo { hasNextPage endCursor }
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
   }
 }
 ```
@@ -190,12 +230,14 @@ Standard response shape:
 
 ```json
 {
-  "data":   { "user": null },
+  "data": { "user": null },
   "errors": [
-    { "message": "Not found",
-      "path":    ["user"],
+    {
+      "message": "Not found",
+      "path": ["user"],
       "locations": [{ "line": 2, "column": 3 }],
-      "extensions": { "code": "NOT_FOUND" } }
+      "extensions": { "code": "NOT_FOUND" }
+    }
   ]
 }
 ```
@@ -207,9 +249,28 @@ Standard response shape:
 Every GraphQL server exposes its own schema:
 
 ```graphql
-{ __schema { types { name kind } } }
-{ __type(name: "User") { fields { name type { name kind } } } }
-{ __typename }                     # works inside any selection set
+{
+  __schema {
+    types {
+      name
+      kind
+    }
+  }
+}
+{
+  __type(name: "User") {
+    fields {
+      name
+      type {
+        name
+        kind
+      }
+    }
+  }
+}
+{
+  __typename
+} # works inside any selection set
 ```
 
 Disable in production for closed APIs.

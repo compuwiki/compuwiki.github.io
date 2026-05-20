@@ -25,10 +25,15 @@ You can create HTML elements `<h1>` through `<h6>` easily by prepending the text
 
 ```md
 # This is an <h1>
+
 ## This is an <h2>
+
 ### This is an <h3>
+
 #### This is an <h4>
+
 ##### This is an <h5>
+
 ###### This is an <h6>
 ```
 
@@ -47,15 +52,15 @@ This is an h2
 Text can be easily styled as italic or bold using markdown.
 
 ```md
-*This text is in italics.*
+_This text is in italics._
 _And so is this text._
 
 **This text is in bold.**
-__And so is this text.__
+**And so is this text.**
 
-***This text is in both.***
+**_This text is in both._**
 **_As is this!_**
-*__And this!__*
+_**And this!**_
 ```
 
 In GitHub Flavored Markdown, which is used to render markdown files on GitHub, we also have strikethrough:
@@ -93,8 +98,9 @@ Block quotes are easy and done with the > character.
 > It doesn't make a difference so long as they start with a \`>\`.
 
 > You can also use more than one level
->> of indentation?
-> How neat is that?
+>
+> > of indentation?
+> > How neat is that?
 ```
 
 ## Lists
@@ -102,15 +108,15 @@ Block quotes are easy and done with the > character.
 Unordered lists can be made using asterisks, pluses, or hyphens.
 
 ```md
-* Item
-* Item
-* Another item
+- Item
+- Item
+- Another item
 
 or
 
-+ Item
-+ Item
-+ One more item
+- Item
+- Item
+- One more item
 
 or
 
@@ -143,8 +149,8 @@ You can also use sublists.
 1. Item one
 2. Item two
 3. Item three
-    * Sub-item
-    * Sub-item
+   - Sub-item
+   - Sub-item
 4. Item four
 ```
 
@@ -152,9 +158,10 @@ There are even task lists. This creates HTML checkboxes.
 
 ```md
 Boxes below without the 'x' are unchecked HTML checkboxes.
+
 - [ ] First task to complete.
 - [ ] Second task that needs done
-This checkbox below will be a checked HTML checkbox.
+      This checkbox below will be a checked HTML checkbox.
 - [x] This task has been completed
 ```
 
@@ -171,7 +178,7 @@ You can also re-tab (or add an additional four spaces) for indentation inside yo
 
 ```md
 my_array.each do |item|
-  puts item
+puts item
 end
 ```
 
@@ -186,7 +193,7 @@ In GitHub Flavored Markdown, you can use a special syntax for code.
 ```md
 \`\`\`ruby
 def foobar
-  puts "Hello world!"
+puts "Hello world!"
 end
 \`\`\`
 ```
@@ -198,10 +205,13 @@ The above text doesn't require indenting, plus GitHub will use syntax highlighti
 Horizontal rules (`<hr/>`) are easily added with three or more asterisks or hyphens, with or without spaces.
 
 ```md
-***
 ---
-- - -
-****************
+
+---
+
+---
+
+---
 ```
 
 ## Links
@@ -293,7 +303,7 @@ And reference style works as expected.
 ### Escaping characters
 
 ```md
-I want to type *this text surrounded by asterisks* but I don't want it to be
+I want to type _this text surrounded by asterisks_ but I don't want it to be
 in italics, so I do this: \*this text surrounded by asterisks\*.
 ```
 
@@ -311,18 +321,18 @@ Your computer crashed? Try sending a
 Tables are only available in GitHub Flavored Markdown and are slightly cumbersome, but if you really want it:
 
 ```md
-| Col1         | Col2     | Col3          |
+| Col1         |   Col2   |          Col3 |
 | :----------- | :------: | ------------: |
 | Left-aligned | Centered | Right-aligned |
-| blah         | blah     | blah          |
+| blah         |   blah   |          blah |
 ```
 
 or, for the same results
 
 ```md
-Col 1 | Col2 | Col3
-:-- | :-: | --:
-Ugh this is so ugly | make it | stop
+| Col 1               |  Col2   | Col3 |
+| :------------------ | :-----: | ---: |
+| Ugh this is so ugly | make it | stop |
 ```
 
 ## Markdownlint

@@ -2,7 +2,6 @@
 title: Docker Compose
 ---
 
-
 ```yml
 # Docker Compose v2 — annotated reference.
 # Docs: https://docs.docker.com/compose/compose-file/
@@ -35,44 +34,44 @@ x-app-defaults: &app-defaults
 services:
   # ─── A web app built from a local Dockerfile ──────────────────────────────
   web:
-    <<: *app-defaults                     # merge in shared defaults
+    <<: *app-defaults # merge in shared defaults
     build:
-      context: ./web                      # path containing the Dockerfile
-      dockerfile: Dockerfile              # default: Dockerfile
-      target: runtime                     # multi-stage target
-      args:                               # build-time ARGs
+      context: ./web # path containing the Dockerfile
+      dockerfile: Dockerfile # default: Dockerfile
+      target: runtime # multi-stage target
+      args: # build-time ARGs
         NODE_VERSION: "20"
       cache_from: ["myorg/web:cache"]
-    image: myorg/web:latest               # tag of the built image (also for pull)
-    container_name: web                   # optional, fixed name (loses scaling)
-    command: ["node", "server.js"]        # override CMD (exec form preferred)
-    entrypoint: ["/usr/local/bin/entry"]  # override ENTRYPOINT
+    image: myorg/web:latest # tag of the built image (also for pull)
+    container_name: web # optional, fixed name (loses scaling)
+    command: ["node", "server.js"] # override CMD (exec form preferred)
+    entrypoint: ["/usr/local/bin/entry"] # override ENTRYPOINT
     working_dir: /app
     user: "1000:1000"
 
     ports:
-      - "8080:80"                         # host:container
-      - "127.0.0.1:9229:9229"             # bind to loopback only
+      - "8080:80" # host:container
+      - "127.0.0.1:9229:9229" # bind to loopback only
     expose:
-      - "9000"                            # expose to linked services only
+      - "9000" # expose to linked services only
 
     environment:
       NODE_ENV: production
-      DATABASE_URL: postgres://app:${DB_PASSWORD}@db:5432/app   # ${} = from .env or shell
+      DATABASE_URL: postgres://app:${DB_PASSWORD}@db:5432/app # ${} = from .env or shell
     env_file:
       - .env
       - .env.local
 
     volumes:
-      - ./web:/app                        # bind mount (source : target)
-      - node_modules:/app/node_modules    # named volume (defined below)
-      - /var/run/docker.sock:/var/run/docker.sock:ro   # read-only bind
+      - ./web:/app # bind mount (source : target)
+      - node_modules:/app/node_modules # named volume (defined below)
+      - /var/run/docker.sock:/var/run/docker.sock:ro # read-only bind
       - type: tmpfs
         target: /tmp
 
     depends_on:
       db:
-        condition: service_healthy        # wait until db's healthcheck passes
+        condition: service_healthy # wait until db's healthcheck passes
       cache:
         condition: service_started
 
@@ -81,15 +80,15 @@ services:
       interval: 10s
       timeout: 3s
       retries: 5
-      start_period: 20s                   # grace period before failures count
+      start_period: 20s # grace period before failures count
 
-    deploy:                               # honored by `docker compose up` for limits
+    deploy: # honored by `docker compose up` for limits
       resources:
-        limits:   { cpus: "1.0", memory: 512M }
+        limits: { cpus: "1.0", memory: 512M }
         reservations: { cpus: "0.25", memory: 128M }
 
     networks: [frontnet, backnet]
-    profiles: ["full"]                    # only starts when `--profile full` given
+    profiles: ["full"] # only starts when `--profile full` given
 
   # ─── A managed image (Postgres) ───────────────────────────────────────────
   db:
@@ -97,7 +96,7 @@ services:
     restart: unless-stopped
     environment:
       POSTGRES_USER: app
-      POSTGRES_PASSWORD_FILE: /run/secrets/db_password   # safer than env var
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_password # safer than env var
       POSTGRES_DB: app
     volumes:
       - db-data:/var/lib/postgresql/data
@@ -116,10 +115,10 @@ services:
 
 # ─── Top-level networks ─────────────────────────────────────────────────────
 networks:
-  frontnet:                               # default: bridge driver
+  frontnet: # default: bridge driver
   backnet:
     driver: bridge
-    internal: true                        # no external connectivity
+    internal: true # no external connectivity
     ipam:
       config:
         - subnet: 10.42.0.0/24

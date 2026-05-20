@@ -16,21 +16,21 @@ Resolved right-to-left: root NS → TLD NS (`com`) → authoritative NS (`exampl
 
 ## Common record types
 
-| Type    | Purpose                                                      | Example value                              |
-|---------|--------------------------------------------------------------|--------------------------------------------|
-| `A`     | IPv4 address                                                 | `93.184.216.34`                            |
-| `AAAA`  | IPv6 address                                                 | `2606:2800:220:1:248:1893:25c8:1946`       |
-| `CNAME` | Canonical alias (one name → another name). No siblings.      | `www → example.com.`                       |
-| `MX`    | Mail server, with priority (lower = preferred)               | `10 mail.example.com.`                     |
-| `NS`    | Authoritative nameserver for the zone                        | `ns1.example.com.`                         |
-| `SOA`   | Zone metadata (primary NS, email, serial, timers)            | `ns1 admin 2025010101 7200 3600 1209600 3600` |
-| `TXT`   | Arbitrary text — SPF, DKIM, domain verification              | `"v=spf1 include:_spf.google.com ~all"`    |
-| `PTR`   | Reverse: IP → name (lives under `in-addr.arpa` / `ip6.arpa`) | `34.216.184.93.in-addr.arpa → example.com.` |
-| `SRV`   | Service location (host + port + priority + weight)           | `0 5 5060 sip.example.com.`                |
-| `CAA`   | Which CAs may issue certs for the name                       | `0 issue "letsencrypt.org"`                |
-| `DS`    | Delegation Signer (DNSSEC link to child zone)                |                                            |
-| `DNSKEY` `RRSIG` `NSEC(3)` | DNSSEC chain (key, signature, denial of existence) |                                    |
-| `ALIAS`/`ANAME` | Flattened CNAME-at-apex (registrar-specific, not RFC) |                                          |
+| Type                       | Purpose                                                      | Example value                                 |
+| -------------------------- | ------------------------------------------------------------ | --------------------------------------------- |
+| `A`                        | IPv4 address                                                 | `93.184.216.34`                               |
+| `AAAA`                     | IPv6 address                                                 | `2606:2800:220:1:248:1893:25c8:1946`          |
+| `CNAME`                    | Canonical alias (one name → another name). No siblings.      | `www → example.com.`                          |
+| `MX`                       | Mail server, with priority (lower = preferred)               | `10 mail.example.com.`                        |
+| `NS`                       | Authoritative nameserver for the zone                        | `ns1.example.com.`                            |
+| `SOA`                      | Zone metadata (primary NS, email, serial, timers)            | `ns1 admin 2025010101 7200 3600 1209600 3600` |
+| `TXT`                      | Arbitrary text — SPF, DKIM, domain verification              | `"v=spf1 include:_spf.google.com ~all"`       |
+| `PTR`                      | Reverse: IP → name (lives under `in-addr.arpa` / `ip6.arpa`) | `34.216.184.93.in-addr.arpa → example.com.`   |
+| `SRV`                      | Service location (host + port + priority + weight)           | `0 5 5060 sip.example.com.`                   |
+| `CAA`                      | Which CAs may issue certs for the name                       | `0 issue "letsencrypt.org"`                   |
+| `DS`                       | Delegation Signer (DNSSEC link to child zone)                |                                               |
+| `DNSKEY` `RRSIG` `NSEC(3)` | DNSSEC chain (key, signature, denial of existence)           |                                               |
+| `ALIAS`/`ANAME`            | Flattened CNAME-at-apex (registrar-specific, not RFC)        |                                               |
 
 ## Anatomy of a zone file (BIND)
 
@@ -96,12 +96,12 @@ IPv6 uses nibble-reversed address under `ip6.arpa`.
 
 ## DoT / DoH / DoQ
 
-| Protocol | Transport          | Port | Notes                                       |
-|----------|--------------------|------|---------------------------------------------|
-| Do53     | UDP/TCP plaintext  | 53   | Default; visible to anyone on path          |
-| DoT      | TCP + TLS          | 853  | Easy to block at firewall (well-known port) |
-| DoH      | HTTPS              | 443  | Indistinguishable from web traffic          |
-| DoQ      | QUIC               | 853  | Newer, lower latency                        |
+| Protocol | Transport         | Port | Notes                                       |
+| -------- | ----------------- | ---- | ------------------------------------------- |
+| Do53     | UDP/TCP plaintext | 53   | Default; visible to anyone on path          |
+| DoT      | TCP + TLS         | 853  | Easy to block at firewall (well-known port) |
+| DoH      | HTTPS             | 443  | Indistinguishable from web traffic          |
+| DoQ      | QUIC              | 853  | Newer, lower latency                        |
 
 ## Common CLI tools
 
@@ -137,13 +137,13 @@ ipconfig /flushdns                    # Windows
 
 ## Response codes
 
-| Code     | Meaning                                            |
-|----------|----------------------------------------------------|
-| NOERROR  | OK (answer in `ANSWER` section — may be empty)     |
-| NXDOMAIN | Name does not exist                                |
-| SERVFAIL | Server failed (DNSSEC bogus, upstream down, etc.)  |
-| REFUSED  | Server refuses to answer (not authoritative, ACL)  |
-| FORMERR  | Malformed query                                    |
+| Code     | Meaning                                           |
+| -------- | ------------------------------------------------- |
+| NOERROR  | OK (answer in `ANSWER` section — may be empty)    |
+| NXDOMAIN | Name does not exist                               |
+| SERVFAIL | Server failed (DNSSEC bogus, upstream down, etc.) |
+| REFUSED  | Server refuses to answer (not authoritative, ACL) |
+| FORMERR  | Malformed query                                   |
 
 ## Gotchas
 

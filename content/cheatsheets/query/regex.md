@@ -6,42 +6,42 @@ Regular expressions — pattern language for matching text. Flavors differ sligh
 
 ## Character classes
 
-| Pattern        | Matches                                            |
-|----------------|----------------------------------------------------|
-| `.`            | any character except newline (unless `s`/dotall)   |
-| `\d` / `\D`    | digit / non-digit                                  |
-| `\w` / `\W`    | word char `[A-Za-z0-9_]` / non-word                |
-| `\s` / `\S`    | whitespace / non-whitespace                        |
-| `\b` / `\B`    | word boundary / non-boundary                       |
-| `[abc]`        | any of a, b, c                                     |
-| `[^abc]`       | none of a, b, c                                    |
-| `[a-z]`        | range                                              |
-| `[[:alpha:]]`  | POSIX class (alpha, digit, alnum, space, upper, lower, punct, xdigit, …) |
-| `\p{L}`        | Unicode property — any letter (Unicode mode)       |
-| `\P{L}`        | inverse Unicode property                           |
+| Pattern       | Matches                                                                  |
+| ------------- | ------------------------------------------------------------------------ |
+| `.`           | any character except newline (unless `s`/dotall)                         |
+| `\d` / `\D`   | digit / non-digit                                                        |
+| `\w` / `\W`   | word char `[A-Za-z0-9_]` / non-word                                      |
+| `\s` / `\S`   | whitespace / non-whitespace                                              |
+| `\b` / `\B`   | word boundary / non-boundary                                             |
+| `[abc]`       | any of a, b, c                                                           |
+| `[^abc]`      | none of a, b, c                                                          |
+| `[a-z]`       | range                                                                    |
+| `[[:alpha:]]` | POSIX class (alpha, digit, alnum, space, upper, lower, punct, xdigit, …) |
+| `\p{L}`       | Unicode property — any letter (Unicode mode)                             |
+| `\P{L}`       | inverse Unicode property                                                 |
 
 ## Anchors
 
-| Pattern  | Meaning                                            |
-|----------|----------------------------------------------------|
-| `^`      | start of string (or line in multiline mode)        |
-| `$`      | end of string (or line in multiline mode)          |
-| `\A`     | start of string (always)                           |
-| `\z`     | end of string (always)                             |
-| `\Z`     | end of string, optionally before final newline     |
-| `\b`     | word boundary                                      |
+| Pattern | Meaning                                        |
+| ------- | ---------------------------------------------- |
+| `^`     | start of string (or line in multiline mode)    |
+| `$`     | end of string (or line in multiline mode)      |
+| `\A`    | start of string (always)                       |
+| `\z`    | end of string (always)                         |
+| `\Z`    | end of string, optionally before final newline |
+| `\b`    | word boundary                                  |
 
 ## Quantifiers
 
-| Pattern   | Meaning                            |
-|-----------|------------------------------------|
-| `*`       | 0 or more (greedy)                 |
-| `+`       | 1 or more                          |
-| `?`       | 0 or 1                             |
-| `{n}`     | exactly n                          |
-| `{n,}`    | n or more                          |
-| `{n,m}`   | n to m                             |
-| `*?` `+?` `??` `{n,m}?` | **lazy** (match as little as possible) |
+| Pattern                 | Meaning                                 |
+| ----------------------- | --------------------------------------- |
+| `*`                     | 0 or more (greedy)                      |
+| `+`                     | 1 or more                               |
+| `?`                     | 0 or 1                                  |
+| `{n}`                   | exactly n                               |
+| `{n,}`                  | n or more                               |
+| `{n,m}`                 | n to m                                  |
+| `*?` `+?` `??` `{n,m}?` | **lazy** (match as little as possible)  |
 | `*+` `++` `?+` `{n,m}+` | **possessive** (no backtracking — PCRE) |
 
 ```
@@ -86,14 +86,14 @@ Examples:
 
 ## Flags / modifiers
 
-| Flag | Name           | Effect                                         |
-|------|----------------|------------------------------------------------|
-| `i`  | case-insensitive | A == a                                       |
-| `m`  | multiline      | `^`/`$` match line starts/ends                 |
-| `s`  | dotall         | `.` matches newline too                        |
-| `x`  | extended       | ignore whitespace + `#` comments in pattern    |
-| `u`  | unicode        | full Unicode (`\w` covers non-ASCII, etc.)     |
-| `g`  | global (JS)    | find all matches (not a flag in most engines)  |
+| Flag | Name             | Effect                                        |
+| ---- | ---------------- | --------------------------------------------- |
+| `i`  | case-insensitive | A == a                                        |
+| `m`  | multiline        | `^`/`$` match line starts/ends                |
+| `s`  | dotall           | `.` matches newline too                       |
+| `x`  | extended         | ignore whitespace + `#` comments in pattern   |
+| `u`  | unicode          | full Unicode (`\w` covers non-ASCII, etc.)    |
+| `g`  | global (JS)      | find all matches (not a flag in most engines) |
 
 Inline form: `(?i)foo` — enable `i` from this point on. `(?i:foo)` — only inside group.
 
@@ -170,10 +170,10 @@ re.compile(r'foo', re.I | re.M)
 
 ```js
 // JavaScript
-const m = "abc 123".match(/(\w+)\s+(\d+)/);   // m[1] = "abc", m[2] = "123"
-"foo foo".replace(/foo/g, "bar");             // global
-const re = /(?<year>\d{4})/;                  // named groups
-[..."a1 b2 c3".matchAll(/\w(\d)/g)];          // iterate all matches
+const m = "abc 123".match(/(\w+)\s+(\d+)/) // m[1] = "abc", m[2] = "123"
+"foo foo".replace(/foo/g, "bar") // global
+const re = /(?<year>\d{4})/ // named groups
+;[..."a1 b2 c3".matchAll(/\w(\d)/g)] // iterate all matches
 ```
 
 ## Testing and debugging

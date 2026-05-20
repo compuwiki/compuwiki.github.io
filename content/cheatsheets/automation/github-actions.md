@@ -7,17 +7,17 @@ CI/CD service built into GitHub. Workflows are YAML files in `.github/workflows/
 ## Anatomy of a workflow
 
 ```yaml
-name: CI                      # display name (optional)
+name: CI # display name (optional)
 
-on:                           # triggers
+on: # triggers
   push:
     branches: [main]
   pull_request:
-  workflow_dispatch:          # manual run button
+  workflow_dispatch: # manual run button
 
 jobs:
-  build:                      # job id
-    runs-on: ubuntu-latest    # runner image
+  build: # job id
+    runs-on: ubuntu-latest # runner image
     steps:
       - uses: actions/checkout@v4
       - name: Run tests
@@ -29,31 +29,31 @@ jobs:
 ```yaml
 on:
   push:
-    branches: [main, 'release/**']
-    paths: ['src/**', '!**/*.md']
-    tags: ['v*']
+    branches: [main, "release/**"]
+    paths: ["src/**", "!**/*.md"]
+    tags: ["v*"]
   pull_request:
     types: [opened, synchronize, reopened]
   schedule:
-    - cron: '0 4 * * *'       # daily 04:00 UTC
-  workflow_dispatch:          # manual, with optional inputs
+    - cron: "0 4 * * *" # daily 04:00 UTC
+  workflow_dispatch: # manual, with optional inputs
     inputs:
       env:
         type: choice
         options: [staging, prod]
         default: staging
-  workflow_call:              # reusable workflow
-  repository_dispatch:        # external API trigger
+  workflow_call: # reusable workflow
+  repository_dispatch: # external API trigger
 ```
 
 ## Runners
 
-| Label                                      | OS              |
-|--------------------------------------------|-----------------|
-| `ubuntu-latest`, `ubuntu-24.04`            | Linux           |
-| `windows-latest`, `windows-2022`           | Windows         |
-| `macos-latest`, `macos-14`                 | macOS           |
-| `self-hosted`, plus custom labels          | Your own runner |
+| Label                             | OS              |
+| --------------------------------- | --------------- |
+| `ubuntu-latest`, `ubuntu-24.04`   | Linux           |
+| `windows-latest`, `windows-2022`  | Windows         |
+| `macos-latest`, `macos-14`        | macOS           |
+| `self-hosted`, plus custom labels | Your own runner |
 
 ## Steps
 
@@ -76,22 +76,22 @@ steps:
   # Use a published action
   - uses: actions/setup-node@v4
     with:
-      node-version: '20'
-      cache: 'npm'
+      node-version: "20"
+      cache: "npm"
 ```
 
 ## Common actions
 
 ```yaml
-- uses: actions/checkout@v4              # check out the repo
-- uses: actions/setup-node@v4            # Node.js + npm/yarn/pnpm cache
-- uses: actions/setup-python@v5          # Python + pip cache
-- uses: actions/setup-go@v5              # Go
-- uses: actions/setup-java@v4            # Java/JDK
-- uses: actions/cache@v4                 # generic cache
-- uses: actions/upload-artifact@v4       # save build output
-- uses: actions/download-artifact@v4     # retrieve in later job
-- uses: docker/build-push-action@v6      # build & push images
+- uses: actions/checkout@v4 # check out the repo
+- uses: actions/setup-node@v4 # Node.js + npm/yarn/pnpm cache
+- uses: actions/setup-python@v5 # Python + pip cache
+- uses: actions/setup-go@v5 # Go
+- uses: actions/setup-java@v4 # Java/JDK
+- uses: actions/cache@v4 # generic cache
+- uses: actions/upload-artifact@v4 # save build output
+- uses: actions/download-artifact@v4 # retrieve in later job
+- uses: docker/build-push-action@v6 # build & push images
 - uses: docker/login-action@v3
 ```
 
@@ -138,18 +138,18 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
         node: [18, 20, 22]
-        include:                # extra combos
+        include: # extra combos
           - os: ubuntu-latest
             node: 22
             experimental: true
-        exclude:                # remove combos
+        exclude: # remove combos
           - os: windows-latest
             node: 18
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with: { node-version: '${{ matrix.node }}' }
+        with: { node-version: "${{ matrix.node }}" }
       - run: npm test
 ```
 
@@ -177,7 +177,7 @@ jobs:
 ```yaml
 jobs:
   deploy:
-    environment: production    # requires approval if configured
+    environment: production # requires approval if configured
     runs-on: ubuntu-latest
     steps:
       - run: ./deploy.sh
@@ -195,7 +195,7 @@ Secrets are masked in logs. **Never** `echo` a secret; use the env-var indirecti
     path: |
       ~/.npm
       node_modules
-    key:          ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+    key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
     restore-keys: ${{ runner.os }}-npm-
 ```
 
@@ -259,20 +259,20 @@ concurrency:
 permissions:
   contents: read
   pull-requests: write
-  id-token: write     # for OIDC to cloud providers
+  id-token: write # for OIDC to cloud providers
 ```
 
 Defaults can be locked down at the repo/org level.
 
 ## Useful runner files
 
-| Variable          | Purpose                                  |
-|-------------------|------------------------------------------|
-| `$GITHUB_WORKSPACE` | Repo checkout root                     |
-| `$GITHUB_ENV`     | Write `KEY=val` lines to set env vars    |
-| `$GITHUB_OUTPUT`  | Write step outputs                       |
-| `$GITHUB_STEP_SUMMARY` | Markdown summary shown in UI        |
-| `$GITHUB_PATH`    | Append directories to `PATH`             |
+| Variable               | Purpose                               |
+| ---------------------- | ------------------------------------- |
+| `$GITHUB_WORKSPACE`    | Repo checkout root                    |
+| `$GITHUB_ENV`          | Write `KEY=val` lines to set env vars |
+| `$GITHUB_OUTPUT`       | Write step outputs                    |
+| `$GITHUB_STEP_SUMMARY` | Markdown summary shown in UI          |
+| `$GITHUB_PATH`         | Append directories to `PATH`          |
 
 ```yaml
 - run: echo "VERSION=1.2.3" >> $GITHUB_ENV

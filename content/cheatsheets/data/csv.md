@@ -10,6 +10,7 @@ While RFC 4180 provides a standard for the format, in practice, the term "CSV" i
 - Uses a delimiter to separate fields (columns)
 - Uses line breaks to separate records (rows)
 - Optionally includes a header in the first row
+
 ```
 Name, Age, DateOfBirth
 Alice, 30, 1993-05-14

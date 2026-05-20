@@ -18,13 +18,13 @@ Unix time-based job scheduler. Reads `crontab` files and runs commands at specif
 
 ## Operators
 
-| Symbol  | Meaning              | Example   | Matches                        |
-|---------|----------------------|-----------|--------------------------------|
-| `*`     | every value          | `* * * * *` | every minute                 |
-| `,`     | list                 | `0,15,30,45 * * * *` | :00, :15, :30, :45  |
-| `-`     | range                | `0 9-17 * * *` | every hour 09:00–17:00    |
-| `/`     | step                 | `*/5 * * * *` | every 5 minutes            |
-| combined| range + step         | `0 8-18/2 * * *` | every 2h between 08–18  |
+| Symbol   | Meaning      | Example              | Matches                |
+| -------- | ------------ | -------------------- | ---------------------- |
+| `*`      | every value  | `* * * * *`          | every minute           |
+| `,`      | list         | `0,15,30,45 * * * *` | :00, :15, :30, :45     |
+| `-`      | range        | `0 9-17 * * *`       | every hour 09:00–17:00 |
+| `/`      | step         | `*/5 * * * *`        | every 5 minutes        |
+| combined | range + step | `0 8-18/2 * * *`     | every 2h between 08–18 |
 
 ## Common patterns
 
@@ -53,14 +53,14 @@ Unix time-based job scheduler. Reads `crontab` files and runs commands at specif
 
 ## Named shortcuts (non-POSIX, widely supported)
 
-| Shortcut    | Equivalent      | Meaning                  |
-|-------------|-----------------|--------------------------|
-| `@reboot`   | —               | Run once at startup      |
-| `@yearly`   | `0 0 1 1 *`     | Once a year (Jan 1, 00:00) |
-| `@monthly`  | `0 0 1 * *`     | Once a month             |
-| `@weekly`   | `0 0 * * 0`     | Once a week (Sunday)     |
-| `@daily`    | `0 0 * * *`     | Once a day at midnight   |
-| `@hourly`   | `0 * * * *`     | Once an hour at :00      |
+| Shortcut   | Equivalent  | Meaning                    |
+| ---------- | ----------- | -------------------------- |
+| `@reboot`  | —           | Run once at startup        |
+| `@yearly`  | `0 0 1 1 *` | Once a year (Jan 1, 00:00) |
+| `@monthly` | `0 0 1 * *` | Once a month               |
+| `@weekly`  | `0 0 * * 0` | Once a week (Sunday)       |
+| `@daily`   | `0 0 * * *` | Once a day at midnight     |
+| `@hourly`  | `0 * * * *` | Once an hour at :00        |
 
 ## Managing crontabs
 

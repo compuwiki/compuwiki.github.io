@@ -36,7 +36,7 @@ Here, I discuss some basic Emacs concepts and terminology that may be confusing 
 - When a buffer corresponds to a file on disk, we say that the buffer is **visiting** that file.
 - Emacs typically has many buffers open at once.
 - The display of Emacs may be split into different **windows** (not to be confused with your operating system's windows: the operating system window for Emacs can have multiple Emacs windows inside it).
-- An operating system window for Emacs is called an Emacs **frame**. Thus, when the Emacs manual talks about opening a new frame, this essentially means opening a new OS *window* containing an(other) instance of Emacs.
+- An operating system window for Emacs is called an Emacs **frame**. Thus, when the Emacs manual talks about opening a new frame, this essentially means opening a new OS _window_ containing an(other) instance of Emacs.
 - The concepts conventionally known as cutting and pasting are referred to as **killing** and **yanking**, respectively in Emacs parlance.
 - The current position of the cursor is called the **point** in Emacs. Technically, **point** is defined as the position right before the character where the cursor currently is.
 - Finally, each buffer may have several **modes** associated with it: a **major mode** and possibly several **minor modes**.
@@ -77,8 +77,8 @@ C-e --> Move to the end of the line
 
 * Beginning and end of buffer
 
-M-< ("Meta+Shift+,") --> Go to the beginning of the buffer 
-M-> ("Meta+Shift+.") --> Go to the end of the buffer 
+M-< ("Meta+Shift+,") --> Go to the beginning of the buffer
+M-> ("Meta+Shift+.") --> Go to the end of the buffer
 
 * Screen movement
 
@@ -176,7 +176,7 @@ Obtaining help on specific topics. Tab completion is available for function and 
 C-h f RET --> Prompts you for the name of an elisp function and
               displays help text on it along with a clickable link
               to its source code.
-C-h v RET --> Same as above with variables  
+C-h v RET --> Same as above with variables
 
 C-h k RET --> Allows you to enter a key combination and displays the
               name of the elisp function bound to it.

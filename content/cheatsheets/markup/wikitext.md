@@ -11,10 +11,10 @@ A wiki is an online collaboratively edited hypertext publication, the most famou
 `<!--- comments are hidden when reading, but visible when editing --->`
 
 | wikitext                           | equivalent Markdown     | effect                |
-|------------------------------------|-------------------------|-----------------------|
-| `''italics''`                      | `*italics*`             | *italics*             |
+| ---------------------------------- | ----------------------- | --------------------- |
+| `''italics''`                      | `*italics*`             | _italics_             |
 | `'''bold'''`                       | `**bold**`              | **bold**              |
-| `'''''both'''''`                   | `***both***`            | ***both***            |
+| `'''''both'''''`                   | `***both***`            | **_both_**            |
 | `<u>underlined</u>`                | `<u>underlined</u>`     | underlined            |
 | `<nowiki>do not render</nowiki>`   | N/A                     | `do not render`       |
 | `<code>inline code snippet</code>` | \`inline code snippet\` | `inline code snippet` |
@@ -59,7 +59,7 @@ The syntax for tables is [very complicated](https://en.wikipedia.org/wiki/Help:T
 which renders to
 
 | **column title A** | **column title B** |
-|--------------------|--------------------|
+| ------------------ | ------------------ |
 | cell A1            | cell B1            |
 | cell A2            | cell B2            |
 
@@ -122,7 +122,7 @@ To suppress this behavior, use `<nowiki>`. For example, `[[micro-]]<nowiki />sec
 There are three kinds of external linking. The third kind is preferred:
 
 | wikitext                                | renders to                                              |
-|-----------------------------------------|---------------------------------------------------------|
+| --------------------------------------- | ------------------------------------------------------- |
 | `https://www.wikipedia.org`             | [https://www.wikipedia.org](https://www.wikipedia.org/) |
 | `[https://www.wikipedia.org]`           | [\[1\]](https://www.wikipedia.org/)                     |
 | `[https://www.wikipedia.org Wikipedia]` | [Wikipedia](https://www.wikipedia.org/)                 |
@@ -186,10 +186,10 @@ Theorems and proofs can be boxed and named:
 References are the backbone of Wikipedia `{{citation needed}}`. There are in general two ways to do citations.
 
 | type       | inline citation                                                 | expanded citation                                                                                                   |
-|------------|-----------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|
+| ---------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | purpose    | Support specific claims.                                        | Provide general reference work for the entire page.                                                                 |
 | location   | Immediately after the supported claim.                          | In the `== References ==` section.                                                                                  |
-| appearance | analytic continuation of of *f*.<sup><a href="#6">[6]</a></sup> | Abramowitz, Milton; Stegun, Irene A., eds. (1972). ["Chapter 6"](http://www.math.sfu.ca/~cbm/aands/page_253.htm)... |
+| appearance | analytic continuation of of _f_.<sup><a href="#6">[6]</a></sup> | Abramowitz, Milton; Stegun, Irene A., eds. (1972). ["Chapter 6"](http://www.math.sfu.ca/~cbm/aands/page_253.htm)... |
 | syntax     | `<ref>{{cite book\|...}}</ref>`                                 | `{{cite book\|...}}`                                                                                                |
 
 As expanded citations are just inline citations without the `<ref>` tag, we will describe just inline citations.

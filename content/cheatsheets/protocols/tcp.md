@@ -28,14 +28,14 @@ Transmission Control Protocol — reliable, ordered, byte-stream transport over 
 
 ## Flags
 
-| Flag | Name              | Meaning                                                |
-|------|-------------------|--------------------------------------------------------|
-| SYN  | Synchronize       | Initiate connection (use seq numbers)                  |
-| ACK  | Acknowledgment    | ACK field valid                                        |
-| FIN  | Finish            | I have no more data; half-close my side                |
-| RST  | Reset             | Abort connection (error / unexpected)                  |
-| PSH  | Push              | Deliver to app immediately, don't buffer               |
-| URG  | Urgent            | Urgent pointer valid (rarely used in practice)         |
+| Flag | Name           | Meaning                                        |
+| ---- | -------------- | ---------------------------------------------- |
+| SYN  | Synchronize    | Initiate connection (use seq numbers)          |
+| ACK  | Acknowledgment | ACK field valid                                |
+| FIN  | Finish         | I have no more data; half-close my side        |
+| RST  | Reset          | Abort connection (error / unexpected)          |
+| PSH  | Push           | Deliver to app immediately, don't buffer       |
+| URG  | Urgent         | Urgent pointer valid (rarely used in practice) |
 
 ## Three-way handshake
 
@@ -75,7 +75,7 @@ ESTABLISHED → FIN_WAIT_1 / CLOSE_WAIT (depending on who closes first)
 ## Reliability mechanisms
 
 - **Sequence numbers** byte-count every payload byte → ordering + duplicate detection.
-- **Cumulative ACKs**: ACK *n* means "I have everything up to byte n-1".
+- **Cumulative ACKs**: ACK _n_ means "I have everything up to byte n-1".
 - **Selective ACK (SACK)** option lets the receiver report non-contiguous received ranges.
 - **Retransmission**: RTO (timer, ~2×RTT) or fast retransmit on 3 duplicate ACKs.
 - **Checksum** covers header + data + pseudo-header (peer addresses).
@@ -83,6 +83,7 @@ ESTABLISHED → FIN_WAIT_1 / CLOSE_WAIT (depending on who closes first)
 ## Flow control
 
 The receiver advertises a **window** (bytes the sender may have in flight without ACK).
+
 - `Window = 0` → receiver is full; sender pauses, probes with zero-window probes.
 - **Window scaling** option (RFC 1323) shifts the 16-bit field up to 30 bits for fat pipes.
 
@@ -116,13 +117,13 @@ ss -ti                                       # per-socket: cwnd, rtt, retrans
 
 ## Options (common)
 
-| Option            | Purpose                                            |
-|-------------------|----------------------------------------------------|
-| MSS               | Announce max segment size                          |
-| Window Scale      | Shift the 16-bit Window field                      |
-| SACK Permitted    | Both sides will use selective ACK                  |
-| Timestamps        | Better RTT measurement, PAWS (wrap protection)     |
-| TCP Fast Open     | Carry data in SYN on repeat connections            |
+| Option         | Purpose                                        |
+| -------------- | ---------------------------------------------- |
+| MSS            | Announce max segment size                      |
+| Window Scale   | Shift the 16-bit Window field                  |
+| SACK Permitted | Both sides will use selective ACK              |
+| Timestamps     | Better RTT measurement, PAWS (wrap protection) |
+| TCP Fast Open  | Carry data in SYN on repeat connections        |
 
 ## Nagle, delayed ACK, cork
 
@@ -137,11 +138,11 @@ Nagle + delayed-ACK interaction is a classic source of mysterious 200ms latency.
 
 ## Ports
 
-| Range         | Class                                            |
-|---------------|--------------------------------------------------|
-| 0–1023        | Well-known (HTTP 80, HTTPS 443, SSH 22, SMTP 25) |
-| 1024–49151    | Registered                                       |
-| 49152–65535   | Ephemeral (client source ports)                  |
+| Range       | Class                                            |
+| ----------- | ------------------------------------------------ |
+| 0–1023      | Well-known (HTTP 80, HTTPS 443, SSH 22, SMTP 25) |
+| 1024–49151  | Registered                                       |
+| 49152–65535 | Ephemeral (client source ports)                  |
 
 Linux ephemeral range: `cat /proc/sys/net/ipv4/ip_local_port_range`.
 
@@ -195,13 +196,13 @@ ESTAB 0 0  10.0.0.1:443  10.0.0.2:51234
 
 ## TCP vs UDP
 
-| Aspect          | TCP                              | UDP                              |
-|-----------------|----------------------------------|----------------------------------|
-| Connection      | Yes (handshake)                  | None                             |
-| Delivery        | Reliable, ordered                | Best-effort, unordered           |
-| Congestion ctrl | Built-in                         | App-level (or none)              |
-| Header          | 20+ bytes                        | 8 bytes                          |
-| Use cases       | HTTP/1.1, HTTP/2, SSH, SMTP, DBs | DNS, NTP, VoIP, gaming, QUIC base|
+| Aspect          | TCP                              | UDP                               |
+| --------------- | -------------------------------- | --------------------------------- |
+| Connection      | Yes (handshake)                  | None                              |
+| Delivery        | Reliable, ordered                | Best-effort, unordered            |
+| Congestion ctrl | Built-in                         | App-level (or none)               |
+| Header          | 20+ bytes                        | 8 bytes                           |
+| Use cases       | HTTP/1.1, HTTP/2, SSH, SMTP, DBs | DNS, NTP, VoIP, gaming, QUIC base |
 
 QUIC (the basis of HTTP/3) is over UDP but implements TCP-like reliability + congestion control in userspace.
 

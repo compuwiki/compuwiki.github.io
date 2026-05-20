@@ -36,13 +36,13 @@ Powershell as a Language:
 
 # Powershell uses banker's rounding,
 # meaning [int]1.5 would round to 2 but so would [int]2.5
-# Division always returns a float. 
+# Division always returns a float.
 # You must cast result to [int] to round.
 [int]5 / [int]3       # => 1.66666666666667
 [int]-5 / [int]3      # => -1.66666666666667
 5.0 / 3.0   # => 1.66666666666667
 -5.0 / 3.0  # => -1.66666666666667
-[int]$result = 5 / 3 
+[int]$result = 5 / 3
 $result # => 2
 
 # Modulo operation
@@ -119,7 +119,7 @@ $b = $a                                 # => Point b at what a is pointing to
 $b -is $a.GetType()                     # => True, a and b equal same type
 $b -eq $a                               # => None! See below
 [System.Collections.Hashtable]$b = @{}  # => Point b at a new hash table
-$b = @{'one' = 1 
+$b = @{'one' = 1
        'two' = 2}
 $b -is $a.GetType()                     # => False, a and b types not equal
 
@@ -139,11 +139,11 @@ $b -is $a.GetType()                     # => False, a and b types not equal
 # You can also format using f-strings or formatted string literals.
 $name = "Steve"
 $age = 22
-"He said his name is $name." 
+"He said his name is $name."
 # => "He said his name is Steve"
-"{0} said he is {1} years old." -f $name, $age 
+"{0} said he is {1} years old." -f $name, $age
 # => "Steve said he is 22 years old"
-"$name's name is $($name.Length) characters long." 
+"$name's name is $($name.Length) characters long."
 # => "Steve's name is 5 characters long."
 
 # Strings can be compared with -eq, but are case insensitive. We can
@@ -154,7 +154,7 @@ $age = 22
 "ab" -ieq "AB"  # => True
 
 # Escape Characters in Powershell
-# Many languages use the '\', but Windows uses this character for 
+# Many languages use the '\', but Windows uses this character for
 # file paths. Powershell thus uses '\`' to escape characters
 # Take caution when working with files, as '\`' is a
 # valid character in NTFS filenames.
@@ -182,7 +182,7 @@ function Test-Value ($value) {
 Test-Value ($null) # => False
 Test-Value (0)     # => False
 Test-Value ("")    # => False
-Test-Value []      # => True 
+Test-Value []      # => True
 # *[] calls .NET class; creates '[]' string when passed to function
 Test-Value ({})    # => True
 Test-Value @()     # => False
@@ -240,12 +240,12 @@ $array[4]  # blank line returned
 # Remove elements from a array
 $array.Remove($array[3])  # $array is now [1, 2, 4]
 
-# Insert at index an element 
+# Insert at index an element
 $array.Insert(2, 3)  # $array is now [1, 2, 3, 4]
 
 # Get the index of the first item found matching the argument
 $array.IndexOf(2)  # => 1
-$array.IndexOf(6)  # Returns -1 as "outside array" 
+$array.IndexOf(6)  # Returns -1 as "outside array"
 
 # You can add arrays
 # Note: values for $array and for $otherArray are not modified.
@@ -286,11 +286,11 @@ $tuple[0..2]        # => $null (in powershell 5)    => [1, 2, 3] (in powershell 
 2 -in $tuple        # => False
 
 # Hashtables store mappings from keys to values, similar to (but distinct from) Dictionaries.
-# Hashtables do not hold entry order as arrays do. 
+# Hashtables do not hold entry order as arrays do.
 $emptyHash = @{}
 # Here is a prefilled hashtable
-$filledHash = @{"one"= 1 
-                "two"= 2 
+$filledHash = @{"one"= 1
+                "two"= 2
                 "three"= 3}
 
 # Look up values with []
@@ -403,7 +403,7 @@ finally {
 }
 
 # Writing to a file
-$contents = @{"aa"= 12 
+$contents = @{"aa"= 12
              "bb"= 21}
 $contents | Export-CSV "$env:HOMEDRIVE\file.csv" # writes to a file
 
@@ -431,7 +431,7 @@ function Add-ParamNumbers {
  $firstNumber + $secondNumber
 }
 
-Add-ParamNumbers -FirstNumber 1 -SecondNumber 2 # => 3 
+Add-ParamNumbers -FirstNumber 1 -SecondNumber 2 # => 3
 
 # Functions with named parameters, parameter attributes, parsable documentation
 <#
@@ -507,8 +507,8 @@ $instrument.Family = "Plucked String"
 $instrument
 
 <# Output:
-Type              Family        
-----              ------        
+Type              Family
+----              ------
 String Instrument Plucked String
 #>
 
@@ -516,7 +516,7 @@ String Instrument Plucked String
 ## 6.1 Inheritance
 ####################################################
 
-# Inheritance allows new child classes to be defined that inherit 
+# Inheritance allows new child classes to be defined that inherit
 # methods and variables from their parent class.
 
 class Guitar : Instrument
@@ -536,9 +536,9 @@ $myGuitar.ModelNumber = "PS14ce Blackwood"
 $myGuitar.GetType()
 
 <#
-IsPublic IsSerial Name                                     BaseType                                               
--------- -------- ----                                     --------                                               
-True     False    Guitar                                   Instrument  
+IsPublic IsSerial Name                                     BaseType
+-------- -------- ----                                     --------
+True     False    Guitar                                   Instrument
 #>
 
 ####################################################
@@ -625,7 +625,7 @@ function Format-Range ($start, $end, $array) {
     return $finalArray
 }
 
-Format-Range 2 6 $targetArray 
+Format-Range 2 6 $targetArray
 # => 'a','b','g','f','e','d','c','h','i','j','k','l','m'
 
 # The previous method works, but uses extra memory by allocating new arrays.
@@ -674,7 +674,7 @@ Get-ExecutionPolicy -List
 Set-ExecutionPolicy AllSigned
 # Execution policies include:
 # - Restricted: Scripts won't run.
-# - RemoteSigned: Downloaded scripts run only if signed by a trusted publisher. 
+# - RemoteSigned: Downloaded scripts run only if signed by a trusted publisher.
 # - AllSigned: Scripts need to be signed by a trusted publisher.
 # - Unrestricted: Run all scripts.
 help about_Execution_Policies # for more info
@@ -682,14 +682,15 @@ help about_Execution_Policies # for more info
 # Current PowerShell version:
 $PSVersionTable
 ```
+
 ```
-# Calling external commands, executables, 
+# Calling external commands, executables,
 # and functions with the call operator.
 # Exe paths with arguments passed or containing spaces can create issues.
 C:\Program Files\dotnet\dotnet.exe
 # The term 'C:\Program' is not recognized as a name of a cmdlet,
 # function, script file, or executable program.
-# Check the spelling of the name, or if a path was included, 
+# Check the spelling of the name, or if a path was included,
 # verify that the path is correct and try again
 
 "C:\Program Files\dotnet\dotnet.exe"
@@ -700,7 +701,7 @@ C:\Program Files\dotnet\dotnet.exe    # returns string rather than execute
 # Alternatively, you can use dot-sourcing here
 ."C:\Program Files\dotnet\dotnet.exe" --help   # success
 
-# the call operator (&) is similar to Invoke-Expression, 
+# the call operator (&) is similar to Invoke-Expression,
 # but IEX runs in current scope.
 # One usage of '&' would be to invoke a scriptblock inside of your script.
 # Notice the variables are scoped
@@ -726,10 +727,10 @@ Enter-PSSession -ComputerName RemoteComputer
 RemoteComputer\PS> Get-Process powershell
 
 <#
-Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName                                             
--------  ------    -----      -----     ------     --  -- -----------                                             
-   1096      44   156324     179068      29.92  11772   1 powershell                                              
-    545      25    49512      49852             25348   0 powershell 
+Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName
+-------  ------    -----      -----     ------     --  -- -----------
+   1096      44   156324     179068      29.92  11772   1 powershell
+    545      25    49512      49852             25348   0 powershell
 #>
 RemoteComputer\PS> Exit-PSSession
 

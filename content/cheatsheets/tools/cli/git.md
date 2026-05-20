@@ -66,7 +66,7 @@ A tag is a mark on specific point in history. Typically people use this function
 
 ### HEAD and head (component of.git dir)
 
-HEAD is a pointer that points to the current branch. A repository only has 1 *active* HEAD. head is a pointer that points to any commit. A repository can have any number of heads.
+HEAD is a pointer that points to the current branch. A repository only has 1 _active_ HEAD. head is a pointer that points to any commit. A repository can have any number of heads.
 
 ### Stages of Git
 
@@ -290,6 +290,7 @@ $ git config --global grep.lineNumber true
 # Make search results more readable, including grouping
 $ git config --global alias.g "grep --break --heading --line-number"
 ```
+
 ```
 # Search for "variableName" in all java files
 $ git grep 'variableName' -- '*.java'
@@ -446,7 +447,7 @@ Now you're ready to get back to work on your stuff!
 
 ### rebase (caution)
 
-Take all changes that were committed on one branch, and replay them onto another branch. *Do not rebase commits that you have pushed to a public repo*.
+Take all changes that were committed on one branch, and replay them onto another branch. _Do not rebase commits that you have pushed to a public repo_.
 
 ```
 # Rebase experimentBranch onto master
@@ -486,6 +487,7 @@ This give you the chance to reverse any git commands that have gone wrong (for i
 You can do this:
 
 1. `git reflog` to list all of the git commands for the rebase
+
 ```
 38b323f HEAD@{0}: rebase -i (finish): returning to refs/heads/feature/add_git_reflog
 38b323f HEAD@{1}: rebase -i (pick): Clarify inc/dec operators
@@ -494,6 +496,7 @@ You can do this:
 ed8ddf2 HEAD@{4}: rebase -i (pick): pythonstatcomp spanish translation (#1748)
 2e6c386 HEAD@{5}: rebase -i (start): checkout 02fb96d
 ```
+
 2. Select where to reset to, in our case its `2e6c386`, or `HEAD@{5}`
 3. 'git reset --hard HEAD@{5}' this will reset your repo to that head
 4. You can start the rebase again or leave it alone.
@@ -530,9 +533,9 @@ Examine specific parts of the code's history and find out who was the last autho
 $ git blame google_python_style.vim
 b88c6a1b (Google Python team  2019-12-30 13:45:23 -0800 12) " See the License for the specific language governing permissions and
 b88c6a1b (Google Python team  2019-12-30 13:45:23 -0800 13) " limitations under the License.
-b88c6a1b (Google Python team  2019-12-30 13:45:23 -0800 14) 
+b88c6a1b (Google Python team  2019-12-30 13:45:23 -0800 14)
 222e6da8 (mshields@google.com 2010-11-29 20:32:06 +0000 15) " Indent Python in the Google way.
-222e6da8 (mshields@google.com 2010-11-29 20:32:06 +0000 16) 
+222e6da8 (mshields@google.com 2010-11-29 20:32:06 +0000 16)
 222e6da8 (mshields@google.com 2010-11-29 20:32:06 +0000 17) setlocal indentexpr=GetGooglePythonIndent(v:lnum)
 ```
 

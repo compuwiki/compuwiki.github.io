@@ -9,7 +9,7 @@ Free, cross-platform editor built on Electron + Monaco. Configuration lives in J
 The shortcuts below are listed for **Windows / Linux**. On **macOS**, the universal substitutions are:
 
 | Windows / Linux   | macOS          | Notes                                             |
-|-------------------|----------------|---------------------------------------------------|
+| ----------------- | -------------- | ------------------------------------------------- |
 | `Ctrl`            | `Cmd` (`⌘`)    | Most chords (`Ctrl+S` → `Cmd+S`)                  |
 | `Alt`             | `Option` (`⌥`) | `Alt+↑` → `Option+↑`                              |
 | `Shift`           | `Shift` (`⇧`)  | Unchanged                                         |
@@ -22,7 +22,7 @@ The shortcuts below are listed for **Windows / Linux**. On **macOS**, the univer
 A few keys are genuinely different (not a simple `Ctrl→Cmd` swap):
 
 | Action                       | Windows         | Linux                         | macOS                                                        |
-|------------------------------|-----------------|-------------------------------|--------------------------------------------------------------|
+| ---------------------------- | --------------- | ----------------------------- | ------------------------------------------------------------ |
 | Quick fix                    | `Ctrl+.`        | `Ctrl+.`                      | `Cmd+.`                                                      |
 | Go to definition             | `F12`           | `F12`                         | `F12` (or `Cmd+Click`)                                       |
 | Go back / forward            | `Alt+←` / `→`   | `Ctrl+Alt+-` / `Ctrl+Shift+-` | `Ctrl+-` / `Ctrl+Shift+-`                                    |
@@ -189,7 +189,7 @@ Full reference: <https://aka.ms/vscodekeybindings> (separate PDFs for Windows, L
 The fastest way to do anything. Some useful patterns:
 
 | Prefix  | What it does                                                       |
-|---------|--------------------------------------------------------------------|
+| ------- | ------------------------------------------------------------------ |
 | `>`     | Run a command (default when palette is opened with `Ctrl+Shift+P`) |
 | (none)  | Go to file by name (also `Ctrl/Cmd+P`)                             |
 | `@`     | Go to symbol in current file                                       |
@@ -210,7 +210,7 @@ Two layers: **User** (your machine) and **Workspace** (`.vscode/settings.json` i
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
-    "source.organizeImports": "explicit"
+    "source.organizeImports": "explicit",
   },
   "editor.rulers": [80, 120],
   "editor.bracketPairColorization.enabled": true,
@@ -219,15 +219,15 @@ Two layers: **User** (your machine) and **Workspace** (`.vscode/settings.json` i
   "files.eol": "\n",
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
-  "files.exclude":   { "**/.DS_Store": true, "**/dist": true },
-  "search.exclude":  { "**/node_modules": true, "**/coverage": true },
+  "files.exclude": { "**/.DS_Store": true, "**/dist": true },
+  "search.exclude": { "**/node_modules": true, "**/coverage": true },
 
-  "[python]":     { "editor.defaultFormatter": "ms-python.black-formatter" },
+  "[python]": { "editor.defaultFormatter": "ms-python.black-formatter" },
   "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-  "[markdown]":   { "editor.wordWrap": "on" },
+  "[markdown]": { "editor.wordWrap": "on" },
 
   "terminal.integrated.defaultProfile.windows": "PowerShell",
-  "terminal.integrated.cwd": "${workspaceFolder}"
+  "terminal.integrated.cwd": "${workspaceFolder}",
 }
 ```
 
@@ -252,8 +252,8 @@ Pin a set via `extensions.json` in `.vscode/` — VS Code prompts new contributo
   "recommendations": [
     "esbenp.prettier-vscode",
     "dbaeumer.vscode-eslint",
-    "editorconfig.editorconfig"
-  ]
+    "editorconfig.editorconfig",
+  ],
 }
 ```
 
@@ -266,8 +266,8 @@ User snippets: command palette → "Snippets: Configure User Snippets" → pick 
 {
   "Log named value": {
     "prefix": "lognv",
-    "body":   ["console.log('$1:', $1);$0"],
-    "description": "Log a variable with its name"
+    "body": ["console.log('$1:', $1);$0"],
+    "description": "Log a variable with its name",
   },
   "React FC": {
     "prefix": "rfc",
@@ -276,9 +276,9 @@ User snippets: command palette → "Snippets: Configure User Snippets" → pick 
       "",
       "export function ${1:Name}({}: ${1:Name}Props) {",
       "  return <div>$0</div>;",
-      "}"
-    ]
-  }
+      "}",
+    ],
+  },
 }
 ```
 
@@ -294,29 +294,34 @@ Run shell commands from the palette / hotkey, parse problems with regex matchers
   "tasks": [
     {
       "label": "test",
-      "type":  "shell",
+      "type": "shell",
       "command": "npm test",
       "group": { "kind": "test", "isDefault": true },
       "presentation": { "reveal": "always", "panel": "dedicated" },
-      "problemMatcher": ["$tsc"]
+      "problemMatcher": ["$tsc"],
     },
     {
       "label": "build watch",
-      "type":  "shell",
+      "type": "shell",
       "command": "npm run build -- --watch",
       "isBackground": true,
       "problemMatcher": {
         "owner": "tsc",
-        "pattern": { "regexp": "^(.+):(\\d+):(\\d+)\\s+-\\s+error\\s+(.+)$",
-                     "file": 1, "line": 2, "column": 3, "message": 4 },
+        "pattern": {
+          "regexp": "^(.+):(\\d+):(\\d+)\\s+-\\s+error\\s+(.+)$",
+          "file": 1,
+          "line": 2,
+          "column": 3,
+          "message": 4,
+        },
         "background": {
           "activeOnStart": true,
           "beginsPattern": "Starting compilation",
-          "endsPattern":   "Found \\d+ errors"
-        }
-      }
-    }
-  ]
+          "endsPattern": "Found \\d+ errors",
+        },
+      },
+    },
+  ],
 }
 ```
 
@@ -335,19 +340,22 @@ Run task: `Ctrl/Cmd+Shift+B` (default build) or palette → "Tasks: Run Task".
       "program": "${workspaceFolder}/src/index.ts",
       "runtimeArgs": ["-r", "ts-node/register"],
       "env": { "NODE_ENV": "development" },
-      "skipFiles": ["<node_internals>/**"]
+      "skipFiles": ["<node_internals>/**"],
     },
     {
       "type": "chrome",
       "request": "launch",
       "name": "Launch Chrome against localhost",
       "url": "http://localhost:5173",
-      "webRoot": "${workspaceFolder}/src"
-    }
+      "webRoot": "${workspaceFolder}/src",
+    },
   ],
   "compounds": [
-    { "name": "Stack: server + client", "configurations": ["Launch program", "Launch Chrome against localhost"] }
-  ]
+    {
+      "name": "Stack: server + client",
+      "configurations": ["Launch program", "Launch Chrome against localhost"],
+    },
+  ],
 }
 ```
 
@@ -364,7 +372,7 @@ ${input:promptName}       ${command:cmd.id}  ${cwd}
 ## Remote & containers
 
 | Mode                       | Extension                            | Use case                          |
-|----------------------------|--------------------------------------|-----------------------------------|
+| -------------------------- | ------------------------------------ | --------------------------------- |
 | Remote – SSH               | `ms-vscode-remote.remote-ssh`        | Edit code on a server, run there  |
 | Dev Containers             | `ms-vscode-remote.remote-containers` | Reproducible, image-based dev env |
 | WSL                        | `ms-vscode-remote.remote-wsl`        | Linux toolchain on Windows        |
@@ -397,12 +405,8 @@ A `.code-workspace` file groups multiple folders into one VS Code window.
 ```jsonc
 // project.code-workspace
 {
-  "folders": [
-    { "path": "apps/web" },
-    { "path": "apps/api" },
-    { "path": "packages/shared" }
-  ],
-  "settings": { "editor.tabSize": 2 }
+  "folders": [{ "path": "apps/web" }, { "path": "apps/api" }, { "path": "packages/shared" }],
+  "settings": { "editor.tabSize": 2 },
 }
 ```
 
@@ -418,14 +422,14 @@ Sign in (top-left, account icon) → choose what to sync: settings, keybindings,
 - **Path Intellisense** — relative-path completion in strings.
 - **Bracket pair colorization** is built in now; turn it on.
 - **Merge editor** (3-way) — set `git.mergeEditor: true`; resolve conflicts side-by-side.
-- **Profiles** (palette → "Profiles: Create Profile…") — switch entire UI + extension sets (e.g. *Frontend* vs *Rust* vs *Notes*).
+- **Profiles** (palette → "Profiles: Create Profile…") — switch entire UI + extension sets (e.g. _Frontend_ vs _Rust_ vs _Notes_).
 - **Notebook editor** — `.ipynb` and custom notebooks render natively.
 - **Workspace trust** — disable code execution / extensions for unfamiliar repos until you mark them trusted.
 
 ## Differences worth knowing — macOS specifics
 
 - **Open from terminal**: install the `code` shell command (palette → "Shell Command: Install 'code' command in PATH").
-- **Spotlight collides with `Cmd+Space`** → leave VS Code's suggestion trigger on `Ctrl+Space`, or rebind in *Keyboard Shortcuts*.
+- **Spotlight collides with `Cmd+Space`** → leave VS Code's suggestion trigger on `Ctrl+Space`, or rebind in _Keyboard Shortcuts_.
 - **`Cmd+Q`** quits the app entirely (not just the window). Many users disable it via "Apple Menu → System Settings → Keyboard → Keyboard Shortcuts → App Shortcuts" for VS Code.
 - **Right-click on trackpad** — two-finger tap or `Ctrl+Click`.
 - The macOS keybinding file is `keybindings.json`; same JSON shape as Windows/Linux but with `cmd+` instead of `ctrl+` in the `key` field.

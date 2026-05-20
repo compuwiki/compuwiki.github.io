@@ -2,7 +2,6 @@
 title: Git Config
 ---
 
-
 ```conf
 # Git configuration — annotated reference.
 # Locations (later wins):

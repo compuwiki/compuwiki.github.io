@@ -28,12 +28,12 @@ Escape sequences inside an interactive session (newline → `~`):
 
 ## Key types and generation
 
-| Type      | Size              | Use today?                |
-|-----------|-------------------|---------------------------|
-| `ed25519` | 256-bit           | **Preferred** — fast, secure, short |
-| `ecdsa`   | 256/384/521       | OK; some hardware tokens only support this |
-| `rsa`     | ≥ 3072 bits       | OK if ed25519 isn't supported by server |
-| `dsa`     | 1024              | Disabled in OpenSSH ≥ 7   |
+| Type      | Size        | Use today?                                 |
+| --------- | ----------- | ------------------------------------------ |
+| `ed25519` | 256-bit     | **Preferred** — fast, secure, short        |
+| `ecdsa`   | 256/384/521 | OK; some hardware tokens only support this |
+| `rsa`     | ≥ 3072 bits | OK if ed25519 isn't supported by server    |
+| `dsa`     | 1024        | Disabled in OpenSSH ≥ 7                    |
 
 ```sh
 ssh-keygen -t ed25519 -C "you@example.com"
@@ -121,24 +121,24 @@ rsync -avzP --delete user@host:/src/ ./mirror/
 
 ## Useful CLI flags
 
-| Flag               | Purpose                                                  |
-|--------------------|----------------------------------------------------------|
-| `-v` `-vv` `-vvv`  | Increase debug verbosity                                 |
-| `-G host`          | Print effective config for `host` (no connect)           |
-| `-T`               | Disable pseudo-TTY (for piping)                          |
-| `-t`               | Force pseudo-TTY (for interactive commands over ssh)     |
-| `-N`               | Don't run a remote command (forward-only)                |
-| `-f`               | Background after auth                                    |
-| `-q`               | Quiet                                                    |
-| `-o Opt=value`     | Inline any `ssh_config` directive                        |
-| `-F file`          | Use alternate client config                              |
-| `-i file`          | Use specific identity                                    |
-| `-J host[:port]`   | ProxyJump                                                |
-| `-L/-R/-D`         | Forwards (see above)                                     |
-| `-C`               | Compression (only useful on slow links)                  |
-| `-c cipher`        | Force specific cipher                                    |
-| `-m mac`           | Force specific MAC                                       |
-| `-Q kind`          | List supported algorithms: `cipher`, `mac`, `kex`, `key` |
+| Flag              | Purpose                                                  |
+| ----------------- | -------------------------------------------------------- |
+| `-v` `-vv` `-vvv` | Increase debug verbosity                                 |
+| `-G host`         | Print effective config for `host` (no connect)           |
+| `-T`              | Disable pseudo-TTY (for piping)                          |
+| `-t`              | Force pseudo-TTY (for interactive commands over ssh)     |
+| `-N`              | Don't run a remote command (forward-only)                |
+| `-f`              | Background after auth                                    |
+| `-q`              | Quiet                                                    |
+| `-o Opt=value`    | Inline any `ssh_config` directive                        |
+| `-F file`         | Use alternate client config                              |
+| `-i file`         | Use specific identity                                    |
+| `-J host[:port]`  | ProxyJump                                                |
+| `-L/-R/-D`        | Forwards (see above)                                     |
+| `-C`              | Compression (only useful on slow links)                  |
+| `-c cipher`       | Force specific cipher                                    |
+| `-m mac`          | Force specific MAC                                       |
+| `-Q kind`         | List supported algorithms: `cipher`, `mac`, `kex`, `key` |
 
 ## known_hosts
 
@@ -237,6 +237,7 @@ chmod 700 ~/.ssh && chmod 600 ~/.ssh/* && chmod 644 ~/.ssh/*.pub   # fix perms
 ```
 
 Common failures:
+
 - `Permission denied (publickey)` — wrong key, wrong user, or `authorized_keys` perms (must be 600, dir 700, home not group-writable).
 - `Connection refused` — sshd not running / firewall.
 - `Host key verification failed` — pinned key changed (see known_hosts above).

@@ -22,15 +22,15 @@ flowchart TD
 
 ## Layer Summary
 
-| # | Layer        | Unit (PDU) | Responsibility                                    | Examples                       |
-|---|--------------|------------|---------------------------------------------------|--------------------------------|
-| 7 | Application  | Data       | Interface with end-user applications              | HTTP, FTP, SMTP, DNS, SSH      |
-| 6 | Presentation | Data       | Translation, encryption, compression              | TLS/SSL, JPEG, MPEG, ASCII     |
-| 5 | Session      | Data       | Establish, manage, terminate sessions             | NetBIOS, RPC, PPTP             |
-| 4 | Transport    | Segment    | Reliable delivery, flow control, segmentation     | TCP, UDP                       |
-| 3 | Network      | Packet     | Logical addressing and routing between networks   | IP, ICMP, IPSec, routers       |
-| 2 | Data Link    | Frame      | Node-to-node delivery, MAC addressing, error det. | Ethernet, PPP, switches, NICs  |
-| 1 | Physical     | Bit        | Raw bit transmission over physical medium         | Cables, fiber, hubs, repeaters |
+| #   | Layer        | Unit (PDU) | Responsibility                                    | Examples                       |
+| --- | ------------ | ---------- | ------------------------------------------------- | ------------------------------ |
+| 7   | Application  | Data       | Interface with end-user applications              | HTTP, FTP, SMTP, DNS, SSH      |
+| 6   | Presentation | Data       | Translation, encryption, compression              | TLS/SSL, JPEG, MPEG, ASCII     |
+| 5   | Session      | Data       | Establish, manage, terminate sessions             | NetBIOS, RPC, PPTP             |
+| 4   | Transport    | Segment    | Reliable delivery, flow control, segmentation     | TCP, UDP                       |
+| 3   | Network      | Packet     | Logical addressing and routing between networks   | IP, ICMP, IPSec, routers       |
+| 2   | Data Link    | Frame      | Node-to-node delivery, MAC addressing, error det. | Ethernet, PPP, switches, NICs  |
+| 1   | Physical     | Bit        | Raw bit transmission over physical medium         | Cables, fiber, hubs, repeaters |
 
 ## Encapsulation Flow
 

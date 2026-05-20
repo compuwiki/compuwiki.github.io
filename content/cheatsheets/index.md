@@ -7,7 +7,7 @@ Practical reference sheets — code-heavy, copy-paste-ready. Most are sourced fr
 ## Programming languages
 
 | File                                                   | Language   |
-|--------------------------------------------------------|------------|
+| ------------------------------------------------------ | ---------- |
 | [programming/c.md](programming/c.md)                   | C          |
 | [programming/cs.md](programming/cs.md)                 | C#         |
 | [programming/go.md](programming/go.md)                 | Go         |
@@ -22,14 +22,14 @@ Practical reference sheets — code-heavy, copy-paste-ready. Most are sourced fr
 ## Shell & scripting
 
 | File                                       | Topic      |
-|--------------------------------------------|------------|
+| ------------------------------------------ | ---------- |
 | [shell/bash.md](shell/bash.md)             | Bash       |
 | [shell/powershell.md](shell/powershell.md) | PowerShell |
 
 ## Markup & styling
 
 | File                                     | Topic    |
-|------------------------------------------|----------|
+| ---------------------------------------- | -------- |
 | [markup/html.md](markup/html.md)         | HTML     |
 | [markup/latex.md](markup/latex.md)       | LaTeX    |
 | [markup/markdown.md](markup/markdown.md) | Markdown |
@@ -38,7 +38,7 @@ Practical reference sheets — code-heavy, copy-paste-ready. Most are sourced fr
 ## Data & config formats
 
 | File                         | Format |
-|------------------------------|--------|
+| ---------------------------- | ------ |
 | [data/csv.md](data/csv.md)   | CSV    |
 | [data/json.md](data/json.md) | JSON   |
 | [data/xml.md](data/xml.md)   | XML    |
@@ -47,7 +47,7 @@ Practical reference sheets — code-heavy, copy-paste-ready. Most are sourced fr
 ## Query languages & filters
 
 | File                                 | Topic                                |
-|--------------------------------------|--------------------------------------|
+| ------------------------------------ | ------------------------------------ |
 | [query/graphql.md](query/graphql.md) | GraphQL — schema, queries, mutations |
 | [query/jq.md](query/jq.md)           | jq — JSON command-line processor     |
 | [query/regex.md](query/regex.md)     | Regular expressions (PCRE-style)     |
@@ -56,7 +56,7 @@ Practical reference sheets — code-heavy, copy-paste-ready. Most are sourced fr
 ## Text processing
 
 | File                                               | Tool |
-|----------------------------------------------------|------|
+| -------------------------------------------------- | ---- |
 | [text-processing/awk.md](text-processing/awk.md)   | awk  |
 | [text-processing/grep.md](text-processing/grep.md) | grep |
 | [text-processing/sed.md](text-processing/sed.md)   | sed  |
@@ -64,7 +64,7 @@ Practical reference sheets — code-heavy, copy-paste-ready. Most are sourced fr
 ## Protocols
 
 | File                                   | Protocol                                    |
-|----------------------------------------|---------------------------------------------|
+| -------------------------------------- | ------------------------------------------- |
 | [protocols/dns.md](protocols/dns.md)   | DNS — records, resolution, dig/host tooling |
 | [protocols/http.md](protocols/http.md) | HTTP — methods, status codes, headers, curl |
 | [protocols/ssh.md](protocols/ssh.md)   | SSH — keys, forwards, ProxyJump, sshd       |
@@ -74,7 +74,7 @@ Practical reference sheets — code-heavy, copy-paste-ready. Most are sourced fr
 ## Automation
 
 | File                                                         | Topic                                        |
-|--------------------------------------------------------------|----------------------------------------------|
+| ------------------------------------------------------------ | -------------------------------------------- |
 | [automation/cron.md](automation/cron.md)                     | cron — schedule syntax, crontab management   |
 | [automation/github-actions.md](automation/github-actions.md) | GitHub Actions — workflows, triggers, matrix |
 | [automation/make.md](automation/make.md)                     | make / Makefiles                             |
@@ -83,7 +83,7 @@ Practical reference sheets — code-heavy, copy-paste-ready. Most are sourced fr
 ## Tools — CLI
 
 | File                                       | Tool   |
-|--------------------------------------------|--------|
+| ------------------------------------------ | ------ |
 | [tools/cli/docker.md](tools/cli/docker.md) | Docker |
 | [tools/cli/git.md](tools/cli/git.md)       | Git    |
 | [tools/cli/nmap.md](tools/cli/nmap.md)     | nmap   |
@@ -92,7 +92,7 @@ Practical reference sheets — code-heavy, copy-paste-ready. Most are sourced fr
 ## Tools — Editors
 
 | File                                               | Editor             |
-|----------------------------------------------------|--------------------|
+| -------------------------------------------------- | ------------------ |
 | [tools/editors/emacs.md](tools/editors/emacs.md)   | Emacs              |
 | [tools/editors/vim.md](tools/editors/vim.md)       | Vim / Neovim       |
 | [tools/editors/vscode.md](tools/editors/vscode.md) | Visual Studio Code |
@@ -102,7 +102,7 @@ Practical reference sheets — code-heavy, copy-paste-ready. Most are sourced fr
 Annotated reference configs in each tool's native syntax — copy any block directly into your real config.
 
 | File                                                   | Topic                                     |
-|--------------------------------------------------------|-------------------------------------------|
+| ------------------------------------------------------ | ----------------------------------------- |
 | [config/.editorconfig](config/.editorconfig)           | EditorConfig — cross-editor style rules   |
 | [config/.gitconfig](config/.gitconfig)                 | Git — user, aliases, conditional includes |
 | [config/docker-compose.yml](config/docker-compose.yml) | Docker Compose v2                         |

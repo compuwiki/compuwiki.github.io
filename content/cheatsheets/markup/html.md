@@ -28,24 +28,22 @@ What is this markup? It is a method of organising the page's data by surrounding
 <!-- Here is an example HTML file that we are going to analyse. -->
 
 <!doctype html>
-    <html>
-        <head>
-            <title>My Site</title>
-        </head>
-        <body>
-            <h1>Hello, world!</h1>
-            <a href="http://codepen.io/anon/pen/xwjLbZ">
-                Come look at what this shows
-            </a>
-            <p>This is a paragraph.</p>
-            <p>This is another paragraph.</p>
-            <ul>
-                <li>This is an item in a non-enumerated list (bullet list)</li>
-                <li>This is another item</li>
-                <li>And this is the last item on the list</li>
-            </ul>
-        </body>
-    </html>
+<html>
+  <head>
+    <title>My Site</title>
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+    <a href="http://codepen.io/anon/pen/xwjLbZ"> Come look at what this shows </a>
+    <p>This is a paragraph.</p>
+    <p>This is another paragraph.</p>
+    <ul>
+      <li>This is an item in a non-enumerated list (bullet list)</li>
+      <li>This is another item</li>
+      <li>And this is the last item on the list</li>
+    </ul>
+  </body>
+</html>
 
 <!--
     An HTML file always starts by indicating to the browser that the page is HTML.
@@ -54,8 +52,7 @@ What is this markup? It is a method of organising the page's data by surrounding
 
 <!-- After this, it starts by opening an <html> tag. -->
 <html>
-
-<!-- that will be closed at the end of the file with </html>. -->
+  <!-- that will be closed at the end of the file with </html>. -->
 </html>
 
 <!-- Nothing should appear after this final tag. -->
@@ -69,11 +66,11 @@ What is this markup? It is a method of organising the page's data by surrounding
 -->
 
 <head>
-    <!--
+  <!--
         The tag <title> indicates to the browser the title to show in browser
         window's title bar and tab name.
     -->
-    <title>My Site</title>
+  <title>My Site</title>
 </head>
 
 <!-- After the <head> section, we find the tag - <body> -->
@@ -81,32 +78,30 @@ What is this markup? It is a method of organising the page's data by surrounding
 <!-- We must fill the body with the content to be displayed. -->
 
 <body>
-    <!-- The h1 tag creates a title. -->
-    <h1>Hello, world!</h1>
-    <!--
+  <!-- The h1 tag creates a title. -->
+  <h1>Hello, world!</h1>
+  <!--
         There are also subtitles to <h1> from the most important (h2) to the most
         precise (h6).
     -->
 
-    <!-- a hyperlink to the url given by the attribute href="" -->
-    <a href="http://codepen.io/anon/pen/xwjLbZ">
-        Come look at what this shows
-    </a>
+  <!-- a hyperlink to the url given by the attribute href="" -->
+  <a href="http://codepen.io/anon/pen/xwjLbZ"> Come look at what this shows </a>
 
-    <!-- The tag <p> lets us include text in the html page. -->
-    <p>This is a paragraph.</p>
-    <p>This is another paragraph.</p>
+  <!-- The tag <p> lets us include text in the html page. -->
+  <p>This is a paragraph.</p>
+  <p>This is another paragraph.</p>
 
-    <!-- The tag <ul> creates a bullet list. -->
-    <!--
+  <!-- The tag <ul> creates a bullet list. -->
+  <!--
         To have a numbered list instead we would use <ol> giving 1. for the first
         element, 2. for the second, etc.
     -->
-    <ul>
-        <li>This is an item in a non-enumerated list (bullet list)</li>
-        <li>This is another item</li>
-        <li>And this is the last item on the list</li>
-    </ul>
+  <ul>
+    <li>This is an item in a non-enumerated list (bullet list)</li>
+    <li>This is another item</li>
+    <li>And this is the last item on the list</li>
+  </ul>
 </body>
 
 <!-- And that's it, creating an HTML file can be simple. -->
@@ -118,32 +113,29 @@ What is this markup? It is a method of organising the page's data by surrounding
     The source of the image is indicated using the attribute src=""
     The source can be an URL or even path to a file on your computer.
 -->
-<img src="http://i.imgur.com/XWG0O.gif"/>
+<img src="http://i.imgur.com/XWG0O.gif" />
 
 <!-- It is also possible to create a table. -->
 
 <!-- We open a <table> element. -->
 <table>
+  <!-- <tr> allows us to create a row. -->
+  <tr>
+    <!-- <th> allows us to give a title to a table column. -->
+    <th>First Header</th>
+    <th>Second Header</th>
+  </tr>
 
-    <!-- <tr> allows us to create a row. -->
-    <tr>
+  <tr>
+    <!-- <td> allows us to create a table cell. -->
+    <td>first row, first column</td>
+    <td>first row, second column</td>
+  </tr>
 
-        <!-- <th> allows us to give a title to a table column. -->
-        <th>First Header</th>
-        <th>Second Header</th>
-    </tr>
-
-    <tr>
-
-        <!-- <td> allows us to create a table cell. -->
-        <td>first row, first column</td>
-        <td>first row, second column</td>
-    </tr>
-
-    <tr>
-        <td>second row, first column</td>
-        <td>second row, second column</td>
-    </tr>
+  <tr>
+    <td>second row, first column</td>
+    <td>second row, second column</td>
+  </tr>
 </table>
 ```
 

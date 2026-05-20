@@ -12,7 +12,7 @@ Distinctions are made between the **content** and the **markup**. In short, cont
 
 ## Some definitions and introductions
 
-XML Documents are basically made up of *elements* which can have *attributes* describing them and may contain some textual content or more elements as its children. All XML documents must have a root element, which is the ancestor of all the other elements in the document.
+XML Documents are basically made up of _elements_ which can have _attributes_ describing them and may contain some textual content or more elements as its children. All XML documents must have a root element, which is the ancestor of all the other elements in the document.
 
 XML Parsers are designed to be very strict, and will stop parsing malformed documents. Therefore it must be ensured that all XML documents follow the [XML Syntax Rules](http://www.w3schools.com/xml/xml_syntax.asp).
 
@@ -95,7 +95,7 @@ This is what makes XML versatile. It is human readable too. The following docume
 
 ## Well-formedness and Validation
 
-A XML document is *well-formed* if it is syntactically correct. However, it is possible to add more constraints to the document, using Document Type Definitions (DTDs). A document whose elements are attributes are declared in a DTD and which follows the grammar specified in that DTD is called *valid* with respect to that DTD, in addition to being well-formed.
+A XML document is _well-formed_ if it is syntactically correct. However, it is possible to add more constraints to the document, using Document Type Definitions (DTDs). A document whose elements are attributes are declared in a DTD and which follows the grammar specified in that DTD is called _valid_ with respect to that DTD, in addition to being well-formed.
 
 Declaring a DTD externally:
 

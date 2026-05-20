@@ -45,24 +45,24 @@ ClientKeyExchange, ChangeCipherSpec, Finished →
 TLS 1.2 names: `Kx_Auth_WITH_Cipher_Mac` (e.g. `ECDHE_RSA_WITH_AES_128_GCM_SHA256`).
 TLS 1.3 simplified: AEAD + hash only (e.g. `TLS_AES_128_GCM_SHA256`); key exchange and signature are negotiated separately.
 
-| Component       | Modern picks                                              |
-|-----------------|-----------------------------------------------------------|
-| Key exchange    | ECDHE over `X25519` or `secp256r1`; PQ hybrid `X25519+Kyber768` |
-| Signature       | `ed25519`, `ecdsa-secp256r1`, `rsa-pss-rsae-sha256`       |
-| AEAD            | `AES-128-GCM`, `AES-256-GCM`, `ChaCha20-Poly1305`         |
-| Hash            | `SHA-256`, `SHA-384`                                      |
+| Component    | Modern picks                                                    |
+| ------------ | --------------------------------------------------------------- |
+| Key exchange | ECDHE over `X25519` or `secp256r1`; PQ hybrid `X25519+Kyber768` |
+| Signature    | `ed25519`, `ecdsa-secp256r1`, `rsa-pss-rsae-sha256`             |
+| AEAD         | `AES-128-GCM`, `AES-256-GCM`, `ChaCha20-Poly1305`               |
+| Hash         | `SHA-256`, `SHA-384`                                            |
 
 Drop forever: RC4, DES/3DES, MD5, SHA-1, anything `_EXPORT_`, anonymous DH, static RSA key exchange (no forward secrecy).
 
 ## Versions (status as of 2026)
 
-| Version  | Status        | Notes                                       |
-|----------|---------------|---------------------------------------------|
-| SSL 2/3  | Forbidden     | POODLE, etc.                                |
-| TLS 1.0  | Deprecated    | Removed from major browsers                 |
-| TLS 1.1  | Deprecated    | Same                                        |
-| TLS 1.2  | OK            | Still widely deployed                       |
-| TLS 1.3  | **Preferred** | RFC 8446; AEAD-only, 1-RTT, fewer pitfalls  |
+| Version | Status        | Notes                                      |
+| ------- | ------------- | ------------------------------------------ |
+| SSL 2/3 | Forbidden     | POODLE, etc.                               |
+| TLS 1.0 | Deprecated    | Removed from major browsers                |
+| TLS 1.1 | Deprecated    | Same                                       |
+| TLS 1.2 | OK            | Still widely deployed                      |
+| TLS 1.3 | **Preferred** | RFC 8446; AEAD-only, 1-RTT, fewer pitfalls |
 
 ## Certificate chain
 
@@ -77,17 +77,17 @@ Common name (`CN`) is legacy — modern clients (Chrome) require **Subject Alter
 
 ## Extensions you'll see
 
-| Extension                  | Purpose                                                |
-|----------------------------|--------------------------------------------------------|
+| Extension                      | Purpose                                                           |
+| ------------------------------ | ----------------------------------------------------------------- |
 | `SNI` (Server Name Indication) | Pick a vhost during the handshake (plaintext today; ECH hides it) |
-| `ALPN`                     | Negotiate app protocol (`h2`, `http/1.1`, `h3`)        |
-| `supported_versions`       | List of TLS versions client accepts                    |
-| `key_share`                | ECDHE public key(s) — TLS 1.3                          |
-| `signature_algorithms`     | Acceptable cert signature schemes                      |
-| `psk_key_exchange_modes`   | Resumption mode                                        |
-| `ECH` (Encrypted Client Hello) | Hides SNI from on-path observers (rolling out)     |
-| `OCSP Stapling`            | Server attaches a fresh OCSP response                  |
-| `Certificate Transparency` | SCTs proving the cert is logged                        |
+| `ALPN`                         | Negotiate app protocol (`h2`, `http/1.1`, `h3`)                   |
+| `supported_versions`           | List of TLS versions client accepts                               |
+| `key_share`                    | ECDHE public key(s) — TLS 1.3                                     |
+| `signature_algorithms`         | Acceptable cert signature schemes                                 |
+| `psk_key_exchange_modes`       | Resumption mode                                                   |
+| `ECH` (Encrypted Client Hello) | Hides SNI from on-path observers (rolling out)                    |
+| `OCSP Stapling`                | Server attaches a fresh OCSP response                             |
+| `Certificate Transparency`     | SCTs proving the cert is logged                                   |
 
 ## Session resumption
 
@@ -169,15 +169,15 @@ testssl.sh example.com                     # excellent external tool
 
 ## Common error messages, decoded
 
-| Message                                        | Cause                                                             |
-|------------------------------------------------|-------------------------------------------------------------------|
-| `unknown CA`                                   | Client doesn't trust the issuer (missing root or intermediate)    |
-| `certificate has expired`                      | Self-explanatory; check `NotAfter`                                |
-| `hostname mismatch` / `SNI`                    | Hostname not in SAN (`CN` is no longer enough)                    |
-| `handshake_failure`                            | No common cipher / version / signature algorithm                  |
-| `bad_certificate`, `certificate_unknown`       | Chain validation failed                                           |
-| `no_application_protocol`                      | ALPN list didn't include anything the server supports             |
-| `decryption_failed_reserved` / `bad_record_mac`| Often MITM or middlebox tampering, or version mismatch            |
+| Message                                         | Cause                                                          |
+| ----------------------------------------------- | -------------------------------------------------------------- |
+| `unknown CA`                                    | Client doesn't trust the issuer (missing root or intermediate) |
+| `certificate has expired`                       | Self-explanatory; check `NotAfter`                             |
+| `hostname mismatch` / `SNI`                     | Hostname not in SAN (`CN` is no longer enough)                 |
+| `handshake_failure`                             | No common cipher / version / signature algorithm               |
+| `bad_certificate`, `certificate_unknown`        | Chain validation failed                                        |
+| `no_application_protocol`                       | ALPN list didn't include anything the server supports          |
+| `decryption_failed_reserved` / `bad_record_mac` | Often MITM or middlebox tampering, or version mismatch         |
 
 ## Best-practice cheatsheet
 

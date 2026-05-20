@@ -42,13 +42,13 @@ systemctl set-default multi-user.target
 
 ## Unit file locations
 
-| Path                                | Purpose                                  |
-|-------------------------------------|------------------------------------------|
-| `/usr/lib/systemd/system/`          | Vendor-supplied (package-managed)        |
-| `/etc/systemd/system/`              | Local admin units & overrides (wins)     |
-| `/run/systemd/system/`              | Runtime-generated (ephemeral)            |
-| `~/.config/systemd/user/`           | Per-user units (`systemctl --user ...`)  |
-| `/etc/systemd/system/foo.service.d/override.conf` | Drop-in override        |
+| Path                                              | Purpose                                 |
+| ------------------------------------------------- | --------------------------------------- |
+| `/usr/lib/systemd/system/`                        | Vendor-supplied (package-managed)       |
+| `/etc/systemd/system/`                            | Local admin units & overrides (wins)    |
+| `/run/systemd/system/`                            | Runtime-generated (ephemeral)           |
+| `~/.config/systemd/user/`                         | Per-user units (`systemctl --user ...`) |
+| `/etc/systemd/system/foo.service.d/override.conf` | Drop-in override                        |
 
 ## Service unit (`/etc/systemd/system/myapp.service`)
 
@@ -100,26 +100,26 @@ After creating/editing: `systemctl daemon-reload && systemctl enable --now myapp
 
 ## `Type=` values
 
-| Type        | When `started` is considered "done"                              |
-|-------------|------------------------------------------------------------------|
-| `simple`    | Immediately after `ExecStart` is forked (default)                |
-| `exec`      | After the binary has been `exec()`ed (stricter than `simple`)    |
-| `forking`   | After the parent process exits (use `PIDFile=`)                  |
-| `oneshot`   | After the process exits (combine with `RemainAfterExit=yes`)     |
-| `notify`    | After the service sends `READY=1` via `sd_notify()`              |
-| `dbus`      | After the service acquires its D-Bus name (set `BusName=`)       |
+| Type      | When `started` is considered "done"                           |
+| --------- | ------------------------------------------------------------- |
+| `simple`  | Immediately after `ExecStart` is forked (default)             |
+| `exec`    | After the binary has been `exec()`ed (stricter than `simple`) |
+| `forking` | After the parent process exits (use `PIDFile=`)               |
+| `oneshot` | After the process exits (combine with `RemainAfterExit=yes`)  |
+| `notify`  | After the service sends `READY=1` via `sd_notify()`           |
+| `dbus`    | After the service acquires its D-Bus name (set `BusName=`)    |
 
 ## `Restart=` values
 
-| Value         | Restart on…                                  |
-|---------------|----------------------------------------------|
-| `no`          | never (default)                              |
-| `on-success`  | clean exit                                   |
-| `on-failure`  | non-zero exit, signal, timeout, watchdog     |
-| `on-abnormal` | signal, timeout, watchdog (not exit code)    |
-| `on-watchdog` | watchdog timeout only                        |
-| `on-abort`    | uncaught signal                              |
-| `always`      | always                                       |
+| Value         | Restart on…                               |
+| ------------- | ----------------------------------------- |
+| `no`          | never (default)                           |
+| `on-success`  | clean exit                                |
+| `on-failure`  | non-zero exit, signal, timeout, watchdog  |
+| `on-abnormal` | signal, timeout, watchdog (not exit code) |
+| `on-watchdog` | watchdog timeout only                     |
+| `on-abort`    | uncaught signal                           |
+| `always`      | always                                    |
 
 ## Drop-in overrides
 
@@ -207,15 +207,15 @@ systemd holds the port; `foo.service` is started on first connection.
 
 ## Targets (≈ runlevels)
 
-| Target                    | ≈ Runlevel | Purpose                           |
-|---------------------------|------------|-----------------------------------|
-| `poweroff.target`         | 0          | Halt                              |
-| `rescue.target`           | 1          | Single user                       |
-| `multi-user.target`       | 3          | Multi-user, no GUI                |
-| `graphical.target`        | 5          | Multi-user, GUI                   |
-| `reboot.target`           | 6          | Reboot                            |
-| `network-online.target`   | —          | Network has connectivity          |
-| `timers.target`           | —          | All timer units                   |
+| Target                  | ≈ Runlevel | Purpose                  |
+| ----------------------- | ---------- | ------------------------ |
+| `poweroff.target`       | 0          | Halt                     |
+| `rescue.target`         | 1          | Single user              |
+| `multi-user.target`     | 3          | Multi-user, no GUI       |
+| `graphical.target`      | 5          | Multi-user, GUI          |
+| `reboot.target`         | 6          | Reboot                   |
+| `network-online.target` | —          | Network has connectivity |
+| `timers.target`         | —          | All timer units          |
 
 ## `journalctl` (logs)
 

@@ -386,7 +386,7 @@ int main (int argc, char** argv)
   }
   printf("No error found. Completed normally.\n");
   goto end;
-  
+
   error: // this is a label that you can "jump" to with "goto error;"
   printf("Error occurred at i = %d & j = %d.\n", i, j);
   end:
@@ -888,7 +888,7 @@ Node createLinkedList(int *vals, int len);
 
 ## Further Reading
 
-Best to find yourself a copy of [K&R, aka "The C Programming Language"](https://en.wikipedia.org/wiki/The_C_Programming_Language). It is *the* book about C, written by Dennis Ritchie, the creator of C, and Brian Kernighan. Be careful, though - it's ancient and it contains some inaccuracies (well, ideas that are not considered good anymore) or now-changed practices.
+Best to find yourself a copy of [K&R, aka "The C Programming Language"](https://en.wikipedia.org/wiki/The_C_Programming_Language). It is _the_ book about C, written by Dennis Ritchie, the creator of C, and Brian Kernighan. Be careful, though - it's ancient and it contains some inaccuracies (well, ideas that are not considered good anymore) or now-changed practices.
 
 Another good resource is [Learn C The Hard Way](http://learncodethehardway.org/c/) (not free).
 

@@ -6,9 +6,9 @@ Get the code: [learnsed.sed](https://learnxinyminutes.com/files/learnsed.sed)
 
 **Sed** is a standard tool on every POSIX-compliant UNIX system. It's like an editor, such as Vim, Visual Studio Code, Atom, or Sublime. However, rather than typing the commands interactively, you provide them on the command line or in a file.
 
-*Sed* 's advantages over an interactive editor is that it can be easily used to automate text processing tasks, and that it can process efficiently huge (terabyte-sized) files. It can perform more complex tasks than *grep* and for many text processing tasks its commands are much shorter than what you would write in *awk*, *Perl*, or *Python*.
+_Sed_ 's advantages over an interactive editor is that it can be easily used to automate text processing tasks, and that it can process efficiently huge (terabyte-sized) files. It can perform more complex tasks than _grep_ and for many text processing tasks its commands are much shorter than what you would write in _awk_, _Perl_, or _Python_.
 
-*Sed* works by reading a line of text (by default from its standard input, unless some files are specified as arguments), processing it with the specified commands, and then outputting the result on its standard output. You can suppress the default output by specifying the `-n` command-line argument.
+_Sed_ works by reading a line of text (by default from its standard input, unless some files are specified as arguments), processing it with the specified commands, and then outputting the result on its standard output. You can suppress the default output by specifying the `-n` command-line argument.
 
 ```sh
 #!/usr/bin/sed -f

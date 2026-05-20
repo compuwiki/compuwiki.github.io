@@ -12,19 +12,19 @@ curl -s api/x | jq '.items[].name'
 
 ## Invocation flags
 
-| Flag          | Effect                                                  |
-|---------------|---------------------------------------------------------|
-| `-r`          | raw output (strings without quotes — pipe to `xargs`)   |
-| `-R`          | raw input (each line as a string)                       |
-| `-s`          | slurp — read all input into a single array              |
-| `-c`          | compact output (one line per value)                     |
-| `-n`          | null input — start from `null` (build from scratch)     |
-| `-e`          | exit 1 if last output is `null`/`false`                 |
-| `-a`          | ASCII output                                            |
-| `--arg k v`   | bind `$k` to the string `v`                             |
-| `--argjson k v` | bind `$k` to the parsed-JSON `v`                      |
-| `--slurpfile k file` | bind `$k` to the parsed contents of `file`       |
-| `-f file.jq`  | read filter from a file                                 |
+| Flag                 | Effect                                                |
+| -------------------- | ----------------------------------------------------- |
+| `-r`                 | raw output (strings without quotes — pipe to `xargs`) |
+| `-R`                 | raw input (each line as a string)                     |
+| `-s`                 | slurp — read all input into a single array            |
+| `-c`                 | compact output (one line per value)                   |
+| `-n`                 | null input — start from `null` (build from scratch)   |
+| `-e`                 | exit 1 if last output is `null`/`false`               |
+| `-a`                 | ASCII output                                          |
+| `--arg k v`          | bind `$k` to the string `v`                           |
+| `--argjson k v`      | bind `$k` to the parsed-JSON `v`                      |
+| `--slurpfile k file` | bind `$k` to the parsed contents of `file`            |
+| `-f file.jq`         | read filter from a file                               |
 
 ## Identity, access, slicing
 

@@ -63,12 +63,12 @@ This library puts a lot of functionality behind optional features in order to op
 
 The library includes a tiered metadata cache that avoids redundant yt-dlp subprocess calls for video info, downloaded files, and playlists. The architecture uses an optional L1 in-memory layer (Moka) and an optional L2 persistent layer, selected exclusively via Cargo features:
 
-| Feature | Backend | Persistence | Notes |
-| --- | --- | --- | --- |
-| `cache-memory` *(default)* | In-memory Moka | ❌ No | TTL-based eviction, async-ready |
-| `cache-json` | JSON files on disk | ✅ Yes | One `.json` file per entry in the cache directory |
-| `cache-redb` | Embedded redb | ✅ Yes | Single-file, pure-Rust, ACID transactions |
-| `cache-redis` | Redis | ✅ Yes | Distributed, native TTL via `SETEX` |
+| Feature                    | Backend            | Persistence | Notes                                             |
+| -------------------------- | ------------------ | ----------- | ------------------------------------------------- |
+| `cache-memory` _(default)_ | In-memory Moka     | ❌ No       | TTL-based eviction, async-ready                   |
+| `cache-json`               | JSON files on disk | ✅ Yes      | One `.json` file per entry in the cache directory |
+| `cache-redb`               | Embedded redb      | ✅ Yes      | Single-file, pure-Rust, ACID transactions         |
+| `cache-redis`              | Redis              | ✅ Yes      | Distributed, native TTL via `SETEX`               |
 
 Multiple persistent backends can be compiled in simultaneously. When exactly one is enabled, it is selected automatically. When several are enabled, `CacheConfig::persistent_backend` must be set explicitly; otherwise `CacheLayer::from_config` returns an `Error::AmbiguousCacheBackend` at runtime. The `cache-memory` feature (Moka L1) can always be combined with any persistent backend for a tiered L1 + L2 setup.
 
@@ -115,6 +115,7 @@ yt-dlp = { version = "2.7.2", features = ["cache-memory", "cache-json", "cache-r
 ```
 
 [ⓘ](# "This example is not tested")
+
 ```rust
 use yt_dlp::prelude::*;
 
@@ -133,6 +134,7 @@ On every `fetch_video_infos` call, the cache checks whether the format URLs are 
 This behavior is transparent and requires no changes to your code. You can inspect the expiry yourself:
 
 [ⓘ](# "This example is not tested")
+
 ```rust
 if !video.are_format_urls_fresh() {
     // URLs are stale — fetch_video_infos will re-fetch automatically
@@ -157,6 +159,7 @@ tracing-subscriber = "0.3"
 ```
 
 [ⓘ](# "This example is not tested")
+
 ```rust
 use tracing::Level;
 use tracing_subscriber::FmtSubscriber;
@@ -183,9 +186,9 @@ This library now supports downloading from **1,800+ websites** through a flexibl
 
 - **`Downloader`** - Universal client supporting all sites via the extractors
 - **`extractor::Youtube`** - Highly optimized YouTube extractor with platform-specific features:
-	- Player client selection (Android, iOS, Web, TvEmbedded) for bypassing restrictions
-		- Format presets (Best, Premium, High, Medium, Low, AudioOnly, ModernCodecs)
-		- YouTube-specific methods: `search()`, `fetch_channel()`, `fetch_user()`, `fetch_playlist_paginated()`
+  - Player client selection (Android, iOS, Web, TvEmbedded) for bypassing restrictions
+    - Format presets (Best, Premium, High, Medium, Low, AudioOnly, ModernCodecs)
+    - YouTube-specific methods: `search()`, `fetch_channel()`, `fetch_user()`, `fetch_playlist_paginated()`
 - **`extractor::Generic`** - Universal extractor for all other sites with authentication support
 
 #### 🧩 Usage Patterns
@@ -226,7 +229,7 @@ use std::path::PathBuf;
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let libraries = Libraries::new(
-        PathBuf::from("libs/yt-dlp"), 
+        PathBuf::from("libs/yt-dlp"),
         PathBuf::from("libs/ffmpeg")
     );
     let downloader = Downloader::builder(libraries, "output")
@@ -261,7 +264,7 @@ pub async fn main() -> Result<(), Box<dyn std::error::Error>> {
         executables_dir,
         output_dir
     ).await?.build().await?;
-    
+
     Ok(())
 }
 ```
@@ -292,7 +295,7 @@ use std::path::PathBuf;
 pub async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let destination = PathBuf::from("libs");
     let installer = LibraryInstaller::new(destination);
-    
+
     let ffmpeg = installer.install_ffmpeg(None).await.unwrap();
     Ok(())
 }
@@ -309,10 +312,10 @@ use yt_dlp::client::deps::Libraries;
 pub async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let libraries_dir = PathBuf::from("libs");
     let output_dir = PathBuf::from("output");
-    
+
     let youtube = libraries_dir.join("yt-dlp");
     let ffmpeg = libraries_dir.join("ffmpeg");
-    
+
     let libraries = Libraries::new(youtube, ffmpeg);
     let downloader = Downloader::builder(libraries, output_dir)
         .build()
@@ -334,10 +337,10 @@ use yt_dlp::client::deps::Libraries;
 pub async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let libraries_dir = PathBuf::from("libs");
     let output_dir = PathBuf::from("output");
-    
+
     let youtube = libraries_dir.join("yt-dlp");
     let ffmpeg = libraries_dir.join("ffmpeg");
-    
+
     let libraries = Libraries::new(youtube, ffmpeg);
     let downloader = Downloader::builder(libraries, output_dir)
         .build()
@@ -361,10 +364,10 @@ use yt_dlp::client::deps::Libraries;
 pub async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let libraries_dir = PathBuf::from("libs");
     let output_dir = PathBuf::from("output");
-    
+
     let youtube = libraries_dir.join("yt-dlp");
     let ffmpeg = libraries_dir.join("ffmpeg");
-    
+
     let libraries = Libraries::new(youtube, ffmpeg);
     let downloader = Downloader::builder(libraries, output_dir)
         .build()
@@ -372,7 +375,7 @@ pub async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let url = String::from("https://www.youtube.com/watch?v=gXtp6C-3JKo");
     let video = downloader.fetch_video_infos(url).await?;
-    
+
     // Download to an absolute path — the file is written directly to the given path,
     // bypassing the configured output_dir.
     let path = PathBuf::from("/Users/me/Videos/my-video.mp4");
@@ -483,10 +486,10 @@ use yt_dlp::VideoSelection;
 pub async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let libraries_dir = PathBuf::from("libs");
     let output_dir = PathBuf::from("output");
-    
+
     let youtube = libraries_dir.join("yt-dlp");
     let ffmpeg = libraries_dir.join("ffmpeg");
-    
+
     let libraries = Libraries::new(youtube, ffmpeg);
     let downloader = Downloader::builder(libraries, output_dir)
         .build()
@@ -498,10 +501,10 @@ pub async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let video_format = video.best_video_format().unwrap();
     let format_path = downloader.download_format(&video_format, "my-video-stream.mp4").await?;
-    
+
     let audio_format = video.worst_audio_format().unwrap();
     let audio_path = downloader.download_format(&audio_format, "my-audio-stream.mp3").await?;
-    
+
     Ok(())
 }
 ```
@@ -518,10 +521,10 @@ use yt_dlp::VideoSelection;
 pub async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let libraries_dir = PathBuf::from("libs");
     let output_dir = PathBuf::from("output");
-    
+
     let youtube = libraries_dir.join("yt-dlp");
     let ffmpeg = libraries_dir.join("ffmpeg");
-    
+
     let libraries = Libraries::new(youtube, ffmpeg);
     let downloader = Downloader::builder(libraries, output_dir)
         .build()
@@ -553,10 +556,10 @@ use yt_dlp::model::selector::ThumbnailQuality;
 pub async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let libraries_dir = PathBuf::from("libs");
     let output_dir = PathBuf::from("output");
-    
+
     let youtube = libraries_dir.join("yt-dlp");
     let ffmpeg = libraries_dir.join("ffmpeg");
-    
+
     let libraries = Libraries::new(youtube, ffmpeg);
     let downloader = Downloader::builder(libraries, output_dir)
         .build()
@@ -729,10 +732,10 @@ use yt_dlp::client::deps::Libraries;
 pub async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let libraries_dir = PathBuf::from("libs");
     let output_dir = PathBuf::from("output");
-    
+
     let youtube = libraries_dir.join("yt-dlp");
     let ffmpeg = libraries_dir.join("ffmpeg");
-    
+
     let libraries = Libraries::new(youtube, ffmpeg);
     let downloader = Downloader::builder(libraries, output_dir)
         .build()
@@ -743,8 +746,8 @@ pub async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // Download with progress callback
     let download_id = downloader.download_video_with_progress(
-        &video, 
-        "video-with-progress.mp4", 
+        &video,
+        "video-with-progress.mp4",
         |downloaded, total| {
             let percentage = if total > 0 {
                 (downloaded as f64 / total as f64 * 100.0) as u64
@@ -757,7 +760,7 @@ pub async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // Wait for download completion
     downloader.wait_for_download(download_id).await;
-    
+
     Ok(())
 }
 ```
@@ -773,10 +776,10 @@ use yt_dlp::client::deps::Libraries;
 pub async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let libraries_dir = PathBuf::from("libs");
     let output_dir = PathBuf::from("output");
-    
+
     let youtube = libraries_dir.join("yt-dlp");
     let ffmpeg = libraries_dir.join("ffmpeg");
-    
+
     let libraries = Libraries::new(youtube, ffmpeg);
     let downloader = Downloader::builder(libraries, output_dir)
         .build()
@@ -787,8 +790,8 @@ pub async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // Start a download
     let download_id = downloader.download_video_with_priority(
-        &video, 
-        "video-to-cancel.mp4", 
+        &video,
+        "video-to-cancel.mp4",
         None
     ).await?;
 
@@ -799,7 +802,7 @@ pub async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Cancel the download
     let canceled = downloader.cancel_download(download_id).await;
     println!("Download canceled: {}", canceled);
-    
+
     Ok(())
 }
 ```
@@ -859,10 +862,10 @@ use yt_dlp::client::deps::Libraries;
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let libraries_dir = PathBuf::from("libs");
     let output_dir = PathBuf::from("output");
-    
+
     let youtube = libraries_dir.join("yt-dlp");
     let ffmpeg = libraries_dir.join("ffmpeg");
-    
+
     let libraries = Libraries::new(youtube, ffmpeg);
     let downloader = Downloader::builder(libraries, output_dir)
         .build()
@@ -880,7 +883,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         AudioQuality::High,
         AudioCodecPreference::Opus
     ).await?;
-    
+
     // Download just the video stream with medium quality and AVC1 codec
     let video_stream_path = downloader.download_video_stream_with_quality(
         &video,
@@ -888,7 +891,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         VideoQuality::Medium,
         VideoCodecPreference::AVC1
     ).await?;
-    
+
     // Download just the audio stream with high quality and AAC codec
     let audio_stream_path = downloader.download_audio_stream_with_quality(
         &video,
@@ -896,12 +899,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         AudioQuality::High,
         AudioCodecPreference::AAC
     ).await?;
-    
+
     println!("Downloaded files:");
     println!("Complete video: {}", video_path.display());
     println!("Video stream: {}", video_stream_path.display());
     println!("Audio stream: {}", audio_stream_path.display());
-    
+
     Ok(())
 }
 ```
@@ -1610,6 +1613,7 @@ yt-dlp = { version = "2.7.2", features = ["hooks"] }
 - 🎣 Registering a hook for download events:
 
 [ⓘ](# "This example is not tested")
+
 ```rust
 use yt_dlp::events::{EventHook, EventFilter, DownloadEvent, HookResult};
 use async_trait::async_trait;
@@ -1711,6 +1715,7 @@ yt-dlp = { version = "2.7.2", features = ["webhooks"] }
 - 📡 Registering a webhook:
 
 [ⓘ](# "This example is not tested")
+
 ```rust
 use yt_dlp::events::{WebhookConfig, WebhookMethod, EventFilter};
 use std::time::Duration;
@@ -1762,6 +1767,7 @@ export YTDLP_WEBHOOK_TIMEOUT="10"   # Optional, default: 10 seconds
 - 🔧 Loading a webhook from environment variables:
 
 [ⓘ](# "This example is not tested")
+
 ```rust
 use yt_dlp::Downloader;
 use yt_dlp::client::deps::Libraries;
@@ -1806,6 +1812,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 - ♻️ Configuring a retry strategy:
 
 [ⓘ](# "This example is not tested")
+
 ```rust
 use yt_dlp::events::RetryStrategy;
 use std::time::Duration;
@@ -1834,6 +1841,7 @@ Use both hooks and webhooks together:
 - 🔗 Using hooks and webhooks simultaneously:
 
 [ⓘ](# "This example is not tested")
+
 ```rust
 use yt_dlp::Downloader;
 use yt_dlp::events::{EventHook, WebhookConfig, EventFilter};
@@ -1883,6 +1891,7 @@ yt-dlp = { version = "2.7.2", features = ["statistics"] }
 The [`StatisticsTracker`](https://docs.rs/yt-dlp/latest/yt_dlp/stats/struct.StatisticsTracker.html) subscribes to the internal event bus in a background task and continuously updates running counters. Call `snapshot()` at any time to obtain an atomic view of all metrics:
 
 [ⓘ](# "This example is not tested")
+
 ```rust
 use yt_dlp::Downloader;
 use yt_dlp::client::deps::Libraries;
@@ -2188,6 +2197,7 @@ yt-dlp = { version = "2.7.2", features = ["live-recording"] }
 ##### 📥 Basic live recording (reqwest engine)
 
 [ⓘ](# "This example is not tested")
+
 ```rust
 use yt_dlp::Downloader;
 use yt_dlp::client::deps::Libraries;
@@ -2218,6 +2228,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 ##### 🎬 FFmpeg fallback engine
 
 [ⓘ](# "This example is not tested")
+
 ```rust
 use yt_dlp::Downloader;
 use yt_dlp::events::RecordingMethod;
@@ -2263,6 +2274,7 @@ yt-dlp = { version = "2.7.2", features = ["live-streaming"] }
 ```
 
 [ⓘ](# "This example is not tested")
+
 ```rust
 use yt_dlp::Downloader;
 use yt_dlp::client::deps::Libraries;
@@ -2541,7 +2553,7 @@ The speed optimization system includes several advanced features:
 - **Dynamic Segment Allocation**: Automatically adjusts the number of parallel segments based on file size
 - **Connection Pooling**: Reuses HTTP connections for better performance
 - **Intelligent Buffering**: Optimized buffer sizes based on your profile
-- **Async DNS** *(opt-in)*: Enable the `hickory-dns` feature for a fully async, pure-Rust DNS resolver
+- **Async DNS** _(opt-in)_: Enable the `hickory-dns` feature for a fully async, pure-Rust DNS resolver
 
 **Expected Performance Gains:**
 
@@ -2674,54 +2686,54 @@ cargo bench --bench compare --features profiling -- https://www.youtube.com/watc
 ```
 
 > Results below are averages over 10 runs on a typical broadband connection.
-> 
+>
 > **Methodology**: raw `yt-dlp` re-fetches metadata on every download. The library fetches metadata **once**, caches it, and then downloads each format via parallel HTTP segments — this separation is the core optimisation reflected in the results below.
 
 #### 🎵 Audio streams
 
-| Scenario | `yt-dlp` | Conservative | Balanced *(default)* | Aggressive |
-| --- | --- | --- | --- | --- |
-| Audio 96 kbps (Low) | 8.26s | 1.27s | 1.47s | 1.27s |
-| Audio 128 kbps (Medium) | 7.83s | 1.11s | 1.12s | 1.18s |
-| Audio 192 kbps (High) | 8.53s | 1.38s | 1.26s | 1.19s |
-| Audio best quality | 8.51s | 1.22s | 1.15s | 1.15s |
+| Scenario                | `yt-dlp` | Conservative | Balanced _(default)_ | Aggressive |
+| ----------------------- | -------- | ------------ | -------------------- | ---------- |
+| Audio 96 kbps (Low)     | 8.26s    | 1.27s        | 1.47s                | 1.27s      |
+| Audio 128 kbps (Medium) | 7.83s    | 1.11s        | 1.12s                | 1.18s      |
+| Audio 192 kbps (High)   | 8.53s    | 1.38s        | 1.26s                | 1.19s      |
+| Audio best quality      | 8.51s    | 1.22s        | 1.15s                | 1.15s      |
 
 #### 🎬 Video streams (no audio)
 
-| Scenario | `yt-dlp` | Conservative | Balanced *(default)* | Aggressive |
-| --- | --- | --- | --- | --- |
-| Video 480p | 8.59s | 2.39s | 2.11s | 2.58s |
-| Video 720p | 9.84s | 3.67s | 3.86s | 3.89s |
-| Video 1080p | 17.6s | 8.65s | 8.60s | 8.81s |
-| Video best quality | 16.6s | 11.7s | 11.8s | 12.0s |
+| Scenario           | `yt-dlp` | Conservative | Balanced _(default)_ | Aggressive |
+| ------------------ | -------- | ------------ | -------------------- | ---------- |
+| Video 480p         | 8.59s    | 2.39s        | 2.11s                | 2.58s      |
+| Video 720p         | 9.84s    | 3.67s        | 3.86s                | 3.89s      |
+| Video 1080p        | 17.6s    | 8.65s        | 8.60s                | 8.81s      |
+| Video best quality | 16.6s    | 11.7s        | 11.8s                | 12.0s      |
 
 #### 📦 Muxed streams — native (YouTube pre-muxed, no ffmpeg)
 
 YouTube serves some formats already containing both video and audio tracks. No post-processing is needed — the file is downloaded as-is.
 
-| Scenario | `yt-dlp` | Conservative | Balanced *(default)* | Aggressive |
-| --- | --- | --- | --- | --- |
-| Native 360p (mp4) | 9.69s | 2.11s | 2.00s | 2.16s |
-| Native 720p (mp4) | 20.7s | 2.08s | 2.10s | 2.06s |
+| Scenario          | `yt-dlp` | Conservative | Balanced _(default)_ | Aggressive |
+| ----------------- | -------- | ------------ | -------------------- | ---------- |
+| Native 360p (mp4) | 9.69s    | 2.11s        | 2.00s                | 2.16s      |
+| Native 720p (mp4) | 20.7s    | 2.08s        | 2.10s                | 2.06s      |
 
 #### 📦 Muxed streams — combined by ffmpeg
 
 For higher-quality streams, YouTube only provides separate video and audio tracks. The library downloads both in parallel, then ffmpeg merges them using **stream copy** (no re-encoding) when the audio container is compatible with the output format (e.g. AAC/m4a → mp4).
 
-| Scenario | `yt-dlp` | Conservative | Balanced *(default)* | Aggressive |
-| --- | --- | --- | --- | --- |
-| Muxed 480p | 9.41s | 3.51s | 3.48s | 3.34s |
-| Muxed 720p | 10.4s | 4.95s | 4.92s | 4.97s |
-| Muxed 1080p | 18.3s | 10.4s | 10.5s | 10.3s |
-| Muxed best quality | 18.2s | 13.7s | 13.7s | 13.3s |
+| Scenario           | `yt-dlp` | Conservative | Balanced _(default)_ | Aggressive |
+| ------------------ | -------- | ------------ | -------------------- | ---------- |
+| Muxed 480p         | 9.41s    | 3.51s        | 3.48s                | 3.34s      |
+| Muxed 720p         | 10.4s    | 4.95s        | 4.92s                | 4.97s      |
+| Muxed 1080p        | 18.3s    | 10.4s        | 10.5s                | 10.3s      |
+| Muxed best quality | 18.2s    | 13.7s        | 13.7s                | 13.3s      |
 
 #### 🚀 Speed profiles
 
-| Profile | Parallel segments | Segment size | Use case |
-| --- | --- | --- | --- |
-| `Conservative` | 1–16 | 5 MB | < 50 Mbps connections |
-| `Balanced` *(default)* | 2–20 | 8 MB | Most modern connections |
-| `Aggressive` | 3–24 | 10 MB | Fibre / gigabit |
+| Profile                | Parallel segments | Segment size | Use case                |
+| ---------------------- | ----------------- | ------------ | ----------------------- |
+| `Conservative`         | 1–16              | 5 MB         | < 50 Mbps connections   |
+| `Balanced` _(default)_ | 2–20              | 8 MB         | Most modern connections |
+| `Aggressive`           | 3–24              | 10 MB        | Fibre / gigabit         |
 
 See [PROFILING.md](https://docs.rs/yt-dlp/latest/yt_dlp/PROFILING.md) for detailed micro-benchmarks.
 
@@ -2839,11 +2851,11 @@ Utility functions and types used throughout the application.
 
 ## Macros
 
-[install\_libraries](https://docs.rs/yt-dlp/latest/yt_dlp/macro.install_libraries.html "macro yt_dlp::install_libraries")
+[install_libraries](https://docs.rs/yt-dlp/latest/yt_dlp/macro.install_libraries.html "macro yt_dlp::install_libraries")
 
 Create a Libraries instance with automatic binary installation.
 
-[simple\_hook](https://docs.rs/yt-dlp/latest/yt_dlp/macro.simple_hook.html "macro yt_dlp::simple_hook")
+[simple_hook](https://docs.rs/yt-dlp/latest/yt_dlp/macro.simple_hook.html "macro yt_dlp::simple_hook")
 
 Helper macro for creating simple hooks from closures
 
@@ -2855,7 +2867,7 @@ A macro to mimic the ternary operator in Rust.
 
 Create a Youtube instance with sensible defaults.
 
-[ytdlp\_args](https://docs.rs/yt-dlp/latest/yt_dlp/macro.ytdlp_args.html "macro yt_dlp::ytdlp_args")
+[ytdlp_args](https://docs.rs/yt-dlp/latest/yt_dlp/macro.ytdlp_args.html "macro yt_dlp::ytdlp_args")
 
 Configure yt-dlp arguments easily.
 

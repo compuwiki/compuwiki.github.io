@@ -30,69 +30,69 @@ Set-Cookie: session=abc123; HttpOnly; Secure; SameSite=Lax
 
 ## Methods
 
-| Method   | Safe | Idempotent | Has body | Typical use                          |
-|----------|:----:|:----------:|:--------:|--------------------------------------|
-| `GET`    | ✓    | ✓          | no       | Read a resource                      |
-| `HEAD`   | ✓    | ✓          | no       | GET with headers only                |
-| `OPTIONS`| ✓    | ✓          | no       | Discover capabilities / CORS preflight |
-| `POST`   | ✗    | ✗          | yes      | Create / arbitrary action            |
-| `PUT`    | ✗    | ✓          | yes      | Replace resource at known URL        |
-| `PATCH`  | ✗    | ✗          | yes      | Partial update                       |
-| `DELETE` | ✗    | ✓          | optional | Remove resource                      |
-| `CONNECT`| —    | —          | —        | Open tunnel (proxies)                |
-| `TRACE`  | ✓    | ✓          | no       | Diagnostic loopback (usually disabled) |
+| Method    | Safe | Idempotent | Has body | Typical use                            |
+| --------- | :--: | :--------: | :------: | -------------------------------------- |
+| `GET`     |  ✓   |     ✓      |    no    | Read a resource                        |
+| `HEAD`    |  ✓   |     ✓      |    no    | GET with headers only                  |
+| `OPTIONS` |  ✓   |     ✓      |    no    | Discover capabilities / CORS preflight |
+| `POST`    |  ✗   |     ✗      |   yes    | Create / arbitrary action              |
+| `PUT`     |  ✗   |     ✓      |   yes    | Replace resource at known URL          |
+| `PATCH`   |  ✗   |     ✗      |   yes    | Partial update                         |
+| `DELETE`  |  ✗   |     ✓      | optional | Remove resource                        |
+| `CONNECT` |  —   |     —      |    —     | Open tunnel (proxies)                  |
+| `TRACE`   |  ✓   |     ✓      |    no    | Diagnostic loopback (usually disabled) |
 
 **Safe** = no server state change. **Idempotent** = repeating yields the same effect.
 
 ## Status codes
 
-| Range | Class              | Notable                                                                                  |
-|------:|--------------------|------------------------------------------------------------------------------------------|
-| 1xx   | Informational      | `100 Continue`, `101 Switching Protocols`, `103 Early Hints`                             |
-| 2xx   | Success            | `200 OK`, `201 Created`, `202 Accepted`, `204 No Content`, `206 Partial Content`         |
-| 3xx   | Redirection        | `301 Moved Permanently`, `302 Found`, `303 See Other`, `304 Not Modified`, `307`/`308` (method-preserving) |
-| 4xx   | Client error       | `400 Bad Request`, `401 Unauthorized`, `403 Forbidden`, `404 Not Found`, `405 Method Not Allowed`, `409 Conflict`, `410 Gone`, `415 Unsupported Media Type`, `422 Unprocessable`, `429 Too Many Requests` |
-| 5xx   | Server error       | `500 Internal Server Error`, `502 Bad Gateway`, `503 Service Unavailable`, `504 Gateway Timeout` |
+| Range | Class         | Notable                                                                                                                                                                                                   |
+| ----: | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|   1xx | Informational | `100 Continue`, `101 Switching Protocols`, `103 Early Hints`                                                                                                                                              |
+|   2xx | Success       | `200 OK`, `201 Created`, `202 Accepted`, `204 No Content`, `206 Partial Content`                                                                                                                          |
+|   3xx | Redirection   | `301 Moved Permanently`, `302 Found`, `303 See Other`, `304 Not Modified`, `307`/`308` (method-preserving)                                                                                                |
+|   4xx | Client error  | `400 Bad Request`, `401 Unauthorized`, `403 Forbidden`, `404 Not Found`, `405 Method Not Allowed`, `409 Conflict`, `410 Gone`, `415 Unsupported Media Type`, `422 Unprocessable`, `429 Too Many Requests` |
+|   5xx | Server error  | `500 Internal Server Error`, `502 Bad Gateway`, `503 Service Unavailable`, `504 Gateway Timeout`                                                                                                          |
 
 `301`/`302` historically changed `POST` → `GET`; use `307`/`308` to preserve method + body.
 
 ## Common headers (request)
 
-| Header              | Purpose                                                |
-|---------------------|--------------------------------------------------------|
-| `Host`              | Virtual host target (mandatory in 1.1)                 |
-| `Authorization`     | `Bearer <token>`, `Basic <b64>`, etc.                  |
-| `Cookie`            | Send stored cookies                                    |
-| `Accept`            | Acceptable response media types                        |
-| `Accept-Encoding`   | `gzip, br, zstd` — content-encoding negotiation        |
-| `Accept-Language`   | Preferred languages                                    |
-| `Content-Type`      | Body media type (`application/json`, multipart, …)     |
-| `Content-Length`    | Body size in bytes                                     |
-| `If-None-Match`     | Conditional GET against `ETag`                         |
-| `If-Modified-Since` | Conditional GET against `Last-Modified`                |
-| `Range`             | Byte range request (resume / video seek)               |
-| `Origin`            | Cross-origin source (CORS, CSRF)                       |
-| `Referer`           | Page that initiated the request *(yes, mis-spelled)*   |
-| `User-Agent`        | Client identification string                           |
+| Header              | Purpose                                              |
+| ------------------- | ---------------------------------------------------- |
+| `Host`              | Virtual host target (mandatory in 1.1)               |
+| `Authorization`     | `Bearer <token>`, `Basic <b64>`, etc.                |
+| `Cookie`            | Send stored cookies                                  |
+| `Accept`            | Acceptable response media types                      |
+| `Accept-Encoding`   | `gzip, br, zstd` — content-encoding negotiation      |
+| `Accept-Language`   | Preferred languages                                  |
+| `Content-Type`      | Body media type (`application/json`, multipart, …)   |
+| `Content-Length`    | Body size in bytes                                   |
+| `If-None-Match`     | Conditional GET against `ETag`                       |
+| `If-Modified-Since` | Conditional GET against `Last-Modified`              |
+| `Range`             | Byte range request (resume / video seek)             |
+| `Origin`            | Cross-origin source (CORS, CSRF)                     |
+| `Referer`           | Page that initiated the request _(yes, mis-spelled)_ |
+| `User-Agent`        | Client identification string                         |
 
 ## Common headers (response)
 
-| Header                       | Purpose                                          |
-|------------------------------|--------------------------------------------------|
-| `Content-Type`               | Media type of the body                           |
-| `Content-Encoding`           | `gzip` / `br` / `zstd`                           |
-| `Content-Length`             | Body size                                        |
-| `Cache-Control`              | Caching directives (see below)                   |
-| `ETag`                       | Opaque version tag of the resource               |
-| `Last-Modified`              | Mtime of resource                                |
-| `Expires`                    | Legacy absolute expiry                           |
-| `Location`                   | Target for redirects / created resource          |
-| `Set-Cookie`                 | Issue a cookie                                   |
-| `Vary`                       | Headers that affect the cached representation    |
-| `Strict-Transport-Security`  | HSTS — force HTTPS                               |
-| `Content-Security-Policy`    | CSP — restrict resource loading                  |
-| `Access-Control-Allow-Origin`| CORS allow                                       |
-| `Retry-After`                | Seconds (or HTTP-date) before retrying           |
+| Header                        | Purpose                                       |
+| ----------------------------- | --------------------------------------------- |
+| `Content-Type`                | Media type of the body                        |
+| `Content-Encoding`            | `gzip` / `br` / `zstd`                        |
+| `Content-Length`              | Body size                                     |
+| `Cache-Control`               | Caching directives (see below)                |
+| `ETag`                        | Opaque version tag of the resource            |
+| `Last-Modified`               | Mtime of resource                             |
+| `Expires`                     | Legacy absolute expiry                        |
+| `Location`                    | Target for redirects / created resource       |
+| `Set-Cookie`                  | Issue a cookie                                |
+| `Vary`                        | Headers that affect the cached representation |
+| `Strict-Transport-Security`   | HSTS — force HTTPS                            |
+| `Content-Security-Policy`     | CSP — restrict resource loading               |
+| `Access-Control-Allow-Origin` | CORS allow                                    |
+| `Retry-After`                 | Seconds (or HTTP-date) before retrying        |
 
 ## Caching cheatsheet
 
@@ -168,12 +168,12 @@ Transfer-Encoding: chunked                            # streaming, no Content-Le
 
 ## HTTP versions at a glance
 
-| Version  | Transport            | Framing           | Key features                                              |
-|----------|----------------------|-------------------|-----------------------------------------------------------|
-| HTTP/1.0 | TCP                  | Text, one req/conn| No persistent connections by default                      |
-| HTTP/1.1 | TCP                  | Text              | Keep-alive, chunked, host header, pipelining (rarely used)|
-| HTTP/2   | TCP + TLS (in practice) | Binary frames  | Multiplexed streams, HPACK header compression, server push (now deprecated) |
-| HTTP/3   | UDP (QUIC) + TLS 1.3 | Binary frames     | 0-RTT, no head-of-line blocking, connection migration     |
+| Version  | Transport               | Framing            | Key features                                                                |
+| -------- | ----------------------- | ------------------ | --------------------------------------------------------------------------- |
+| HTTP/1.0 | TCP                     | Text, one req/conn | No persistent connections by default                                        |
+| HTTP/1.1 | TCP                     | Text               | Keep-alive, chunked, host header, pipelining (rarely used)                  |
+| HTTP/2   | TCP + TLS (in practice) | Binary frames      | Multiplexed streams, HPACK header compression, server push (now deprecated) |
+| HTTP/3   | UDP (QUIC) + TLS 1.3    | Binary frames      | 0-RTT, no head-of-line blocking, connection migration                       |
 
 Negotiation: ALPN during TLS handshake (`h2`, `http/1.1`); `Alt-Svc` advertises HTTP/3.
 
@@ -217,4 +217,4 @@ Range: bytes=0-1023                   →  206 Partial Content
 - `302` is ambiguous (clients may change method); use `307`/`308`.
 - `Set-Cookie` headers are not folded — each cookie is its own header line.
 - HTTP/2 lowercases all header names (`Content-Type` → `content-type`).
-- A `200 OK` with an error JSON is fine for *transport*, ambiguous for clients — prefer real status codes for error semantics.
+- A `200 OK` with an error JSON is fine for _transport_, ambiguous for clients — prefer real status codes for error semantics.

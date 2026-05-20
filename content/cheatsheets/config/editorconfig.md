@@ -2,7 +2,6 @@
 title: Editor config
 ---
 
-
 ```conf
 # EditorConfig — keep coding style consistent across editors / IDEs.
 # Docs: https://editorconfig.org/

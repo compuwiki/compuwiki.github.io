@@ -1,5 +1,5 @@
 ---
-title: tmux 
+title: tmux
 ---
 
 ```conf

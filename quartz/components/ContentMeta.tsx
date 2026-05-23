@@ -67,7 +67,7 @@ export default ((opts?: Partial<ContentMetaOptions>) => {
         // </p>
         <p class={classNames(displayClass, "content-meta")}>
           {readingTimeStr} <br />
-          Última modificación {modifiedSegment} <br />
+          Last modified: {modifiedSegment} <br />
           🌟{" "}
           <a
             href={`https://github.com/wiki-docs/compuwiki/blame/v4/${fileRelativePath}`}

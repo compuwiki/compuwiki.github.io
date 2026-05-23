@@ -7,14 +7,13 @@ Welcome to **CompuWiki** — a personal knowledge base on web development, datab
 
 ## Sections
 
+- [Cheatsheets](./cheatsheets/) — practical quick-reference sheets grouped by topic.
 - [Concepts](./concepts/) — CS fundamentals, OOP, data structures, exercises.
-- [Web](./web/) — concepts, best practices, history, and backend tutorials.
+- [Web Development](./web-dev/) — concepts, best practices, history, and backend tutorials.
 - [Databases](./databases/) — SQL and NoSQL.
 - [Deployment](./deployment/) — DNS, Docker, Kubernetes, web servers.
 - [Comparisons](./comparisons/) — hardware and software comparison tables.
-- [Meta](./meta/) — agent/skill configs, project prompts.
 
 ## Loose pages
 
-- [Bookmarks](./bookmarks.md)
-- [Notes](./notes.md)
+- [Note](./note.md)

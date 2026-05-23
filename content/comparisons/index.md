@@ -1,3 +1,7 @@
+---
+title: Comparisons
+---
+
 # Index
 
 ## Software

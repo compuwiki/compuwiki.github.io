@@ -1,5 +1,5 @@
 ---
-title: Web
+title: Web Development
 tags: [web, frontend, backend]
 ---
 

@@ -1,19 +1,11 @@
 name: CI
 
 on:
-  pull_request:
-    branches:
-      - v4
-
-  push:
-    branches:
-      - v4
-
   workflow_dispatch:
 
 jobs:
   build-and-test:
-    if: ${{ github.repository == 'compuwiki/compuwiki.github.io' }}
+    if: ${{ github.repository == 'compuwiki/compuwiki.github.io' && github.event_name == 'workflow_dispatch' }}
 
     strategy:
       matrix:
@@ -49,35 +41,3 @@ jobs:
 
       - name: Ensure Quartz builds
         run: node ./quartz/bootstrap-cli.mjs build --bundleInfo
-
-  publish-tag:
-    if: ${{ github.repository == 'compuwiki/compuwiki.github.io' && github.ref == 'refs/heads/v4' }}
-
-    runs-on: ubuntu-latest
-
-    permissions:
-      contents: write
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v5
-        with:
-          fetch-depth: 0
-
-      - name: Setup Node
-        uses: actions/setup-node@v5
-        with:
-          node-version: 22.13.1
-
-      - name: Get package version
-        run: |
-          echo "PACKAGE_VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
-
-      - name: Create release tag
-        uses: pkgdeps/git-tag-action@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          github_repo: ${{ github.repository }}
-          version: ${{ env.PACKAGE_VERSION }}
-          git_commit_sha: ${{ github.sha }}
-          git_tag_prefix: "v"

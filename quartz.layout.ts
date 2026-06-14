@@ -8,7 +8,7 @@ export const sharedPageComponents: SharedLayout = {
   afterBody: [Component.HardwarePrivilegeRings()],
   footer: Component.Footer({
     links: {
-      GitHub: "https://github.com/wiki-docs/compu",
+      GitHub: "https://github.com/compuwiki/compuwiki.github.io",
     },
   }),
 }

@@ -162,6 +162,10 @@ type ExplorerNodeProps = {
   fullPath?: string
 }
 
+function shortenTitle(title: string, maxLength = 36): string {
+  return title.length > maxLength ? `${title.slice(0, maxLength - 1)}…` : title
+}
+
 export function ExplorerNode({ node, opts, fullPath, fileData }: ExplorerNodeProps) {
   // Get options
   const folderBehavior = opts.folderClickBehavior
@@ -170,14 +174,19 @@ export function ExplorerNode({ node, opts, fullPath, fileData }: ExplorerNodePro
   // Calculate current folderPath
   const folderPath = node.name !== "" ? joinSegments(fullPath ?? "", node.name) : ""
   const href = resolveRelative(fileData.slug!, folderPath as SimpleSlug) + "/"
+  const shortTitle = shortenTitle(node.displayName)
 
   return (
     <>
       {node.file ? (
         // Single file node
         <li key={node.file.slug}>
-          <a href={resolveRelative(fileData.slug!, node.file.slug!)} data-for={node.file.slug}>
-            {node.displayName}
+          <a
+            href={resolveRelative(fileData.slug!, node.file.slug!)}
+            data-for={node.file.slug}
+            title={node.displayName}
+          >
+            {shortTitle}
           </a>
         </li>
       ) : (
@@ -203,12 +212,14 @@ export function ExplorerNode({ node, opts, fullPath, fileData }: ExplorerNodePro
               {/* render <a> tag if folderBehavior is "link", otherwise render <button> with collapse click event */}
               <div key={node.name} data-folderpath={folderPath}>
                 {folderBehavior === "link" ? (
-                  <a href={href} data-for={node.name} class="folder-title">
-                    {node.displayName}
+                  <a href={href} data-for={node.name} class="folder-title" title={node.displayName}>
+                    {shortTitle}
                   </a>
                 ) : (
                   <button class="folder-button">
-                    <span class="folder-title">{node.displayName}</span>
+                    <span class="folder-title" title={node.displayName}>
+                      {shortTitle}
+                    </span>
                   </button>
                 )}
               </div>

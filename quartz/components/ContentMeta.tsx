@@ -70,7 +70,7 @@ export default ((opts?: Partial<ContentMetaOptions>) => {
           Last modified: {modifiedSegment} <br />
           🌟{" "}
           <a
-            href={`https://github.com/wiki-docs/compuwiki/blame/v4/${fileRelativePath}`}
+            href={`https://github.com/compuwiki/compuwiki.github.io/blame/v4/${fileRelativePath}`}
             class={classNames(displayClass, "external")}
             target={"_blank"}
             style={"font-weight:400"}
@@ -82,7 +82,7 @@ export default ((opts?: Partial<ContentMetaOptions>) => {
           </a>{" "}
           &nbsp; 🗓️{" "}
           <a
-            href={`https://github.com/wiki-docs/compuwiki/commits/v4/${fileRelativePath}`}
+            href={`https://github.com/compuwiki/compuwiki.github.io/commits/v4/${fileRelativePath}`}
             class={classNames(displayClass, "external")}
             target={"_blank"}
             style={"font-weight:400"}

@@ -16,4 +16,3 @@ Auto-generated section index for navigation.
 - [Rust](./rust.md)
 - [Swift](./swift.md)
 - [Typescript](./typescript.md)
-

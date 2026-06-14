@@ -27,11 +27,7 @@ The spec is the source of truth.
 {
   "goal": "dashboard for monitoring team activity",
   "layout": "12-column grid",
-  "components": [
-    "sidebar",
-    "main dashboard",
-    "activity panel"
-  ],
+  "components": ["sidebar", "main dashboard", "activity panel"],
   "density": "high",
   "spacing": 8,
   "theme": "dark neutral",
@@ -50,7 +46,7 @@ This is the intermediate layer that keeps the product stable across iterations.
 UI generation becomes easier when the tool knows what kind of representation it is working with.
 
 | UI Mode          | Representation           | Source of Truth                    | Workflow                                        | Concrete apps/tools                       |
-|------------------|--------------------------|------------------------------------|-------------------------------------------------|-------------------------------------------|
+| ---------------- | ------------------------ | ---------------------------------- | ----------------------------------------------- | ----------------------------------------- |
 | Image UI         | raster (PNG/JPG)         | external (Figma / code)            | prompt → image → rebuild                        | GPT Image, Midjourney, Ideogram           |
 | Semantic UI      | text → structured layout | components (React / design system) | spec → UI generation → refine → implement       | ChatGPT, v0, Lovable, Bolt                |
 | Deterministic UI | DOM / component tree     | codebase (React/CSS/HTML)          | build → structure → render → iterate            | React, Next.js, Tailwind, Storybook       |
@@ -78,9 +74,9 @@ Verification against spec
 
 Determinism comes from three things:
 
-* structure persists between edits
-* meaning stays stable across tools
-* changes are checked against the spec
+- structure persists between edits
+- meaning stays stable across tools
+- changes are checked against the spec
 
 When those three stay aligned, the same idea can become the same product repeatedly.
 
@@ -89,7 +85,7 @@ When those three stay aligned, the same idea can become the same product repeate
 Skipping the spec layer causes ambiguity.
 
 | Conversion       | Problem                 |
-|------------------|-------------------------|
+| ---------------- | ----------------------- |
 | Idea → Code      | missing structure       |
 | Image → Code     | no stable component map |
 | Prompt → Product | too much ambiguity      |
@@ -100,11 +96,11 @@ The missing element is a shared intermediate representation.
 
 Use AI in a loop that narrows the output instead of improvising it.
 
-* clarify the idea
-* write the spec
-* generate the code
-* check the result against the spec
-* iterate with small, controlled diffs
+- clarify the idea
+- write the spec
+- generate the code
+- check the result against the spec
+- iterate with small, controlled diffs
 
 ## The principle
 
@@ -122,8 +118,8 @@ Deterministic AI product generation is achieved by introducing a stable intermed
 
 The architecture is simple:
 
-* intent layer
-* structure layer
-* execution layer
+- intent layer
+- structure layer
+- execution layer
 
 Everything else is a view over the same system.

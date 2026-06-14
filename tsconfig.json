@@ -16,7 +16,7 @@
     "esModuleInterop": true,
     "jsx": "react-jsx",
     "jsxImportSource": "preact",
-    "ignoreDeprecations": "5.0"
+    "ignoreDeprecations": "6.0"
   },
   "include": ["**/*.ts", "**/*.tsx", "./package.json"],
   "exclude": ["build/**/*.d.ts"]

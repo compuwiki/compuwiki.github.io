@@ -10,7 +10,7 @@ vault as a website (digital garden), and how they differ on hosting, Obsidian
 feature support, site features, and technical output.
 
 | Feature                      | Forestry.md + Digital Garden plugin (open source plugin) | Obsidian Publish (official hosted, paid) |  Quartz 4 (self-hosted SSG)  | Flowershow (hosted / self-host, freemium) | HTML Export (local plugin, open source) |
-|------------------------------|:--------------------------------------------------------:|:----------------------------------------:|:----------------------------:|:-----------------------------------------:|:---------------------------------------:|
+| ---------------------------- | :------------------------------------------------------: | :--------------------------------------: | :--------------------------: | :---------------------------------------: | :-------------------------------------: |
 | **SETUP & HOSTING**          |                                                          |                                          |                              |                                           |                                         |
 | No-code setup                |                   ✓ (via forestry.md)                    |                    ✓                     |              ✗               |                     ✓                     |                    ✓                    |
 | One-click cloud hosting      |                   ✓ (via forestry.md)                    |                    ✓                     |              ✗               |                     ✓                     |                    ✗                    |

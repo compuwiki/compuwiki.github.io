@@ -45,7 +45,7 @@ Each pass changes the signal and the receiver.
 
 ## The Egregore, Updated
 
-The concept of the *egregore* comes from esoteric traditions: a collective entity sustained by shared thought and emotion, which then turns back on its makers. Not supernatural. Emergent. A pattern that feeds on the minds that feed it.
+The concept of the _egregore_ comes from esoteric traditions: a collective entity sustained by shared thought and emotion, which then turns back on its makers. Not supernatural. Emergent. A pattern that feeds on the minds that feed it.
 
 Used here, the term is a heuristic, not a metaphysical claim.
 
@@ -67,11 +67,11 @@ The structure becomes easier to grasp in ordinary cases. A user pauses on a vide
 
 When these layers intertwine, they form something harder still to interpret: a system of systems, each opaque, whose interactions produce emergent properties that were not specified and cannot be fully traced.
 
-The term *black box* is useful, but not enough. Inputs and outputs are visible; mechanism is not. A *black hole* adds asymmetry: it absorbs more than it reveals. It swallows signals, attention, labor, and memory, then ejects transformed output. In physics, a black hole is not a box. In computation, a black box is not a gravitational well. Together they name the same condition: surface legibility, core inaccessibility.
+The term _black box_ is useful, but not enough. Inputs and outputs are visible; mechanism is not. A _black hole_ adds asymmetry: it absorbs more than it reveals. It swallows signals, attention, labor, and memory, then ejects transformed output. In physics, a black hole is not a box. In computation, a black box is not a gravitational well. Together they name the same condition: surface legibility, core inaccessibility.
 
 This could be called a **Global Black Hole Input-Output System**: billions of signals absorbed, transformed, returned as knowledge, trends, decisions, and conflict. No center. No single consciousness. No head to hold the whole thing.
 
-Its *event horizon* is crossed when participation becomes easier than comprehension. You can use it, feed it, depend on it, optimize against it, and still never grasp the chain that turns inputs into outputs. That is already how people inhabit platforms, markets, recommender systems, and foundation models: immersed in effects, barred from mechanism.
+Its _event horizon_ is crossed when participation becomes easier than comprehension. You can use it, feed it, depend on it, optimize against it, and still never grasp the chain that turns inputs into outputs. That is already how people inhabit platforms, markets, recommender systems, and foundation models: immersed in effects, barred from mechanism.
 
 Even the iconography of AI leaks the same intuition. Logos keep returning to apertures, knots, vortices, irises, and rings: forms of ingestion, recursion, compression, and return. OpenAI, Copilot, Gemini, Claude, and others circle the same grammar. Mouth. Portal. Lens. Border. VelvetShark's [Why do AI company logos look like buttholes?](https://velvetshark.com/ai-company-logos-that-look-like-buttholes) says the quiet part aloud; Fast Company's [The AI boom is creating a new logo trend: the swirling hexagon](https://www.fastcompany.com/90869029/ai-boom-logo-trend-swirling-hexagon) gives it a safer name. Branding lands on the same metaphor as theory.
 

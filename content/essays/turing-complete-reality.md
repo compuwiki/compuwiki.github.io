@@ -24,7 +24,7 @@ The thesis carries a corollary: **no physical process can be more powerful than 
 
 ## Nature Computes
 
-Cellular automata, Conway's Game of Life, reaction-diffusion systems, protein folding, flocking behavior, prime sieves in the distribution of galaxies: nature does not merely behave — it *processes*. Rules applied locally produce global patterns of irreducible complexity. This is not metaphor.
+Cellular automata, Conway's Game of Life, reaction-diffusion systems, protein folding, flocking behavior, prime sieves in the distribution of galaxies: nature does not merely behave — it _processes_. Rules applied locally produce global patterns of irreducible complexity. This is not metaphor.
 
 Conway's Game of Life — four rules on a grid — is Turing complete. So is Rule 110, one of Wolfram's elementary cellular automata. So, famously, is a single billiard ball bouncing through a carefully arranged field of reflectors.
 
@@ -40,13 +40,13 @@ This is a radical leveling. Turing completeness is not a badge of honor reserved
 
 There is an older current beneath this modern framing.
 
-The Kabbalistic *Sefer Yetzirah* describes creation through combinations of letters and numbers — a generative grammar composing existence from discrete symbols. The Hermetic tradition speaks of the Logos: the Word, the rational principle that structures the cosmos before matter. Leibniz, who invented calculus and binary arithmetic, spoke of monads — simple substances that mirror the universe through computation-like internal states, each one a complete simulation of the whole.
+The Kabbalistic _Sefer Yetzirah_ describes creation through combinations of letters and numbers — a generative grammar composing existence from discrete symbols. The Hermetic tradition speaks of the Logos: the Word, the rational principle that structures the cosmos before matter. Leibniz, who invented calculus and binary arithmetic, spoke of monads — simple substances that mirror the universe through computation-like internal states, each one a complete simulation of the whole.
 
 What these traditions sensed, and what modern physics now touches, is the possibility that **information is not derivative of matter — it is primary**.
 
-John Archibald Wheeler's phrase *"it from bit"* captures this: every particle, every field, every force ultimately derives its existence from information-theoretic answers to yes-or-no questions. Not matter first, then information. Information first. Matter as its precipitate.
+John Archibald Wheeler's phrase _"it from bit"_ captures this: every particle, every field, every force ultimately derives its existence from information-theoretic answers to yes-or-no questions. Not matter first, then information. Information first. Matter as its precipitate.
 
-If reality is informational at its base, then Turing completeness is not a human invention. It is a *discovery* — the uncovering of a structure that was always there, waiting in the rules of the simplest interactions.
+If reality is informational at its base, then Turing completeness is not a human invention. It is a _discovery_ — the uncovering of a structure that was always there, waiting in the rules of the simplest interactions.
 
 ---
 
@@ -69,7 +69,7 @@ If reality is Turing complete, several strange conclusions become hard to dismis
 **Turing's Veil**
 
 Before the machine, the question:  
-*Is there one dance that mirrors all dances?*  
+_Is there one dance that mirrors all dances?_  
 Turing drew the tape, infinite and blank,  
 and named a motion — and the motion held.
 
@@ -86,7 +86,7 @@ We only learned to read it.
 In every fold of protein, every spiral storm,  
 in the branching frost on winter glass,  
 the same recursion whispers:  
-*I compute, therefore I am.*
+_I compute, therefore I am._
 
 And should you peel the last layer back —  
 beneath the fields, the forces, the forms —  

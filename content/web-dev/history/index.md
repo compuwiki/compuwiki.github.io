@@ -8,4 +8,3 @@ Auto-generated section index for navigation.
 
 - [Dom](./dom.md)
 - [History Web](./history-web.md)
-

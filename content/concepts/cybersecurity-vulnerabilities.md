@@ -43,7 +43,7 @@ In 2024: ~40–45k CVEs published · ~1,200–1,500 KEV entries · ~2–8% are g
 ## Key Concepts
 
 | Term            | What it is                                                               | Risk level     | Response                                                  |
-|-----------------|--------------------------------------------------------------------------|----------------|-----------------------------------------------------------|
+| --------------- | ------------------------------------------------------------------------ | -------------- | --------------------------------------------------------- |
 | **CVE**         | Publicly disclosed vulnerability with a unique ID (e.g. CVE-2025-12345). | Medium to High | Prioritize by context: exposure, CVSS, EPSS.              |
 | **KEV**         | CISA catalog entry — active exploitation observed in the wild.           | Critical       | Patch or mitigate immediately. Days matter.               |
 | **0-Day**       | Exploited before a patch exists, or before defenders can deploy one.     | Critical       | Emergency: contain, compensating controls, hunt.          |
@@ -54,7 +54,7 @@ In 2024: ~40–45k CVEs published · ~1,200–1,500 KEV entries · ~2–8% are g
 Scores are baselines — adjust up if the asset is internet-facing or business-critical, down if it is isolated or already mitigated.
 
 | Vulnerability class                   | Risk (0–10) | Exploit difficulty              | ~Share of CVEs |   ~KEV presence    | Priority                        |
-|---------------------------------------|:-----------:|---------------------------------|:--------------:|:------------------:|---------------------------------|
+| ------------------------------------- | :---------: | ------------------------------- | :------------: | :----------------: | ------------------------------- |
 | 0-day (no patch available)            |   **9.8**   | Attacker-dependent              |     <0.1%      |         —          | Emergency response              |
 | Unauthenticated RCE (internet-facing) |   **9.5**   | Practical                       |      2–5%      |   High (20–30%)    | Immediate emergency             |
 | Injection (SQLi, command injection)   |   **8.0**   | Practical → config-dependent    |     12–20%     |  Medium (10–18%)   | Very high                       |
@@ -76,7 +76,7 @@ Two scenarios make your real exposure window wider than CVE databases suggest.
 During responsible disclosure, a researcher knows the full exploit but stays silent while waiting for the vendor to patch — typically up to 90 days. During that window, the bug exists, may be independently discovered by attackers, and has no public CVE to scan for.
 
 | Example                                    | Gap window | What happened                                                                                                                   |
-|--------------------------------------------|:----------:|---------------------------------------------------------------------------------------------------------------------------------|
+| ------------------------------------------ | :--------: | ------------------------------------------------------------------------------------------------------------------------------- |
 | **ProxyLogon** — CVE-2021-26855 (Exchange) |  ~56 days  | Nation-state actors found it independently during the disclosure window and began exploiting before the patch shipped.          |
 | **Spring4Shell** — CVE-2022-22965          | Hours–days | PoC leaked publicly before the vendor finished the fix, forcing an emergency release.                                           |
 | **CVE-2024-38193** (Windows AFD / Lazarus) |   ~weeks   | Lazarus group used it in targeted attacks during the coordinated disclosure period.                                             |
@@ -87,7 +87,7 @@ During responsible disclosure, a researcher knows the full exploit but stays sil
 A KEV listing means active exploitation is happening now. Yet median remediation time at many organizations is 30–120+ days, because of dependency complexity, required downtime, or poor asset visibility.
 
 | Example                                                      |       Typical patch lag        | Why it dragged                                                                              |
-|--------------------------------------------------------------|:------------------------------:|---------------------------------------------------------------------------------------------|
+| ------------------------------------------------------------ | :----------------------------: | ------------------------------------------------------------------------------------------- |
 | **Log4Shell** — CVE-2021-44228                               |        Weeks to months         | Log4j was embedded in hundreds of products; orgs did not know where it lived.               |
 | **Citrix NetScaler Bleed** — CVE-2023-4966                   |          30–90+ days           | Healthcare and financial appliances stayed exposed well after the advisory.                 |
 | **Fortinet FortiOS auth bypass** — CVE-2022-40684 (CVSS 9.8) |          30–60+ days           | Slow patch adoption on older hardware despite emergency-level severity.                     |

@@ -10,4 +10,3 @@ Auto-generated section index for navigation.
 - [Github Actions](./github-actions.md)
 - [Make](./make.md)
 - [Systemd](./systemd.md)
-

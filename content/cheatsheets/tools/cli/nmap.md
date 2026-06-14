@@ -47,21 +47,25 @@ These are low-key scans that safe to use since they don’t do deep probing.
 - **Ping Scan**:  
   A low-impact scan just to check if devices are online. Typically fine on trusted networks.
   - Scan a single device
+
     ```
     nmap -sn 192.168.1.1
     ```
 
     - Scan a range of devices
+
     ```
     nmap -sn 192.168.1.1-100
     ```
 
     - Scan a CIDR range of devices
+
     ```
     nmap -sn 192.168.1.0/24   # Range 192.168.1.0 to 192.168.1.255
     nmap -sn 192.168.0.0/16   # Range 192.168.0.0 to 192.168.255.255
     nmap -sn 192.0.0.0/8      # Range 192.0.0.0 to 192.255.255.255
     ```
+
 - **Fast Scan**:  
   Quickly checks the 100 most common ports. Great for a quick peek without probing all 65,535 ports.
   ```
@@ -75,11 +79,13 @@ These are low-key scans that safe to use since they don’t do deep probing.
 - **Output to File**  
   Specific scanning and saving the output to a file, enables you to scan more thorough without overloading your network.
   - Plain text
+
     ```
     nmap -oN output.txt 192.168.1.1
     ```
 
     - XML, handy for using elsewhere
+
     ```
     nmap -oX output.xml 192.168.1.1
     ```
@@ -103,11 +109,13 @@ These scans dig a bit deeper, so they may trigger alarms on security systems. Us
 - **Scanning Specific Ports**:  
   Narrowing scans to specific ports is generally fine.
   - Scan a specific port
+
     ```
     nmap -p 80 192.168.1.1
     ```
 
     - Scan a range of ports
+
     ```
     nmap -p 1-100 192.168.1.1
     ```

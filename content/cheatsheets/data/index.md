@@ -10,4 +10,3 @@ Auto-generated section index for navigation.
 - [Json](./json.md)
 - [Xml](./xml.md)
 - [Yaml](./yaml.md)
-

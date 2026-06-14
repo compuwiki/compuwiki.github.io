@@ -9,4 +9,3 @@ Auto-generated section index for navigation.
 - [Awk](./awk.md)
 - [Grep](./grep.md)
 - [Sed](./sed.md)
-

@@ -10,4 +10,3 @@ Auto-generated section index for navigation.
 - [Jq](./jq.md)
 - [Regex](./regex.md)
 - [Sql](./sql.md)
-

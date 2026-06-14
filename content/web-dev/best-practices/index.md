@@ -13,4 +13,3 @@ Auto-generated section index for navigation.
 - [Project Structure](./project-structure.md)
 - [Security Baseline](./security-baseline.md)
 - [Testing Guide](./testing-guide.md)
-

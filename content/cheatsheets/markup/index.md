@@ -10,4 +10,3 @@ Auto-generated section index for navigation.
 - [Latex](./latex.md)
 - [Markdown](./markdown.md)
 - [Wikitext](./wikitext.md)
-

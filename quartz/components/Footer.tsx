@@ -12,8 +12,15 @@ export default ((opts?: Options) => {
     return (
       <footer class={`${displayClass ?? ""}`}>
         <p>
-          ©{year} Compuwiki | <a href="https://github.com/compuwiki/compuwiki.github.io" target="_blank" rel="noopener noreferrer">GitHub repo</a>
-        </p> 
+          ©{year} Compuwiki |{" "}
+          <a
+            href="https://github.com/compuwiki/compuwiki.github.io"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub repo
+          </a>
+        </p>
       </footer>
     )
   }

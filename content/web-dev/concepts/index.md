@@ -12,4 +12,3 @@ Auto-generated section index for navigation.
 - [Types Of Servers](./types-of-servers.md)
 - [Types Of Webs](./types-of-webs.md)
 - [Web Frameworks](./web-frameworks.md)
-

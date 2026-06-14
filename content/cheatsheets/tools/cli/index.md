@@ -10,4 +10,3 @@ Auto-generated section index for navigation.
 - [Git](./git.md)
 - [Nmap](./nmap.md)
 - [Yt Dlp](./yt-dlp.md)
-

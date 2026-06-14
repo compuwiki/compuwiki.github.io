@@ -37,6 +37,7 @@ tags: [topic-1, topic-2]
 ```
 
 Guidelines:
+
 - `title`: human-readable page title.
 - `tags`: 2-5 tags, lowercase, kebab-case.
 

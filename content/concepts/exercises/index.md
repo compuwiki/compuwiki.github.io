@@ -8,4 +8,3 @@ Auto-generated section index for navigation.
 
 - [Person List Csharp](./person-list-csharp.md)
 - [Uml Store Diagram](./uml-store-diagram.md)
-

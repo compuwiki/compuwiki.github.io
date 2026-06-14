@@ -29,7 +29,7 @@ title: SQL Summary
 ## Language Elements
 
 - **General**
-  - [x] Comment (-- or /**/)
+  - [x] Comment (-- or /\*\*/)
   - [x] EXECUTE
   - [x] PRINT
   - [x] RAISERROR

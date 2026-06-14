@@ -206,7 +206,6 @@ Horizontal rules (`<hr/>`) are easily added with three or more asterisks or hyph
 
 ```md
 ---
-
 ---
 
 ---

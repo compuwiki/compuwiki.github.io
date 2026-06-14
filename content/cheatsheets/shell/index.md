@@ -8,4 +8,3 @@ Auto-generated section index for navigation.
 
 - [Bash](./bash.md)
 - [Powershell](./powershell.md)
-

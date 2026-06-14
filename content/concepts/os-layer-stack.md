@@ -92,15 +92,15 @@ The top of the stack. Applications link against the system APIs and run within t
 
 ## Quick Summary
 
-| Layer | Linux | Windows | macOS |
-|-------|-------|---------|-------|
-| **Firmware** | UEFI / BIOS / coreboot | UEFI | Boot ROM / iBoot |
-| **Bootloader** | GRUB · systemd-boot · rEFInd | bootmgr / BCD | iBoot / boot.efi |
-| **Kernel** | Linux (monolithic + modules) | NT (hybrid) | XNU (Mach + BSD) |
-| **System** | systemd / OpenRC + glibc | Win32 / WinRT / WSL2 | launchd + libSystem |
-| **Graphics** | X11 / Wayland + compositor | DWM | Quartz / WindowServer |
-| **Shell** | GNOME / KDE / XFCE + bash/zsh | Explorer + PowerShell | Finder + Aqua + zsh |
-| **Apps** | Flatpak / Snap / native | Win32 / UWP / MSIX | Cocoa / SwiftUI |
+| Layer          | Linux                               | Windows                  | macOS                           |
+| -------------- | ----------------------------------- | ------------------------ | ------------------------------- |
+| **Firmware**   | UEFI / BIOS / coreboot              | UEFI                     | Boot ROM / iBoot                |
+| **Bootloader** | GRUB · systemd-boot · rEFInd        | bootmgr / BCD            | iBoot / boot.efi                |
+| **Kernel**     | Linux (monolithic + modules)        | NT (hybrid)              | XNU (Mach + BSD)                |
+| **System**     | systemd / OpenRC + glibc            | Win32 / WinRT / WSL2     | launchd + libSystem             |
+| **Graphics**   | X11 / Wayland + compositor          | DWM                      | Quartz / WindowServer           |
+| **Shell**      | GNOME / KDE / XFCE + bash/zsh       | Explorer + PowerShell    | Finder + Aqua + zsh             |
+| **Apps**       | Flatpak / Snap / native             | Win32 / UWP / MSIX       | Cocoa / SwiftUI                 |
 | **Modularity** | Very high — every layer replaceable | Low — integrated product | Medium — open kernel, closed UI |
 
 ---

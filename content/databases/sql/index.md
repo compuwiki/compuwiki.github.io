@@ -10,4 +10,3 @@ Auto-generated section index for navigation.
 - [Sql Subquery](./sql-subquery.md)
 - [Sql Types](./sql-types.md)
 - [T Sql Summary](./t-sql-summary.md)
-

@@ -8,4 +8,3 @@ Auto-generated section index for navigation.
 
 - [Cli](./cli/)
 - [Editors](./editors/)
-

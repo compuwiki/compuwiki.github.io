@@ -12,4 +12,3 @@ Auto-generated section index for navigation.
 - [Nginx Conf](./nginx-conf.md)
 - [Ssh Config](./ssh-config.md)
 - [Tmux](./tmux.md)
-

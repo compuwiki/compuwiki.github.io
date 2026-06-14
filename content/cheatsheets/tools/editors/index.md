@@ -9,4 +9,3 @@ Auto-generated section index for navigation.
 - [Emacs](./emacs.md)
 - [Vim](./vim.md)
 - [Vscode](./vscode.md)
-

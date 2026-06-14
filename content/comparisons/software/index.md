@@ -17,4 +17,3 @@ Auto-generated section index for navigation.
 - [Operating Systems](./operating-systems.md)
 - [Quantum Mitm Risk](./quantum-mitm-risk.md)
 - [Web Frameworks](./web-frameworks.md)
-

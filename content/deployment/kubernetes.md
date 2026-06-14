@@ -3,32 +3,32 @@ title: Kubernetes
 tags: [kubernetes, devops, containers]
 ---
 
-Kubernetes es una plataforma de orquestación de contenedores que permite automatizar la implementación, gestión y escalado de aplicaciones en contenedores.
+Kubernetes is a container orchestration platform that automates deployment, management, and scaling of containerized applications.
 
-## Componentes Principales
+## Main Components
 
-- **Pods**: Unidad más pequeña en Kubernetes, contiene uno o más contenedores.
-- **Deployments**: Controla la gestión de Pods y sus actualizaciones.
-- **Services**: Expone aplicaciones dentro o fuera del clúster.
-- **Namespaces**: Permiten la segmentación de recursos dentro del clúster.
+- **Pods**: Smallest Kubernetes unit, containing one or more containers.
+- **Deployments**: Manage Pods and rolling updates.
+- **Services**: Expose applications inside or outside the cluster.
+- **Namespaces**: Segment resources within the cluster.
 
-## Herramientas Relacionadas
+## Related Tools
 
-- **kubectl**: Línea de comandos para interactuar con Kubernetes.
-- **Minikube**: Herramienta para ejecutar Kubernetes localmente.
-- **Docker + Kubernetes**: Kubernetes puede integrarse con Docker para gestionar contenedores de manera más eficiente.
+- **kubectl**: Command-line tool to interact with Kubernetes.
+- **Minikube**: Tool to run Kubernetes locally.
+- **Docker + Kubernetes**: Common pairing for local workflows and deployment pipelines.
 
-## Comandos Básicos de kubectl
+## Basic kubectl Commands
 
 ```sh
-kubectl get pods           # Listar pods en ejecución
-kubectl create -f app.yaml # Crear recursos desde un archivo YAML
-kubectl delete pod mi-pod # Eliminar un pod específico
-kubectl apply -f app.yaml # Aplicar cambios a una configuración
+kubectl get pods            # List running pods
+kubectl create -f app.yaml  # Create resources from a YAML file
+kubectl delete pod my-pod   # Delete a specific pod
+kubectl apply -f app.yaml   # Apply changes to a configuration
 ```
 
 ![k8s-easy](./img/k8s-easy.png)
 
-## Recursos Adicionales
+## Additional Resources
 
-- [Documentación Oficial de Kubernetes](https://kubernetes.io/docs/)
+- [Kubernetes Official Documentation](https://kubernetes.io/docs/)

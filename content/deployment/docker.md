@@ -3,19 +3,19 @@ title: Docker
 tags: [docker, containers, devops]
 ---
 
-Docker es una plataforma para desarrollar, enviar y ejecutar aplicaciones dentro de contenedores. Facilita la portabilidad y escalabilidad de los entornos de desarrollo y producción.
+Docker is a platform for building, shipping, and running applications in containers. It improves portability and scalability across development and production environments.
 
-## Componentes Principales
+## Main Components
 
-- **Dockerfile**: Archivo que define la imagen de un contenedor.
-- **Docker Compose**: Herramienta para definir y ejecutar aplicaciones multicontenedor.
-- **Docker Hub**: Repositorio público para compartir imágenes Docker.
+- **Dockerfile**: File that defines a container image.
+- **Docker Compose**: Tool to define and run multi-container applications.
+- **Docker Hub**: Public registry for sharing Docker images.
 
-## Uso Básico
+## Basic Usage
 
-### Creación de una imagen con Dockerfile
+### Create an Image with Dockerfile
 
-Ejemplo de `Dockerfile`:
+Example `Dockerfile`:
 
 ```dockerfile
 FROM ubuntu:latest
@@ -23,24 +23,24 @@ RUN apt-get update && apt-get install -y nginx
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
-Para construir y ejecutar:
+Build and run:
 
 ```sh
-docker build -t mi-servidor .
-docker run -p 80:80 mi-servidor
+docker build -t my-server .
+docker run -p 80:80 my-server
 ```
 
-### Gestión de Contenedores
+### Container Management
 
 ```sh
-docker ps       # Listar contenedores en ejecución
-docker stop ID  # Detener un contenedor
-docker rm ID    # Eliminar un contenedor
+docker ps       # List running containers
+docker stop ID  # Stop a container
+docker rm ID    # Remove a container
 ```
 
-### Uso de Docker Compose
+### Docker Compose
 
-Ejemplo de `docker-compose.yml`:
+Example `docker-compose.yml`:
 
 ```yaml
 version: "3"
@@ -51,12 +51,12 @@ services:
       - "80:80"
 ```
 
-Para levantar los servicios:
+Start services:
 
 ```sh
 docker-compose up -d
 ```
 
-## Recursos Adicionales
+## Additional Resources
 
-- [Documentación Oficial de Docker](https://docs.docker.com/)
+- [Docker Official Documentation](https://docs.docker.com/)

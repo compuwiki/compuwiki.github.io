@@ -3,15 +3,15 @@ title: DNS (Domain Name System)
 tags: [dns, networking, bind, iis]
 ---
 
-El **Sistema de Nombres de Dominio (DNS)** es un servicio que traduce nombres de dominio en direcciones IP, facilitando la navegación en la web y la gestión de redes.
+The **Domain Name System (DNS)** translates domain names into IP addresses, enabling web navigation and network operations.
 
-## Implementaciones de DNS
+## DNS Implementations
 
 ### BIND (Linux)
 
-BIND (Berkeley Internet Name Domain) es la implementación más utilizada en sistemas Linux. Se configura mediante archivos de zona y un archivo de configuración principal (`named.conf`).
+BIND (Berkeley Internet Name Domain) is one of the most widely used DNS implementations on Linux. It is configured through zone files and a main configuration file (`named.conf`).
 
-Ejemplo de configuración básica en `/etc/named.conf`:
+Basic configuration example in `/etc/named.conf`:
 
 ```conf
 options {
@@ -22,14 +22,14 @@ options {
 
 ### IIS (Windows)
 
-En entornos Windows, el servicio DNS se gestiona a través de **Microsoft DNS Server**, integrado en **IIS (Internet Information Services)** y administrado desde la consola de administración de DNS.
+In Windows environments, DNS is typically managed using **Microsoft DNS Server** and administration tools in the Windows ecosystem.
 
-## Tipos de Zonas DNS
+## DNS Zone Types
 
-- **Zona Master**: Contiene los registros originales y distribuye información a los servidores secundarios.
-- **Zona Slave**: Replica datos desde una zona maestra y responde consultas DNS.
+- **Master zone**: Contains original records and distributes data to secondary DNS servers.
+- **Slave zone**: Replicates records from a master zone and responds to DNS queries.
 
-Ejemplo de definición de zona en BIND:
+Zone definition example in BIND:
 
 ```conf
 zone "example.com" IN {

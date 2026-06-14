@@ -1,18 +1,18 @@
 ---
-title: Subconsultas SQL
+title: SQL Subqueries
 ---
 
-Una subconsulta es una consulta anidada dentro de otra consulta.
+A subquery is a query nested inside another query.
 
-## Tipos de subconsultas
+## Types of Subqueries
 
-El estándar SQL define tres tipos de subconsultas:
+The SQL standard commonly distinguishes three shapes:
 
-- **Subconsultas de fila**. Son aquellas que devuelven más de una columna pero una sola fila.
-- Subconsultas de tabla. Son aquellas que devuelven una o más columnas y cero o más filas.
-- Subconsultas escalares. Son aquellas que devuelven una columna y una fila.
+- **Row subqueries**: return multiple columns and one row.
+- **Table subqueries**: return one or more columns and zero or more rows.
+- **Scalar subqueries**: return one column and one row.
 
-Las subconsultas pueden anidarse en cualquier parte de la sintaxis SELECT:
+Subqueries can be placed in several SELECT statement clauses:
 
 - SELECT
 - FROM
@@ -20,53 +20,69 @@ Las subconsultas pueden anidarse en cualquier parte de la sintaxis SELECT:
 - HAVING
 
 ```sql
--- 1. Subconsulta en la cláusula SELECT
+-- 1. Subquery in SELECT clause
 SELECT column1, (SELECT MAX(column2) FROM table2) AS max_value
 FROM table1;
 
--- 2. Subconsulta en la cláusula FROM
-SELECT AVG(porcentmayor)
-FROM (SELECT Porcentaje AS porcentmayor
- FROM lenguas WHERE Porcentaje>50.0);
+-- 2. Subquery in FROM clause
+SELECT AVG(percent_above_50)
+FROM (
+  SELECT Percentage AS percent_above_50
+  FROM languages
+  WHERE Percentage > 50.0
+) AS t;
 
--- 3.1. Subconsulta en la cláusula WHERE con = (subconsulta escalar o de fila)
-SELECT nombre_equipo
-FROM equipos
-WHERE (id_equipo=
- (SELECT DISTINCT id_equipo FROM jugadores
- WHERE numero_goles>0)
+-- 3.1. Subquery in WHERE with = (scalar or row subquery)
+SELECT team_name
+FROM teams
+WHERE team_id = (
+  SELECT DISTINCT team_id
+  FROM players
+  WHERE goals_scored > 0
 );
 
--- 3.2. Subconsulta en la cláusula WHERE con IN, ALL, ANY, SOME (no correlacionada)SELECT column1
+-- 3.2. Subquery in WHERE with IN/ALL/ANY/SOME (non-correlated)
+SELECT column1
 FROM table1
-WHERE column2 IN (SELECT column2 FROM table2
-      WHERE condition);
+WHERE column2 IN (
+  SELECT column2
+  FROM table2
+  WHERE condition
+);
 
--- 3.3. Subconsulta en la cláusula WHERE con (correlacionada)
+-- 3.3. Correlated subquery in WHERE
 SELECT column1
 FROM table1 t1
-WHERE column2 > (SELECT AVG(column2) FROM table1 t2
-     WHERE t2.column3 = t1.column3);
+WHERE column2 > (
+  SELECT AVG(column2)
+  FROM table1 t2
+  WHERE t2.column3 = t1.column3
+);
 
--- 3.4. Subconsulta en WHERE con EXISTS y NOT EXISTS
-SELECT DISTINCT nombre
-FROM paises
-WHERE EXISTS
- (SELECT * FROM ciudades
- WHERE ciudades.Cod_pais=paises.Cod_pais);
+-- 3.4. Subquery in WHERE with EXISTS/NOT EXISTS
+SELECT DISTINCT country_name
+FROM countries c
+WHERE EXISTS (
+  SELECT *
+  FROM cities ci
+  WHERE ci.country_code = c.country_code
+);
 
--- 3.5 Subconsulta en la cláusula HAVING
-SELECT producto_id, SUM(monto) AS total_ventas
-FROM ventas
-GROUP BY producto_id
-HAVING SUM(monto) > (SELECT AVG(total_ventas)
-      FROM (SELECT SUM(monto) AS total_ventas
-       FROM ventas
-       GROUP BY producto_id)
-       AS subquery);
+-- 3.5. Subquery in HAVING clause
+SELECT product_id, SUM(amount) AS total_sales
+FROM sales
+GROUP BY product_id
+HAVING SUM(amount) > (
+  SELECT AVG(total_sales)
+  FROM (
+    SELECT SUM(amount) AS total_sales
+    FROM sales
+    GROUP BY product_id
+  ) AS sq
+);
 ```
 
 ## References
 
-- [Jose Juan Sánchez - Subconsultas](<https://josejuansanchez.org/bd/unidad-09-teoria/index.html#subconsultas-en-la-cl%C3%A1usula-from>]
-- [Uso de JOINS vs subconsultas](https://styde.net/uso-de-joins-versus-subconsultas-en-bases-de-datos-mysql/)
+- [Subqueries (SQL) - W3Schools](https://www.w3schools.com/sql/sql_subqueries.asp)
+- [MySQL Subquery - GeeksforGeeks](https://www.geeksforgeeks.org/mysql-subquery/)

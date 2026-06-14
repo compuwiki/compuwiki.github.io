@@ -1,41 +1,41 @@
 ---
-title: Servidores Web
-tags: [servidores web, apache, nginx, iis, tomcat, wildfly]
+title: Web Servers
+tags: [web-servers, apache, nginx, iis, tomcat, wildfly]
 ---
 
-Un servidor web es un software que maneja solicitudes HTTP y sirve contenido web a los clientes. A continuación, se presentan algunos de los servidores web más utilizados.
+A web server is software that handles HTTP requests and serves web content to clients. Below are some of the most commonly used options.
 
 ## Apache HTTPD
 
-- Software de código abierto ampliamente usado en servidores Linux.
-- Configuración a través de `httpd.conf`.
-- Soporta módulos para extender funcionalidades.
+- Open-source software widely used on Linux servers.
+- Main configuration in `httpd.conf`.
+- Supports modules to extend functionality.
 
 ## Nginx
 
-- Servidor web ligero y eficiente, ideal para sitios con alto tráfico.
-- También puede actuar como proxy inverso y balanceador de carga.
-- Configuración principal en `nginx.conf`.
+- Lightweight and efficient web server, ideal for high-traffic sites.
+- Can also act as a reverse proxy and load balancer.
+- Main configuration in `nginx.conf`.
 
 ## Apache Tomcat
 
-- Servidor de aplicaciones Java EE para ejecutar Servlets y JSPs.
-- Uso común en aplicaciones empresariales.
-- Configuración mediante `server.xml`.
+- Java application server for running Servlets and JSP.
+- Common in enterprise applications.
+- Configured through `server.xml`.
 
 ## WildFly
 
-- Servidor de aplicaciones Java EE moderno y modular.
-- Alternativa a Tomcat con más funcionalidades para aplicaciones empresariales.
-- Administación a través de CLI o interfaz web.
+- Modern and modular Java application server.
+- Alternative to Tomcat with additional enterprise features.
+- Administration through CLI or web interface.
 
 ## IIS (Internet Information Services)
 
-- Servidor web desarrollado por Microsoft para Windows Server.
-- Integración con .NET y ASP.NET.
-- Configuración a través de la interfaz gráfica o `web.config`.
+- Microsoft web server for Windows Server.
+- Tight integration with .NET and ASP.NET.
+- Configuration through management UI or `web.config`.
 
-## Recursos Adicionales
+## Additional Resources
 
 - [Apache HTTP Server](https://httpd.apache.org/)
 - [Nginx](https://nginx.org/)

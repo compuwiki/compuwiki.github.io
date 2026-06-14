@@ -1,108 +1,104 @@
 ---
-title: Bases de datos relacionales
+title: Relational Databases
 ---
 
-## Bases de datos relacionales
+## Relational Databases
 
-En una base de datos relacional, las claves primarias y las claves externas desempeñan un papel crucial en la estructuración de las tablas y el establecimiento de relaciones entre ellas.
+In relational databases, primary keys and foreign keys are essential for structuring tables and defining relationships.
 
-- Clave primaria:\*\* Una clave primaria es un campo o conjunto de campos que identifica de forma única cada registro de una tabla. Su uso garantiza la integridad de los datos y facilita una consulta eficiente.
-- **Clave externa:** Una clave externa es un campo o conjunto de campos de una tabla que establece una relación con la clave primaria de otra tabla. Esto permite enlazar entre tablas y realizar operaciones relacionales.
+- **Primary key**: A field or set of fields that uniquely identifies each row in a table.
+- **Foreign key**: A field or set of fields that references a primary key in another table.
 
-### Importancia de las Claves Primaria y Foránea
+## Why Keys Matter
 
-Aunque no es obligatorio, se recomienda que cada tabla tenga una clave primaria para garantizar la unicidad de los registros. Las claves foráneas se utilizan para establecer relaciones entre tablas, permitiendo realizar consultas eficientes y mantener la integridad referencial en la base de datos.
+A primary key is strongly recommended to guarantee uniqueness. Foreign keys enforce referential integrity and make relationships explicit.
 
-### Concepto de tablas
+## Table Concepts
 
-- Columna: Atributo o campo / (Columna = atributo = campo)
-- Fila: Registro o tupla / (Fila = Registro = Tupla)
-  Celda = valor de un campo
+- **Column**: Attribute or field.
+- **Row**: Record or tuple.
+- **Cell**: Value of a field in a row.
 
-### Establecimiento de Relaciones sin Claves Foráneas
+## Relationships Without Explicit Foreign Keys
 
-Aunque el uso de claves foráneas es estándar para definir relaciones entre tablas, existen métodos alternativos para relacionar datos:
+Although foreign keys are the standard mechanism, relationships can also be inferred at query time:
 
-1. **Coincidencia Manual de Columnas:** Relacionar datos basándose en la comparación de valores en columnas específicas, aunque esto requiere una gestión cuidadosa para mantener la integridad.
+1. **Manual column matching** through value comparisons.
+2. **JOIN-based relationships** without explicit foreign key constraints.
 
-2. **Joining Tables Using Queries (JOIN):** Es posible relacionar tablas en consultas SQL utilizando cláusulas JOIN, sin claves foráneas explícitas.
+## Steps to Design and Build a Database
 
-## Pasos para diseñar y crear una base de datos
+1. Define scope and requirements.
+2. Create an Entity-Relationship (ER) model.
+3. Normalize the schema.
+4. Convert ER to relational tables.
+5. Define logical model details (types, keys, constraints).
+6. Define physical model details (storage, indexing, performance).
+7. Implement schema objects with SQL.
 
-1. Definir el universo del discurso: Identificar el alcance y los requisitos de la base de datos, incluyendo el tipo de información a almacenar y los usuarios finales.
+## Installing a SQL Database Environment
 
-2. Diseño del Modelo Entidad-Relación (ER): Crear un diagrama ER que represente entidades, atributos y relaciones clave.
+At minimum, you need:
 
-3. Normalización: Asegurarse de que el modelo ER está en una forma normalizada para reducir la redundancia y mejorar la estructura de datos.
+- A **database server** (e.g., SQL Server, PostgreSQL, MySQL/MariaDB).
+- A **database client** (e.g., phpMyAdmin, DBeaver, Navicat, SSMS).
 
-4. Diseño del modelo relacional: Transformar el diseño ER en tablas relacionales que cumplan con las reglas de integridad referencial.
+Example stacks:
 
-5. Modelo lógico: Definir la estructura de datos con tipos de datos, claves primarias, claves foráneas y restricciones.
+- MySQL + Apache (XAMPP)
+- SQL Server + IIS
+- PostgreSQL + Nginx
 
-6. Modelo físico: Decidir cómo se implementará la base de datos en un sistema de gestión de bases de datos (SGBD) específico, teniendo en cuenta el almacenamiento, el rendimiento y la indexación.
+## Running Database Services
 
-7. Creación de la base de datos y SQL: Ejecutar sentencias SQL para crear la base de datos basada en el diseño físico, incluyendo la creación de tablas, índices, vistas y definiciones de consultas/procedimientos almacenados.
-
-## Instalación de una base de datos SQL
-
-Para utilizar una base de datos SQL en un ordenador, sólo es necesario instalar 2 cosas:
-
-- **servidor de base de datos**
-  - servidor de base de datos: instancia de SQL-Server
-  - servidor web: apache-http-server, nginx, IIS-windows-server
-- **cliente de base de datos**: phpMyAdmin, DBeaver, Navicat, SQL-Server-Management-Studio
-
-He aquí algunos ejemplos de la infraestructura completa de una base de datos SQL - MySQL con Apache HTTP Server vía XAMPP: MySQL + Apache HTTP Server - SQL Server con Microsoft IIS: SQL Server + Microsoft IIS - PostgreSQL con Nginx: PostgreSQL + Nginx - Oracle Database con Oracle HTTP Server: Base de datos Oracle + Servidor HTTP Oracle
-
-### Utilización de una base de datos SQL
-
-- **AplicaciónGUI (por ejemplo, XAMPP con PHPMyAdmin)**: Lanza una interfaz gráfica para gestionar el servidor web y conectar con el cliente de base de datos para ejecutar consultas.
-
-- Interfaz de línea de comandos (CLI)\*\*: Inicie el servidor web y el cliente de base de datos e interactúe con la base de datos directamente desde el terminal (cmd, PowerShell o bash) utilizando los siguientes comandos. Esto es útil para servidores informáticos. Para interactuar con MySQL puedes hacer `mysql -h localhost -u root -p` o para SQL-server `sc start MSSQLSERVER`. Aquí hay dos scripts, uno para CMD y el otro para bash.
+### Example (Windows CMD)
 
 ```batch
 @echo off
-REM Iniciar Apache (XAMPP)
-echo Iniciando Apache...
+REM Start Apache (XAMPP)
+echo Starting Apache...
 cd "C:\xampp\apache\bin"
 httpd.exe
-REM Iniciar MySQL (XAMPP)
-echo Iniciando MySQL...
+
+REM Start MySQL (XAMPP)
+echo Starting MySQL...
 cd "C:\xampp\mysql\bin"
 mysql_start.bat
-echo Servicios de Apache y MySQL iniciados correctamente.
+
+echo Apache and MySQL services started successfully.
 ```
+
+### Example (Linux bash)
 
 ```sh
 #!/bin/bash
 
-# Función para verificar la existencia de un directorio
 check_directory() {
     if [ -d "$1" ]; then
-        echo "Directorio $1 encontrado."
+        echo "Directory $1 found."
         return 0
     else
-        echo "Directorio $1 no encontrado."
+        echo "Directory $1 not found."
         return 1
     fi
 }
 
-# Verificar la existencia de directorios de configuración de Apache
 if check_directory "/etc/httpd"; then
     APACHE_CMD="httpd"
 elif check_directory "/etc/apache2"; then
     APACHE_CMD="apache2"
 else
-    echo "No se encontraron directorios de configuración de Apache (/etc/httpd o /etc/apache2)."
+    echo "No Apache configuration directory found (/etc/httpd or /etc/apache2)."
     exit 1
 fi
-# Iniciar el servicio de Apache
-echo "Iniciando Apache ($APACHE_CMD)..."
+
+echo "Starting Apache ($APACHE_CMD)..."
 sudo systemctl start $APACHE_CMD
-# Iniciar mariadb versión open-source de mariadb
-echo "Iniciando MySQL (mariadb)..."
+
+echo "Starting MySQL (mariadb)..."
 sudo systemctl start mariadb
-echo "Servicios de Apache ($APACHE_CMD) y MySQL iniciados correctamente."
+
+echo "Apache ($APACHE_CMD) and MySQL services started successfully."
 ```
 
 ![sql-diagram](./img/sql-diagram.webp)

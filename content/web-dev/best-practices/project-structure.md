@@ -1,3 +1,7 @@
+---
+title: Project Structure
+---
+
 # /docs/PROJECT_STRUCTURE.md
 
 ## Layout

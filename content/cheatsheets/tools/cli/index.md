@@ -1,5 +1,5 @@
 ---
-title: Cli
+title: CLI
 ---
 
 Auto-generated section index for navigation.

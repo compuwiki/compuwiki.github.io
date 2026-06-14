@@ -1,5 +1,5 @@
 ---
-title: Sql
+title: SQL
 ---
 
 Auto-generated section index for navigation.

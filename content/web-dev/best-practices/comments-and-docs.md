@@ -1,3 +1,7 @@
+---
+title: Comments and Documentation
+---
+
 # /docs/COMMENTS_AND_DOCS.md
 
 ## Purpose

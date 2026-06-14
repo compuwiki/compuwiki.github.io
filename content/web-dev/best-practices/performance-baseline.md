@@ -1,3 +1,7 @@
+---
+title: Performance Baseline
+---
+
 # /docs/PERFORMANCE_BASELINE.md
 
 ## Budgets

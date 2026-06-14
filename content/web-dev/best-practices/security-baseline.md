@@ -1,3 +1,7 @@
+---
+title: Security Baseline
+---
+
 # /docs/SECURITY_BASELINE.md
 
 ## Principles

@@ -1,5 +1,5 @@
 ---
-title: nginx conf
+title: Nginx Config
 ---
 
 ```conf

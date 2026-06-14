@@ -1,4 +1,8 @@
-# Type of servers
+---
+title: Types of Servers
+---
+
+# Types of Servers
 
 Servers can be categorized into various types based on their functions and roles in a network. Here are some common types of servers:
 

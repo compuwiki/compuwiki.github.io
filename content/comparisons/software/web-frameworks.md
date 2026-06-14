@@ -1,8 +1,8 @@
 ---
-title: Web frameworks
+title: Web Frameworks
 ---
 
-# Web frameworks List
+# Web Frameworks List
 
 | Name                | Type                       | Main Language | Architecture       | Integrated Database | Supported Databases                   | Data Access            | Map / Geospatial Support      | PWA / Offline | Learning Curve | Typical Deployment Cost |
 | ------------------- | -------------------------- | ------------- | ------------------ | ------------------- | ------------------------------------- | ---------------------- | ----------------------------- | ------------- | -------------- | ----------------------- |

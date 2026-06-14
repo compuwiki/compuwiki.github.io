@@ -1,3 +1,7 @@
+---
+title: History of the Web
+---
+
 # History of the Web
 
 The World Wide Web, often referred to simply as the "Web," was invented in 1989 by Tim Berners-Lee, a British computer scientist who was working at CERN, the European Organization for Nuclear Research in Switzerland. Berners-Lee's goal was to create a way for scientists to share and access information easily, regardless of their location or the computer they were using.

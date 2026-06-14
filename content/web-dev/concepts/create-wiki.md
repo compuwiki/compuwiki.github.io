@@ -1,3 +1,7 @@
+---
+title: Create a Wiki
+---
+
 ## Create a wiki
 
 There are multiple ways to create a wiki, you need two parts: - the articles with information and styles. As frontend. - a database with collaboratos, logins and permissions. As backend. The database can be:

@@ -1,4 +1,8 @@
-# Deploy website
+---
+title: Deploy Website
+---
+
+# Deploy Website
 
 To deploy a website to internet you need a web server configured to serve.
 

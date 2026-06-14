@@ -1,9 +1,9 @@
 ---
-title: Comparison frameworks for Obsidian and frontend
+title: Comparison Frameworks for Obsidian and Frontend
 tags: [comparison, obsidian, digital-garden, static-site]
 ---
 
-# Comparison frameworks for Obsidian and frontend
+# Comparison Frameworks for Obsidian and Frontend
 
 A side-by-side comparison of the main frameworks used to publish an Obsidian
 vault as a website (digital garden), and how they differ on hosting, Obsidian

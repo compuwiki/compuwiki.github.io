@@ -1,3 +1,7 @@
+---
+title: Testing Guide
+---
+
 # /docs/TESTING_GUIDE.md
 
 ## Scope

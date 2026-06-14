@@ -1,5 +1,5 @@
 ---
-title: cron
+title: Cron
 ---
 
 Unix time-based job scheduler. Reads `crontab` files and runs commands at specified times.

@@ -1,5 +1,5 @@
 ---
-title: Oop
+title: OOP
 ---
 
 Auto-generated section index for navigation.

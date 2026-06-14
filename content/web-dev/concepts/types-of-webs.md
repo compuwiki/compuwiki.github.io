@@ -1,4 +1,8 @@
-# Type of websites
+---
+title: Types of Websites
+---
+
+# Types of Websites
 
 - By number of collaborators:
   - One: individual

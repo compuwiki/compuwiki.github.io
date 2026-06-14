@@ -1,3 +1,7 @@
+---
+title: AI Agent Rules
+---
+
 # /docs/AI_AGENT_RULES.md
 
 ## Interpretation

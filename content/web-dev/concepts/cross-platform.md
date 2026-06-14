@@ -1,3 +1,7 @@
+---
+title: Cross-Platform
+---
+
 # /docs/CROSS_PLATFORM.md
 
 ## Targets

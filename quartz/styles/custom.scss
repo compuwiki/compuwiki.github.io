@@ -1,3 +1,30 @@
 @use "./base.scss";
 
 // put your custom CSS here!
+
+// Icon badges — used in the AI Coding Tools comparison table
+.icon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5em;
+  height: 2.5em;
+  margin: 0.3em;
+  background: rgba(128, 128, 128, 0.55);
+  border: 1px solid rgba(128, 128, 128, 0.35);
+  border-radius: 0.5em;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  transition: all 0.2s;
+
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+  }
+
+  & img {
+    width: 1.5em;
+    height: 1.5em;
+    margin: 0;
+    object-fit: contain;
+  }
+}

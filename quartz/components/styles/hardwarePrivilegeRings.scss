@@ -1,0 +1,634 @@
+@use "../../styles/variables.scss" as *;
+
+/* ════════════════════════════════════════════════════════════
+   Hardware Privilege Hierarchy — theme-aware interactive figure
+   All rules are scoped under .hw-rings so nothing leaks into the
+   rest of the Quartz page. Page chrome derives from Quartz theme
+   variables; the 6 ring accent colors are scoped custom props
+   with a light default and a dark (neon) override.
+   ════════════════════════════════════════════════════════════ */
+
+.hw-rings {
+  // chrome → Quartz theme vars (auto-flip light/dark)
+  --bg: var(--light);
+  --bg2: color-mix(in srgb, var(--lightgray) 35%, var(--light));
+  --bg3: color-mix(in srgb, var(--lightgray) 18%, var(--light));
+  --text: var(--dark);
+  --muted: var(--gray);
+  --border: var(--lightgray);
+
+  // ring accent colors — light mode (readable on light bg)
+  --c-3: #e11d48; // Ring -3  ME / PSP / Bootrom
+  --c-2: #ea580c; // Ring -2  SMM / UEFI
+  --c-1: #b45309; // Ring -1  Hypervisor
+  --c0: #0891b2; // Ring 0   Kernel
+  --c1: #0d9488; // Ring 1/2 Drivers
+  --c3: #16a34a; // Ring 3   Userspace
+
+  display: block;
+  margin: 1.5rem 0;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  font-size: 16px; // re-anchor rem-free sizing inside the figure
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  // ─── header ───
+  .hw-header {
+    padding: 26px 26px 18px;
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+
+    h2 {
+      margin: 0;
+      font-family: var(--codeFont), monospace;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      border: none;
+
+      em {
+        color: var(--c0);
+        font-style: normal;
+      }
+    }
+
+    p {
+      margin: 8px 0 0;
+      font-size: 0.8rem;
+      color: var(--muted);
+      max-width: 640px;
+      line-height: 1.6;
+    }
+  }
+
+  // ─── tabs ───
+  .hw-tabs {
+    display: flex;
+    gap: 2px;
+    padding: 14px 20px 0;
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+    background: var(--bg);
+  }
+
+  .hw-tab {
+    appearance: none;
+    margin: 0;
+    padding: 9px 16px;
+    border-radius: 6px 6px 0 0;
+    cursor: pointer;
+    font-size: 0.78rem;
+    font-family: var(--codeFont), monospace;
+    color: var(--muted);
+    border: 1px solid transparent;
+    border-bottom: none;
+    background: transparent;
+    white-space: nowrap;
+    transition: all 0.18s;
+
+    &:hover {
+      color: var(--text);
+      background: var(--bg2);
+    }
+
+    &.active {
+      color: var(--c0);
+      background: var(--bg2);
+      border-color: var(--border);
+      border-bottom-color: var(--bg2);
+    }
+  }
+
+  // keyboard focus — visible ring for all interactive elements
+  .hw-tab:focus-visible,
+  .boot-step:focus-visible,
+  svg .ell:focus-visible {
+    outline: 2px solid var(--c0);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  // ─── panels ───
+  .hw-panel {
+    display: none;
+    padding: 28px 24px;
+    background: var(--bg2);
+
+    &.active {
+      display: block;
+    }
+  }
+
+  .hw-section-label {
+    font-family: var(--codeFont), monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 18px;
+  }
+
+  .hw-hint {
+    font-size: 0.74rem;
+    color: var(--muted);
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  .dim {
+    color: var(--muted);
+  }
+
+  /* ══ PANEL 1 — rings ══ */
+  .ellipse-scene {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 28px;
+    align-items: center;
+  }
+
+  .ellipse-svg-wrap {
+    width: 100%;
+    position: relative;
+  }
+
+  .ring-info-panel {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    min-height: 250px;
+    transition: border-color 0.2s;
+
+    h3 {
+      font-family: var(--codeFont), monospace;
+      font-size: 0.9rem;
+      margin: 0 0 10px;
+      line-height: 1.4;
+      border: none;
+    }
+
+    p {
+      font-size: 0.8rem;
+      color: var(--text);
+      opacity: 0.85;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .ring-badge {
+      display: inline-block;
+      font-family: var(--codeFont), monospace;
+      font-size: 0.68rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid currentColor;
+      margin-bottom: 12px;
+    }
+
+    .examples {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .ex-tag {
+      font-family: var(--codeFont), monospace;
+      font-size: 0.64rem;
+      padding: 2px 7px;
+      border-radius: 3px;
+      background: color-mix(in srgb, var(--text) 5%, transparent);
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+  }
+
+  // SVG ellipses — color via currentColor on the group
+  svg {
+    .ell {
+      cursor: pointer;
+      transition: opacity 0.2s;
+
+      ellipse {
+        stroke: currentColor;
+        fill: color-mix(in srgb, currentColor 8%, transparent);
+        transition:
+          fill 0.2s,
+          filter 0.2s;
+      }
+
+      &:hover ellipse {
+        fill: color-mix(in srgb, currentColor 16%, transparent);
+      }
+
+      &.selected ellipse {
+        filter: drop-shadow(0 0 7px currentColor);
+        fill: color-mix(in srgb, currentColor 22%, transparent);
+      }
+    }
+
+    .ell.rm3 ellipse {
+      fill: color-mix(in srgb, currentColor 20%, transparent);
+    }
+
+    .ell.r3,
+    .lbl.r3 {
+      color: var(--c3);
+    }
+
+    .ell.r1,
+    .lbl.r1 {
+      color: var(--c1);
+    }
+
+    .ell.r0,
+    .lbl.r0 {
+      color: var(--c0);
+    }
+
+    .ell.rm1,
+    .lbl.rm1 {
+      color: var(--c-1);
+    }
+
+    .ell.rm2,
+    .lbl.rm2 {
+      color: var(--c-2);
+    }
+
+    .ell.rm3,
+    .lbl.rm3 {
+      color: var(--c-3);
+    }
+
+    .lbl .lead {
+      stroke: currentColor;
+      stroke-width: 0.8;
+      opacity: 0.55;
+    }
+
+    .lbl .name {
+      fill: currentColor;
+      font-family: var(--codeFont), monospace;
+      font-size: 9.5px;
+      font-weight: 700;
+    }
+
+    .lbl .desc {
+      fill: var(--muted);
+      font-family: var(--bodyFont), sans-serif;
+      font-size: 8px;
+    }
+
+    .depth-axis {
+      fill: var(--muted);
+      opacity: 0.6;
+      font-family: var(--codeFont), monospace;
+      font-size: 7.5px;
+    }
+  }
+
+  /* ══ PANEL 2 — boot ══ */
+  .boot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .boot-col h3 {
+    font-family: var(--codeFont), monospace;
+    font-size: 0.74rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0 0 18px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .boot-step {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-bottom: 4px;
+    cursor: pointer;
+  }
+
+  .boot-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    width: 72px;
+  }
+
+  .boot-chip {
+    width: 72px;
+    padding: 7px 4px;
+    border-radius: 7px;
+    border: 1px solid currentColor;
+    font-family: var(--codeFont), monospace;
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.4;
+    transition: all 0.18s;
+  }
+
+  .boot-step:hover .boot-chip {
+    background: color-mix(in srgb, currentColor 12%, transparent);
+  }
+
+  .boot-step.open .boot-chip {
+    box-shadow: 0 0 0 1px currentColor;
+  }
+
+  .boot-line {
+    width: 1px;
+    height: 22px;
+    background: var(--border);
+    margin: 3px 0;
+    position: relative;
+
+    &::after {
+      content: "▾";
+      position: absolute;
+      bottom: -9px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 7px;
+      color: var(--muted);
+    }
+  }
+
+  .boot-right {
+    padding: 2px 0 22px;
+    flex: 1;
+
+    h4 {
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin: 0 0 3px;
+    }
+
+    p {
+      font-size: 0.74rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+  }
+
+  .boot-detail {
+    display: none;
+    margin-top: 8px;
+    font-family: var(--codeFont), monospace;
+    font-size: 0.68rem;
+    color: var(--muted);
+    background: color-mix(in srgb, var(--border) 25%, transparent);
+    border-left: 2px solid var(--border);
+    padding: 8px 10px;
+    border-radius: 0 5px 5px 0;
+    line-height: 1.7;
+  }
+
+  .boot-step.open .boot-detail {
+    display: block;
+  }
+
+  // ring-colored chips/headings via scoped color custom prop --lc
+  .lc-3 {
+    --lc: var(--c-3);
+  }
+
+  .lc-2 {
+    --lc: var(--c-2);
+  }
+
+  .lc-1 {
+    --lc: var(--c-1);
+  }
+
+  .lc0 {
+    --lc: var(--c0);
+  }
+
+  .lc3 {
+    --lc: var(--c3);
+  }
+
+  .boot-chip.tinted {
+    color: var(--lc);
+  }
+
+  .boot-right h4.tinted {
+    color: var(--lc);
+  }
+
+  /* ══ PANEL 3 — devices ══ */
+  .device-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+  }
+
+  .dev-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 16px;
+    transition: border-color 0.2s;
+
+    &:hover {
+      border-color: color-mix(in srgb, var(--text) 18%, var(--border));
+    }
+
+    h3 {
+      font-family: var(--codeFont), monospace;
+      font-size: 0.82rem;
+      margin: 0 0 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: none;
+    }
+  }
+
+  .dev-layer {
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-family: var(--codeFont), monospace;
+    font-size: 0.66rem;
+    border-left: 3px solid var(--lc, var(--muted));
+    background: color-mix(in srgb, var(--lc, var(--muted)) 8%, transparent);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3px;
+    color: var(--text);
+
+    span:last-child {
+      font-size: 0.6rem;
+      opacity: 0.85;
+      color: var(--lc, var(--muted));
+    }
+  }
+
+  .dev-note {
+    margin-top: 10px;
+    font-size: 0.7rem;
+    color: var(--muted);
+    line-height: 1.6;
+    border-top: 1px solid var(--border);
+    padding-top: 10px;
+  }
+
+  /* ══ PANEL 4 — trust chain ══ */
+  .trust-wrap {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .trust-node {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 13px 18px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 3px;
+    transition: border-color 0.18s;
+
+    &:hover {
+      border-color: color-mix(in srgb, var(--text) 18%, var(--border));
+    }
+  }
+
+  .trust-ico {
+    font-size: 18px;
+    flex-shrink: 0;
+    width: 30px;
+    text-align: center;
+  }
+
+  .trust-body {
+    flex: 1;
+
+    h4 {
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    p {
+      font-size: 0.74rem;
+      color: var(--muted);
+      margin: 2px 0 0;
+      line-height: 1.5;
+    }
+  }
+
+  .trust-badge {
+    font-family: var(--codeFont), monospace;
+    font-size: 0.64rem;
+    padding: 3px 7px;
+    border-radius: 4px;
+    border: 1px solid var(--lc, var(--muted));
+    color: var(--lc, var(--muted));
+    flex-shrink: 0;
+  }
+
+  .trust-arrow {
+    text-align: center;
+    font-family: var(--codeFont), monospace;
+    font-size: 0.64rem;
+    color: var(--muted);
+    padding: 3px 0;
+  }
+
+  // callout note boxes (warn / ok), themed
+  .hw-note {
+    margin-top: 20px;
+    padding: 14px 18px;
+    border-radius: 8px;
+    font-family: var(--codeFont), monospace;
+    font-size: 0.74rem;
+    line-height: 1.8;
+    color: var(--text);
+
+    strong {
+      color: var(--accent);
+    }
+
+    .dim {
+      color: var(--muted);
+    }
+
+    &.warn {
+      --accent: var(--c-2);
+      background: color-mix(in srgb, var(--c-2) 8%, transparent);
+      border: 1px solid color-mix(in srgb, var(--c-2) 25%, transparent);
+    }
+
+    &.danger {
+      --accent: var(--c-3);
+      background: color-mix(in srgb, var(--c-3) 8%, transparent);
+      border: 1px solid color-mix(in srgb, var(--c-3) 25%, transparent);
+    }
+
+    &.ok {
+      --accent: var(--c3);
+      background: color-mix(in srgb, var(--c3) 8%, transparent);
+      border: 1px solid color-mix(in srgb, var(--c3) 22%, transparent);
+    }
+  }
+
+  /* responsive */
+  @media all and ($mobile) {
+    .ellipse-scene {
+      grid-template-columns: 1fr;
+    }
+
+    .boot-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hw-panel {
+      padding: 20px 14px;
+    }
+  }
+}
+
+/* ─── dark mode: restore the original neon palette ─── */
+:root[saved-theme="dark"] .hw-rings {
+  --bg: #0b0b16;
+  --bg2: #0f0f1f;
+  --bg3: #14142b;
+  --text: #dde0f5;
+  --muted: #7a7aa5;
+  --border: #20203c;
+
+  --c-3: #ff2255;
+  --c-2: #ff6600;
+  --c-1: #ffaa00;
+  --c0: #00ddff;
+  --c1: #00bbaa;
+  --c3: #44ff88;
+}

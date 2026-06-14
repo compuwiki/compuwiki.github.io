@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hardware Privilege Hierarchy</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&family=Inter:wght@300;400;500;600&display=swap');
+
+  :root {
+    --bg:    #07070f;
+    --bg2:   #0d0d1c;
+    --bg3:   #111128;
+    --c-3:   #ff2255;   /* Ring -3 ME — deepest red, most dangerous */
+    --c-2:   #ff6600;   /* Ring -2 SMM */
+    --c-1:   #ffaa00;   /* Ring -1 Hypervisor */
+    --c0:    #00ddff;   /* Ring 0  Kernel */
+    --c1:    #00bbaa;   /* Ring 1/2 Drivers (rarely used) */
+    --c3:    #44ff88;   /* Ring 3  Userspace */
+    --text:  #dde0f5;
+    --muted: #555580;
+    --border:#1a1a35;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    padding: 36px 32px 22px;
+    background: linear-gradient(180deg, #0c0c22 0%, var(--bg) 100%);
+    border-bottom: 1px solid var(--border);
+  }
+  header h1 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(1rem, 2.8vw, 1.5rem);
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.02em;
+  }
+  header h1 em { color: var(--c0); font-style: normal; }
+  header p {
+    margin-top: 6px;
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-weight: 300;
+    max-width: 640px;
+    line-height: 1.6;
+  }
+
+  /* ─── TABS ─── */
+  .tabs {
+    display: flex;
+    gap: 2px;
+    padding: 18px 32px 0;
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+    background: var(--bg);
+  }
+  .tab {
+    padding: 9px 16px;
+    border-radius: 6px 6px 0 0;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--muted);
+    border: 1px solid transparent;
+    border-bottom: none;
+    background: transparent;
+    white-space: nowrap;
+    transition: all 0.18s;
+  }
+  .tab:hover { color: var(--text); background: var(--bg2); }
+  .tab.active { color: var(--c0); background: var(--bg2); border-color: var(--border); border-bottom-color: var(--bg2); }
+
+  /* ─── PANELS ─── */
+  .panel { display: none; padding: 32px; background: var(--bg2); min-height: 60vh; }
+  .panel.active { display: block; }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 22px;
+  }
+
+  .hint {
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 18px;
+  }
+
+  /* ══════════════════════════════════════════
+     PANEL 1 — ELLIPSE DIAGRAM
+  ══════════════════════════════════════════ */
+  .ellipse-scene {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .ellipse-svg-wrap {
+    width: 100%;
+    position: relative;
+  }
+
+  /* info panel right */
+  .ring-info-panel {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px;
+    min-height: 260px;
+    transition: border-color 0.2s;
+  }
+  .ring-info-panel h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.88rem;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+  .ring-info-panel .ring-badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid currentColor;
+    margin-bottom: 12px;
+    opacity: 0.85;
+  }
+  .ring-info-panel p {
+    font-size: 0.78rem;
+    color: #9090b8;
+    line-height: 1.75;
+  }
+  .ring-info-panel .examples {
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .ring-info-panel .ex-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    padding: 2px 7px;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    color: #8888aa;
+  }
+
+  /* SVG ellipses */
+  .ell { cursor: pointer; transition: opacity 0.2s; }
+  .ell:hover ellipse { opacity: 0.9; filter: brightness(1.25); }
+  .ell.selected ellipse { filter: brightness(1.4) drop-shadow(0 0 8px currentColor); }
+
+  /* ══════════════════════════════════════════
+     PANEL 2 — BOOT SEQUENCE
+  ══════════════════════════════════════════ */
+  .boot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .boot-col h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .boot-step {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-bottom: 4px;
+    cursor: pointer;
+  }
+
+  .boot-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    width: 72px;
+  }
+
+  .boot-chip {
+    width: 72px;
+    padding: 7px 4px;
+    border-radius: 7px;
+    border: 1px solid;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.4;
+    transition: all 0.18s;
+  }
+
+  .boot-step:hover .boot-chip { filter: brightness(1.3); }
+  .boot-step.open .boot-chip { box-shadow: 0 0 12px -3px; }
+
+  .boot-line {
+    width: 1px;
+    height: 22px;
+    background: var(--border);
+    margin: 3px 0;
+    position: relative;
+  }
+  .boot-line::after {
+    content: '▾';
+    position: absolute;
+    bottom: -9px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 7px;
+    color: var(--muted);
+  }
+
+  .boot-right {
+    padding: 2px 0 24px;
+    flex: 1;
+  }
+  .boot-right h4 { font-size: 0.78rem; font-weight: 600; margin-bottom: 3px; }
+  .boot-right p { font-size: 0.72rem; color: #7070a0; line-height: 1.6; }
+  .boot-detail {
+    display: none;
+    margin-top: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    background: #090912;
+    border-left: 2px solid var(--border);
+    padding: 8px 10px;
+    border-radius: 0 5px 5px 0;
+    line-height: 1.7;
+  }
+  .boot-step.open .boot-detail { display: block; }
+
+  /* ══════════════════════════════════════════
+     PANEL 3 — DEVICES
+  ══════════════════════════════════════════ */
+  .device-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 18px;
+  }
+
+  .dev-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 16px;
+    transition: border-color 0.2s;
+  }
+  .dev-card:hover { border-color: #252545; }
+
+  .dev-card h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .dev-layer {
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.63rem;
+    border-left: 3px solid;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3px;
+  }
+  .dev-layer span:last-child { font-size: 0.58rem; opacity: 0.7; }
+
+  .dev-note {
+    margin-top: 10px;
+    font-size: 0.68rem;
+    color: #555577;
+    line-height: 1.6;
+    border-top: 1px solid var(--border);
+    padding-top: 10px;
+  }
+
+  /* ══════════════════════════════════════════
+     PANEL 4 — TRUST CHAIN
+  ══════════════════════════════════════════ */
+  .trust-wrap {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .trust-node {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 13px 18px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 3px;
+    cursor: default;
+    transition: border-color 0.18s;
+  }
+  .trust-node:hover { border-color: #252548; }
+
+  .trust-ico { font-size: 18px; flex-shrink: 0; width: 30px; text-align: center; }
+  .trust-body { flex: 1; }
+  .trust-body h4 { font-size: 0.78rem; font-weight: 600; }
+  .trust-body p  { font-size: 0.7rem; color: #6868a0; margin-top: 2px; line-height: 1.5; }
+
+  .trust-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    padding: 3px 7px;
+    border-radius: 4px;
+    border: 1px solid;
+    flex-shrink: 0;
+  }
+
+  .trust-arrow {
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--muted);
+    padding: 3px 0;
+  }
+
+  .trust-warning {
+    margin-top: 24px;
+    padding: 18px 20px;
+    background: rgba(255,34,85,0.06);
+    border: 1px solid rgba(255,34,85,0.18);
+    border-radius: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: #ff6688;
+    line-height: 1.85;
+  }
+  .trust-warning span { color: var(--muted); }
+
+  /* responsive */
+  @media (max-width: 680px) {
+    .ellipse-scene { grid-template-columns: 1fr; }
+    .boot-grid { grid-template-columns: 1fr; }
+    .panel { padding: 20px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>The <em>Hardware</em> Privilege Hierarchy — The One Ring</h1>
+  <p>Privilege rings, firmware layers, boot sequences, and trust chains in modern devices. The deeper the layer, the more absolute its power — and the less you can audit it.</p>
+</header>
+
+<div class="tabs">
+  <div class="tab active" onclick="switchTab('rings')">Privilege Rings</div>
+  <div class="tab" onclick="switchTab('boot')">Boot Sequence</div>
+  <div class="tab" onclick="switchTab('devices')">Devices</div>
+  <div class="tab" onclick="switchTab('trust')">Trust Chain</div>
+</div>
+
+<!-- ══ PANEL 1: RINGS ══ -->
+<div class="panel active" id="panel-rings">
+  <p class="hint">Click any ellipse — innermost = most privileged</p>
+  <div class="ellipse-scene">
+
+    <div class="ellipse-svg-wrap">
+      <svg id="ellsvg" viewBox="0 0 500 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;overflow:visible">
+        <defs>
+          <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+
+        <!-- Stacked, flattened ellipses forming a downward-tapering cone.
+             Top = least privileged (Ring 3) → bottom = most privileged (Ring −3). -->
+
+        <!-- Ring 3 — outermost, userspace, green -->
+        <g class="ell" id="ell-r3" onclick="selectRing('r3')">
+          <ellipse cx="250" cy="55" rx="210" ry="24" fill="rgba(68,255,136,0.04)" stroke="#44ff88" stroke-width="1.5"/>
+        </g>
+
+        <!-- Ring 1/2 — drivers, teal (rarely used) -->
+        <g class="ell" id="ell-r1" onclick="selectRing('r1')">
+          <ellipse cx="250" cy="105" rx="168" ry="19" fill="rgba(0,187,170,0.05)" stroke="#00bbaa" stroke-width="1.2" stroke-dasharray="5,4"/>
+        </g>
+
+        <!-- Ring 0 — kernel, cyan -->
+        <g class="ell" id="ell-r0" onclick="selectRing('r0')">
+          <ellipse cx="250" cy="150" rx="130" ry="15" fill="rgba(0,221,255,0.06)" stroke="#00ddff" stroke-width="1.8"/>
+        </g>
+
+        <!-- Ring -1 — hypervisor, amber -->
+        <g class="ell" id="ell-rm1" onclick="selectRing('rm1')">
+          <ellipse cx="250" cy="190" rx="96" ry="11" fill="rgba(255,170,0,0.07)" stroke="#ffaa00" stroke-width="1.8"/>
+        </g>
+
+        <!-- Ring -2 — SMM, orange -->
+        <g class="ell" id="ell-rm2" onclick="selectRing('rm2')">
+          <ellipse cx="250" cy="225" rx="66" ry="8" fill="rgba(255,102,0,0.09)" stroke="#ff6600" stroke-width="2"/>
+        </g>
+
+        <!-- Ring -3 — ME/PSP/Bootrom, red, innermost/deepest -->
+        <g class="ell" id="ell-rm3" onclick="selectRing('rm3')">
+          <ellipse cx="250" cy="255" rx="41" ry="6" fill="rgba(255,34,85,0.18)" stroke="#ff2255" stroke-width="2.2" filter="url(#glow)"/>
+        </g>
+
+        <!-- Labels with leader lines — aligned right column -->
+        <!-- R3 -->
+        <line x1="460" y1="55" x2="466" y2="55" stroke="#44ff88" stroke-width="0.8" opacity="0.5"/>
+        <text x="470" y="53" font-family="JetBrains Mono,monospace" font-size="9.5" fill="#44ff88" font-weight="700">Ring 3</text>
+        <text x="470" y="63" font-family="Inter,sans-serif" font-size="8" fill="#558866">Userspace / Apps</text>
+
+        <!-- R1/2 -->
+        <line x1="418" y1="105" x2="466" y2="105" stroke="#00bbaa" stroke-width="0.8" opacity="0.5"/>
+        <text x="470" y="103" font-family="JetBrains Mono,monospace" font-size="9.5" fill="#00bbaa" font-weight="700">Ring 1 / 2</text>
+        <text x="470" y="113" font-family="Inter,sans-serif" font-size="8" fill="#336655">Rarely used (x86)</text>
+
+        <!-- R0 -->
+        <line x1="380" y1="150" x2="466" y2="150" stroke="#00ddff" stroke-width="0.8" opacity="0.6"/>
+        <text x="470" y="148" font-family="JetBrains Mono,monospace" font-size="9.5" fill="#00ddff" font-weight="700">Ring 0</text>
+        <text x="470" y="158" font-family="Inter,sans-serif" font-size="8" fill="#336688">Kernel · Drivers · Anticheat</text>
+
+        <!-- R-1 -->
+        <line x1="346" y1="190" x2="466" y2="190" stroke="#ffaa00" stroke-width="0.8" opacity="0.6"/>
+        <text x="470" y="188" font-family="JetBrains Mono,monospace" font-size="9.5" fill="#ffaa00" font-weight="700">Ring −1</text>
+        <text x="470" y="198" font-family="Inter,sans-serif" font-size="8" fill="#886600">Hypervisor (VMX)</text>
+
+        <!-- R-2 -->
+        <line x1="316" y1="225" x2="466" y2="225" stroke="#ff6600" stroke-width="0.8" opacity="0.6"/>
+        <text x="470" y="223" font-family="JetBrains Mono,monospace" font-size="9.5" fill="#ff6600" font-weight="700">Ring −2</text>
+        <text x="470" y="233" font-family="Inter,sans-serif" font-size="8" fill="#884400">SMM · UEFI/iBoot</text>
+
+        <!-- R-3 -->
+        <line x1="291" y1="255" x2="466" y2="255" stroke="#ff2255" stroke-width="0.8" opacity="0.6"/>
+        <text x="470" y="253" font-family="JetBrains Mono,monospace" font-size="9.5" fill="#ff2255" font-weight="700">Ring −3</text>
+        <text x="470" y="263" font-family="Inter,sans-serif" font-size="8" fill="#aa2244">ME · PSP · Bootrom</text>
+
+        <!-- depth axis label -->
+        <text x="16" y="30" font-family="JetBrains Mono,monospace" font-size="7.5" fill="#333355" transform="rotate(90,16,30)">MORE PRIVILEGED →</text>
+      </svg>
+    </div>
+
+    <!-- right info panel -->
+    <div class="ring-info-panel" id="ring-info-panel" style="border-color:var(--border)">
+      <p style="color:var(--muted); font-size:0.78rem; margin-top:60px; text-align:center">← Click an ellipse<br>to explore that layer</p>
+    </div>
+
+  </div>
+
+  <!-- SMM note -->
+  <div style="max-width:900px;margin:24px auto 0;padding:14px 18px;background:rgba(255,102,0,0.05);border:1px solid rgba(255,102,0,0.15);border-radius:8px;font-size:0.72rem;color:#886633;line-height:1.7;font-family:'JetBrains Mono',monospace">
+    ⚠ Correction vs common diagrams: Ring −2 is <strong style="color:#ff8833">SMM (System Management Mode)</strong>, a special CPU execution mode completely invisible to the hypervisor and OS — not UEFI itself. UEFI runs during boot but SMM persists at runtime. AMD Sinkclose (2024 DEF CON) exposed a 20-year-old CPU flaw enabling Ring −2 privilege escalation.
+  </div>
+</div>
+
+<!-- ══ PANEL 2: BOOT ══ -->
+<div class="panel" id="panel-boot">
+  <p class="hint">Click each step to expand technical detail</p>
+  <div class="boot-grid">
+
+    <!-- PC -->
+    <div class="boot-col">
+      <h3>🖥 PC — UEFI / x86-64</h3>
+
+      <div class="boot-step" onclick="toggleBoot(this)">
+        <div class="boot-left">
+          <div class="boot-chip" style="border-color:var(--c-3);color:var(--c-3)">POWER<br>ON</div>
+          <div class="boot-line"></div>
+        </div>
+        <div class="boot-right">
+          <h4 style="color:var(--c-3)">Physical power-on</h4>
+          <p>CPU executes its first instruction from a hardwired ROM address.</p>
+          <div class="boot-detail">x86 reset vector: 0xFFFFFFF0. No OS, no RAM initialized. Just the CPU and the ROM. Everything else is offline.</div>
+        </div>
+      </div>
+
+      <div class="boot-step" onclick="toggleBoot(this)">
+        <div class="boot-left">
+          <div class="boot-chip" style="border-color:var(--c-3);color:var(--c-3)">Intel ME<br>AMD PSP</div>
+          <div class="boot-line"></div>
+        </div>
+        <div class="boot-right">
+          <h4 style="color:var(--c-3)">Management Engine (Ring −3)</h4>
+          <p>Separate microprocessor. Runs MINIX internally (Intel). Always on.</p>
+          <div class="boot-detail">The main CPU will NOT boot without a handshake from the ME. It has its own RAM, its own network stack, and can access all system memory independently of the OS. You cannot fully disable it on modern hardware.</div>
+        </div>
+      </div>
+
+      <div class="boot-step" onclick="toggleBoot(this)">
+        <div class="boot-left">
+          <div class="boot-chip" style="border-color:var(--c-2);color:var(--c-2)">SMM<br>Ring −2</div>
+          <div class="boot-line"></div>
+        </div>
+        <div class="boot-right">
+          <h4 style="color:var(--c-2)">System Management Mode</h4>
+          <p>Invisible to hypervisors, OS, and anticheat. Hardware emulation, power management.</p>
+          <div class="boot-detail">SMM runs in a protected memory region (SMRAM) that the OS cannot read or write. Triggered by System Management Interrupts (SMI). Completely invisible to everything above it — including Vanguard and CrowdStrike.</div>
+        </div>
+      </div>
+
+      <div class="boot-step" onclick="toggleBoot(this)">
+        <div class="boot-left">
+          <div class="boot-chip" style="border-color:var(--c-2);color:var(--c-2)">UEFI<br>Firmware</div>
+          <div class="boot-line"></div>
+        </div>
+        <div class="boot-right">
+          <h4 style="color:var(--c-2)">UEFI / Secure Boot</h4>
+          <p>Initializes RAM, PCIe, storage. Verifies cryptographic signature chain.</p>
+          <div class="boot-detail">Lives on an SPI Flash chip soldered to the motherboard. A rootkit here survives full OS reinstalls and drive formats. Secure Boot signs everything before handing control to the bootloader.</div>
+        </div>
+      </div>
+
+      <div class="boot-step" onclick="toggleBoot(this)">
+        <div class="boot-left">
+          <div class="boot-chip" style="border-color:var(--c-1);color:var(--c-1)">Hyper-<br>visor</div>
+          <div class="boot-line"></div>
+        </div>
+        <div class="boot-right">
+          <h4 style="color:var(--c-1)">Hypervisor — Ring −1</h4>
+          <p>Optional. VMware, KVM, Hyper-V. Manages VMs below the guest kernel.</p>
+          <div class="boot-detail">Uses Intel VT-x / AMD-V CPU extensions. Guest OS believes it runs in Ring 0, but privileged instructions are intercepted. Anticheats detect this via CPUID flags and instruction timing deltas (nanoseconds slower).</div>
+        </div>
+      </div>
+
+      <div class="boot-step" onclick="toggleBoot(this)">
+        <div class="boot-left">
+          <div class="boot-chip" style="border-color:var(--c0);color:var(--c0)">OS<br>Kernel</div>
+          <div class="boot-line"></div>
+        </div>
+        <div class="boot-right">
+          <h4 style="color:var(--c0)">OS Kernel — Ring 0</h4>
+          <p>Windows NT / Linux. Full hardware access. Vanguard, EAC, and CrowdStrike load here.</p>
+          <div class="boot-detail">A Ring 0 bug can crash every machine running it simultaneously — as CrowdStrike proved in July 2024 (8.5M Windows machines). Vanguard starts here before you launch the game.</div>
+        </div>
+      </div>
+
+      <div class="boot-step" onclick="toggleBoot(this)">
+        <div class="boot-left">
+          <div class="boot-chip" style="border-color:var(--c3);color:var(--c3)">Apps<br>Ring 3</div>
+        </div>
+        <div class="boot-right">
+          <h4 style="color:var(--c3)">Userspace — Ring 3</h4>
+          <p>Everything you see and run. Fully supervised by the kernel.</p>
+          <div class="boot-detail">Cannot access hardware directly. Must ask the kernel via syscalls. This is where your browser, games, and terminal live. The only layer you can fully observe and control.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOBILE -->
+    <div class="boot-col">
+      <h3>📱 Smartphone — ARM</h3>
+
+      <div class="boot-step" onclick="toggleBoot(this)">
+        <div class="boot-left">
+          <div class="boot-chip" style="border-color:var(--c-3);color:var(--c-3)">Boot<br>ROM</div>
+          <div class="boot-line"></div>
+        </div>
+        <div class="boot-right">
+          <h4 style="color:var(--c-3)">Bootrom — etched in silicon</h4>
+          <p>Physically immutable. The absolute root of trust. Cannot be patched.</p>
+          <div class="boot-detail">Apple's checkm8 exploit (2019) found a vulnerability here affecting A5–A11 chips. It can never be patched because it's in read-only silicon. Millions of iPhones are permanently jailbreakable at the lowest level.</div>
+        </div>
+      </div>
+
+      <div class="boot-step" onclick="toggleBoot(this)">
+        <div class="boot-left">
+          <div class="boot-chip" style="border-color:var(--c-3);color:var(--c-3)">Trust<br>Zone</div>
+          <div class="boot-line"></div>
+        </div>
+        <div class="boot-right">
+          <h4 style="color:var(--c-3)">ARM TrustZone — Secure World</h4>
+          <p>Parallel execution environment. Biometrics, payments, encryption keys.</p>
+          <div class="boot-detail">Two worlds run simultaneously on the same cores: Secure World and Normal World. The Normal World (Android/iOS) cannot read Secure World memory. But Secure World can access Normal World. One-way mirror.</div>
+        </div>
+      </div>
+
+      <div class="boot-step" onclick="toggleBoot(this)">
+        <div class="boot-left">
+          <div class="boot-chip" style="border-color:var(--c-3);color:var(--c-3)">Base<br>band</div>
+          <div class="boot-line"></div>
+        </div>
+        <div class="boot-right">
+          <h4 style="color:var(--c-3)">Baseband Processor</h4>
+          <p>Separate CPU for the modem. Runs its own RTOS (REX on Qualcomm).</p>
+          <div class="boot-detail">Has independent network access. On some SoC designs, shares DMA with the application processor — meaning a compromised baseband can read app memory. Completely opaque. Historically riddled with critical CVEs.</div>
+        </div>
+      </div>
+
+      <div class="boot-step" onclick="toggleBoot(this)">
+        <div class="boot-left">
+          <div class="boot-chip" style="border-color:var(--c-2);color:var(--c-2)">iBoot /<br>BL</div>
+          <div class="boot-line"></div>
+        </div>
+        <div class="boot-right">
+          <h4 style="color:var(--c-2)">Second Bootloader</h4>
+          <p>iBoot (Apple) or OEM bootloader (Android). Locked by default.</p>
+          <div class="boot-detail">Unlocking the Android bootloader breaks the trust chain and usually trips Knox / Widevine fuses permanently. Enables custom ROMs but voids the cryptographic guarantee that the OS hasn't been tampered with.</div>
+        </div>
+      </div>
+
+      <div class="boot-step" onclick="toggleBoot(this)">
+        <div class="boot-left">
+          <div class="boot-chip" style="border-color:var(--c0);color:var(--c0)">XNU /<br>Linux</div>
+          <div class="boot-line"></div>
+        </div>
+        <div class="boot-right">
+          <h4 style="color:var(--c0)">OS Kernel — Ring 0</h4>
+          <p>XNU (iOS/macOS) or Linux (Android). Full hardware access.</p>
+          <div class="boot-detail">iOS kernel is sealed and signed by Apple. Android kernel is open-source but OEMs add proprietary blobs. Kernel exploits are the core of most mobile jailbreaks and root exploits.</div>
+        </div>
+      </div>
+
+      <div class="boot-step" onclick="toggleBoot(this)">
+        <div class="boot-left">
+          <div class="boot-chip" style="border-color:var(--c3);color:var(--c3)">iOS /<br>Android</div>
+        </div>
+        <div class="boot-right">
+          <h4 style="color:var(--c3)">Userspace — Sandboxed</h4>
+          <p>Apps, UI, everything you interact with.</p>
+          <div class="boot-detail">iOS sandbox is among the strictest in consumer OS. Android varies significantly by OEM. Apps request permissions; the kernel enforces them. Root = breaking this boundary.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PANEL 3: DEVICES ══ -->
+<div class="panel" id="panel-devices">
+  <p class="section-label">Firmware layers across everyday devices</p>
+  <div class="device-grid">
+
+    <div class="dev-card">
+      <h3>💻 PC / Laptop</h3>
+      <div class="dev-layer" style="border-color:var(--c-3);background:rgba(255,34,85,0.05)"><span>Intel ME / AMD PSP</span><span style="color:var(--c-3)">Ring −3</span></div>
+      <div class="dev-layer" style="border-color:var(--c-2);background:rgba(255,102,0,0.05)"><span>SMM (invisible)</span><span style="color:var(--c-2)">Ring −2</span></div>
+      <div class="dev-layer" style="border-color:var(--c-2);background:rgba(255,102,0,0.04)"><span>UEFI Firmware</span><span style="color:var(--c-2)">Ring −2</span></div>
+      <div class="dev-layer" style="border-color:var(--c-1);background:rgba(255,170,0,0.04)"><span>Hypervisor (optional)</span><span style="color:var(--c-1)">Ring −1</span></div>
+      <div class="dev-layer" style="border-color:var(--c0);background:rgba(0,221,255,0.04)"><span>OS Kernel + Vanguard/EAC</span><span style="color:var(--c0)">Ring 0</span></div>
+      <div class="dev-layer" style="border-color:var(--c3);background:rgba(68,255,136,0.03)"><span>Applications</span><span style="color:var(--c3)">Ring 3</span></div>
+    </div>
+
+    <div class="dev-card">
+      <h3>📱 Smartphone</h3>
+      <div class="dev-layer" style="border-color:var(--c-3);background:rgba(255,34,85,0.05)"><span>Bootrom (immutable ROM)</span><span style="color:var(--c-3)">−∞</span></div>
+      <div class="dev-layer" style="border-color:var(--c-3);background:rgba(255,34,85,0.04)"><span>TrustZone Secure World</span><span style="color:var(--c-3)">Parallel</span></div>
+      <div class="dev-layer" style="border-color:var(--c-3);background:rgba(255,34,85,0.04)"><span>Baseband Processor</span><span style="color:var(--c-3)">Parallel</span></div>
+      <div class="dev-layer" style="border-color:var(--c-2);background:rgba(255,102,0,0.04)"><span>iBoot / Bootloader</span><span style="color:var(--c-2)">Locked</span></div>
+      <div class="dev-layer" style="border-color:var(--c0);background:rgba(0,221,255,0.04)"><span>XNU / Linux Kernel</span><span style="color:var(--c0)">Ring 0</span></div>
+      <div class="dev-layer" style="border-color:var(--c3);background:rgba(68,255,136,0.03)"><span>Apps (sandboxed)</span><span style="color:var(--c3)">Ring 3</span></div>
+    </div>
+
+    <div class="dev-card">
+      <h3>🖧 Server</h3>
+      <div class="dev-layer" style="border-color:var(--c-3);background:rgba(255,34,85,0.05)"><span>BMC / iDRAC / iLO</span><span style="color:var(--c-3)">Always ON</span></div>
+      <div class="dev-layer" style="border-color:var(--c-3);background:rgba(255,34,85,0.04)"><span>Intel ME</span><span style="color:var(--c-3)">Ring −3</span></div>
+      <div class="dev-layer" style="border-color:var(--c-2);background:rgba(255,102,0,0.04)"><span>SMM + UEFI</span><span style="color:var(--c-2)">Ring −2</span></div>
+      <div class="dev-layer" style="border-color:var(--c-1);background:rgba(255,170,0,0.04)"><span>Hypervisor (VMware/KVM)</span><span style="color:var(--c-1)">Ring −1</span></div>
+      <div class="dev-layer" style="border-color:var(--c0);background:rgba(0,221,255,0.04)"><span>Guest OS Kernels (×N)</span><span style="color:var(--c0)">Ring 0</span></div>
+      <div class="dev-note">BMC has independent network access. Can power cycle, reinstall OS, or access console even when the server is "off". Dell iDRAC, HP iLO, Supermicro IPMI.</div>
+    </div>
+
+    <div class="dev-card">
+      <h3>💽 SSD / HDD</h3>
+      <div class="dev-layer" style="border-color:var(--c-3);background:rgba(255,34,85,0.05)"><span>Drive controller firmware</span><span style="color:var(--c-3)">⚠ Invisible</span></div>
+      <div class="dev-layer" style="border-color:var(--c-2);background:rgba(255,102,0,0.04)"><span>Direct data access</span><span style="color:var(--c-2)">Total</span></div>
+      <div class="dev-layer" style="border-color:var(--muted);background:rgba(85,85,128,0.04)"><span>Survives full format</span><span style="color:var(--c-3)">Persistent</span></div>
+      <div class="dev-note">Equation Group (NSA-linked) deployed malware that lived in HDD firmware — discovered by Kaspersky in 2015. Survived complete drive formats and OS reinstalls. The drive itself was the implant.</div>
+    </div>
+
+    <div class="dev-card">
+      <h3>📡 Router / Network</h3>
+      <div class="dev-layer" style="border-color:var(--c-2);background:rgba(255,102,0,0.05)"><span>Proprietary firmware</span><span style="color:var(--c-2)">Opaque</span></div>
+      <div class="dev-layer" style="border-color:var(--c0);background:rgba(0,221,255,0.04)"><span>Embedded OS (Linux/VxWorks)</span><span style="color:var(--c0)">Kernel</span></div>
+      <div class="dev-layer" style="border-color:var(--c-3);background:rgba(255,34,85,0.04)"><span>Sees ALL your traffic</span><span style="color:var(--c-3)">⚠ Total</span></div>
+      <div class="dev-note">Every packet leaving your network passes through here before the internet. A compromised router is worse than any OS-level malware — it sits above your encryption at the network layer.</div>
+    </div>
+
+    <div class="dev-card">
+      <h3>📺 Smart TV</h3>
+      <div class="dev-layer" style="border-color:var(--c-2);background:rgba(255,102,0,0.05)"><span>SoC firmware (Samsung/LG)</span><span style="color:var(--c-2)">Opaque</span></div>
+      <div class="dev-layer" style="border-color:var(--c0);background:rgba(0,221,255,0.04)"><span>Tizen / WebOS / Android TV</span><span style="color:var(--c0)">Kernel</span></div>
+      <div class="dev-layer" style="border-color:var(--c3);background:rgba(68,255,136,0.03)"><span>Streaming apps / UI</span><span style="color:var(--c3)">User</span></div>
+      <div class="dev-note">Always-on microphone in many models. Remote update subsystems operate independently of the visible OS. Samsung's ACR (Automatic Content Recognition) tracks what you watch by default.</div>
+    </div>
+
+    <div class="dev-card">
+      <h3>🖨 Printer</h3>
+      <div class="dev-layer" style="border-color:var(--c-2);background:rgba(255,102,0,0.05)"><span>ARM CPU + firmware</span><span style="color:var(--c-2)">Opaque</span></div>
+      <div class="dev-layer" style="border-color:var(--c0);background:rgba(0,221,255,0.04)"><span>Embedded Linux / RTOS</span><span style="color:var(--c0)">Kernel</span></div>
+      <div class="dev-layer" style="border-color:var(--muted);background:rgba(85,85,128,0.03)"><span>Network stack</span><span style="color:var(--muted)">Exposed</span></div>
+      <div class="dev-note">Historically a neglected attack vector on corporate networks. HP and Xerox have had critical firmware RCEs. Printers are often network-connected, rarely patched, and can pivot to other internal systems.</div>
+    </div>
+
+    <div class="dev-card">
+      <h3>⌚ Wearables / IoT</h3>
+      <div class="dev-layer" style="border-color:var(--c-2);background:rgba(255,102,0,0.05)"><span>Vendor firmware (opaque)</span><span style="color:var(--c-2)">Opaque</span></div>
+      <div class="dev-layer" style="border-color:var(--c0);background:rgba(0,221,255,0.04)"><span>RTOS (FreeRTOS / Zephyr)</span><span style="color:var(--c0)">Kernel</span></div>
+      <div class="dev-layer" style="border-color:var(--c-3);background:rgba(255,34,85,0.04)"><span>Biometrics / location / mic</span><span style="color:var(--c-3)">⚠ Sensors</span></div>
+      <div class="dev-note">Continuous biometric collection (HR, SpO2, GPS, accelerometer). Bluetooth always scanning. Firmware updates delivered OTA with minimal user visibility. Least-audited category of personal devices.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ PANEL 4: TRUST CHAIN ══ -->
+<div class="panel" id="panel-trust">
+  <p class="section-label">Who do you actually trust?</p>
+  <p class="hint">Trust is transitive — every layer inherits the risks of the layer below it</p>
+
+  <div class="trust-wrap">
+
+    <div class="trust-node">
+      <div class="trust-ico">⚛️</div>
+      <div class="trust-body">
+        <h4>Silicon Foundry — TSMC, Samsung, Intel Fabs</h4>
+        <p>Physically manufactures the chip. Could embed hardware backdoors at gate level — undetectable by any software audit. Geopolitically concentrated in Taiwan and South Korea.</p>
+      </div>
+      <span class="trust-badge" style="color:var(--c-3);border-color:var(--c-3)">Ring −∞</span>
+    </div>
+    <div class="trust-arrow">↓ trusts ↓</div>
+
+    <div class="trust-node">
+      <div class="trust-ico">🔬</div>
+      <div class="trust-body">
+        <h4>IP Designer — ARM, x86 (Intel/AMD), RISC-V</h4>
+        <p>Designs the instruction set architecture and core IP. Everyone else licenses it. ARM is now owned by SoftBank; RISC-V is open and the only truly auditable option.</p>
+      </div>
+      <span class="trust-badge" style="color:var(--c-3);border-color:var(--c-3)">ISA</span>
+    </div>
+    <div class="trust-arrow">↓ trusts ↓</div>
+
+    <div class="trust-node">
+      <div class="trust-ico">🔧</div>
+      <div class="trust-body">
+        <h4>Chip Vendor — Intel, AMD, Qualcomm, Apple</h4>
+        <p>Writes Ring −3 firmware: Intel ME (runs MINIX), AMD PSP, Qualcomm baseband. Closed source, signed, and non-removable on modern hardware.</p>
+      </div>
+      <span class="trust-badge" style="color:var(--c-3);border-color:var(--c-3)">Ring −3</span>
+    </div>
+    <div class="trust-arrow">↓ trusts ↓</div>
+
+    <div class="trust-node">
+      <div class="trust-ico">🏭</div>
+      <div class="trust-body">
+        <h4>OEM — Dell, Lenovo, Apple, Samsung</h4>
+        <p>Writes UEFI and SMM code, may add proprietary modules. Controls Secure Boot keys. Some OEMs have shipped firmware with backdoors (Lenovo Superfish, 2015).</p>
+      </div>
+      <span class="trust-badge" style="color:var(--c-2);border-color:var(--c-2)">Ring −2</span>
+    </div>
+    <div class="trust-arrow">↓ trusts ↓</div>
+
+    <div class="trust-node">
+      <div class="trust-ico">🖥️</div>
+      <div class="trust-body">
+        <h4>OS Vendor — Microsoft, Apple, Google, Linux</h4>
+        <p>Controls Ring 0. Decides which kernel modules are allowed. Windows kernel signing (required since Vista 64-bit) reduced but didn't eliminate malicious Ring 0 code.</p>
+      </div>
+      <span class="trust-badge" style="color:var(--c0);border-color:var(--c0)">Ring 0</span>
+    </div>
+    <div class="trust-arrow">↓ trusts ↓</div>
+
+    <div class="trust-node">
+      <div class="trust-ico">🛡️</div>
+      <div class="trust-body">
+        <h4>Security Software — CrowdStrike, Antivirus vendors</h4>
+        <p>Also Ring 0. A bug here crashed 8.5M Windows machines simultaneously in July 2024. No malicious intent needed — just a bad update.</p>
+      </div>
+      <span class="trust-badge" style="color:var(--c0);border-color:var(--c0)">Ring 0</span>
+    </div>
+    <div class="trust-arrow">↓ trusts ↓</div>
+
+    <div class="trust-node">
+      <div class="trust-ico">🎮</div>
+      <div class="trust-body">
+        <h4>Game Anticheat — Riot Vanguard, EAC, Ricochet</h4>
+        <p>Ring 0. Starts before the game. Vanguard is partially owned by Tencent, which has legal obligations to the Chinese government. You trust all of the above to trust this.</p>
+      </div>
+      <span class="trust-badge" style="color:var(--c0);border-color:var(--c0)">Ring 0</span>
+    </div>
+    <div class="trust-arrow">↓ trusts ↓</div>
+
+    <div class="trust-node">
+      <div class="trust-ico">👤</div>
+      <div class="trust-body">
+        <h4>You — the end user</h4>
+        <p>You see Ring 3. You cannot audit any layer below. You trust every entity above implicitly, transitively, every time you power on your device.</p>
+      </div>
+      <span class="trust-badge" style="color:var(--c3);border-color:var(--c3)">Ring 3</span>
+    </div>
+
+    <div class="trust-warning">
+      ⚠ The trust chain is only as strong as its weakest link.<br>
+      If any lower layer lies, everything above inherits that lie — silently, invisibly.<br>
+      <span>There is no technical mechanism to verify lower layers from higher ones.<br>
+      This is not a bug. It is how the architecture was designed.</span>
+    </div>
+
+    <!-- RISC-V note -->
+    <div style="margin-top:18px;padding:14px 18px;background:rgba(68,255,136,0.04);border:1px solid rgba(68,255,136,0.12);border-radius:8px;font-size:0.72rem;color:#336644;line-height:1.75;font-family:'JetBrains Mono',monospace">
+      🌱 <strong style="color:#44aa66">The only real escape: RISC-V</strong><br>
+      Open instruction set architecture. No proprietary ME equivalent. Fully auditable from ISA to silicon (in theory). Projects like Talos II (IBM POWER9) offer fully open firmware stacks today but cost thousands and target servers. RISC-V for general consumer hardware is still a decade away from maturity.
+    </div>
+
+  </div>
+</div>
+
+<script>
+  /* ── tab switching ── */
+  function switchTab(id) {
+    const order = ['rings','boot','devices','trust'];
+    document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', order[i] === id));
+    document.querySelectorAll('.panel').forEach(p => p.classList.toggle('active', p.id === 'panel-'+id));
+  }
+
+  /* ── ring ellipse data ── */
+  const RINGS = {
+    rm3: {
+      color: '#ff2255',
+      badge: 'Ring −3',
+      title: 'Intel ME / AMD PSP / Bootrom',
+      desc: 'The absolute core. A separate microprocessor inside your CPU running its own OS (Intel ME uses MINIX). Always active — even when your PC is "off" in standby. Has its own RAM, its own network stack, and direct access to all system memory. The main CPU physically refuses to boot without a handshake from the ME. You cannot disable or audit it on any modern consumer hardware.',
+      tags: ['Intel ME', 'AMD PSP', 'ARM Bootrom', 'MINIX', 'Always-on', 'Inauditable', 'Ring −3']
+    },
+    rm2: {
+      color: '#ff6600',
+      badge: 'Ring −2',
+      title: 'SMM — System Management Mode + UEFI',
+      desc: 'SMM is a special CPU execution mode triggered by hardware interrupts (SMI). It runs in a protected memory region (SMRAM) that is completely invisible to the OS, hypervisors, antivirus, and anticheats. Used for power management, hardware emulation, and legacy compatibility. UEFI runs at boot to initialize hardware and verify the Secure Boot chain. A rootkit in UEFI/SMM survives any OS reinstall.',
+      tags: ['SMM', 'SMRAM', 'UEFI', 'iBoot', 'Secure Boot', 'SPI Flash', 'Invisible to OS']
+    },
+    rm1: {
+      color: '#ffaa00',
+      badge: 'Ring −1',
+      title: 'Hypervisor — VMX / SVM Mode',
+      desc: 'Hypervisors (VMware, KVM, Hyper-V) run below guest OS kernels using Intel VT-x or AMD-V CPU extensions. Each guest OS believes it has Ring 0, but privileged instructions are intercepted and emulated. Anticheats detect virtualization via CPUID flags that reveal the hypervisor vendor, and via timing attacks — virtualized instructions take nanoseconds longer than bare-metal.',
+      tags: ['VMware', 'KVM', 'Hyper-V', 'QEMU', 'VT-x', 'AMD-V', 'Ring −1']
+    },
+    r0: {
+      color: '#00ddff',
+      badge: 'Ring 0',
+      title: 'OS Kernel / Drivers / Anticheat',
+      desc: 'The operating system kernel. Full, unrestricted access to all hardware and memory. This is where device drivers, antivirus engines, and game anticheats (Vanguard, EAC, Ricochet) operate. A single buggy kernel module can crash the entire system — CrowdStrike demonstrated this at global scale in July 2024, taking down 8.5 million Windows machines with one bad update.',
+      tags: ['Windows NT', 'Linux Kernel', 'Vanguard', 'EAC', 'CrowdStrike', 'GPU Drivers', 'Ring 0']
+    },
+    r1: {
+      color: '#00bbaa',
+      badge: 'Ring 1 / 2',
+      title: 'Rings 1 & 2 — Formally defined, rarely used',
+      desc: 'x86 defines four hardware privilege levels (0–3). Rings 1 and 2 were designed for device drivers and OS services with less privilege than the kernel but more than applications. In practice, almost no modern OS uses them — Windows and Linux collapse everything to just Ring 0 (kernel) and Ring 3 (user). They exist as CPU hardware features but are effectively dormant.',
+      tags: ['Formally defined', 'Rarely used', 'x86 legacy', 'Ring 1', 'Ring 2']
+    },
+    r3: {
+      color: '#44ff88',
+      badge: 'Ring 3',
+      title: 'Userspace — Applications',
+      desc: 'The outermost ring. Everything you see, use, and interact with runs here: browsers, games, terminals, apps. Ring 3 code cannot directly access hardware or other processes\' memory. It must ask the kernel (Ring 0) via system calls. This is the only layer you can fully observe, control, and audit. Everything below it is opaque to you by design.',
+      tags: ['Applications', 'Browser', 'Games', 'Sandboxed', 'Syscalls', 'Observable']
+    }
+  };
+
+  function selectRing(id) {
+    document.querySelectorAll('.ell').forEach(e => e.classList.remove('selected'));
+    document.getElementById('ell-'+id).classList.add('selected');
+    const d = RINGS[id];
+    const panel = document.getElementById('ring-info-panel');
+    panel.style.borderColor = d.color;
+    panel.innerHTML = `
+      <span class="ring-badge" style="color:${d.color};border-color:${d.color}">${d.badge}</span>
+      <h3 style="color:${d.color}">${d.title}</h3>
+      <p>${d.desc}</p>
+      <div class="examples">${d.tags.map(t=>`<span class="ex-tag">${t}</span>`).join('')}</div>
+    `;
+  }
+
+  /* ── boot step toggle ── */
+  function toggleBoot(el) { el.classList.toggle('open'); }
+</script>
+</body>
+</html>

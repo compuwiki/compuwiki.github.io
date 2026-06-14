@@ -71,8 +71,6 @@ Las dependencias utilizadas son:
 - **Spring Data JPA**: Para la persistencia y comunicación con la base de datos.
 - **Thymeleaf**: Motor de plantillas para generar vistas dinámicas en HTML.
 
-![img](spring-init.png)
-
 ### **Añadir propiedades**
 
 Edita `src/main/resources/application.properties` y añade:
@@ -117,15 +115,13 @@ Si **no usas Maven**, descarga el `.jar` desde [aquí](https://mvnrepository.com
 
 Se puede hacer `Alt+Insert` para mostrar el "buscador de artefactos de Maven", a partir del cual se pueden añadir.
 
-![[maven-artifact-search.png]]
-
 ---
 
 ## **3. Conexión con la base de datos en IntelliJ**
 
 ### **Conexión en IntelliJ IDEA Community**
 
-- Activa **JPA Explorer** (`View -> Tool Windows -> JPA Explorer`). ![img|400](view-community.jpg)
+- Activa **JPA Explorer** (`View -> Tool Windows -> JPA Explorer`).
 - En **DB Connections**, haz clic derecho y selecciona "Add DB Connection".
   - Elige **MySQL 5**.
   - Ingresa `localhost`, el nombre de la base de datos, el usuario y la contraseña.
@@ -136,7 +132,7 @@ Se puede hacer `Alt+Insert` para mostrar el "buscador de artefactos de Maven", a
 
 ### **Conexión en IntelliJ IDEA Ultimate**
 
-- Abre `View -> Tool Windows -> Database`. ![img|400](view-ultimate.jpg)
+- Abre `View -> Tool Windows -> Database`.
 - Usa la siguiente URL de conexión:
 
       ```
@@ -144,8 +140,8 @@ Se puede hacer `Alt+Insert` para mostrar el "buscador de artefactos de Maven", a
 
   el caso, SmartTomcat debe estar mal configurado.
 
-- Configura los drivers en la pestaña de `database`. ![img|550](data-source-drivers-ultimate.jpg)
-- En el panel **Database**, verás la conexión activa con las tablas. ![img|300](database-view-ultimate.jpg)
+- Configura los drivers en la pestaña de `database`.
+- En el panel **Database**, verás la conexión activa con las tablas.
 
 ---
 
@@ -172,10 +168,6 @@ graph TD;
 Clicamos botón derecho sobre el nombre del proyecto y hacer `New generate JPA Entity`. Si se auto-genera todo solo hace falta generar el servicio y el controlador.
 
 > [!WARNING] Cambiar de `RestController` a `Controller`
-
-![[setup-db-connection.png]]
-
-![[auto-generation-settings.png]]
 
 ### **Modelo (Entity)**
 

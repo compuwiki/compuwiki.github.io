@@ -13,7 +13,5 @@ Welcome to **CompuWiki** — a personal knowledge base on web development, datab
 - [Databases](./databases/) — SQL and NoSQL.
 - [Deployment](./deployment/) — DNS, Docker, Kubernetes, web servers.
 - [Comparisons](./comparisons/) — hardware and software comparison tables.
-
-## Loose pages
-
-- [Note](./note.md)
+- [Essays](./essays/) — opinion and conceptual writing on computing, AI, and information.
+- [Meta](./meta/) — notes about the wiki itself (drafts, scratchpad).

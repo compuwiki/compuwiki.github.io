@@ -1,5 +1,5 @@
 ---
-title: Concepts
+title: Fundamentals
 ---
 
 Auto-generated section index for navigation.

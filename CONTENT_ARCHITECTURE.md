@@ -11,6 +11,8 @@ This document defines how content is organized under `content/` and how new page
 - `content/databases/`: SQL and NoSQL learning notes.
 - `content/deployment/`: infrastructure and runtime topics.
 - `content/comparisons/`: side-by-side technical comparisons.
+- `content/essays/`: opinion, philosophy, and conceptual essays (longer-form, less reference-oriented).
+- `content/meta/`: notes about the wiki itself (drafts, scratchpad, formatting helpers).
 
 ## Folder Rules
 
@@ -18,6 +20,7 @@ This document defines how content is organized under `content/` and how new page
 - `index.md` should describe the folder and link to child pages/subfolders.
 - Keep one topic per page. Avoid mixing unrelated subjects in one file.
 - If a folder is still empty, keep `index.md` with a short "upcoming content" note.
+- Do not leave loose pages directly under `content/`. Every page belongs in a topic folder that's linked from `content/index.md`.
 
 ## Naming Rules
 
@@ -89,3 +92,31 @@ tags: [cheatsheet, cli]
 - Ensure `content/index.md` links stay valid.
 - Remove or fix dead links before publishing.
 - Keep section indexes updated when adding new pages.
+
+---
+
+## Emoji Shortcodes Reference
+
+| Emoji | Shortcode            | Name                 |
+| ----- | -------------------- | -------------------- |
+| ✨    | `:sparkles:`         | Sparkles/Recommended |
+| 🍎    | `:apple:`            | macOS/Apple          |
+| 🐧    | `:penguin:`          | Linux/Penguin        |
+| 👹    | `:imp:`              | BSD/Demon            |
+| 👿    | `:smiling_imp:`      | Solaris/Devil        |
+| 🪟    | `:window:`           | Windows              |
+| ☁️    | `:cloud:`            | Cloud/HarmonyOS      |
+| ❌    | `:x:`                | Failure/Not Working  |
+| ✅    | `:white_check_mark:` | Success/Working      |
+| ☀️    | `:sunny:`            | SunOS/Sun            |
+| 🔧    | `:wrench:`           | Tools/Config         |
+| ⚙️    | `:gear:`             | Settings/Components  |
+| 💾    | `:floppy_disk:`      | DOS/Disk/Storage     |
+| 🎮    | `:video_game:`       | Gaming/Exec          |
+| 🌸    | `:cherry_blossom:`   | Haiku/Flower         |
+
+**Sources:**
+
+- [GitHub Emoji Cheat Sheet](https://github.com/ikatyang/emoji-cheat-sheet)
+- [Emojipedia](https://emojipedia.org/)
+- [WebFX Emoji Tool](https://www.webfx.com/tools/emoji-cheat-sheet/)

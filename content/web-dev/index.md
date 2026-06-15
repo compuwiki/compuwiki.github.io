@@ -7,7 +7,7 @@ Web development concepts, best practices, history, and backend framework tutoria
 
 ## Sections
 
-- [Concepts](./concepts/) — what is a web app, types of servers, frameworks, creating a wiki, cross-platform considerations.
+- [Fundamentals](./fundamentals/) — what is a web app, types of servers, frameworks, creating a wiki, cross-platform considerations.
 - [Best Practices](./best-practices/) — security, performance, testing, project structure, comments, deployment, AI agent rules.
 - [History](./history/) — history of the web, the DOM.
 - [Backend](./backend/) — framework-specific tutorials (ASP.NET, Java Spring).

@@ -313,63 +313,256 @@ Years are unique (no repetition): events in the same year are stacked under that
   </section>
 </div>
 
-<script>
-  (() => {
-    const initHistoryFilters = () => {
-      const controls = document.querySelector('.history-filter-controls');
-      const timeline = document.querySelector('.history-timeline--grouped');
-      if (!controls || !timeline) return;
+<style>
+  .history-filter-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0;
+  }
 
-      const buttons = controls.querySelectorAll('[data-history-filter]');
-      if (!buttons.length) return;
+  .history-filter-button {
+    font-family: var(--bodyFont);
+    font-size: 0.85rem;
+    padding: 0.25rem 0.85rem;
+    border-radius: 999px;
+    border: 1px solid var(--lightgray);
+    background: var(--light);
+    color: var(--darkgray);
+    cursor: pointer;
+    transition: opacity 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  }
 
-      const state = {
-        hardware: true,
-        software: true,
-      };
+  .history-filter-button:not(.is-active) {
+    opacity: 0.45;
+  }
 
-      const updateGroups = () => {
-        const groups = timeline.querySelectorAll('.history-year-group');
-        groups.forEach((group) => {
-          const hardwareCards = group.querySelectorAll('.history-card--hardware');
-          const softwareCards = group.querySelectorAll('.history-card--software');
-          const hasVisibleHardware = state.hardware && hardwareCards.length > 0;
-          const hasVisibleSoftware = state.software && softwareCards.length > 0;
-          group.classList.toggle('is-empty', !hasVisibleHardware && !hasVisibleSoftware);
-        });
-      };
+  .history-filter-button--hardware.is-active {
+    border-color: var(--secondary);
+    color: var(--secondary);
+  }
 
-      const updateUI = () => {
-        timeline.classList.toggle('history-hide-hardware', !state.hardware);
-        timeline.classList.toggle('history-hide-software', !state.software);
+  .history-filter-button--software.is-active {
+    border-color: var(--tertiary);
+    color: var(--tertiary);
+  }
 
-        buttons.forEach((button) => {
-          const key = button.getAttribute('data-history-filter');
-          const active = key === 'hardware' ? state.hardware : state.software;
-          button.classList.toggle('is-active', active);
-          button.setAttribute('aria-pressed', String(active));
-        });
+  .history-timeline--grouped {
+    position: relative;
+    margin: 1.5rem 0;
+  }
 
-        updateGroups();
-      };
+  .history-timeline--grouped::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: var(--lightgray);
+    transform: translateX(-50%);
+  }
 
-      buttons.forEach((button) => {
-        button.addEventListener('click', () => {
-          const key = button.getAttribute('data-history-filter');
-          if (key !== 'hardware' && key !== 'software') return;
-          state[key] = !state[key];
-          updateUI();
-        });
-      });
+  .history-year-group {
+    position: relative;
+    padding: 0.75rem 0;
+  }
 
-      updateUI();
-    };
+  .history-year {
+    display: block;
+    text-align: center;
+    font-family: var(--headerFont);
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 0.6rem;
+  }
 
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initHistoryFilters, { once: true });
-    } else {
-      initHistoryFilters();
+  .history-dot {
+    position: absolute;
+    top: 1.55rem;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--secondary);
+    border: 2px solid var(--light);
+    transform: translate(-50%, -50%);
+  }
+
+  .history-year-lanes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 2rem;
+  }
+
+  .history-lane {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .history-lane--left {
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .history-card {
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid var(--lightgray);
+    background: var(--light);
+    padding: 0.5rem 0.85rem;
+    cursor: pointer;
+  }
+
+  .history-lane--right .history-card--hardware {
+    border-left: 4px solid var(--secondary);
+  }
+
+  .history-lane--right .history-card--software {
+    border-left: 4px solid var(--tertiary);
+  }
+
+  .history-lane--left .history-card--hardware {
+    border-right: 4px solid var(--secondary);
+  }
+
+  .history-lane--left .history-card--software {
+    border-right: 4px solid var(--tertiary);
+  }
+
+  .history-card-head {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .history-lane--left .history-card-head {
+    flex-direction: row-reverse;
+  }
+
+  .history-card-head h3 {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  .history-card-head h3::after {
+    content: "▸";
+    display: inline-block;
+    margin-left: 0.4rem;
+    font-size: 0.7em;
+    color: var(--gray);
+    transition: transform 0.15s ease;
+  }
+
+  .history-card.is-expanded .history-card-head h3::after {
+    transform: rotate(90deg);
+  }
+
+  .history-card p {
+    display: none;
+    margin: 0.4rem 0 0;
+    font-size: 0.85rem;
+    color: var(--darkgray);
+  }
+
+  .history-card.is-expanded p {
+    display: block;
+  }
+
+  /* Hide whole years that have nothing left to show once a category is filtered out */
+  .history-timeline--grouped.history-hide-hardware .history-card--hardware,
+  .history-timeline--grouped.history-hide-software .history-card--software {
+    display: none;
+  }
+
+  .history-timeline--grouped.history-hide-hardware
+    .history-year-group:not(:has(.history-card--software)),
+  .history-timeline--grouped.history-hide-software
+    .history-year-group:not(:has(.history-card--hardware)) {
+    display: none;
+  }
+
+  @media all and (max-width: 600px) {
+    .history-timeline--grouped::before {
+      left: 0.3rem;
     }
-    document.addEventListener('astro:page-load', initHistoryFilters);
-  })();
+
+    .history-year-group {
+      padding-left: 1.5rem;
+    }
+
+    .history-year {
+      text-align: left;
+    }
+
+    .history-dot {
+      left: 0.3rem;
+    }
+
+    .history-year-lanes {
+      grid-template-columns: 1fr;
+    }
+
+    .history-lane--left {
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .history-lane--left .history-card-head {
+      flex-direction: row;
+    }
+
+    .history-lane--left .history-card--hardware,
+    .history-lane--right .history-card--hardware {
+      border-left: 4px solid var(--secondary);
+      border-right: none;
+    }
+
+    .history-lane--left .history-card--software,
+    .history-lane--right .history-card--software {
+      border-left: 4px solid var(--tertiary);
+      border-right: none;
+    }
+  }
+</style>
+
+<script>
+  function initHistoryTimeline() {
+    const timeline = document.querySelector(".history-timeline--grouped")
+    const controls = document.querySelector(".history-filter-controls")
+    if (!timeline || !controls) return
+
+    for (const button of controls.querySelectorAll("[data-history-filter]")) {
+      if (button.dataset.bound) continue
+      button.dataset.bound = "true"
+      button.addEventListener("click", () => {
+        const key = button.getAttribute("data-history-filter")
+        const active = button.classList.toggle("is-active")
+        button.setAttribute("aria-pressed", String(active))
+        timeline.classList.toggle(`history-hide-${key}`, !active)
+      })
+    }
+
+    for (const card of timeline.querySelectorAll(".history-card")) {
+      if (card.dataset.bound) continue
+      card.dataset.bound = "true"
+      card.setAttribute("role", "button")
+      card.setAttribute("tabindex", "0")
+      card.setAttribute("aria-expanded", "false")
+      const toggle = () => {
+        const expanded = card.classList.toggle("is-expanded")
+        card.setAttribute("aria-expanded", String(expanded))
+      }
+      card.addEventListener("click", toggle)
+      card.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault()
+          toggle()
+        }
+      })
+    }
+  }
+
+  document.addEventListener("nav", initHistoryTimeline)
 </script>

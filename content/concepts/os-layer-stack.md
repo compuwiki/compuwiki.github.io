@@ -107,6 +107,7 @@ The top of the stack. Applications link against the system APIs and run within t
 
 ## Further Reading
 
+- [OS & Distro Directory](https://compuwiki.github.io/os-database) — companion interactive directory to browse, filter, and compare operating systems side by side
 - [OSDev Wiki — OS Concepts](https://wiki.osdev.org/Main_Page) — deep technical reference for OS internals
 - [The Linux Documentation Project](https://tldp.org/) — guides on the Linux kernel and system components
 - [Windows Internals (book)](https://learn.microsoft.com/en-us/sysinternals/resources/windows-internals) — the definitive reference for NT architecture

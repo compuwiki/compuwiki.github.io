@@ -75,5 +75,6 @@ title: Operating Systems
 
 ## References
 
+- [OS & Distro Directory](https://compuwiki.github.io/os-database) — interactive directory of operating systems (search, filter, and compare up to 10 side by side)
 - [OS Comparison - Eyelenburg](https://eylenburg.github.io/os_comparison.htm)
 - [Android ROMs Comparison - Eyelenburg](https://eylenburg.github.io/android_comparison.htm)

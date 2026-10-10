@@ -5,6 +5,8 @@ tags: [wiki, index]
 
 Welcome to **CompuWiki** — a personal knowledge base on web development, databases, deployment, and computer science concepts. For language and tool quick-references, see the [cheatsheets repo](https://github.com/David7ce-user/dev-hub) (learnxinyminutes-style syntax sheets); this wiki focuses on concepts, comparisons, and tutorials instead.
 
+For a browsable, interactive directory of operating systems, see the companion app [OS & Distro Directory](https://compuwiki.github.io/os-database) (search, filter, and compare up to 10 systems side by side).
+
 ## Sections
 
 - [Cheatsheets](./cheatsheets/) — practical quick-reference sheets grouped by topic.

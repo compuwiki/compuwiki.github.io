@@ -25,3 +25,7 @@ Conceptual notes on computer science fundamentals, object-oriented design, and s
 
 - [Person List (C# File I/O)](./exercises/person-list-csharp.md)
 - [UML Diagram — Digital Store](./exercises/uml-store-diagram.md)
+
+## External
+
+- [OS & Distro Directory](https://compuwiki.github.io/os-database) — companion interactive app to browse, filter, and compare operating systems (separate site).

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Machine Verbs</title>
+<meta name="description" content="Interactive map of computing verbs, from logic gates to deployment, each built from simpler verbs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="preload" href="verbs.json" as="fetch" crossorigin>
+<link rel="stylesheet" href="verbs-of-computing-map.css">
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="top">
+    <h1 data-i18n="title">Machine Verbs</h1>
+    <div class="settings">
+      <div class="seg" role="group" aria-label="Idioma / Language"><button id="lang-es" aria-pressed="false">ES</button><button id="lang-en" aria-pressed="true">EN</button></div>
+      <button class="theme" id="theme" role="switch" aria-checked="true" aria-label="Tema oscuro">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><path d="M12 1.5v2.5M12 20v2.5M1.5 12H4M20 12h2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg>
+        <span class="knob"></span>
+      </button>
+    </div>
+  </div>
+  <p class="logos"><span data-i18n="logos"></span><cite data-i18n="logosRef"></cite></p>
+  <p data-i18n-html="intro"></p>
+  <div class="chain" id="chain" aria-label="Example chain"></div>
+  <p data-i18n="fractal"></p>
+  <div class="frac" id="frac"></div>
+  <div class="eq"><h3 data-i18n="eqTitle"></h3><dl id="eq"></dl></div>
+</header>
+
+<div class="bar" role="toolbar">
+  <div class="ctl"><span class="lbl" data-i18n="group"></span>
+    <div class="seg"><button id="gCapas" aria-pressed="true" data-i18n="layers"></button><button id="gFam" aria-pressed="false" data-i18n="families"></button></div>
+  </div>
+  <div class="ctl"><span class="lbl" data-i18n="lens"></span>
+    <div class="seg lens"><button id="lM" aria-pressed="true" data-i18n="machine"></button><button id="lC" aria-pressed="false" data-i18n="body"></button></div>
+  </div>
+  <div class="ctl search grow"><input type="search" id="q"></div>
+  <button class="btn" id="expBtn" data-i18n="export"></button>
+</div>
+
+<section class="exp" id="exp" hidden>
+  <div class="row"><strong data-i18n="expTitle"></strong><span class="foot" data-i18n="expHint"></span></div>
+  <textarea id="expTxt" readonly aria-label="JSON"></textarea>
+  <div class="row"><button class="btn" id="copyBtn" data-i18n="copyJson"></button><button class="btn" id="expClose" data-i18n="close"></button><span id="copyMsg" class="foot" aria-live="polite"></span></div>
+</section>
+
+<div class="main">
+  <div class="map">
+    <div class="legend">
+      <span><i class="sw" style="border-color:var(--base)"></i><span data-i18n="lgBuilt"></span></span>
+      <span><i class="sw dash" style="border-color:var(--base)"></i><span data-i18n="lgChain"></span></span>
+      <span><i class="sw" style="border-color:var(--accent)"></i><span data-i18n="lgUsed"></span></span>
+    </div>
+    <svg id="g" role="group">
+      <defs>
+        <marker id="arrIn" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L8,4 L0,8 z"/></marker>
+        <marker id="arrOut" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L8,4 L0,8 z"/></marker>
+      </defs>
+      <g id="bands"></g><g id="edges"></g><g id="nodes"></g>
+    </svg>
+  </div>
+  <aside class="card" id="card" aria-live="polite"></aside>
+</div>
+<p class="foot" id="foot"></p>
+</div>
+
+<script src="verbs-of-computing-map.js"></script>
+</body>
+</html>

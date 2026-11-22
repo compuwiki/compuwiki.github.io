@@ -18,6 +18,7 @@ Conceptual notes on computer science fundamentals, object-oriented design, and s
 
 ## Subsections
 
+- [Verbs of Computing](./verbs-of-computing/) — computing as a hierarchy of verbs, with an interactive diagram.
 - [OOP](./oop/) — object-oriented design (reserved for upcoming content).
 - [Exercises](./exercises/) — applied practice problems.
 

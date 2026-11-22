@@ -1,0 +1,2275 @@
+{
+  "version": 5,
+  "capas": [
+    {
+      "id": "logica",
+      "es": "Lógica y hardware",
+      "en": "Logic & hardware",
+      "desc": {
+        "es": "Puertas AND, OR, NOT y biestables: lo que la CPU hace en un ciclo",
+        "en": "AND, OR, NOT gates and flip-flops: what the CPU does in one cycle"
+      },
+      "cuerpo": {
+        "es": "Células",
+        "en": "Cells"
+      },
+      "cuerpoDesc": {
+        "es": "Neuronas y células: la unidad mínima que decide y recuerda",
+        "en": "Neurons and cells: the smallest unit that decides and remembers"
+      }
+    },
+    {
+      "id": "sistema",
+      "es": "Sistema operativo",
+      "en": "Operating system",
+      "desc": {
+        "es": "El kernel reparte CPU, memoria y disco entre procesos",
+        "en": "The kernel shares CPU, memory and disk among processes"
+      },
+      "cuerpo": {
+        "es": "Sistema nervioso y metabolismo",
+        "en": "Nervous system & metabolism"
+      },
+      "cuerpoDesc": {
+        "es": "Reparte energía y atención entre los órganos",
+        "en": "Shares energy and attention among organs"
+      }
+    },
+    {
+      "id": "red",
+      "es": "Red",
+      "en": "Network",
+      "desc": {
+        "es": "Mover bits entre máquinas: paquetes, puertos y nombres",
+        "en": "Moving bits between machines: packets, ports and names"
+      },
+      "cuerpo": {
+        "es": "Sistema circulatorio",
+        "en": "Circulatory system"
+      },
+      "cuerpoDesc": {
+        "es": "Vasos, flujo y tráfico: lleva carga de un órgano a otro",
+        "en": "Vessels, flow and traffic: carries cargo between organs"
+      }
+    },
+    {
+      "id": "datos",
+      "es": "Datos",
+      "en": "Data",
+      "desc": {
+        "es": "Guardar y consultar información con estructura",
+        "en": "Storing and querying structured information"
+      },
+      "cuerpo": {
+        "es": "Memoria y ADN",
+        "en": "Memory & DNA"
+      },
+      "cuerpoDesc": {
+        "es": "Lo que el organismo guarda, consulta y protege",
+        "en": "What the organism keeps, recalls and protects"
+      }
+    },
+    {
+      "id": "transf",
+      "es": "Transformación",
+      "en": "Transformation",
+      "desc": {
+        "es": "Cambiar la forma de los datos sin cambiar su significado",
+        "en": "Changing the shape of data without changing its meaning"
+      },
+      "cuerpo": {
+        "es": "Digestión",
+        "en": "Digestion"
+      },
+      "cuerpoDesc": {
+        "es": "Transforma lo que entra en algo que el cuerpo puede usar",
+        "en": "Turns what comes in into something the body can use"
+      }
+    },
+    {
+      "id": "app",
+      "es": "Aplicación",
+      "en": "Application",
+      "desc": {
+        "es": "Lo que el usuario final ve y pide",
+        "en": "What the end user sees and asks for"
+      },
+      "cuerpo": {
+        "es": "Organismo y conducta",
+        "en": "Organism & behavior"
+      },
+      "cuerpoDesc": {
+        "es": "Lo que se ve desde fuera del cuerpo",
+        "en": "What you see from outside the body"
+      }
+    }
+  ],
+  "familias": [
+    {
+      "id": "calcular",
+      "es": "Calcular",
+      "en": "Compute",
+      "desc": {
+        "es": "Operar con valores",
+        "en": "Operate on values"
+      },
+      "cuerpo": {
+        "es": "Neuronas",
+        "en": "Neurons"
+      },
+      "cuerpoDesc": {
+        "es": "Decidir y sumar señales",
+        "en": "Decide and add up signals"
+      }
+    },
+    {
+      "id": "guardar",
+      "es": "Guardar",
+      "en": "Persist",
+      "desc": {
+        "es": "Hacer que los datos perduren",
+        "en": "Make data last"
+      },
+      "cuerpo": {
+        "es": "Memoria",
+        "en": "Memory"
+      },
+      "cuerpoDesc": {
+        "es": "Retener lo aprendido",
+        "en": "Keep what was learned"
+      }
+    },
+    {
+      "id": "crud",
+      "es": "CRUD",
+      "en": "CRUD",
+      "desc": {
+        "es": "Crear, leer, actualizar, eliminar (y buscar)",
+        "en": "Create, read, update, delete (and search)"
+      },
+      "cuerpo": {
+        "es": "Ciclo celular",
+        "en": "Cell cycle"
+      },
+      "cuerpoDesc": {
+        "es": "Nacer, vivir, renovarse y morir",
+        "en": "Be born, live, renew and die"
+      }
+    },
+    {
+      "id": "mover",
+      "es": "Mover",
+      "en": "Move",
+      "desc": {
+        "es": "Llevar datos de un sitio a otro",
+        "en": "Carry data from one place to another"
+      },
+      "cuerpo": {
+        "es": "Circulación",
+        "en": "Circulation"
+      },
+      "cuerpoDesc": {
+        "es": "Llevar carga de un sitio a otro",
+        "en": "Carry cargo from place to place"
+      }
+    },
+    {
+      "id": "transformar",
+      "es": "Transformar",
+      "en": "Transform",
+      "desc": {
+        "es": "Cambiar la forma o el lenguaje",
+        "en": "Change the shape or the language"
+      },
+      "cuerpo": {
+        "es": "Digestión",
+        "en": "Digestion"
+      },
+      "cuerpoDesc": {
+        "es": "Convertir lo que entra en algo útil",
+        "en": "Turn what comes in into something useful"
+      }
+    },
+    {
+      "id": "controlar",
+      "es": "Controlar",
+      "en": "Control",
+      "desc": {
+        "es": "Poner cosas en marcha y conectarlas",
+        "en": "Start things and connect them"
+      },
+      "cuerpo": {
+        "es": "Sistema nervioso",
+        "en": "Nervous system"
+      },
+      "cuerpoDesc": {
+        "es": "Poner en marcha y coordinar",
+        "en": "Start and coordinate"
+      }
+    },
+    {
+      "id": "proteger",
+      "es": "Proteger",
+      "en": "Protect",
+      "desc": {
+        "es": "Decidir quién puede ver o hacer qué",
+        "en": "Decide who may see or do what"
+      },
+      "cuerpo": {
+        "es": "Sistema inmune",
+        "en": "Immune system"
+      },
+      "cuerpoDesc": {
+        "es": "Distinguir lo propio de lo ajeno",
+        "en": "Tell self from non-self"
+      }
+    }
+  ],
+  "palabras": [
+    {
+      "id": "comparar",
+      "es": "comparar",
+      "en": "compare",
+      "capa": "logica",
+      "fam": "calcular",
+      "base": [],
+      "ps": "Compare",
+      "bash": "diff a.txt b.txt",
+      "pwsh": "Compare-Object (Get-Content a.txt) (Get-Content b.txt)",
+      "def": {
+        "es": "Decidir si dos valores son iguales o cuál es mayor. Se construye con puertas XOR y NOT.",
+        "en": "Decide whether two values are equal, or which is greater. Built from XOR and NOT gates."
+      },
+      "cliente": {
+        "es": "Quien plantea la pregunta: ¿a es igual a b?",
+        "en": "Whoever asks: is a equal to b?",
+        "ej": "if (a == b)"
+      },
+      "servidor": {
+        "es": "El circuito que responde sí o no",
+        "en": "The circuit that answers yes or no",
+        "ej": "CPU ALU"
+      },
+      "api": {
+        "es": "Dos entradas, una salida de 1 bit",
+        "en": "Two inputs, one 1-bit output",
+        "ej": "CMP (x86), =="
+      },
+      "cuerpo": {
+        "es": "Una neurona compara sus señales con un umbral y decide si dispara o no.",
+        "en": "A neuron compares its inputs with a threshold and decides whether to fire."
+      }
+    },
+    {
+      "id": "sumar",
+      "es": "sumar",
+      "en": "add",
+      "capa": "logica",
+      "fam": "calcular",
+      "base": [],
+      "ps": "Measure",
+      "bash": "echo $((2 + 3))",
+      "pwsh": "(1..10 | Measure-Object -Sum).Sum",
+      "def": {
+        "es": "Combinar dos números en uno. Un sumador completo son dos XOR, dos AND y un OR.",
+        "en": "Combine two numbers into one. A full adder is two XOR, two AND and one OR gate."
+      },
+      "cliente": {
+        "es": "Quien aporta los operandos",
+        "en": "Whoever supplies the operands",
+        "ej": "x = a + b"
+      },
+      "servidor": {
+        "es": "El circuito sumador",
+        "en": "The adder circuit",
+        "ej": "CPU ALU"
+      },
+      "api": {
+        "es": "Dos números → resultado y acarreo",
+        "en": "Two numbers → result and carry",
+        "ej": "ADD, +"
+      },
+      "cuerpo": {
+        "es": "Una neurona suma los impulsos que le llegan por sus dendritas.",
+        "en": "A neuron adds up the impulses arriving through its dendrites."
+      }
+    },
+    {
+      "id": "almacenar",
+      "es": "almacenar",
+      "en": "store",
+      "capa": "logica",
+      "fam": "guardar",
+      "base": [],
+      "ps": "Set",
+      "bash": "x=5",
+      "pwsh": "Set-Variable -Name x -Value 5",
+      "def": {
+        "es": "Retener un bit en el tiempo. Un biestable (flip-flop) son puertas realimentadas.",
+        "en": "Hold a bit over time. A flip-flop is a set of gates wired back into themselves."
+      },
+      "cliente": {
+        "es": "Quien necesita recordar un valor",
+        "en": "Whoever needs to remember a value",
+        "ej": "variable"
+      },
+      "servidor": {
+        "es": "La celda que lo retiene",
+        "en": "The cell that holds it",
+        "ej": "registers, RAM, SSD"
+      },
+      "api": {
+        "es": "Dirección + dato + señal de escritura",
+        "en": "Address + data + write signal",
+        "ej": "STORE, ="
+      },
+      "cuerpo": {
+        "es": "Una sinapsis reforzada retiene lo aprendido. El biestable es una célula que no olvida.",
+        "en": "A strengthened synapse keeps what was learned. A flip-flop is a cell that never forgets."
+      },
+      "wiki": [
+        "concepts/stack-and-queue"
+      ]
+    },
+    {
+      "id": "mover",
+      "es": "mover",
+      "en": "move",
+      "capa": "logica",
+      "fam": "mover",
+      "base": [
+        "almacenar"
+      ],
+      "ps": "Move",
+      "bash": "mv report.txt /srv/share/",
+      "pwsh": "Move-Item report.txt D:\\share",
+      "def": {
+        "es": "Copiar bits de una ubicación a otra por un bus.",
+        "en": "Copy bits from one location to another over a bus."
+      },
+      "cliente": {
+        "es": "El origen que entrega los bits",
+        "en": "The source handing over the bits",
+        "ej": "memcpy()"
+      },
+      "servidor": {
+        "es": "El destino que los recibe",
+        "en": "The destination receiving them",
+        "ej": "memory bus, DMA"
+      },
+      "api": {
+        "es": "Origen, destino y tamaño",
+        "en": "Source, destination and size",
+        "ej": "MOV, memcpy(dst, src, n)"
+      },
+      "cuerpo": {
+        "es": "El transporte a través de la membrana lleva moléculas de un lado a otro de la célula.",
+        "en": "Transport across the cell membrane carries molecules from one side to the other."
+      },
+      "wiki": [
+        "concepts/file-sync"
+      ]
+    },
+    {
+      "id": "leer",
+      "es": "leer",
+      "en": "read",
+      "capa": "sistema",
+      "fam": "crud",
+      "base": [
+        "mover",
+        "almacenar"
+      ],
+      "ps": "Get",
+      "bash": "cat config.txt",
+      "pwsh": "Get-Content config.txt",
+      "def": {
+        "es": "Obtener datos sin cambiarlos. Es la R de CRUD.",
+        "en": "Get data without changing it. The R in CRUD."
+      },
+      "cliente": {
+        "es": "Quien pide los datos",
+        "en": "Whoever asks for the data",
+        "ej": "cat, browser, app"
+      },
+      "servidor": {
+        "es": "Quien los guarda y los entrega",
+        "en": "Whoever stores and serves them",
+        "ej": "kernel + disk, web server, database"
+      },
+      "api": {
+        "es": "Qué leer (ruta, clave o consulta) y cuánto",
+        "en": "What to read (path, key or query) and how much",
+        "ej": "read(), HTTP GET, SQL SELECT"
+      },
+      "cuerpo": {
+        "es": "Los sentidos leen el entorno sin cambiarlo.",
+        "en": "The senses read the surroundings without changing them."
+      },
+      "wiki": [
+        "cheatsheets/shell/bash",
+        "concepts/api"
+      ]
+    },
+    {
+      "id": "escribir",
+      "es": "escribir",
+      "en": "write",
+      "capa": "sistema",
+      "fam": "guardar",
+      "base": [
+        "mover",
+        "almacenar"
+      ],
+      "ps": "Set",
+      "bash": "echo \"hello\" > notes.txt",
+      "pwsh": "Set-Content notes.txt \"hello\"",
+      "def": {
+        "es": "Dejar datos guardados en un destino. Es la base de crear, actualizar y eliminar.",
+        "en": "Leave data saved at a destination. The basis of create, update and delete."
+      },
+      "cliente": {
+        "es": "Quien entrega los datos",
+        "en": "Whoever hands over the data",
+        "ej": "text editor"
+      },
+      "servidor": {
+        "es": "Quien los persiste",
+        "en": "Whoever persists them",
+        "ej": "kernel + file system"
+      },
+      "api": {
+        "es": "Destino, datos y modo (sobrescribir o añadir)",
+        "en": "Destination, data and mode (overwrite or append)",
+        "ej": "write(), fs.writeFile()"
+      },
+      "cuerpo": {
+        "es": "Fijar un recuerdo nuevo en la memoria a largo plazo.",
+        "en": "Fixing a new memory in long-term memory."
+      },
+      "wiki": [
+        "cheatsheets/shell/powershell"
+      ]
+    },
+    {
+      "id": "ejecutar",
+      "es": "ejecutar",
+      "en": "run",
+      "capa": "sistema",
+      "fam": "controlar",
+      "base": [
+        "leer",
+        "comparar",
+        "sumar"
+      ],
+      "ps": "Start",
+      "bash": "./backup.sh",
+      "pwsh": "Start-Process notepad.exe",
+      "def": {
+        "es": "Cargar un programa y hacer que la CPU siga sus instrucciones.",
+        "en": "Load a program and make the CPU follow its instructions."
+      },
+      "cliente": {
+        "es": "Quien lanza el programa",
+        "en": "Whoever launches the program",
+        "ej": "bash, PowerShell"
+      },
+      "servidor": {
+        "es": "Quien le da CPU y memoria",
+        "en": "Whoever gives it CPU and memory",
+        "ej": "kernel scheduler"
+      },
+      "api": {
+        "es": "Ruta del programa, argumentos y entorno",
+        "en": "Program path, arguments and environment",
+        "ej": "execve(), CreateProcess(), docker run"
+      },
+      "cuerpo": {
+        "es": "Un reflejo o un movimiento aprendido: el programa motor se pone en marcha.",
+        "en": "A reflex or a learned movement: the motor program starts running."
+      },
+      "wiki": [
+        "concepts/os-layer-stack",
+        "concepts/hardware-privilege-rings"
+      ]
+    },
+    {
+      "id": "montar",
+      "es": "montar",
+      "en": "mount",
+      "capa": "sistema",
+      "fam": "controlar",
+      "base": [
+        "leer"
+      ],
+      "ps": "New",
+      "bash": "sudo mount -t cifs //nas/data /mnt/data -o username=admin",
+      "pwsh": "New-SmbMapping -LocalPath Z: -RemotePath \\\\nas\\data",
+      "def": {
+        "es": "Hacer que un disco o recurso de red aparezca como una carpeta más.",
+        "en": "Make a disk or network share appear as just another folder."
+      },
+      "cliente": {
+        "es": "El equipo que quiere ver la carpeta",
+        "en": "The machine that wants to see the folder",
+        "ej": "Linux, Windows (network drive)"
+      },
+      "servidor": {
+        "es": "Quien comparte el volumen",
+        "en": "Whoever shares the volume",
+        "ej": "NAS, file server"
+      },
+      "api": {
+        "es": "Origen, punto de montaje y opciones",
+        "en": "Source, mount point and options",
+        "ej": "mount, SMB/CIFS, NFS"
+      },
+      "cuerpo": {
+        "es": "Un injerto: un órgano de fuera pasa a funcionar como propio.",
+        "en": "A graft: an organ from outside starts working as its own."
+      },
+      "wiki": [
+        "concepts/file-sync"
+      ]
+    },
+    {
+      "id": "interrumpir",
+      "es": "interrumpir",
+      "en": "interrupt",
+      "capa": "sistema",
+      "fam": "controlar",
+      "base": [
+        "comparar",
+        "almacenar"
+      ],
+      "ps": "Stop",
+      "bash": "kill -INT 1234",
+      "pwsh": "Stop-Process -Id 1234",
+      "def": {
+        "es": "Parar lo que hace la CPU para atender algo urgente y volver después al punto exacto.",
+        "en": "Stop what the CPU is doing to handle something urgent, then resume exactly where it left off."
+      },
+      "cliente": {
+        "es": "El dispositivo que necesita atención",
+        "en": "The device needing attention",
+        "ej": "keyboard, NIC, disk"
+      },
+      "servidor": {
+        "es": "El kernel que atiende la urgencia",
+        "en": "The kernel handling the emergency",
+        "ej": "interrupt handler (ISR)"
+      },
+      "api": {
+        "es": "Número de interrupción → rutina que la atiende",
+        "en": "Interrupt number → handler routine",
+        "ej": "IRQ, signals (SIGINT, Ctrl+C)"
+      },
+      "cuerpo": {
+        "es": "Un reflejo de dolor corta lo que estabas haciendo para atender la urgencia.",
+        "en": "A pain reflex cuts off what you were doing to deal with the emergency."
+      },
+      "wiki": [
+        "concepts/hardware-privilege-rings",
+        "concepts/os-layer-stack"
+      ]
+    },
+    {
+      "id": "planificar",
+      "es": "planificar",
+      "en": "schedule",
+      "capa": "sistema",
+      "fam": "controlar",
+      "base": [
+        "interrumpir",
+        "comparar"
+      ],
+      "ps": "Register",
+      "bash": "crontab -e   # 0 2 * * * /opt/backup.sh",
+      "pwsh": "Register-ScheduledTask -TaskName Backup -Trigger (New-ScheduledTaskTrigger -Daily -At 2am) -Action (New-ScheduledTaskAction -Execute pwsh -Argument C:\\scripts\\backup.ps1)",
+      "def": {
+        "es": "Decidir qué tarea usa la CPU y cuándo, o dejar algo programado para más tarde.",
+        "en": "Decide which task uses the CPU and when, or set something to run later."
+      },
+      "cliente": {
+        "es": "La tarea que espera su turno",
+        "en": "The task waiting its turn",
+        "ej": "nightly backup script"
+      },
+      "servidor": {
+        "es": "El planificador",
+        "en": "The scheduler",
+        "ej": "kernel scheduler, cron, Task Scheduler"
+      },
+      "api": {
+        "es": "Tarea + prioridad u horario",
+        "en": "Task + priority or schedule",
+        "ej": "crontab, systemd timers, schtasks"
+      },
+      "cuerpo": {
+        "es": "El ritmo de sueño y vigilia decide qué procesos tocan a cada hora.",
+        "en": "The sleep–wake rhythm decides which processes run at each hour."
+      },
+      "wiki": [
+        "cheatsheets/automation/cron",
+        "cheatsheets/automation/systemd"
+      ]
+    },
+    {
+      "id": "virtualizar",
+      "es": "virtualizar",
+      "en": "virtualize",
+      "capa": "sistema",
+      "fam": "controlar",
+      "base": [
+        "ejecutar",
+        "interrumpir",
+        "montar"
+      ],
+      "ps": "New",
+      "bash": "qm create 100 --name web --memory 4096",
+      "pwsh": "New-VM -Name web -MemoryStartupBytes 4GB",
+      "def": {
+        "es": "Hacer que un equipo físico parezca varios equipos independientes.",
+        "en": "Make one physical machine look like several independent machines."
+      },
+      "cliente": {
+        "es": "La máquina virtual",
+        "en": "The virtual machine",
+        "ej": "Windows Server VM"
+      },
+      "servidor": {
+        "es": "El hipervisor que reparte el hardware",
+        "en": "The hypervisor sharing out the hardware",
+        "ej": "Proxmox, VMware ESXi, Hyper-V"
+      },
+      "api": {
+        "es": "CPU, RAM, disco y red asignados a cada VM",
+        "en": "CPU, RAM, disk and network for each VM",
+        "ej": "qm, virsh, Proxmox API"
+      },
+      "cuerpo": {
+        "es": "Un embarazo: un cuerpo alberga otro completo y le reparte sus recursos.",
+        "en": "Pregnancy: one body hosts another whole body and shares its resources."
+      },
+      "wiki": [
+        "deployment/docker",
+        "concepts/os-layer-stack"
+      ]
+    },
+    {
+      "id": "enviar",
+      "es": "enviar",
+      "en": "send",
+      "capa": "red",
+      "fam": "mover",
+      "base": [
+        "escribir",
+        "codificar"
+      ],
+      "ps": "Invoke",
+      "bash": "curl -X POST -d @data.json https://api.example.com/items",
+      "pwsh": "Invoke-RestMethod -Method Post -Uri https://api.example.com/items -Body $json",
+      "def": {
+        "es": "Sacar datos de una máquina hacia otra.",
+        "en": "Push data out of one machine toward another."
+      },
+      "cliente": {
+        "es": "El emisor",
+        "en": "The sender",
+        "ej": "browser, mail client"
+      },
+      "servidor": {
+        "es": "El destinatario que escucha",
+        "en": "The listening recipient",
+        "ej": "web server, SMTP server"
+      },
+      "api": {
+        "es": "Dirección, puerto y carga útil",
+        "en": "Address, port and payload",
+        "ej": "send(), HTTP POST, SMTP"
+      },
+      "cuerpo": {
+        "es": "El corazón bombea y la sangre sale cargada hacia otro órgano.",
+        "en": "The heart pumps and blood leaves loaded toward another organ."
+      },
+      "wiki": [
+        "cheatsheets/protocols/http",
+        "cheatsheets/protocols/tcp"
+      ]
+    },
+    {
+      "id": "recibir",
+      "es": "recibir",
+      "en": "receive",
+      "capa": "red",
+      "fam": "mover",
+      "base": [
+        "leer",
+        "decodificar"
+      ],
+      "ps": "Invoke",
+      "bash": "curl -O https://example.com/file.zip",
+      "pwsh": "Invoke-WebRequest -Uri https://example.com/file.zip -OutFile file.zip",
+      "def": {
+        "es": "Aceptar datos que llegan por la red.",
+        "en": "Accept data arriving over the network."
+      },
+      "cliente": {
+        "es": "Quien espera la respuesta",
+        "en": "Whoever waits for the reply",
+        "ej": "app waiting for JSON"
+      },
+      "servidor": {
+        "es": "Quien escucha en un puerto",
+        "en": "Whoever listens on a port",
+        "ej": "any listening service"
+      },
+      "api": {
+        "es": "Puerto de escucha y búfer",
+        "en": "Listening port and buffer",
+        "ej": "listen(), accept(), recv()"
+      },
+      "cuerpo": {
+        "es": "Un órgano toma de la sangre lo que necesita a través de sus capilares.",
+        "en": "An organ takes what it needs from the blood through its capillaries."
+      },
+      "wiki": [
+        "cheatsheets/protocols/tcp",
+        "concepts/osi-model"
+      ]
+    },
+    {
+      "id": "enrutar",
+      "es": "enrutar",
+      "en": "route",
+      "capa": "red",
+      "fam": "mover",
+      "base": [
+        "comparar",
+        "enviar"
+      ],
+      "ps": "New",
+      "bash": "sudo ip route add 10.0.0.0/24 via 192.168.1.1",
+      "pwsh": "New-NetRoute -DestinationPrefix 10.0.0.0/24 -NextHop 192.168.1.1 -InterfaceAlias Ethernet",
+      "def": {
+        "es": "Elegir por dónde va un paquete según su destino.",
+        "en": "Choose which way a packet goes based on its destination."
+      },
+      "cliente": {
+        "es": "El equipo que manda el paquete",
+        "en": "The machine sending the packet",
+        "ej": "PC with default gateway"
+      },
+      "servidor": {
+        "es": "El router que decide el siguiente salto",
+        "en": "The router choosing the next hop",
+        "ej": "router, firewall"
+      },
+      "api": {
+        "es": "Tabla de rutas: red destino → siguiente salto",
+        "en": "Routing table: destination network → next hop",
+        "ej": "ip route, OSPF, BGP"
+      },
+      "cuerpo": {
+        "es": "Las bifurcaciones arteriales deciden por dónde sigue el flujo, como un cruce con semáforos.",
+        "en": "Arterial branches decide where the flow goes next, like a junction with traffic lights."
+      },
+      "wiki": [
+        "concepts/osi-model"
+      ]
+    },
+    {
+      "id": "resolver",
+      "es": "resolver",
+      "en": "resolve",
+      "capa": "red",
+      "fam": "controlar",
+      "base": [
+        "enviar",
+        "recibir",
+        "buscar"
+      ],
+      "ps": "Resolve",
+      "bash": "dig example.com",
+      "pwsh": "Resolve-DnsName example.com",
+      "def": {
+        "es": "Traducir un nombre de dominio a una dirección IP.",
+        "en": "Turn a domain name into an IP address."
+      },
+      "cliente": {
+        "es": "El resolvedor del equipo",
+        "en": "The machine's resolver",
+        "ej": "nslookup, browser"
+      },
+      "servidor": {
+        "es": "El servidor de nombres",
+        "en": "The name server",
+        "ej": "BIND, Pi-hole, 1.1.1.1"
+      },
+      "api": {
+        "es": "Nombre y tipo de registro (A, AAAA, MX)",
+        "en": "Name and record type (A, AAAA, MX)",
+        "ej": "DNS port 53, getaddrinfo()"
+      },
+      "cuerpo": {
+        "es": "Una hormona encuentra su órgano destino por el receptor que lo identifica.",
+        "en": "A hormone finds its target organ by the receptor that identifies it."
+      },
+      "wiki": [
+        "deployment/dns",
+        "cheatsheets/protocols/dns"
+      ]
+    },
+    {
+      "id": "autenticar",
+      "es": "autenticar",
+      "en": "authenticate",
+      "capa": "red",
+      "fam": "proteger",
+      "base": [
+        "comparar",
+        "cifrar"
+      ],
+      "ps": "Enter",
+      "bash": "ssh admin@server",
+      "pwsh": "Enter-PSSession -ComputerName server -Credential (Get-Credential)",
+      "def": {
+        "es": "Comprobar que alguien es quien dice ser.",
+        "en": "Check that someone is who they claim to be."
+      },
+      "cliente": {
+        "es": "Quien presenta credenciales",
+        "en": "Whoever presents credentials",
+        "ej": "login form, ssh"
+      },
+      "servidor": {
+        "es": "Quien las verifica",
+        "en": "Whoever verifies them",
+        "ej": "Active Directory, OAuth server"
+      },
+      "api": {
+        "es": "Usuario + secreto → token o sesión",
+        "en": "User + secret → token or session",
+        "ej": "LDAP, Kerberos, OAuth 2.0"
+      },
+      "cuerpo": {
+        "es": "El sistema inmune reconoce lo propio por sus marcadores y rechaza lo ajeno.",
+        "en": "The immune system recognizes self by its markers and rejects what is foreign."
+      },
+      "wiki": [
+        "cheatsheets/protocols/ssh",
+        "web-dev/best-practices/security-baseline"
+      ]
+    },
+    {
+      "id": "autorizar",
+      "es": "autorizar",
+      "en": "authorize",
+      "capa": "red",
+      "fam": "proteger",
+      "base": [
+        "autenticar",
+        "comparar"
+      ],
+      "ps": "Grant",
+      "bash": "chmod 640 payroll.xlsx",
+      "pwsh": "Grant-SmbShareAccess -Name Data -AccountName Accounting -AccessRight Read",
+      "def": {
+        "es": "Decidir qué puede hacer alguien cuya identidad ya está comprobada.",
+        "en": "Decide what someone whose identity is already verified may do."
+      },
+      "cliente": {
+        "es": "Quien pide hacer algo",
+        "en": "Whoever asks to do something",
+        "ej": "user opening a folder"
+      },
+      "servidor": {
+        "es": "Quien aplica los permisos",
+        "en": "Whoever enforces the permissions",
+        "ej": "file server, API"
+      },
+      "api": {
+        "es": "Identidad + recurso + acción → sí o no",
+        "en": "Identity + resource + action → yes or no",
+        "ej": "NTFS permissions, chmod, RBAC, OAuth scopes"
+      },
+      "cuerpo": {
+        "es": "Cada molécula solo cruza la membrana por el canal que le corresponde.",
+        "en": "Each molecule crosses the membrane only through its own channel."
+      },
+      "wiki": [
+        "web-dev/best-practices/security-baseline"
+      ]
+    },
+    {
+      "id": "filtrar",
+      "es": "filtrar",
+      "en": "filter",
+      "capa": "red",
+      "fam": "proteger",
+      "base": [
+        "comparar",
+        "recibir"
+      ],
+      "ps": "New",
+      "bash": "sudo ufw deny 23/tcp",
+      "pwsh": "New-NetFirewallRule -DisplayName \"Block Telnet\" -Direction Inbound -LocalPort 23 -Protocol TCP -Action Block",
+      "def": {
+        "es": "Dejar pasar solo el tráfico que cumple unas reglas.",
+        "en": "Let through only the traffic that meets a set of rules."
+      },
+      "cliente": {
+        "es": "El tráfico que entra o sale",
+        "en": "Incoming or outgoing traffic",
+        "ej": "connections from the internet"
+      },
+      "servidor": {
+        "es": "El cortafuegos",
+        "en": "The firewall",
+        "ej": "pfSense, OPNsense, Windows Firewall"
+      },
+      "api": {
+        "es": "Reglas: origen, destino, puerto y acción",
+        "en": "Rules: source, destination, port and action",
+        "ej": "iptables, nftables, ACL"
+      },
+      "cuerpo": {
+        "es": "Los riñones filtran la sangre y dejan pasar solo lo útil.",
+        "en": "The kidneys filter the blood and let through only what is useful."
+      },
+      "wiki": [
+        "concepts/cybersecurity-vulnerabilities",
+        "cheatsheets/tools/cli/nmap"
+      ]
+    },
+    {
+      "id": "balancear",
+      "es": "balancear",
+      "en": "load-balance",
+      "capa": "red",
+      "fam": "mover",
+      "base": [
+        "enrutar",
+        "comparar"
+      ],
+      "ps": "Add",
+      "bash": "sudo ipvsadm -A -t 10.0.0.10:80 -s rr",
+      "pwsh": "Add-NlbClusterNode -InterfaceName Ethernet -NewNodeName web2 -NewNodeInterface Ethernet",
+      "def": {
+        "es": "Repartir las peticiones entre varios servidores para que ninguno se sature.",
+        "en": "Spread requests across several servers so none gets overloaded."
+      },
+      "cliente": {
+        "es": "Los usuarios que llegan",
+        "en": "Incoming users",
+        "ej": "website visitors"
+      },
+      "servidor": {
+        "es": "El balanceador y su grupo de servidores",
+        "en": "The load balancer and its server pool",
+        "ej": "HAProxy, Nginx, cloud load balancer"
+      },
+      "api": {
+        "es": "Grupo de servidores + algoritmo (por turnos, menos carga)",
+        "en": "Server pool + algorithm (round robin, least load)",
+        "ej": "Nginx upstream, round robin"
+      },
+      "cuerpo": {
+        "es": "La sangre se reparte entre órganos según cuánto trabaja cada uno.",
+        "en": "Blood is shared among organs according to how hard each one works."
+      },
+      "wiki": [
+        "cheatsheets/config/nginx-conf",
+        "deployment/web-server"
+      ]
+    },
+    {
+      "id": "crear",
+      "es": "crear",
+      "en": "create",
+      "capa": "datos",
+      "fam": "crud",
+      "base": [
+        "escribir"
+      ],
+      "ps": "New",
+      "bash": "mkdir projects",
+      "pwsh": "New-Item -ItemType Directory projects",
+      "def": {
+        "es": "Añadir un registro que no existía. Es la C de CRUD.",
+        "en": "Add a record that did not exist. The C in CRUD."
+      },
+      "cliente": {
+        "es": "Quien aporta el dato nuevo",
+        "en": "Whoever provides the new data",
+        "ej": "sign-up form"
+      },
+      "servidor": {
+        "es": "Quien lo guarda y le asigna un identificador",
+        "en": "Whoever stores it and assigns an ID",
+        "ej": "database, REST API"
+      },
+      "api": {
+        "es": "Datos del registro → identificador nuevo",
+        "en": "Record data → new ID",
+        "ej": "SQL INSERT, HTTP POST"
+      },
+      "cuerpo": {
+        "es": "La división celular: aparece una célula que antes no existía.",
+        "en": "Cell division: a cell appears that did not exist before."
+      },
+      "wiki": [
+        "databases/sql/sql-database",
+        "concepts/api"
+      ]
+    },
+    {
+      "id": "actualizar",
+      "es": "actualizar",
+      "en": "update",
+      "capa": "datos",
+      "fam": "crud",
+      "base": [
+        "leer",
+        "escribir"
+      ],
+      "ps": "Set",
+      "bash": "sed -i 's/8080/9090/' app.conf",
+      "pwsh": "(Get-Content app.conf) -replace '8080','9090' | Set-Content app.conf",
+      "def": {
+        "es": "Cambiar un registro existente. Es la U de CRUD.",
+        "en": "Change an existing record. The U in CRUD."
+      },
+      "cliente": {
+        "es": "Quien envía los cambios",
+        "en": "Whoever sends the changes",
+        "ej": "Save button"
+      },
+      "servidor": {
+        "es": "Quien aplica el cambio",
+        "en": "Whoever applies the change",
+        "ej": "database"
+      },
+      "api": {
+        "es": "Identificador + campos nuevos",
+        "en": "ID + new fields",
+        "ej": "SQL UPDATE, HTTP PUT / PATCH"
+      },
+      "cuerpo": {
+        "es": "La renovación celular: la piel cambia sus células y sigue siendo la misma piel.",
+        "en": "Cell renewal: skin replaces its cells and is still the same skin."
+      },
+      "wiki": [
+        "databases/sql/sql-database",
+        "concepts/api"
+      ]
+    },
+    {
+      "id": "eliminar",
+      "es": "eliminar",
+      "en": "delete",
+      "capa": "datos",
+      "fam": "crud",
+      "base": [
+        "escribir"
+      ],
+      "ps": "Remove",
+      "bash": "rm old.log",
+      "pwsh": "Remove-Item old.log",
+      "def": {
+        "es": "Quitar un registro. Es la D de CRUD.",
+        "en": "Remove a record. The D in CRUD."
+      },
+      "cliente": {
+        "es": "Quien pide el borrado",
+        "en": "Whoever requests the deletion",
+        "ej": "Delete button"
+      },
+      "servidor": {
+        "es": "Quien lo borra o lo marca como borrado",
+        "en": "Whoever deletes it or marks it deleted",
+        "ej": "database"
+      },
+      "api": {
+        "es": "Identificador del registro",
+        "en": "Record ID",
+        "ej": "SQL DELETE, HTTP DELETE"
+      },
+      "cuerpo": {
+        "es": "La apoptosis: una célula se retira de forma ordenada.",
+        "en": "Apoptosis: a cell retires in an orderly way."
+      },
+      "wiki": [
+        "databases/sql/sql-database",
+        "concepts/api"
+      ]
+    },
+    {
+      "id": "buscar",
+      "es": "buscar",
+      "en": "search",
+      "capa": "datos",
+      "fam": "crud",
+      "base": [
+        "leer",
+        "comparar"
+      ],
+      "ps": "Select",
+      "bash": "grep -r \"error\" /var/log",
+      "pwsh": "Select-String -Path *.log -Pattern \"error\"",
+      "def": {
+        "es": "Leer solo lo que cumple una condición.",
+        "en": "Read only what meets a condition."
+      },
+      "cliente": {
+        "es": "Quien da el criterio",
+        "en": "Whoever gives the criteria",
+        "ej": "search bar"
+      },
+      "servidor": {
+        "es": "Quien recorre y filtra",
+        "en": "Whoever scans and filters",
+        "ej": "database, Elasticsearch"
+      },
+      "api": {
+        "es": "Criterio → lista de resultados",
+        "en": "Criteria → list of results",
+        "ej": "SQL WHERE, grep, GET ?q="
+      },
+      "cuerpo": {
+        "es": "Evocar un recuerdo concreto a partir de una pista.",
+        "en": "Recalling a specific memory from a cue."
+      },
+      "wiki": [
+        "cheatsheets/text-processing/grep",
+        "cheatsheets/query/sql"
+      ]
+    },
+    {
+      "id": "indexar",
+      "es": "indexar",
+      "en": "index",
+      "capa": "datos",
+      "fam": "guardar",
+      "base": [
+        "leer",
+        "comparar",
+        "escribir"
+      ],
+      "ps": "Invoke",
+      "bash": "sqlite3 app.db \"CREATE INDEX idx_email ON users(email);\"",
+      "pwsh": "Invoke-Sqlcmd -Query \"CREATE INDEX idx_email ON users(email)\"",
+      "def": {
+        "es": "Construir un atajo ordenado para buscar más rápido.",
+        "en": "Build an ordered shortcut to search faster."
+      },
+      "cliente": {
+        "es": "Quien va a buscar mucho",
+        "en": "Whoever will search a lot",
+        "ej": "frequent app queries"
+      },
+      "servidor": {
+        "es": "El motor que mantiene el índice",
+        "en": "The engine that maintains the index",
+        "ej": "PostgreSQL, Windows Search"
+      },
+      "api": {
+        "es": "Campo o columna a indexar",
+        "en": "Field or column to index",
+        "ej": "CREATE INDEX"
+      },
+      "cuerpo": {
+        "es": "El hipocampo organiza los recuerdos para encontrarlos rápido.",
+        "en": "The hippocampus organizes memories so they can be found quickly."
+      },
+      "wiki": [
+        "databases/sql/sql-database"
+      ]
+    },
+    {
+      "id": "cachear",
+      "es": "cachear",
+      "en": "cache",
+      "capa": "datos",
+      "fam": "guardar",
+      "base": [
+        "almacenar",
+        "buscar"
+      ],
+      "ps": null,
+      "bash": "redis-cli SET session:42 \"data\" EX 300",
+      "pwsh": "redis-cli SET session:42 \"data\" EX 300",
+      "def": {
+        "es": "Guardar cerca una copia de lo que se usa mucho para no ir a buscarlo lejos.",
+        "en": "Keep a nearby copy of what is used often so you don't fetch it from far away."
+      },
+      "cliente": {
+        "es": "Quien pide el mismo dato una y otra vez",
+        "en": "Whoever asks for the same data again and again",
+        "ej": "browser, CPU"
+      },
+      "servidor": {
+        "es": "La copia cercana",
+        "en": "The nearby copy",
+        "ej": "L1/L2 cache, Redis, CDN"
+      },
+      "api": {
+        "es": "Clave → valor, con caducidad (TTL)",
+        "en": "Key → value, with expiry (TTL)",
+        "ej": "Cache-Control, Redis GET/SET"
+      },
+      "cuerpo": {
+        "es": "La memoria muscular: lo repetido se resuelve sin pensar.",
+        "en": "Muscle memory: what is repeated gets done without thinking."
+      },
+      "wiki": [
+        "web-dev/best-practices/performance-baseline"
+      ]
+    },
+    {
+      "id": "respaldar",
+      "es": "respaldar",
+      "en": "back up",
+      "capa": "datos",
+      "fam": "guardar",
+      "base": [
+        "leer",
+        "comprimir",
+        "enviar"
+      ],
+      "ps": "Backup",
+      "bash": "rsync -a /data/ nas:/backup/data/",
+      "pwsh": "Backup-SqlDatabase -ServerInstance srv01 -Database erp",
+      "def": {
+        "es": "Copiar datos a otro sitio para poder recuperarlos después.",
+        "en": "Copy data elsewhere so it can be recovered later."
+      },
+      "cliente": {
+        "es": "El equipo con los datos originales",
+        "en": "The machine with the original data",
+        "ej": "backup agent"
+      },
+      "servidor": {
+        "es": "El destino de las copias",
+        "en": "The backup destination",
+        "ej": "NAS, S3 storage"
+      },
+      "api": {
+        "es": "Origen, destino, horario y retención",
+        "en": "Source, destination, schedule and retention",
+        "ej": "rsync, restic, Veeam"
+      },
+      "cuerpo": {
+        "es": "Cada célula guarda una copia del ADN; si una se pierde, el plan sigue en las demás.",
+        "en": "Every cell keeps a copy of the DNA; if one is lost, the plan lives on in the others."
+      },
+      "wiki": [
+        "concepts/file-sync"
+      ]
+    },
+    {
+      "id": "restaurar",
+      "es": "restaurar",
+      "en": "restore",
+      "capa": "datos",
+      "fam": "guardar",
+      "base": [
+        "respaldar",
+        "escribir"
+      ],
+      "ps": "Restore",
+      "bash": "restic restore latest --target /restore",
+      "pwsh": "Restore-SqlDatabase -ServerInstance srv01 -Database erp -BackupFile erp.bak",
+      "def": {
+        "es": "Recuperar datos a partir de una copia de seguridad.",
+        "en": "Recover data from a backup."
+      },
+      "cliente": {
+        "es": "El equipo que perdió los datos",
+        "en": "The machine that lost the data",
+        "ej": "server after a failure"
+      },
+      "servidor": {
+        "es": "El repositorio de copias",
+        "en": "The backup repository",
+        "ej": "NAS, cloud"
+      },
+      "api": {
+        "es": "Copia + punto en el tiempo + destino",
+        "en": "Backup + point in time + destination",
+        "ej": "restic restore, Veeam, Time Machine"
+      },
+      "cuerpo": {
+        "es": "La regeneración: el tejido se rehace a partir del plan guardado.",
+        "en": "Regeneration: tissue rebuilds itself from the stored plan."
+      },
+      "wiki": [
+        "concepts/file-sync"
+      ]
+    },
+    {
+      "id": "replicar",
+      "es": "replicar",
+      "en": "replicate",
+      "capa": "datos",
+      "fam": "guardar",
+      "base": [
+        "leer",
+        "enviar",
+        "escribir"
+      ],
+      "ps": "Enable",
+      "bash": "zfs send pool/data@today | ssh nas2 zfs recv pool/data",
+      "pwsh": "Enable-VMReplication -VMName web -ReplicaServerName hv2 -ReplicaServerPort 80 -AuthenticationType Kerberos",
+      "def": {
+        "es": "Mantener copias vivas de los datos en varios sitios a la vez.",
+        "en": "Keep live copies of data in several places at once."
+      },
+      "cliente": {
+        "es": "El nodo principal que recibe los cambios",
+        "en": "The primary node receiving changes",
+        "ej": "primary database"
+      },
+      "servidor": {
+        "es": "Las réplicas que los copian",
+        "en": "The replicas that copy them",
+        "ej": "read replica, secondary NAS"
+      },
+      "api": {
+        "es": "Flujo ordenado de cambios",
+        "en": "Ordered stream of changes",
+        "ej": "PostgreSQL replication, zfs send, DFS-R"
+      },
+      "cuerpo": {
+        "es": "La mitosis copia el ADN completo en cada célula hija.",
+        "en": "Mitosis copies the whole DNA into each daughter cell."
+      },
+      "wiki": [
+        "concepts/file-sync",
+        "databases/sql/sql-database"
+      ]
+    },
+    {
+      "id": "versionar",
+      "es": "versionar",
+      "en": "version",
+      "capa": "datos",
+      "fam": "guardar",
+      "base": [
+        "comparar",
+        "almacenar"
+      ],
+      "ps": "Checkpoint",
+      "bash": "git commit -m \"Tighten firewall rules\"",
+      "pwsh": "Checkpoint-VM -Name web -SnapshotName before-update",
+      "def": {
+        "es": "Guardar cada cambio como una versión para poder verla o volver a ella.",
+        "en": "Save each change as a version you can view or go back to."
+      },
+      "cliente": {
+        "es": "Quien hace los cambios",
+        "en": "Whoever makes the changes",
+        "ej": "developer using git"
+      },
+      "servidor": {
+        "es": "El repositorio",
+        "en": "The repository",
+        "ej": "GitHub, Gitea, OneDrive history"
+      },
+      "api": {
+        "es": "Cambios + mensaje → identificador de versión",
+        "en": "Changes + message → version ID",
+        "ej": "git commit, git checkout"
+      },
+      "cuerpo": {
+        "es": "La evolución: cada generación es una versión, y el ADN guarda parte del historial.",
+        "en": "Evolution: each generation is a version, and DNA keeps part of the history."
+      },
+      "wiki": [
+        "cheatsheets/tools/cli/git"
+      ]
+    },
+    {
+      "id": "validar",
+      "es": "validar",
+      "en": "validate",
+      "capa": "datos",
+      "fam": "proteger",
+      "base": [
+        "comparar"
+      ],
+      "ps": "Test",
+      "bash": "jq . config.json",
+      "pwsh": "Test-Json -Json (Get-Content config.json -Raw)",
+      "def": {
+        "es": "Comprobar que un dato cumple las reglas antes de aceptarlo.",
+        "en": "Check that data follows the rules before accepting it."
+      },
+      "cliente": {
+        "es": "Quien envía el dato",
+        "en": "Whoever sends the data",
+        "ej": "web form"
+      },
+      "servidor": {
+        "es": "Quien aplica las reglas",
+        "en": "Whoever applies the rules",
+        "ej": "backend, database constraints"
+      },
+      "api": {
+        "es": "Dato + esquema → válido o lista de errores",
+        "en": "Data + schema → valid or list of errors",
+        "ej": "JSON Schema, SQL CHECK"
+      },
+      "cuerpo": {
+        "es": "El estómago y el sistema inmune rechazan lo que no debería entrar.",
+        "en": "The stomach and the immune system reject what should not get in."
+      },
+      "wiki": [
+        "cheatsheets/data/json",
+        "web-dev/best-practices/testing-guide"
+      ]
+    },
+    {
+      "id": "cifrar",
+      "es": "cifrar",
+      "en": "encrypt",
+      "capa": "datos",
+      "fam": "proteger",
+      "base": [
+        "sumar",
+        "codificar"
+      ],
+      "ps": "Protect",
+      "bash": "openssl enc -aes-256-cbc -pbkdf2 -in data.txt -out data.enc",
+      "pwsh": "Protect-CmsMessage -To cn=backup -Path data.txt -OutFile data.enc",
+      "def": {
+        "es": "Transformar datos para que solo quien tenga la clave pueda leerlos.",
+        "en": "Transform data so only someone with the key can read it."
+      },
+      "cliente": {
+        "es": "Quien protege el dato",
+        "en": "Whoever protects the data",
+        "ej": "browser over HTTPS"
+      },
+      "servidor": {
+        "es": "Quien guarda o transmite el dato cifrado",
+        "en": "Whoever stores or carries the encrypted data",
+        "ej": "TLS server, BitLocker disk"
+      },
+      "api": {
+        "es": "Datos + clave → datos cifrados",
+        "en": "Data + key → encrypted data",
+        "ej": "AES, TLS, openssl enc"
+      },
+      "cuerpo": {
+        "es": "La información genética solo la lee la maquinaria que conoce el código.",
+        "en": "Genetic information can only be read by machinery that knows the code."
+      },
+      "wiki": [
+        "cheatsheets/protocols/tls",
+        "comparisons/software/quantum-mitm-risk"
+      ]
+    },
+    {
+      "id": "codificar",
+      "es": "codificar",
+      "en": "encode",
+      "capa": "transf",
+      "fam": "transformar",
+      "base": [
+        "mover"
+      ],
+      "ps": null,
+      "bash": "base64 photo.png > photo.b64",
+      "pwsh": "[Convert]::ToBase64String([IO.File]::ReadAllBytes(\"photo.png\"))",
+      "def": {
+        "es": "Representar información con un código acordado: letras como bytes, imágenes como números.",
+        "en": "Represent information with an agreed code: letters as bytes, images as numbers."
+      },
+      "cliente": {
+        "es": "Quien produce el dato",
+        "en": "Whoever produces the data",
+        "ej": "text editor"
+      },
+      "servidor": {
+        "es": "Quien lo guarda o transmite",
+        "en": "Whoever stores or carries it",
+        "ej": "file on disk, network"
+      },
+      "api": {
+        "es": "El esquema de codificación",
+        "en": "The encoding scheme",
+        "ej": "UTF-8, Base64"
+      },
+      "cuerpo": {
+        "es": "El ADN codifica proteínas con un alfabeto de cuatro letras.",
+        "en": "DNA encodes proteins with a four-letter alphabet."
+      }
+    },
+    {
+      "id": "decodificar",
+      "es": "decodificar",
+      "en": "decode",
+      "capa": "transf",
+      "fam": "transformar",
+      "base": [
+        "leer"
+      ],
+      "ps": null,
+      "bash": "base64 -d photo.b64 > photo.png",
+      "pwsh": "[IO.File]::WriteAllBytes(\"photo.png\", [Convert]::FromBase64String($b64))",
+      "def": {
+        "es": "Volver del código a la información original.",
+        "en": "Go from the code back to the original information."
+      },
+      "cliente": {
+        "es": "Quien necesita el dato legible",
+        "en": "Whoever needs the readable data",
+        "ej": "browser rendering text"
+      },
+      "servidor": {
+        "es": "Quien entregó el dato codificado",
+        "en": "Whoever delivered the encoded data",
+        "ej": "file, HTTP response"
+      },
+      "api": {
+        "es": "Datos codificados + esquema → datos",
+        "en": "Encoded data + scheme → data",
+        "ej": "JSON.parse(), base64 -d"
+      },
+      "cuerpo": {
+        "es": "El ribosoma lee el ARN y lo vuelve proteína.",
+        "en": "The ribosome reads RNA and turns it into protein."
+      }
+    },
+    {
+      "id": "serializar",
+      "es": "serializar",
+      "en": "serialize",
+      "capa": "transf",
+      "fam": "transformar",
+      "base": [
+        "codificar"
+      ],
+      "ps": "ConvertTo",
+      "bash": "jq -n '{name:\"web\",port:80}' > obj.json",
+      "pwsh": "$obj | ConvertTo-Json | Set-Content obj.json",
+      "def": {
+        "es": "Convertir un objeto en memoria en una secuencia de bytes que se puede guardar o enviar.",
+        "en": "Turn an in-memory object into a sequence of bytes you can save or send."
+      },
+      "cliente": {
+        "es": "El programa que tiene el objeto",
+        "en": "The program holding the object",
+        "ej": "an app"
+      },
+      "servidor": {
+        "es": "El destino: un archivo o la red",
+        "en": "The destination: a file or the network",
+        "ej": "REST API, message queue"
+      },
+      "api": {
+        "es": "Objeto → texto o bytes, y al revés",
+        "en": "Object → text or bytes, and back",
+        "ej": "JSON, Protocol Buffers, pickle"
+      },
+      "cuerpo": {
+        "es": "Una proteína plegada viaja como instrucción lineal en una cadena de ARN.",
+        "en": "A folded protein travels as a linear instruction in an RNA strand."
+      },
+      "wiki": [
+        "cheatsheets/data/json",
+        "cheatsheets/data/yaml"
+      ]
+    },
+    {
+      "id": "traducir",
+      "es": "traducir",
+      "en": "translate",
+      "capa": "transf",
+      "fam": "transformar",
+      "base": [
+        "decodificar",
+        "codificar"
+      ],
+      "ps": null,
+      "bash": "python3 script.py",
+      "pwsh": "python script.py",
+      "def": {
+        "es": "Pasar de un lenguaje a otro manteniendo el significado.",
+        "en": "Go from one language to another keeping the meaning."
+      },
+      "cliente": {
+        "es": "Quien escribe en el lenguaje de origen",
+        "en": "Whoever writes in the source language",
+        "ej": "Python script"
+      },
+      "servidor": {
+        "es": "El traductor o intérprete",
+        "en": "The translator or interpreter",
+        "ej": "Python interpreter, transpiler"
+      },
+      "api": {
+        "es": "Texto origen → texto destino",
+        "en": "Source text → target text",
+        "ej": "python, tsc"
+      },
+      "cuerpo": {
+        "es": "La traducción genética pasa del lenguaje de nucleótidos al de aminoácidos. La biología usa la misma palabra.",
+        "en": "Genetic translation goes from the language of nucleotides to that of amino acids. Biology uses the same word."
+      },
+      "wiki": [
+        "cheatsheets/programming/python"
+      ]
+    },
+    {
+      "id": "compilar",
+      "es": "compilar",
+      "en": "compile",
+      "capa": "transf",
+      "fam": "transformar",
+      "base": [
+        "leer",
+        "traducir",
+        "escribir"
+      ],
+      "ps": null,
+      "bash": "gcc main.c -o app",
+      "pwsh": "dotnet build",
+      "def": {
+        "es": "Traducir todo el código fuente a código máquina antes de ejecutarlo.",
+        "en": "Translate all source code into machine code before running it."
+      },
+      "cliente": {
+        "es": "El desarrollador",
+        "en": "The developer",
+        "ej": "IDE, make"
+      },
+      "servidor": {
+        "es": "El compilador",
+        "en": "The compiler",
+        "ej": "gcc, rustc, javac"
+      },
+      "api": {
+        "es": "Fuente + opciones → ejecutable o errores",
+        "en": "Source + options → executable or errors",
+        "ej": "gcc main.c -o app"
+      },
+      "cuerpo": {
+        "es": "El desarrollo embrionario: el genoma completo se convierte en un cuerpo funcional antes de nacer.",
+        "en": "Embryonic development: the whole genome becomes a working body before birth."
+      },
+      "wiki": [
+        "cheatsheets/programming/c",
+        "cheatsheets/automation/make"
+      ]
+    },
+    {
+      "id": "convertir",
+      "es": "convertir",
+      "en": "convert",
+      "capa": "transf",
+      "fam": "transformar",
+      "base": [
+        "decodificar",
+        "codificar"
+      ],
+      "ps": "ConvertTo",
+      "bash": "ffmpeg -i video.mov video.mp4",
+      "pwsh": "Import-Csv users.csv | ConvertTo-Json",
+      "def": {
+        "es": "Cambiar el formato de un dato: decodificar uno y codificar otro.",
+        "en": "Change the format of data: decode one, encode another."
+      },
+      "cliente": {
+        "es": "Quien tiene el formato de origen",
+        "en": "Whoever has the source format",
+        "ej": ".docx file"
+      },
+      "servidor": {
+        "es": "El conversor",
+        "en": "The converter",
+        "ej": "LibreOffice, ffmpeg, pandoc"
+      },
+      "api": {
+        "es": "Archivo + formato destino",
+        "en": "File + target format",
+        "ej": "ffmpeg, pandoc"
+      },
+      "cuerpo": {
+        "es": "El hígado convierte unas sustancias en otras que el cuerpo puede usar.",
+        "en": "The liver converts some substances into others the body can use."
+      },
+      "wiki": [
+        "cheatsheets/query/jq",
+        "cheatsheets/data/csv"
+      ]
+    },
+    {
+      "id": "comprimir",
+      "es": "comprimir",
+      "en": "compress",
+      "capa": "transf",
+      "fam": "transformar",
+      "base": [
+        "codificar",
+        "buscar"
+      ],
+      "ps": "Compress",
+      "bash": "tar -czf logs.tar.gz logs/",
+      "pwsh": "Compress-Archive -Path logs -DestinationPath logs.zip",
+      "def": {
+        "es": "Codificar con menos bits buscando repeticiones.",
+        "en": "Encode with fewer bits by finding repetition."
+      },
+      "cliente": {
+        "es": "Quien quiere ocupar menos",
+        "en": "Whoever wants to use less space",
+        "ej": "file explorer"
+      },
+      "servidor": {
+        "es": "El compresor",
+        "en": "The compressor",
+        "ej": "web server with gzip"
+      },
+      "api": {
+        "es": "Datos + nivel → datos más pequeños",
+        "en": "Data + level → smaller data",
+        "ej": "zip, gzip, zstd"
+      },
+      "cuerpo": {
+        "es": "El ADN se enrolla en cromosomas para caber en el núcleo.",
+        "en": "DNA coils into chromosomes to fit inside the nucleus."
+      }
+    },
+    {
+      "id": "hashear",
+      "es": "hashear",
+      "en": "hash",
+      "capa": "transf",
+      "fam": "proteger",
+      "base": [
+        "sumar",
+        "codificar"
+      ],
+      "ps": "Get",
+      "bash": "sha256sum ubuntu.iso",
+      "pwsh": "Get-FileHash ubuntu.iso",
+      "def": {
+        "es": "Calcular una huella corta y única de cualquier dato. No se puede deshacer.",
+        "en": "Compute a short, unique fingerprint of any data. It cannot be undone."
+      },
+      "cliente": {
+        "es": "Quien quiere comprobar o guardar la huella",
+        "en": "Whoever wants to check or store the fingerprint",
+        "ej": "someone downloading an ISO"
+      },
+      "servidor": {
+        "es": "Quien publica o guarda la huella",
+        "en": "Whoever publishes or stores it",
+        "ej": "official site, user database"
+      },
+      "api": {
+        "es": "Datos → huella de tamaño fijo",
+        "en": "Data → fixed-size fingerprint",
+        "ej": "SHA-256, sha256sum, bcrypt"
+      },
+      "cuerpo": {
+        "es": "La huella dactilar identifica a una persona sin contener a la persona.",
+        "en": "A fingerprint identifies a person without containing the person."
+      },
+      "wiki": [
+        "cheatsheets/protocols/tls"
+      ]
+    },
+    {
+      "id": "importar",
+      "es": "importar",
+      "en": "import",
+      "capa": "transf",
+      "fam": "mover",
+      "base": [
+        "leer",
+        "convertir",
+        "crear"
+      ],
+      "ps": "Import",
+      "bash": "mysql erp < dump.sql",
+      "pwsh": "Import-Csv users.csv",
+      "def": {
+        "es": "Traer datos de fuera y meterlos en tu sistema.",
+        "en": "Bring outside data into your system."
+      },
+      "cliente": {
+        "es": "El sistema que recibe",
+        "en": "The receiving system",
+        "ej": "Excel opening a CSV"
+      },
+      "servidor": {
+        "es": "La fuente externa",
+        "en": "The external source",
+        "ej": "file, third-party API"
+      },
+      "api": {
+        "es": "Archivo o URL + mapeo de campos",
+        "en": "File or URL + field mapping",
+        "ej": "COPY, LOAD DATA, import"
+      },
+      "cuerpo": {
+        "es": "Comer: traer materia de fuera e incorporarla al cuerpo.",
+        "en": "Eating: bringing matter in from outside and making it part of the body."
+      },
+      "wiki": [
+        "cheatsheets/data/csv"
+      ]
+    },
+    {
+      "id": "exportar",
+      "es": "exportar",
+      "en": "export",
+      "capa": "transf",
+      "fam": "mover",
+      "base": [
+        "leer",
+        "convertir",
+        "escribir"
+      ],
+      "ps": "Export",
+      "bash": "pg_dump erp > erp.sql",
+      "pwsh": "Get-Process | Export-Csv processes.csv",
+      "def": {
+        "es": "Sacar datos de tu sistema en un formato que otro entienda.",
+        "en": "Take data out of your system in a format others understand."
+      },
+      "cliente": {
+        "es": "Quien pide la copia",
+        "en": "Whoever asks for the copy",
+        "ej": "Export button"
+      },
+      "servidor": {
+        "es": "El sistema que tiene los datos",
+        "en": "The system holding the data",
+        "ej": "database, ERP"
+      },
+      "api": {
+        "es": "Selección + formato de salida",
+        "en": "Selection + output format",
+        "ej": "CSV, JSON, pg_dump"
+      },
+      "cuerpo": {
+        "es": "Excretar o segregar: sacar sustancias en una forma que el entorno acepta.",
+        "en": "Excreting or secreting: releasing substances in a form the environment accepts."
+      },
+      "wiki": [
+        "cheatsheets/data/csv"
+      ]
+    },
+    {
+      "id": "reproducir",
+      "es": "reproducir",
+      "en": "play",
+      "capa": "app",
+      "fam": "transformar",
+      "base": [
+        "recibir",
+        "decodificar"
+      ],
+      "ps": "Start",
+      "bash": "mpv video.mp4",
+      "pwsh": "Start-Process video.mp4",
+      "def": {
+        "es": "Decodificar audio o vídeo y llevarlo a pantalla o altavoz a su ritmo.",
+        "en": "Decode audio or video and send it to screen or speaker at its own pace."
+      },
+      "cliente": {
+        "es": "El reproductor",
+        "en": "The player",
+        "ej": "VLC, browser, smart TV"
+      },
+      "servidor": {
+        "es": "Quien sirve el medio",
+        "en": "Whoever serves the media",
+        "ej": "Jellyfin, Plex, NAS"
+      },
+      "api": {
+        "es": "Pista, posición y calidad",
+        "en": "Track, position and quality",
+        "ej": "HLS, DLNA, <video>"
+      },
+      "cuerpo": {
+        "es": "El oído convierte vibraciones en sonido percibido, a su propio ritmo.",
+        "en": "The ear turns vibrations into perceived sound, at its own pace."
+      },
+      "wiki": [
+        "comparisons/software/media-streaming"
+      ]
+    },
+    {
+      "id": "sincronizar",
+      "es": "sincronizar",
+      "en": "sync",
+      "capa": "app",
+      "fam": "mover",
+      "base": [
+        "comparar",
+        "enviar",
+        "recibir",
+        "actualizar"
+      ],
+      "ps": null,
+      "bash": "rsync -av --delete source/ dest/",
+      "pwsh": "robocopy source dest /MIR",
+      "def": {
+        "es": "Hacer que dos copias queden iguales enviando solo las diferencias.",
+        "en": "Make two copies identical by sending only the differences."
+      },
+      "cliente": {
+        "es": "Dispositivo con una copia",
+        "en": "Device holding a copy",
+        "ej": "OneDrive, Syncthing"
+      },
+      "servidor": {
+        "es": "La copia de referencia",
+        "en": "The reference copy",
+        "ej": "cloud, NAS"
+      },
+      "api": {
+        "es": "Versión que tengo → cambios pendientes",
+        "en": "Version I have → pending changes",
+        "ej": "rsync, WebDAV, CalDAV"
+      },
+      "cuerpo": {
+        "es": "El ritmo circadiano mantiene órganos distintos al mismo compás.",
+        "en": "The circadian rhythm keeps different organs on the same beat."
+      },
+      "wiki": [
+        "concepts/file-sync"
+      ]
+    },
+    {
+      "id": "desplegar",
+      "es": "desplegar",
+      "en": "deploy",
+      "capa": "app",
+      "fam": "controlar",
+      "base": [
+        "compilar",
+        "enviar",
+        "ejecutar"
+      ],
+      "ps": null,
+      "bash": "docker compose up -d",
+      "pwsh": "docker compose up -d",
+      "def": {
+        "es": "Poner en marcha una versión nueva de un programa en el servidor.",
+        "en": "Put a new version of a program into service on the server."
+      },
+      "cliente": {
+        "es": "El pipeline o el administrador",
+        "en": "The pipeline or the admin",
+        "ej": "GitHub Actions"
+      },
+      "servidor": {
+        "es": "El servidor o clúster destino",
+        "en": "The target server or cluster",
+        "ej": "VPS, Kubernetes"
+      },
+      "api": {
+        "es": "Versión + configuración",
+        "en": "Version + configuration",
+        "ej": "docker compose, kubectl apply"
+      },
+      "cuerpo": {
+        "es": "Cicatrizar: una respuesta nueva se pone en servicio en la zona que la necesita.",
+        "en": "Healing a wound: a new response goes into service where it is needed."
+      },
+      "wiki": [
+        "web-dev/best-practices/deploy-web",
+        "cheatsheets/automation/github-actions",
+        "deployment/docker"
+      ]
+    },
+    {
+      "id": "publicar",
+      "es": "publicar",
+      "en": "publish",
+      "capa": "app",
+      "fam": "mover",
+      "base": [
+        "crear",
+        "enviar"
+      ],
+      "ps": "Publish",
+      "bash": "git push origin main",
+      "pwsh": "Publish-Module -Name MyModule",
+      "def": {
+        "es": "Dejar algo disponible para que otros lo lean.",
+        "en": "Make something available for others to read."
+      },
+      "cliente": {
+        "es": "El autor",
+        "en": "The author",
+        "ej": "CMS, git push"
+      },
+      "servidor": {
+        "es": "Quien lo sirve al público",
+        "en": "Whoever serves it to the public",
+        "ej": "web server, MQTT broker"
+      },
+      "api": {
+        "es": "Contenido + visibilidad",
+        "en": "Content + visibility",
+        "ej": "HTTP POST, MQTT publish"
+      },
+      "cuerpo": {
+        "es": "La voz o las feromonas: dejar una señal para que otros la capten.",
+        "en": "Voice or pheromones: leaving a signal for others to pick up."
+      },
+      "wiki": [
+        "web-dev/fundamentals/create-web"
+      ]
+    },
+    {
+      "id": "monitorizar",
+      "es": "monitorizar",
+      "en": "monitor",
+      "capa": "app",
+      "fam": "controlar",
+      "base": [
+        "leer",
+        "comparar",
+        "planificar"
+      ],
+      "ps": "Get",
+      "bash": "watch -n 5 df -h",
+      "pwsh": "Get-Counter '\\Processor(_Total)\\% Processor Time' -Continuous",
+      "def": {
+        "es": "Medir sin parar el estado de un sistema y avisar cuando algo sale de lo normal.",
+        "en": "Measure a system's state nonstop and alert when something goes off normal."
+      },
+      "cliente": {
+        "es": "El agente que mide",
+        "en": "The agent that measures",
+        "ej": "node_exporter, Zabbix agent"
+      },
+      "servidor": {
+        "es": "El sistema que guarda y alerta",
+        "en": "The system that stores and alerts",
+        "ej": "Prometheus, Zabbix, Uptime Kuma"
+      },
+      "api": {
+        "es": "Métrica + umbral → alerta",
+        "en": "Metric + threshold → alert",
+        "ej": "SNMP, /metrics, ping"
+      },
+      "cuerpo": {
+        "es": "El sistema nervioso vigila temperatura, presión y glucosa todo el tiempo.",
+        "en": "The nervous system watches temperature, pressure and glucose all the time."
+      },
+      "wiki": [
+        "deployment/kubernetes"
+      ]
+    },
+    {
+      "id": "registrar",
+      "es": "registrar",
+      "en": "log",
+      "capa": "app",
+      "fam": "guardar",
+      "base": [
+        "escribir"
+      ],
+      "ps": "Write",
+      "bash": "logger \"Backup completed\"",
+      "pwsh": "Write-EventLog -LogName Application -Source Backup -EventId 1 -Message \"Backup completed\"",
+      "def": {
+        "es": "Anotar qué pasó y cuándo para poder revisarlo después.",
+        "en": "Note what happened and when, so it can be reviewed later."
+      },
+      "cliente": {
+        "es": "El programa que genera eventos",
+        "en": "The program producing events",
+        "ej": "web service"
+      },
+      "servidor": {
+        "es": "Quien guarda los registros",
+        "en": "Whoever stores the logs",
+        "ej": "syslog, Event Viewer, Loki"
+      },
+      "api": {
+        "es": "Nivel + mensaje + fecha",
+        "en": "Level + message + timestamp",
+        "ej": "syslog, journalctl, console.log()"
+      },
+      "cuerpo": {
+        "es": "La memoria episódica y las cicatrices guardan qué pasó y cuándo.",
+        "en": "Episodic memory and scars keep what happened and when."
+      },
+      "wiki": [
+        "cheatsheets/automation/systemd"
+      ]
+    },
+    {
+      "id": "notificar",
+      "es": "notificar",
+      "en": "notify",
+      "capa": "app",
+      "fam": "mover",
+      "base": [
+        "enviar"
+      ],
+      "ps": "Invoke",
+      "bash": "curl -d \"Disk at 90%\" ntfy.sh/my-servers",
+      "pwsh": "Invoke-RestMethod -Method Post -Uri https://ntfy.sh/my-servers -Body \"Disk at 90%\"",
+      "def": {
+        "es": "Avisar de que algo ha pasado sin que el otro tenga que preguntar.",
+        "en": "Tell someone that something happened without them having to ask."
+      },
+      "cliente": {
+        "es": "Quien recibe el aviso",
+        "en": "Whoever gets the alert",
+        "ej": "phone, email"
+      },
+      "servidor": {
+        "es": "Quien lo emite",
+        "en": "Whoever sends it",
+        "ej": "push server, Telegram bot"
+      },
+      "api": {
+        "es": "Destinatario + mensaje",
+        "en": "Recipient + message",
+        "ej": "webhook, push, SMTP"
+      },
+      "cuerpo": {
+        "es": "El dolor avisa al cerebro sin que este lo pregunte.",
+        "en": "Pain alerts the brain without being asked."
+      }
+    },
+    {
+      "id": "escalar",
+      "es": "escalar",
+      "en": "scale",
+      "capa": "app",
+      "fam": "controlar",
+      "base": [
+        "desplegar",
+        "balancear",
+        "monitorizar"
+      ],
+      "ps": "Set",
+      "bash": "kubectl scale deployment web --replicas=5",
+      "pwsh": "Set-VM -Name web -ProcessorCount 4",
+      "def": {
+        "es": "Añadir o quitar recursos según la carga.",
+        "en": "Add or remove resources to match the load."
+      },
+      "cliente": {
+        "es": "La demanda que sube o baja",
+        "en": "Demand going up or down",
+        "ej": "traffic spike"
+      },
+      "servidor": {
+        "es": "La plataforma que añade o quita instancias",
+        "en": "The platform adding or removing instances",
+        "ej": "Kubernetes, cloud autoscaling"
+      },
+      "api": {
+        "es": "Métrica + mínimo y máximo de instancias",
+        "en": "Metric + min and max instances",
+        "ej": "kubectl scale, HPA"
+      },
+      "cuerpo": {
+        "es": "El músculo crece con el entrenamiento y se reduce si no se usa.",
+        "en": "Muscle grows with training and shrinks when unused."
+      },
+      "wiki": [
+        "deployment/kubernetes"
+      ]
+    },
+    {
+      "id": "migrar",
+      "es": "migrar",
+      "en": "migrate",
+      "capa": "app",
+      "fam": "mover",
+      "base": [
+        "exportar",
+        "importar",
+        "convertir"
+      ],
+      "ps": "Move",
+      "bash": "rsync -a old-server:/srv/ /srv/",
+      "pwsh": "Move-VM -Name web -DestinationHost hv2",
+      "def": {
+        "es": "Llevar datos o servicios de un sistema a otro sin perderlos.",
+        "en": "Move data or services from one system to another without losing them."
+      },
+      "cliente": {
+        "es": "El sistema de origen",
+        "en": "The source system",
+        "ej": "old server, on-prem Exchange"
+      },
+      "servidor": {
+        "es": "El sistema de destino",
+        "en": "The target system",
+        "ej": "new server, Microsoft 365"
+      },
+      "api": {
+        "es": "Origen + destino + plan de corte",
+        "en": "Source + target + cutover plan",
+        "ej": "robocopy, rsync, migration tools"
+      },
+      "cuerpo": {
+        "es": "Las células madre viajan a la zona dañada y se integran allí.",
+        "en": "Stem cells travel to damaged tissue and settle in there."
+      },
+      "wiki": [
+        "databases/sql/sql-database"
+      ]
+    }
+  ],
+  "wikiTitles": {
+    "concepts/stack-and-queue": "Stack and Queue",
+    "concepts/file-sync": "File transfer & sync",
+    "concepts/api": "APIs",
+    "concepts/os-layer-stack": "Operating System Layer Stack",
+    "concepts/hardware-privilege-rings": "Hardware Privilege Rings",
+    "concepts/osi-model": "OSI Model",
+    "concepts/cybersecurity-vulnerabilities": "Cybersecurity Vulnerabilities",
+    "cheatsheets/shell/bash": "Bash",
+    "cheatsheets/shell/powershell": "PowerShell",
+    "cheatsheets/automation/cron": "Cron",
+    "cheatsheets/automation/systemd": "systemd",
+    "cheatsheets/automation/make": "Make",
+    "cheatsheets/automation/github-actions": "GitHub Actions",
+    "deployment/docker": "Docker",
+    "deployment/kubernetes": "Kubernetes",
+    "deployment/dns": "DNS (Domain Name System)",
+    "deployment/web-server": "Web Servers",
+    "cheatsheets/protocols/http": "HTTP",
+    "cheatsheets/protocols/tcp": "TCP",
+    "cheatsheets/protocols/dns": "DNS cheatsheet",
+    "cheatsheets/protocols/ssh": "SSH",
+    "cheatsheets/protocols/tls": "TLS",
+    "cheatsheets/config/nginx-conf": "Nginx Config",
+    "cheatsheets/tools/cli/nmap": "Nmap",
+    "cheatsheets/tools/cli/git": "Git",
+    "cheatsheets/text-processing/grep": "grep",
+    "cheatsheets/query/sql": "SQL",
+    "cheatsheets/query/jq": "jq",
+    "cheatsheets/data/json": "JSON",
+    "cheatsheets/data/yaml": "YAML",
+    "cheatsheets/data/csv": "CSV",
+    "databases/sql/sql-database": "Relational Databases",
+    "web-dev/best-practices/security-baseline": "Security Baseline",
+    "web-dev/best-practices/performance-baseline": "Performance Baseline",
+    "web-dev/best-practices/testing-guide": "Testing Guide",
+    "web-dev/best-practices/deploy-web": "Deploy Website",
+    "web-dev/fundamentals/create-web": "Create a Website",
+    "cheatsheets/programming/c": "C",
+    "cheatsheets/programming/python": "Python",
+    "comparisons/software/quantum-mitm-risk": "Quantum MITM Risk",
+    "comparisons/software/media-streaming": "Media Streaming",
+    "essays/organic-vs-artificial-life": "Organic vs Artificial Life"
+  }
+}

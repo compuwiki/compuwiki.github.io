@@ -181,6 +181,7 @@ So the climb from cell to ecosystem is not a metaphor computing borrowed from bi
 - [Turing-Complete: A Discovery Inherent to Reality](turing-complete-reality) — computation as a property of the universe
 - [Operating System Layer Stack](../concepts/os-layer-stack) — the software apparatus, layer by layer
 - [History of Computing Timeline](../concepts/history-of-computing) — how the hardware/software body was built
+- [Verbs of Computing](../concepts/verbs-of-computing/) — interactive map of computing verbs with a body lens (cells, circulation, memory, immune system)
 
 **Elsewhere**
 

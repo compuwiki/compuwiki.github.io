@@ -107,6 +107,7 @@ The top of the stack. Applications link against the system APIs and run within t
 
 ## Further Reading
 
+- [Verbs of Computing](./verbs-of-computing/) — interactive map of what each OS layer *does*, as verbs built from simpler verbs
 - [OS & Distro Directory](https://compuwiki.github.io/os-database) — companion interactive directory to browse, filter, and compare operating systems side by side
 - [OSDev Wiki — OS Concepts](https://wiki.osdev.org/Main_Page) — deep technical reference for OS internals
 - [The Linux Documentation Project](https://tldp.org/) — guides on the Linux kernel and system components

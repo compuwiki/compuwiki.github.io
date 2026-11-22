@@ -92,6 +92,7 @@ To memorize the layers (top → bottom):
 
 ## References
 
+- [Verbs of Computing](./verbs-of-computing/) — the network verbs (send, receive, route, resolve, filter) and what each is built from
 - [OSI Model — osi-model.com](https://osi-model.com/)
 - [OSI Model (Wikipedia)](https://en.wikipedia.org/wiki/OSI_model)
 - [ISO/IEC 7498-1 Standard](https://www.iso.org/standard/20269.html)
